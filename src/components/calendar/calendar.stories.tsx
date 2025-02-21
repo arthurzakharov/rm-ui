@@ -3,12 +3,11 @@ import { fn } from '@storybook/test';
 import Calendar from './calendar.component';
 
 const meta = {
-  title: 'Calendar',
+  title: 'Components/Calendar',
   component: Calendar,
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   args: { name: 'date', value: '', onChange: fn() },
 } satisfies Meta<typeof Calendar>;
 
