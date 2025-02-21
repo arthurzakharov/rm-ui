@@ -8,13 +8,5 @@
   "bracketSpacing": true,
   "bracketSameLine": false,
   "arrowParens": "always",
-  "endOfLine": "lf",
-  "overrides": [
-    {
-      "files": "**/config.tsx",
-      "options": {
-        "printWidth": 200
-      }
-    }
-  ]
+  "endOfLine": "lf"
 }

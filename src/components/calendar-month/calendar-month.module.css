@@ -1,0 +1,33 @@
+.CalendarMonth {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: calc((var(--calendar-modal-button-size) + var(--calendar-modal-button-gap) * 2) * 4);
+  overflow-y: auto;
+}
+
+.CalendarMonthButton {
+  flex-basis: calc(33.33% - var(--calendar-modal-button-gap) * 2);
+  margin: var(--calendar-modal-button-gap);
+  padding: 0;
+  height: var(--calendar-modal-button-size);
+  background-color: transparent;
+  border-radius: var(--calendar-border-radius);
+  border: var(--calendar-border-width) solid transparent;
+  font-size: var(--calendar-modal-font-size);
+  line-height: var(--calendar-modal-line-height);
+  color: var(--calendar-primary);
+  transition: border-color 125ms ease-in-out;
+}
+
+.CalendarMonthButton:hover {
+  cursor: pointer;
+  border-color: var(--calendar-accent);
+}
+
+.CalendarMonthButtonSelected {
+  background-color: var(--calendar-accent);
+  color: var(--calendar-modal-button-selected-text);
+}

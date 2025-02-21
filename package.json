@@ -1,41 +1,84 @@
 {
-  "name": "date-selector",
+  "name": "@arthurzakharov/rm-ui",
+  "version": "1.0.3",
+  "description": "UI library for rm projects",
+  "license": "MIT",
   "private": false,
+  "author": {
+    "email": "zakharov.arthur@icloud.com",
+    "name": "arthurzakharov",
+    "url": "https://github.com/arthurzakharov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthurzakharov/rm-ui"
+  },
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": "./dist/main.js",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "prepublishOnly": "npm run build"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "vitest --ui",
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "vitest run && npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
+    "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "dependencies": {
+    "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
+    "@chromatic-com/storybook": "^3.2.4",
+    "@eslint/js": "^9.20.0",
+    "@storybook/addon-essentials": "^8.5.8",
+    "@storybook/addon-interactions": "^8.5.8",
+    "@storybook/addon-links": "^8.5.8",
+    "@storybook/addon-onboarding": "^8.5.8",
+    "@storybook/blocks": "^8.5.8",
+    "@storybook/react": "^8.5.8",
+    "@storybook/react-vite": "^8.5.8",
+    "@storybook/test": "^8.5.8",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^20.17.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.17.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "@vitest/coverage-v8": "^3.0.6",
+    "@vitest/ui": "^3.0.6",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.20.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
+    "glob": "^11.0.1",
     "globals": "^15.14.0",
-    "prettier": "^3.4.2",
+    "jsdom": "^26.0.0",
+    "prettier": "^3.5.1",
+    "storybook": "^8.5.8",
     "typescript": "~5.6.2",
-    "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5"
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.1.1",
+    "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-lib-inject-css": "^2.2.1",
+    "vitest": "^3.0.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

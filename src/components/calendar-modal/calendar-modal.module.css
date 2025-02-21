@@ -1,0 +1,108 @@
+.CalendarModal {
+  width: 100%;
+  position: relative;
+  border-radius: var(--calendar-border-radius);
+  background-color: var(--calendar-background);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.CalendarModal:before,
+.CalendarModal:after {
+  border-radius: var(--calendar-border-radius);
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.CalendarModal:before {
+  box-shadow: 0 4px 4px 0 #00346714;
+}
+
+.CalendarModal:after {
+  box-shadow: 0 2px 10px 0 #0034671c;
+}
+
+.CalendarModalAttached {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: calc(100% + 12px);
+  min-width: 100%;
+}
+
+.CalendarModalCentered {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--calendar-modal-background);
+}
+/* TODO: think how to set modal max-width in other way. Remove max-width to see problem */
+.CalendarModalMonths {
+  max-width: 255px;
+  padding-top: calc(var(--calendar-modal-vertical-padding) * 2);
+  padding-left: var(--calendar-modal-horizontal-padding);
+  padding-right: var(--calendar-modal-horizontal-padding);
+}
+
+.CalendarModalDays {
+  padding-left: var(--calendar-modal-horizontal-padding);
+  padding-right: var(--calendar-modal-horizontal-padding);
+}
+
+.CalendarModalSelects {
+  padding: var(--calendar-modal-vertical-padding) var(--calendar-modal-horizontal-padding);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CalendarModalFooter {
+  padding: var(--calendar-modal-vertical-padding) var(--calendar-modal-horizontal-padding);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.CalendarModalButton {
+  border-radius: var(--calendar-border-radius);
+  border: none;
+  background-color: transparent;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: var(--calendar-modal-font-size);
+  line-height: var(--calendar-modal-line-height);
+  color: var(--calendar-accent);
+  transition: outline-color 125ms ease-in-out;
+}
+
+.CalendarModalButton:hover {
+  cursor: pointer;
+}
+
+.CalendarModalButton:focus,
+.CalendarModalButton:active {
+  outline-color: var(--calendar-accent);
+}

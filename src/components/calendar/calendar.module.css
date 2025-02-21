@@ -1,0 +1,66 @@
+.Calendar {
+  --calendar-accent: #ff6600;
+  --calendar-error: #f44336;
+  --calendar-primary: #336b62;
+  --calendar-border-radius: 3px;
+  --calendar-border-width: 2px;
+  --calendar-background: #ffffff;
+  --calendar-icon-background: #88a3a44d;
+  --calendar-input-font-size: 18px;
+  --calendar-input-line-height: 26px;
+  --calendar-input-placeholder: #8da9ab;
+  --calendar-input-border: #a2bac94d;
+  --calendar-modal-button-selected-text: #ffffff;
+  --calendar-modal-horizontal-padding: 4px;
+  --calendar-modal-vertical-padding: 8px;
+  --calendar-modal-font-size: 14px;
+  --calendar-modal-line-height: 22px;
+  --calendar-modal-button-size: 36px;
+  --calendar-modal-button-gap: 2px;
+  --calendar-modal-background: #80808033;
+  font-family: inherit;
+}
+
+.CalendarInput {
+  position: relative;
+}
+
+.CalendarInputField {
+  box-sizing: border-box;
+  padding: 8px 0 6px 0;
+  border: none;
+  transition: color 125ms ease-in-out;
+  font-size: var(--calendar-input-font-size);
+  line-height: var(--calendar-input-line-height);
+  color: var(--calendar-primary);
+  background-color: transparent;
+}
+
+.CalendarInputField:active,
+.CalendarInputField:focus {
+  outline: none;
+}
+
+.CalendarInputPlaceholder {
+  color: var(--calendar-input-placeholder);
+}
+
+.CalendarContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.CalendarInputBorder {
+  border: var(--calendar-border-width) solid var(--calendar-input-border);
+  border-radius: var(--calendar-border-radius);
+  padding-left: 16px;
+  transition: border-color 125ms ease-in-out;
+}
+
+.CalendarInputBorderFocused {
+  border-color: var(--calendar-accent);
+}

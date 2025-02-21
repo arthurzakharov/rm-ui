@@ -1,0 +1,56 @@
+.CalendarSelect {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--calendar-modal-horizontal-padding);
+}
+
+.CalendarSelectArrow {
+  border: none;
+  background-color: transparent;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  transition: outline-color 125ms ease-in-out;
+}
+
+.CalendarSelectArrow:hover {
+  cursor: pointer;
+}
+
+.CalendarSelectArrow:focus,
+.CalendarSelectArrow:active {
+  outline-color: var(--calendar-accent);
+}
+
+.CalendarSelectArrow svg {
+  stroke: var(--calendar-primary);
+}
+
+.CalendarSelectElement {
+  border: none;
+  box-sizing: border-box;
+  min-width: 56px;
+  padding: 10px 4px 10px 8px;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: var(--calendar-modal-font-size);
+  line-height: var(--calendar-modal-line-height);
+  color: var(--calendar-primary);
+  background-color: var(--calendar-background);
+  -webkit-appearance: none;
+  transition: outline-color 125ms ease-in-out;
+}
+
+.CalendarSelectElement:hover {
+  cursor: pointer;
+}
+
+.CalendarSelectElement:focus,
+.CalendarSelectElement:active {
+  outline-color: var(--calendar-accent);
+}
