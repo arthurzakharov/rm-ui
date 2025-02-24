@@ -14,6 +14,7 @@ import {
 
 const CalendarProvider: FC<CalendarProviderProps> = ({
   calendarRef,
+  calendarModalRef,
   name,
   value,
   precision,
@@ -27,7 +28,10 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
   modalTill,
   modalWidthDebounce,
   closeButton,
+  modalPosition,
   onDateChange,
+  onOpenModal,
+  onCloseModal,
   children,
 }) => {
   const yearList = getYearsBetween(period);
@@ -61,10 +65,22 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
     [onDateChange, maskExplanation, name],
   );
 
+  const onOpenEffect = useCallback(
+    (open: boolean): void => {
+      if (open && calendarModalRef.current) onOpenModal(name, calendarModalRef.current);
+      if (!open && !calendarModalRef.current) onCloseModal(name);
+    },
+    [name, calendarModalRef, onOpenModal, onCloseModal],
+  );
+
   const calendarData = useMemo(
     () => generateCalendar(weekStart, [monthIndex, yearList[yearIndex]], period),
     [monthIndex, yearIndex, yearList, period, weekStart],
   );
+
+  useEffect(() => {
+    onOpenEffect(open);
+  }, [open, onOpenEffect]);
 
   useEffect(() => {
     const newDate = convertMaskFormatToDate(value, maskExplanation);
@@ -88,6 +104,7 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
     <CalendarContext.Provider
       value={{
         calendarRef,
+        calendarModalRef,
         name,
         period,
         precision,
@@ -100,12 +117,15 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
         modalTill,
         modalWidthDebounce,
         onDateChange,
+        onOpenModal,
+        onCloseModal,
         calendarData,
         monthIndex,
         yearIndex,
         open,
         date,
         yearList,
+        modalPosition,
         onMonthIndexChange,
         onYearIndexChange,
         onCalendarClick,

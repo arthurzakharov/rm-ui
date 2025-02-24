@@ -32,11 +32,19 @@
 }
 
 .CalendarModalAttached {
+  min-width: 100%;
+}
+
+.CalendarModalAttachedAbsolute {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: calc(100% + 12px);
-  min-width: 100%;
+  top: calc(100% + var(--calendar-modal-vertical-padding-scoped));
+}
+
+.CalendarModalAttachedStatic {
+  position: static;
+  margin-top: var(--calendar-modal-vertical-padding-scoped);
 }
 
 .CalendarModalCentered {

@@ -16,6 +16,8 @@ export type MonthNames = [
   string,
 ];
 
+export type ModalPosition = 'absolute' | 'static';
+
 export type DayNames = [string, string, string, string, string, string, string];
 
 export type Precision = 'month' | 'day';
@@ -36,6 +38,7 @@ export type CalendarDay = {
 
 interface DateSelectorContextBase {
   calendarRef: RefObject<HTMLDivElement>;
+  calendarModalRef: RefObject<HTMLDivElement>;
   precision: Precision;
   startPosition: Date;
   dayNames: DayNames;
@@ -47,7 +50,10 @@ interface DateSelectorContextBase {
   modalTill: number;
   modalWidthDebounce: number;
   closeButton: string;
+  modalPosition: ModalPosition;
   onDateChange: (value: string, name: string) => void;
+  onOpenModal: (name: string, element: HTMLDivElement) => void;
+  onCloseModal: (name: string) => void;
 }
 
 export interface CalendarContextStore extends DateSelectorContextBase {
@@ -86,6 +92,9 @@ export interface CalendarProps {
   monthNames?: MonthNames;
   weekStart?: WEEK_DAY;
   closeButton?: string;
+  modalPosition?: ModalPosition;
   onFocus?: (name: string) => void;
   onBlur?: (name: string) => void;
+  onOpen?: (name: string, element: HTMLDivElement) => void;
+  onClose?: (name: string) => void;
 }

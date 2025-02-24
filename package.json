@@ -1,6 +1,6 @@
 {
   "name": "@arthurzakharov/rm-ui",
-  "version": "1.0.7",
+  "version": "1.0.16",
   "description": "UI library for rm projects",
   "license": "MIT",
   "private": false,
@@ -13,7 +13,11 @@
     "type": "git",
     "url": "https://github.com/arthurzakharov/rm-ui"
   },
-  "keywords": ["rightmart", "ui-kit", "react-ui"],
+  "keywords": [
+    "rightmart",
+    "ui-kit",
+    "react-ui"
+  ],
   "type": "module",
   "files": [
     "dist"
@@ -49,7 +53,6 @@
     "@storybook/addon-essentials": "^8.5.8",
     "@storybook/addon-interactions": "^8.5.8",
     "@storybook/addon-links": "^8.5.8",
-    "@storybook/addon-onboarding": "^8.5.8",
     "@storybook/blocks": "^8.5.8",
     "@storybook/react": "^8.5.8",
     "@storybook/react-vite": "^8.5.8",

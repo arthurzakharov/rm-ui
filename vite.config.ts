@@ -48,7 +48,7 @@ export default defineConfig({
     css: true,
     coverage: {
       include: ['src/components', 'src/hooks', 'src/utils'],
-      exclude: ['**/*.stories.tsx'],
+      exclude: ['**/*.stories.tsx', 'coverage/**/*'],
     },
   },
 });

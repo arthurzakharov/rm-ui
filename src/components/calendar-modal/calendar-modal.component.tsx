@@ -1,4 +1,4 @@
-import { Fragment, useRef, useMemo } from 'react';
+import { Fragment, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import CalendarMonth from '../calendar-month/calendar-month.component';
 import CalendarDay from '../calendar-day/calendar-day.component';
@@ -6,7 +6,7 @@ import CalendarSelect from '../calendar-select/calendar-select.component';
 import { useCalendarContext } from '../calendar/calendar.context';
 import useViewportSize from '../../hooks/useViewportSize';
 import useClickOutside from '../../hooks/useClickOutside';
-import { generateStyleTag } from '../../utils/functions';
+import { cn, generateStyleTag } from '../../utils/functions';
 import css from './calendar-modal.module.css';
 
 const CalendarModal = () => {
@@ -17,11 +17,13 @@ const CalendarModal = () => {
     modalTill,
     modalWidthDebounce,
     calendarRef,
+    calendarModalRef,
     monthNames,
     yearList,
     monthIndex,
     yearIndex,
     closeButton,
+    modalPosition,
     onCloseButton,
     onMonthIndexChange,
     onYearIndexChange,
@@ -77,23 +79,29 @@ const CalendarModal = () => {
     [calendarRef],
   );
 
-  const modal = useMemo(() => {
+  return useMemo(() => {
     if (!open || !calendarRef.current) return null;
 
     return width >= modalTill ? (
-      <div className={css.CalendarModalAttached}>{modalContent}</div>
+      <div
+        ref={calendarModalRef}
+        className={cn(css.CalendarModalAttached, {
+          [css.CalendarModalAttachedStatic]: modalPosition === 'static',
+          [css.CalendarModalAttachedAbsolute]: modalPosition === 'absolute',
+        })}
+      >
+        {modalContent}
+      </div>
     ) : (
       createPortal(
-        <div className={css.CalendarModalCentered}>
+        <div ref={calendarModalRef} className={css.CalendarModalCentered}>
           {styleTag && <style>{styleTag}</style>}
           {modalContent}
         </div>,
         document.getElementById(rootElementId) || document.body,
       )
     );
-  }, [open, width, modalTill, rootElementId, calendarRef, modalContent, styleTag]);
-
-  return modal;
+  }, [open, width, modalTill, modalPosition, modalContent, styleTag, rootElementId, calendarRef, calendarModalRef]);
 };
 
 export default CalendarModal;

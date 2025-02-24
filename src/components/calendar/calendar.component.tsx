@@ -24,12 +24,16 @@ const Calendar: FC<CalendarProps> = ({
   mask = 'TT/MM/JJJJ',
   maskExplanation = ['/', 'd', 'm', 'y'],
   closeButton = 'Schließen',
+  modalPosition = 'absolute',
   onChange,
   onFocus = () => {},
   onBlur = () => {},
+  onOpen = () => {},
+  onClose = () => {},
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const calendarModalRef = useRef<HTMLDivElement>(null);
 
   const onInputFocus = useCallback((): void => {
     setFocused(true);
@@ -44,6 +48,7 @@ const Calendar: FC<CalendarProps> = ({
   return (
     <CalendarProvider
       calendarRef={calendarRef}
+      calendarModalRef={calendarModalRef}
       name={name}
       value={value}
       rootElementId={rootElementId}
@@ -57,7 +62,10 @@ const Calendar: FC<CalendarProps> = ({
       monthNames={monthNames}
       weekStart={weekStart}
       closeButton={closeButton}
+      modalPosition={modalPosition}
       onDateChange={onChange}
+      onOpenModal={onOpen}
+      onCloseModal={onClose}
     >
       <div ref={calendarRef} className={css.Calendar}>
         <div className={css.CalendarInput}>
