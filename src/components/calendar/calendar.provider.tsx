@@ -65,13 +65,10 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
     [onDateChange, maskExplanation, name],
   );
 
-  const onOpenEffect = useCallback(
-    (open: boolean): void => {
-      if (open && calendarModalRef.current) onOpenModal(name, calendarModalRef.current);
-      if (!open && !calendarModalRef.current) onCloseModal(name);
-    },
-    [name, calendarModalRef, onOpenModal, onCloseModal],
-  );
+  const onOpenEffect = (open: boolean): void => {
+    if (open && calendarModalRef.current) onOpenModal(name, calendarModalRef.current);
+    if (!open && !calendarModalRef.current) onCloseModal(name);
+  };
 
   const calendarData = useMemo(
     () => generateCalendar(weekStart, [monthIndex, yearList[yearIndex]], period),
@@ -80,7 +77,8 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
 
   useEffect(() => {
     onOpenEffect(open);
-  }, [open, onOpenEffect]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   useEffect(() => {
     const newDate = convertMaskFormatToDate(value, maskExplanation);
