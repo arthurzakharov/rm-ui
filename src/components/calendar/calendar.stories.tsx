@@ -9,6 +9,20 @@ const meta = {
     layout: 'centered',
   },
   args: { name: 'date', value: '', onChange: fn() },
+  render: (args) => {
+    return (
+      <div>
+        <style lang="css">
+          {`
+            :root {
+              --calendar-primary: #e4e;
+            }
+          `}
+        </style>
+        <Calendar {...args} />
+      </div>
+    )
+  }
 } satisfies Meta<typeof Calendar>;
 
 export default meta;

@@ -6,7 +6,7 @@
   margin: 6px;
   width: 28px;
   height: 28px;
-  background-color: var(--calendar-icon-background);
+  background-color: var(--calendar-icon-background-scoped);
   transition: outline-color 125ms ease-in-out;
   display: flex;
   flex-direction: row;
@@ -16,7 +16,7 @@
 
 .CalendarButton:focus,
 .CalendarButton:active {
-  outline-color: var(--calendar-accent);
+  outline-color: var(--calendar-accent-scoped);
 }
 
 .CalendarButton:disabled:hover {
@@ -28,5 +28,5 @@
 }
 
 .CalendarButton svg {
-  stroke: var(--calendar-primary);
+  stroke: var(--calendar-primary-scoped);
 }
