@@ -31,3 +31,7 @@
   background-color: var(--calendar-accent-scoped);
   color: var(--calendar-modal-button-selected-text-scoped);
 }
+
+.CalendarMonthYearSmallList {
+  height: auto;
+}

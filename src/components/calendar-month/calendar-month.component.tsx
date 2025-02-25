@@ -51,7 +51,11 @@ const CalendarMonth = () => {
   }, [date, monthNames]);
 
   return (
-    <div className={css.CalendarMonth}>
+    <div
+      className={cn(css.CalendarMonth, {
+        [css.CalendarMonthYearSmallList]: yearList.length <= 12,
+      })}
+    >
       {renderButtons(isMonthStep ? monthNames : yearList.map(String), isMonthStep)}
     </div>
   );
