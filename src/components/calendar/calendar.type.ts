@@ -16,6 +16,8 @@ export type MonthNames = [
   string,
 ];
 
+export type Mode = 'text' | 'dropdown';
+
 export type ModalPosition = 'absolute' | 'static';
 
 export type DayNames = [string, string, string, string, string, string, string];
@@ -51,7 +53,7 @@ interface DateSelectorContextBase {
   modalWidthDebounce: number;
   closeButton: string;
   modalPosition: ModalPosition;
-  onDateChange: (value: string, name: string) => void;
+  onDateChange: (value: string, withinPeriod: boolean, name: string) => void;
   onOpenModal: (name: string, element: HTMLDivElement) => void;
   onCloseModal: (name: string) => void;
 }
@@ -78,8 +80,9 @@ export interface CalendarProviderProps extends PropsWithChildren, DateSelectorCo
 
 export interface CalendarProps {
   name: string;
-  onChange: (value: string, name: string) => void;
+  onChange: (value: string, withinPeriod: boolean, name: string) => void;
   value?: string;
+  mode?: Mode;
   precision?: Precision;
   startPosition?: Date;
   rootElementId?: string;

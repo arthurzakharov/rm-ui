@@ -126,7 +126,6 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: nowrap;
 }
 
 .CalendarInputField {
@@ -161,10 +160,26 @@
 .CalendarInputBorder {
   border: var(--calendar-border-width-scoped) solid var(--calendar-input-border-scoped);
   border-radius: var(--calendar-border-radius-scoped);
-  padding-left: 16px;
   transition: border-color 125ms ease-in-out;
 }
 
 .CalendarInputBorderFocused {
   border-color: var(--calendar-accent-scoped);
+}
+
+.CalendarInputBorderDropdown {
+  padding-left: 16px;
+}
+
+.CalendarInputBorderDropdown .CalendarInputField {
+  text-align: left;
+}
+
+.CalendarInputBorderText {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.CalendarInputBorderText .CalendarInputField {
+  text-align: center;
 }

@@ -47,8 +47,8 @@ const InputMasked = ({
   inputClassName = '',
   placeholderClassName = '',
   onChange,
-  onFocus,
-  onBlur,
+  onFocus = () => {},
+  onBlur = () => {},
 }: InputMaskedProps) => {
   const [inputValue, setInputValue] = useState<string>(value || mask);
   const inputRef = useRef<HTMLInputElement>(null);

@@ -5,6 +5,6 @@ export interface InputMaskedProps {
   inputClassName?: string;
   placeholderClassName?: string;
   onChange: (value: string, name: string) => void;
-  onFocus: (name: string) => void;
-  onBlur: (name: string) => void;
+  onFocus?: (name: string) => void;
+  onBlur?: (name: string) => void;
 }

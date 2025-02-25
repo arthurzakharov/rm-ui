@@ -60,7 +60,7 @@ const CalendarProvider: FC<CalendarProviderProps> = ({
   const onCalendarClick = useCallback(
     (date: Date): void => {
       setOpen(false);
-      onDateChange(convertDateToMaskFormat(date, maskExplanation), name);
+      onDateChange(convertDateToMaskFormat(date, maskExplanation), isDateInPeriod(date, period), name);
     },
     [onDateChange, maskExplanation, name],
   );

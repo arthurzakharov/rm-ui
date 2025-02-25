@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Calendar from './calendar.component';
 import { MONTH, WEEK_DAY } from '../../utils/enums';
+import { useState } from 'react';
 
 const meta = {
   title: 'Components/Calendar',
@@ -12,6 +13,7 @@ const meta = {
   args: {
     name: 'date',
     value: '',
+    mode: 'text',
     precision: 'day',
     startPosition: new Date(),
     rootElementId: 'root',
@@ -30,6 +32,21 @@ const meta = {
     onBlur: fn(),
     onOpen: fn(),
     onClose: fn(),
+  },
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState<string | undefined>(args.value);
+
+    return (
+      <Calendar
+        {...args}
+        value={value}
+        onChange={(value, withinPeriod, name) => {
+          args.onChange(value, withinPeriod, name);
+          setValue(value);
+        }}
+      />
+    );
   },
 } satisfies Meta<typeof Calendar>;
 
