@@ -1,0 +1,157 @@
+:root {
+  @property --checkbox-label {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #004473;
+  }
+  @property --checkbox-info {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #333333;
+  }
+  @property --checkbox-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e3e3e3;
+  }
+  @property --checkbox-error {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e74c3c;
+  }
+  @property --checkbox-primary {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --checkbox-square-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 16px;
+  }
+  @property --checkbox-font-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 14px;
+  }
+}
+
+.Checkbox {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--checkbox-square-size-scoped) / 4);
+  font-family: inherit;
+  font-size: var(--checkbox-font-size-scoped);
+  --checkbox-label-scoped: var(--checkbox-label, #004473);
+  --checkbox-info-scoped: var(--checkbox-info, #333333);
+  --checkbox-border-scoped: var(--checkbox-border, #e3e3e3);
+  --checkbox-error-scoped: var(--checkbox-error, #e74c3c);
+  --checkbox-primary-scoped: var(--checkbox-primary, #ff8d02);
+  --checkbox-square-size-scoped: var(--checkbox-square-size, 16px);
+  --checkbox-font-size-scoped: var(--checkbox-font-size, 14px);
+}
+
+.CheckboxContent {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--checkbox-square-size-scoped);
+  font-weight: 200;
+  line-height: 1.2;
+  color: var(--checkbox-label-scoped);
+}
+
+.Checkbox:hover .CheckboxSquare:after {
+  background-color: var(--checkbox-border-scoped);
+}
+
+.CheckboxError .CheckboxSquare {
+  border-color: var(--checkbox-error-scoped);
+}
+
+.CheckboxError .CheckboxInput:checked + .CheckboxSquare::after {
+  background-color: var(--checkbox-error-scoped);
+}
+
+.CheckboxError .CheckboxLabel {
+  color: var(--checkbox-error-scoped) !important;
+}
+
+.Checkbox:has(.CheckboxInput:disabled) {
+  cursor: not-allowed;
+}
+
+.CheckboxSquare {
+  align-self: center;
+  position: relative;
+  order: 1;
+  box-sizing: border-box;
+  padding: 2px;
+  width: var(--checkbox-square-size-scoped);
+  height: var(--checkbox-square-size-scoped);
+  border: 2px solid var(--checkbox-border-scoped);
+  transition: border-color 150ms ease-in-out;
+}
+
+.CheckboxSquare::after {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  display: block;
+  content: '';
+  background-color: transparent;
+  transition: background-color 150ms ease-in-out;
+}
+
+.CheckboxLabel {
+  flex-basis: calc(100% - calc(var(--checkbox-square-size-scoped) * 2));
+  order: 2;
+  transition: color 150ms ease-in-out;
+}
+
+.CheckboxLabel a {
+  color: inherit;
+  font-weight: 400;
+}
+
+.CheckboxInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.CheckboxInput:checked + .CheckboxSquare::after {
+  background-color: var(--checkbox-primary-scoped);
+}
+
+.CheckboxInput:focus:not(:active) + .CheckboxSquare {
+  border-color: var(--checkbox-primary-scoped);
+}
+
+.CheckboxInput:disabled + .CheckboxSquare,
+.CheckboxInput:disabled + .CheckboxSquare + .CheckboxLabel {
+  opacity: 0.4;
+}
+
+.CheckboxInfo {
+  margin-left: calc(var(--checkbox-square-size-scoped) * 2);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--checkbox-info-scoped);
+}
+
+@media screen and (min-width: 768px) {
+  .Checkbox {
+    font-size: calc(var(--checkbox-font-size-scoped) + 2px);
+  }
+}

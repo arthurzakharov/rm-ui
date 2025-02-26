@@ -180,4 +180,6 @@ const InputMasked = ({
   );
 };
 
+InputMasked.displayName = 'InputMasked';
+
 export default InputMasked;

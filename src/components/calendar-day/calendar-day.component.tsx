@@ -38,4 +38,6 @@ const CalendarDay = () => {
   );
 };
 
+CalendarDay.displayName = 'CalendarDay';
+
 export default CalendarDay;

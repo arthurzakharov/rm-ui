@@ -34,4 +34,6 @@ const CalendarSelect: FC<CalendarSelectProps> = ({ value, options, onChange }) =
   </div>
 );
 
+CalendarSelect.displayName = 'CalendarSelect';
+
 export default CalendarSelect;

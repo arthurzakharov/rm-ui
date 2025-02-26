@@ -103,4 +103,6 @@ const Calendar: FC<CalendarProps> = ({
   );
 };
 
+Calendar.displayName = 'Calendar';
+
 export default Calendar;

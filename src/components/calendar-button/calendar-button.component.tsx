@@ -11,4 +11,6 @@ const CalendarButton = () => {
   );
 };
 
+CalendarButton.displayName = 'CalendarButton';
+
 export default CalendarButton;

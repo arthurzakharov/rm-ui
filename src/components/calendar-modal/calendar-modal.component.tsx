@@ -104,4 +104,6 @@ const CalendarModal = () => {
   }, [open, width, modalTill, modalPosition, modalContent, styleTag, rootElementId, calendarRef, calendarModalRef]);
 };
 
+CalendarModal.displayName = 'CalendarModal';
+
 export default CalendarModal;

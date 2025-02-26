@@ -61,4 +61,6 @@ const CalendarMonth = () => {
   );
 };
 
+CalendarMonth.displayName = 'CalendarMonth';
+
 export default CalendarMonth;
