@@ -34,6 +34,11 @@
     inherits: true;
     initial-value: 14px;
   }
+  @property --checkbox-font-weight {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 200;
+  }
 }
 
 .Checkbox {
@@ -50,6 +55,7 @@
   --checkbox-primary-scoped: var(--checkbox-primary, #ff8d02);
   --checkbox-square-size-scoped: var(--checkbox-square-size, 16px);
   --checkbox-font-size-scoped: var(--checkbox-font-size, 14px);
+  --checkbox-font-weight-scoped: var(--checkbox-font-weight, 200);
 }
 
 .CheckboxContent {
@@ -59,7 +65,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--checkbox-square-size-scoped);
-  font-weight: 200;
+  font-weight: var(--checkbox-font-weight-scoped);
   line-height: 1.2;
   color: var(--checkbox-label-scoped);
 }

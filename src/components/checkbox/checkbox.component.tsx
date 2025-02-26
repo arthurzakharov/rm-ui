@@ -8,6 +8,7 @@ const Checkbox: FC<CheckboxProps> = ({
   label,
   name,
   onChange,
+  className = '',
   invalid = false,
   disabled = false,
   info = '',
@@ -26,7 +27,7 @@ const Checkbox: FC<CheckboxProps> = ({
     <label
       data-testid="checkbox"
       htmlFor={name}
-      className={cn(css.Checkbox, { [css.CheckboxError]: invalid })}
+      className={cn(css.Checkbox, className, { [css.CheckboxError]: invalid })}
       onClick={onLabelClick}
     >
       <div className={css.CheckboxContent}>

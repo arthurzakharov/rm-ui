@@ -3,6 +3,7 @@ export interface CheckboxProps {
   label: string;
   name: string;
   onChange: (value: boolean, name: string) => void;
+  className?: string;
   invalid?: boolean;
   disabled?: boolean;
   info?: string;

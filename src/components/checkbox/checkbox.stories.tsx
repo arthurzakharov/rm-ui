@@ -12,6 +12,7 @@ const meta = {
     label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     name: 'checkbox',
     onChange: fn(),
+    className: '',
     invalid: false,
     disabled: false,
     info: undefined,
@@ -41,6 +42,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   args: {
+    className: undefined,
     invalid: undefined,
     disabled: undefined,
     info: undefined,
@@ -51,6 +53,7 @@ export const Default: Story = {
     const checkbox = within(canvasElement).getByTestId('checkbox');
     const checkboxInfo = within(canvasElement).queryByTestId('checkbox-info');
     const checkboxInput = within(canvasElement).getByTestId('checkbox-input');
+    await expect(checkbox.className).toEqual(css.Checkbox);
     await expect(checkbox).not.toHaveClass(css.CheckboxError);
     await expect(checkboxInfo).not.toBeInTheDocument();
     await expect(checkboxInput).not.toBeDisabled();
@@ -99,6 +102,17 @@ export const WithInfo: Story = {
   play: async ({ canvasElement }) => {
     const checkboxInfo = within(canvasElement).getByTestId('checkbox-info');
     await expect(checkboxInfo).toBeInTheDocument();
+  },
+};
+
+export const WithClassName: Story = {
+  name: 'WithClassName',
+  args: {
+    className: 'custom-class-name',
+  },
+  play: async ({ canvasElement, args }) => {
+    const checkbox = within(canvasElement).getByTestId('checkbox');
+    await expect(checkbox.className).toEqual(`${css.Checkbox} ${args.className}`);
   },
 };
 
