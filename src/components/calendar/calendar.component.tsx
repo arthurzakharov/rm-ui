@@ -9,29 +9,30 @@ import { WEEK_DAY } from '../../utils/enums';
 import { cn, convertMaskFormatToDate, isDateInPeriod } from '../../utils/functions';
 import css from './calendar.module.css';
 
-const Calendar: FC<CalendarProps> = ({
-  name,
-  dayNames = ['M', 'D', 'M', 'D', 'F', 'S', 'S'],
-  monthNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-  weekStart = WEEK_DAY.MONDAY,
-  mode = 'calendar',
-  value = '',
-  startPosition = new Date(),
-  precision = 'day',
-  rootElementId = 'root',
-  modalTill = 1024,
-  modalWidthDebounce = 250,
-  period = [new Date(2020, 2, 15), new Date(2025, 4, 1)],
-  mask = 'TT/MM/JJJJ',
-  maskExplanation = ['/', 'd', 'm', 'y'],
-  closeButton = 'Schließen',
-  modalPosition = 'absolute',
-  onChange,
-  onFocus = () => {},
-  onBlur = () => {},
-  onOpen = () => {},
-  onClose = () => {},
-}) => {
+const Calendar: FC<CalendarProps> = (props) => {
+  const {
+    name,
+    dayNames = ['M', 'D', 'M', 'D', 'F', 'S', 'S'],
+    monthNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+    weekStart = WEEK_DAY.MONDAY,
+    mode = 'dropdown',
+    value = '',
+    startPosition = new Date(),
+    precision = 'day',
+    rootElementId = 'root',
+    modalTill = 1024,
+    modalWidthDebounce = 250,
+    period = [new Date(2020, 2, 15), new Date(2025, 4, 1)],
+    mask = props.precision === 'day' ? 'TT/MM/JJJJ' : 'MM/JJJJ',
+    maskExplanation = props.precision === 'day' ? ['/', 'd', 'm', 'y'] : ['/', 'm', 'y'],
+    closeButton = 'Schließen',
+    modalPosition = 'absolute',
+    onChange,
+    onFocus = () => {},
+    onBlur = () => {},
+    onOpen = () => {},
+    onClose = () => {},
+  } = props;
   const [focused, setFocused] = useState<boolean>(false);
   const calendarRef = useRef<HTMLDivElement>(null);
   const calendarModalRef = useRef<HTMLDivElement>(null);
