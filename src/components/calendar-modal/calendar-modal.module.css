@@ -1,5 +1,4 @@
 .CalendarModal {
-  width: 100%;
   position: relative;
   border-radius: var(--calendar-border-radius-scoped);
   background-color: var(--calendar-background-scoped);
@@ -29,6 +28,14 @@
 
 .CalendarModal:after {
   box-shadow: 0 2px 10px 0 #0034671c;
+}
+
+.CalendarModalMobile {
+  width: auto;
+}
+
+.CalendarModalDesktop {
+  width: 100%;
 }
 
 .CalendarModalAttached {

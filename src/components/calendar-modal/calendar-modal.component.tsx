@@ -31,12 +31,19 @@ const CalendarModal = () => {
   } = useCalendarContext();
   const { width } = useViewportSize(modalWidthDebounce);
   const modalRef = useRef<HTMLDivElement>(null);
+  const isDesktop = width >= modalTill;
 
   useClickOutside(modalRef, onOutsideClick);
 
   const modalContent = useMemo(() => {
     return (
-      <div ref={modalRef} className={css.CalendarModal}>
+      <div
+        ref={modalRef}
+        className={cn(css.CalendarModal, {
+          [css.CalendarModalDesktop]: isDesktop,
+          [css.CalendarModalMobile]: !isDesktop,
+        })}
+      >
         {precision === 'day' ? (
           <Fragment>
             <div className={css.CalendarModalSelects}>
@@ -71,18 +78,10 @@ const CalendarModal = () => {
     onCloseButton,
   ]);
 
-  const styleTag = useMemo(
-    () =>
-      calendarRef.current
-        ? generateStyleTag(window.getComputedStyle(calendarRef.current), css.CalendarModalCentered)
-        : null,
-    [calendarRef],
-  );
-
   return useMemo(() => {
     if (!open || !calendarRef.current) return null;
 
-    return width >= modalTill ? (
+    return isDesktop ? (
       <div
         ref={calendarModalRef}
         className={cn(css.CalendarModalAttached, {
@@ -95,13 +94,17 @@ const CalendarModal = () => {
     ) : (
       createPortal(
         <div ref={calendarModalRef} className={css.CalendarModalCentered}>
-          {styleTag && <style>{styleTag}</style>}
+          {calendarRef.current ? (
+            <style lang="css">
+              {generateStyleTag(window.getComputedStyle(calendarRef.current), css.CalendarModalCentered)}
+            </style>
+          ) : null}
           {modalContent}
         </div>,
         document.getElementById(rootElementId) || document.body,
       )
     );
-  }, [open, width, modalTill, modalPosition, modalContent, styleTag, rootElementId, calendarRef, calendarModalRef]);
+  }, [open, isDesktop, modalPosition, modalContent, rootElementId, calendarRef, calendarModalRef]);
 };
 
 CalendarModal.displayName = 'CalendarModal';

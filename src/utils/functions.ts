@@ -219,6 +219,7 @@ export const getYearButtonRef = <T>(
 };
 
 export const generateStyleTag = (source: CSSStyleDeclaration, className: string): string => {
+  console.log('CLASSNAME', className);
   const cssVariableNames = [
     '--calendar-accent-scoped',
     '--calendar-error-scoped',
@@ -256,4 +257,14 @@ export const generateStyleTag = (source: CSSStyleDeclaration, className: string)
         .join('\n')}
     }
   `;
+};
+
+export const scroll = (element: HTMLElement, parent: HTMLElement): void => {
+  const clientHeight = element.offsetParent?.clientHeight || 0;
+  const buttonTop = element.offsetTop;
+  const buttonHeight = element.offsetHeight;
+  parent.scrollTo({
+    top: buttonTop - Math.ceil(clientHeight / 2) + buttonHeight,
+    behavior: 'smooth',
+  });
 };
