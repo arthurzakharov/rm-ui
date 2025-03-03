@@ -268,3 +268,5 @@ export const scroll = (element: HTMLElement, parent: HTMLElement): void => {
     behavior: 'smooth',
   });
 };
+
+export const isNumberInRange = ([start, end]: [number, number], num: number) => num >= start && num <= end;

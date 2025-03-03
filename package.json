@@ -78,6 +78,7 @@
     "jsdom": "^26.0.0",
     "prettier": "^3.5.1",
     "storybook": "^8.6.3",
+    "storybook-react-context": "^0.7.0",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.1.1",

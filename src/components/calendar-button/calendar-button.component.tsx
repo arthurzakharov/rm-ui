@@ -5,7 +5,13 @@ import css from './calendar-button.module.css';
 const CalendarButton = () => {
   const { open, onCalendarButton } = useCalendarContext();
   return (
-    <button type="button" disabled={open} className={css.CalendarButton} onClick={() => onCalendarButton()}>
+    <button
+      data-testid="calendar-button"
+      type="button"
+      disabled={open}
+      className={css.CalendarButton}
+      onClick={() => onCalendarButton()}
+    >
       <Calendar strokeWidth={2} width={14} height={14} />
     </button>
   );
