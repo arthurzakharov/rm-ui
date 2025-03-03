@@ -32,10 +32,12 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "test": "vitest --ui",
+    "test:storybook": "vitest",
     "coverage": "vitest run --coverage",
     "prepublishOnly": "vitest run && npm run build",
     "storybook": "storybook dev -p 6006",
     "test-storybook": "test-storybook",
+    "test-storybook:coverage": "test-storybook --coverage",
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
@@ -51,6 +53,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
     "@eslint/js": "^9.20.0",
+    "@storybook/addon-coverage": "^1.0.5",
     "@storybook/addon-essentials": "^8.6.3",
     "@storybook/addon-interactions": "^8.6.3",
     "@storybook/addon-links": "^8.6.3",

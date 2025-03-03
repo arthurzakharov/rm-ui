@@ -1,5 +1,6 @@
-import type { MouseEvent, FC } from 'react';
+import type { FC, MouseEvent, ChangeEvent } from 'react';
 import type { CheckboxProps } from './checkbox.type';
+import { useState } from 'react';
 import { cn } from '../../utils/functions';
 import css from './checkbox.module.css';
 
@@ -15,12 +16,30 @@ const Checkbox: FC<CheckboxProps> = ({
   onFocus = () => {},
   onBlur = () => {},
 }) => {
+  const [focused, setFocused] = useState<boolean>(false);
+
   const onLabelClick = (e: MouseEvent<HTMLLabelElement>): void => {
+    if (disabled || focused) return;
+    e.preventDefault();
+    onChange(!value, name);
+  };
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (disabled) return;
-    if (e.pageX && e.pageY) {
-      e.preventDefault();
-      onChange(!value, name);
-    }
+    e.stopPropagation();
+    onChange(!value, name);
+  };
+
+  const onInputFocus = (): void => {
+    if (disabled) return;
+    setFocused(true);
+    onFocus(name);
+  };
+
+  const onInputBlur = (): void => {
+    if (disabled) return;
+    setFocused(false);
+    onBlur(name);
   };
 
   return (
@@ -40,9 +59,9 @@ const Checkbox: FC<CheckboxProps> = ({
           value={String(value)}
           type="checkbox"
           className={css.CheckboxInput}
-          onFocus={() => onFocus(name)}
-          onBlur={() => onBlur(name)}
-          onChange={() => onChange(!value, name)}
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          onChange={onInputChange}
         />
         <div className={css.CheckboxSquare} />
         <div className={css.CheckboxLabel} dangerouslySetInnerHTML={{ __html: label }} />

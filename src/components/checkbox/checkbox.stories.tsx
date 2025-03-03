@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn, userEvent, within, expect, fireEvent } from '@storybook/test';
+import { fn, userEvent, within, expect } from '@storybook/test';
 import { useState } from 'react';
 import Checkbox from './checkbox.component';
 import css from './checkbox.module.css';
@@ -57,8 +57,9 @@ export const Default: Story = {
     await expect(checkbox).not.toHaveClass(css.CheckboxError);
     await expect(checkboxInfo).not.toBeInTheDocument();
     await expect(checkboxInput).not.toBeDisabled();
-    await fireEvent.click(checkbox, { pageX: 1, pageY: 1 });
+    await userEvent.click(checkbox);
     await expect(args.onChange).toHaveBeenNthCalledWith(1, !args.value, args.name);
+    await userEvent.tab();
     await userEvent.keyboard('[Space]');
     await userEvent.tab();
     await expect(args.onChange).toHaveBeenNthCalledWith(2, args.value, args.name);
@@ -78,7 +79,7 @@ export const Disabled: Story = {
     await userEvent.tab();
     await expect(args.onFocus).not.toBeCalled();
     await expect(args.onBlur).not.toBeCalled();
-    await fireEvent.click(checkbox, { pageX: 1, pageY: 1 });
+    await userEvent.click(checkbox);
     await expect(args.onChange).not.toBeCalled();
   },
 };
