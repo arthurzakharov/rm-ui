@@ -6,13 +6,9 @@ import WithCalendarCSSVars from '../../../.storybook/decorators/withCalendarCSSV
 import { CalendarContext } from '../calendar/calendar.context';
 
 const meta = {
-  title: 'Components/Calendar/CalendarButton',
+  title: 'Components/Calendar/Components/CalendarButton',
   component: CalendarButton,
   decorators: [WithCalendarCSSVars, withReactContext],
-  args: {
-    open: false,
-    onCalendarButton: fn(),
-  },
   parameters: {
     layout: 'centered',
     reactContext: {
@@ -29,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const ClosedState: Story = {
-  name: 'ClosedState',
+  name: 'Closed state',
   parameters: {
     reactContext: {
       contextValue: {
@@ -41,11 +37,12 @@ export const ClosedState: Story = {
     const button = within(canvasElement).getByTestId('calendar-button');
     await userEvent.click(button);
     await expect(parameters.reactContext.contextValue.onCalendarButton).toHaveBeenCalledOnce();
+    await userEvent.click(canvasElement);
   },
 };
 
 export const OpenedState: Story = {
-  name: 'OpenedState',
+  name: 'Opened state',
   parameters: {
     reactContext: {
       contextValue: {

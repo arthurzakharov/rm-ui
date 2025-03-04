@@ -5,7 +5,7 @@ import CalendarSelect from './calendar-select.component';
 import WithCalendarCSSVars from '../../../.storybook/decorators/withCalendarCSSVars.tsx';
 
 const meta = {
-  title: 'Components/Calendar/CalendarSelect',
+  title: 'Components/Calendar/Components/CalendarSelect',
   component: CalendarSelect,
   decorators: [WithCalendarCSSVars],
   args: {

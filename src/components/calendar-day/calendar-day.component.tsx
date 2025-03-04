@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useCalendarContext } from '../calendar/calendar.context';
 import { cn, isCalendarDayEqualsToDate } from '../../utils/functions';
 import css from './calendar-day.module.css';
@@ -6,7 +7,7 @@ const CalendarDay = () => {
   const { date, dayNames, calendarData, onCalendarClick } = useCalendarContext();
 
   return (
-    <>
+    <Fragment>
       <div className={css.CalendarDayNames}>
         {dayNames.map((dayName, i) => (
           <div key={i} className={css.CalendarDayName}>
@@ -18,6 +19,7 @@ const CalendarDay = () => {
         <div key={weekIndex} className={css.CalendarWeek}>
           {week.map((calendarDay, dayIndex) => (
             <button
+              data-testid="calendar-day"
               key={dayIndex}
               type="button"
               disabled={calendarDay.outOfPeriod}
@@ -34,7 +36,7 @@ const CalendarDay = () => {
           ))}
         </div>
       ))}
-    </>
+    </Fragment>
   );
 };
 
