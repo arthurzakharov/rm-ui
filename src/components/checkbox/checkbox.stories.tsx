@@ -3,10 +3,12 @@ import { fn, userEvent, within, expect } from '@storybook/test';
 import { useState } from 'react';
 import Checkbox from './checkbox.component';
 import css from './checkbox.module.css';
+import MaxWidth from '../../../.storybook/decorators/max-width';
 
 const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  decorators: [MaxWidth(340)],
   args: {
     value: false,
     label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',

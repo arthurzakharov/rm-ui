@@ -29,10 +29,15 @@
     inherits: true;
     initial-value: 16px;
   }
+  @property --checkbox-font-family {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: inherit;
+  }
   @property --checkbox-font-size {
     syntax: '<length>';
     inherits: true;
-    initial-value: 14px;
+    initial-value: 16px;
   }
   @property --checkbox-font-weight {
     syntax: '<length>';
@@ -42,20 +47,22 @@
 }
 
 .Checkbox {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--checkbox-square-size-scoped) / 4);
-  font-family: inherit;
-  font-size: var(--checkbox-font-size-scoped);
   --checkbox-label-scoped: var(--checkbox-label, #004473);
   --checkbox-info-scoped: var(--checkbox-info, #333333);
   --checkbox-border-scoped: var(--checkbox-border, #e3e3e3);
   --checkbox-error-scoped: var(--checkbox-error, #e74c3c);
   --checkbox-primary-scoped: var(--checkbox-primary, #ff8d02);
   --checkbox-square-size-scoped: var(--checkbox-square-size, 16px);
+  --checkbox-font-family-scoped: var(--checkbox-font-family, 14px);
   --checkbox-font-size-scoped: var(--checkbox-font-size, 14px);
   --checkbox-font-weight-scoped: var(--checkbox-font-weight, 200);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--checkbox-square-size-scoped) / 4);
+  font-family: var(--checkbox-font-family-scoped), sans-serif;
+  font-size: var(--checkbox-font-size-scoped);
+  font-weight: calc(var(--checkbox-font-weight-scoped));
 }
 
 .CheckboxContent {
@@ -65,7 +72,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--checkbox-square-size-scoped);
-  font-weight: var(--checkbox-font-weight-scoped);
   line-height: 1.2;
   color: var(--checkbox-label-scoped);
 }
@@ -91,7 +97,7 @@
 }
 
 .CheckboxSquare {
-  align-self: center;
+  align-self: flex-start;
   position: relative;
   order: 1;
   box-sizing: border-box;
@@ -154,10 +160,4 @@
   font-weight: 300;
   line-height: 1.4;
   color: var(--checkbox-info-scoped);
-}
-
-@media screen and (min-width: 768px) {
-  .Checkbox {
-    font-size: calc(var(--checkbox-font-size-scoped) + 2px);
-  }
 }
