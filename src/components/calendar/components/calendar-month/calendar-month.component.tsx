@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCalendarContext } from '../../calendar.context';
 import { cn, createDate, getYearButtonRef, scroll } from '../../../../utils/functions';
 import css from './calendar-month.module.css';
@@ -38,8 +39,14 @@ const CalendarMonth = () => {
 
   useEffect(() => {
     if (!wrapperRef.current || isMonthStep) return;
-    if (yearRef.current) scroll(yearRef.current, wrapperRef.current);
-    if (!yearRef.current && yearStartRef.current) scroll(yearStartRef.current, wrapperRef.current);
+    if (yearRef.current) {
+      console.log('1');
+      scroll(yearRef.current, wrapperRef.current);
+    }
+    if (!yearRef.current && yearStartRef.current) {
+      console.log('2');
+      scroll(yearStartRef.current, wrapperRef.current);
+    }
   }, [isMonthStep]);
 
   useEffect(() => {

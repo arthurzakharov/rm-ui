@@ -257,7 +257,11 @@ export const generateStyleTag = (source: CSSStyleDeclaration, className: string)
 export const scroll = (element: HTMLElement, parent: HTMLElement): void => {
   const clientHeight = element.offsetParent?.clientHeight || 0;
   const buttonTop = element.offsetTop;
-  const buttonHeight = element.offsetHeight;
+  const buttonStyles = window.getComputedStyle(element);
+  const marginTop = parseInt(buttonStyles.getPropertyValue('margin-top'));
+  const marginBottom = parseInt(buttonStyles.getPropertyValue('margin-bottom'));
+  const buttonHeight = element.offsetHeight + Math.ceil((marginTop + marginBottom) / 2);
+  console.log('SCROLL TOP:', buttonTop - Math.ceil(clientHeight / 2) + buttonHeight);
   parent.scrollTo({
     top: buttonTop - Math.ceil(clientHeight / 2) + buttonHeight,
     behavior: 'smooth',
@@ -285,8 +289,4 @@ export const getDaysInMonth = (month: number, year: number): number => {
   return currentDate.getDate();
 };
 
-export const getDaysInPreviousMonth = (month: number, year: number): number => {
-  const currentDate = createDate(1, month, year);
-  currentDate.setUTCDate(0);
-  return currentDate.getDate();
-};
+export const getDaysInPreviousMonth = (month: number, year: number): number => getDaysInMonth(month - 1, year);

@@ -13,6 +13,8 @@ import {
   isCalendarDayEqualsToDate,
   getYearButtonRef,
   createDate,
+  getDaysInMonth,
+  getDaysInPreviousMonth,
 } from './functions';
 import { WEEK_DAY, MONTH } from './enums';
 
@@ -464,5 +466,95 @@ describe('📍 - createDate', () => {
   });
   test('endDayTime default value', () => {
     expect(createDate(1, 1, 2024)).toEqual(new Date('2024-02-01T00:00:00.000Z'));
+  });
+});
+
+describe('📍 - getDaysInMonth', () => {
+  test('Get days for each month (Leap year)', () => {
+    expect(getDaysInMonth(MONTH.JANUARY, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.FEBRUARY, 2000)).toEqual(29);
+    expect(getDaysInMonth(MONTH.MARCH, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.APRIL, 2000)).toEqual(30);
+    expect(getDaysInMonth(MONTH.MAY, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.JUNE, 2000)).toEqual(30);
+    expect(getDaysInMonth(MONTH.JULY, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.AUGUST, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.SEPTEMBER, 2000)).toEqual(30);
+    expect(getDaysInMonth(MONTH.OCTOBER, 2000)).toEqual(31);
+    expect(getDaysInMonth(MONTH.NOVEMBER, 2000)).toEqual(30);
+    expect(getDaysInMonth(MONTH.DECEMBER, 2000)).toEqual(31);
+  });
+  test('Get days for each month (Not leap year)', () => {
+    expect(getDaysInMonth(MONTH.JANUARY, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.FEBRUARY, 2001)).toEqual(28);
+    expect(getDaysInMonth(MONTH.MARCH, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.APRIL, 2001)).toEqual(30);
+    expect(getDaysInMonth(MONTH.MAY, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.JUNE, 2001)).toEqual(30);
+    expect(getDaysInMonth(MONTH.JULY, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.AUGUST, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.SEPTEMBER, 2001)).toEqual(30);
+    expect(getDaysInMonth(MONTH.OCTOBER, 2001)).toEqual(31);
+    expect(getDaysInMonth(MONTH.NOVEMBER, 2001)).toEqual(30);
+    expect(getDaysInMonth(MONTH.DECEMBER, 2001)).toEqual(31);
+  });
+  test('Get days for each month (Not leap year, even by 4 divides)', () => {
+    expect(getDaysInMonth(MONTH.JANUARY, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.FEBRUARY, 2100)).toEqual(28);
+    expect(getDaysInMonth(MONTH.MARCH, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.APRIL, 2100)).toEqual(30);
+    expect(getDaysInMonth(MONTH.MAY, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.JUNE, 2100)).toEqual(30);
+    expect(getDaysInMonth(MONTH.JULY, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.AUGUST, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.SEPTEMBER, 2100)).toEqual(30);
+    expect(getDaysInMonth(MONTH.OCTOBER, 2100)).toEqual(31);
+    expect(getDaysInMonth(MONTH.NOVEMBER, 2100)).toEqual(30);
+    expect(getDaysInMonth(MONTH.DECEMBER, 2100)).toEqual(31);
+  });
+});
+
+describe('📍 - getDaysInPreviousMonth', () => {
+  test('Get days for each month (Leap year)', () => {
+    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MARCH, 2000)).toEqual(29);
+    expect(getDaysInPreviousMonth(MONTH.APRIL, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MAY, 2000)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.JUNE, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.JULY, 2000)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2000)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2000)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2000)).toEqual(30);
+  });
+  test('Get days for each month (Not leap year)', () => {
+    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MARCH, 2001)).toEqual(28);
+    expect(getDaysInPreviousMonth(MONTH.APRIL, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MAY, 2001)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.JUNE, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.JULY, 2001)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2001)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2001)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2001)).toEqual(30);
+  });
+  test('Get days for each month (Not leap year, even by 4 divides)', () => {
+    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MARCH, 2100)).toEqual(28);
+    expect(getDaysInPreviousMonth(MONTH.APRIL, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.MAY, 2100)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.JUNE, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.JULY, 2100)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2100)).toEqual(30);
+    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2100)).toEqual(31);
+    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2100)).toEqual(30);
   });
 });

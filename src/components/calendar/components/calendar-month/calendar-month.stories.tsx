@@ -19,7 +19,7 @@ const meta = {
       context: CalendarContext,
       contextValue: {
         monthNames: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-        startPosition: createDate(19, MONTH.MARCH, 1988),
+        startPosition: createDate(6, MONTH.JUNE, 2019),
         yearList: [
           1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994,
           1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -37,20 +37,6 @@ type Story = StoryObj<typeof meta>;
 
 export const NoSelectedDate: Story = {
   name: 'Without selected date',
-  play: async ({ canvasElement, parameters }) => {
-    const calendarMonth = within(canvasElement).getByTestId('calendar-month');
-    const monthButtons = within(canvasElement).getAllByTestId('calendar-month-button');
-    await expect(calendarMonth).toHaveClass(css.CalendarMonth);
-    await expect(calendarMonth).not.toHaveClass(css.CalendarMonthYearSmallList);
-    await userEvent.click(monthButtons[MONTH.MARCH]);
-    const yearButtons = within(canvasElement).getAllByTestId('calendar-month-button');
-    await userEvent.click(yearButtons[11]);
-    await expect(parameters.reactContext.contextValue.onCalendarClick).toHaveBeenNthCalledWith(
-      1,
-      new Date('1988-03-01T00:00:00.000Z'),
-    );
-    await userEvent.click(canvasElement);
-  },
 };
 
 export const SelectedDate: Story = {
@@ -105,5 +91,23 @@ export const ShortYearList: Story = {
     const calendarMonth = within(canvasElement).getByTestId('calendar-month');
     await expect(calendarMonth).toHaveClass(css.CalendarMonth);
     await expect(calendarMonth).toHaveClass(css.CalendarMonthYearSmallList);
+  },
+};
+
+export const PlaySelect: Story = {
+  name: 'Play select flow',
+  play: async ({ canvasElement, parameters }) => {
+    const calendarMonth = within(canvasElement).getByTestId('calendar-month');
+    const monthButtons = within(canvasElement).getAllByTestId('calendar-month-button');
+    await expect(calendarMonth).toHaveClass(css.CalendarMonth);
+    await expect(calendarMonth).not.toHaveClass(css.CalendarMonthYearSmallList);
+    await userEvent.click(monthButtons[MONTH.MARCH]);
+    const yearButtons = within(canvasElement).getAllByTestId('calendar-month-button');
+    await userEvent.click(yearButtons[51]);
+    await expect(parameters.reactContext.contextValue.onCalendarClick).toHaveBeenNthCalledWith(
+      1,
+      new Date('2028-03-01T00:00:00.000Z'),
+    );
+    await userEvent.click(canvasElement);
   },
 };
