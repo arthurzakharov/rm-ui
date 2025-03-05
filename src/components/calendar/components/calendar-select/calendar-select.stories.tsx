@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn, within, expect, userEvent } from '@storybook/test';
 import CalendarSelect from './calendar-select.component';
-import WithCalendarCSSVars from '../../../.storybook/decorators/withCalendarCSSVars.tsx';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarSelect',
   component: CalendarSelect,
-  decorators: [WithCalendarCSSVars],
+  decorators: [WithCalendarCssVars],
   args: {
     options: ['2000', '2001', '2002', 2003, 2004, 2005],
     onChange: fn(),

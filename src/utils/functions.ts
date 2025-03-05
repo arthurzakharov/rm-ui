@@ -270,3 +270,15 @@ export const scroll = (element: HTMLElement, parent: HTMLElement): void => {
 };
 
 export const isNumberInRange = ([start, end]: [number, number], num: number) => num >= start && num <= end;
+
+export const createDate = (day: number, month: number, year: number, endDayTime = false): Date => {
+  const date = new Date();
+  date.setUTCDate(day);
+  date.setUTCMonth(month);
+  date.setUTCFullYear(year);
+  date.setUTCHours(endDayTime ? 23 : 0);
+  date.setUTCMinutes(endDayTime ? 59 : 0);
+  date.setUTCSeconds(endDayTime ? 59 : 0);
+  date.setUTCMilliseconds(0);
+  return date;
+};

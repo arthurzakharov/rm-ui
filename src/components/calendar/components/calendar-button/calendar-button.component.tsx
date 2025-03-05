@@ -1,5 +1,5 @@
 import { Calendar } from 'lucide-react';
-import { useCalendarContext } from '../calendar/calendar.context';
+import { useCalendarContext } from '../../calendar.context';
 import css from './calendar-button.module.css';
 
 const CalendarButton = () => {

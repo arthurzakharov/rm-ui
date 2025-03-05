@@ -3,10 +3,10 @@ import { createPortal } from 'react-dom';
 import CalendarMonth from '../calendar-month/calendar-month.component';
 import CalendarDay from '../calendar-day/calendar-day.component';
 import CalendarSelect from '../calendar-select/calendar-select.component';
-import { useCalendarContext } from '../calendar/calendar.context';
-import useViewportSize from '../../hooks/useViewportSize';
-import useClickOutside from '../../hooks/useClickOutside';
-import { cn, generateStyleTag } from '../../utils/functions';
+import { useCalendarContext } from '../../calendar.context';
+import useViewportSize from '../../../../hooks/useViewportSize';
+import useClickOutside from '../../../../hooks/useClickOutside';
+import { cn, generateStyleTag } from '../../../../utils/functions';
 import css from './calendar-modal.module.css';
 
 const CalendarModal = () => {

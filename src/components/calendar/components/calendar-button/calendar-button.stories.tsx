@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn, within, expect, userEvent } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
 import CalendarButton from './calendar-button.component';
-import WithCalendarCSSVars from '../../../.storybook/decorators/withCalendarCSSVars';
-import { CalendarContext } from '../calendar/calendar.context';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
+import { CalendarContext } from '../../calendar.context';
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarButton',
   component: CalendarButton,
-  decorators: [WithCalendarCSSVars, withReactContext],
+  decorators: [WithCalendarCssVars, withReactContext],
   parameters: {
     layout: 'centered',
     reactContext: {

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import { useCalendarContext } from '../calendar/calendar.context';
-import { cn, isCalendarDayEqualsToDate } from '../../utils/functions';
+import { useCalendarContext } from '../../calendar.context';
+import { cn, createDate, isCalendarDayEqualsToDate } from '../../../../utils/functions';
 import css from './calendar-day.module.css';
 
 const CalendarDay = () => {
@@ -29,7 +29,7 @@ const CalendarDay = () => {
                 [css.CalendarDayToday]: isCalendarDayEqualsToDate(calendarDay, new Date()),
                 [css.CalendarDaySelected]: isCalendarDayEqualsToDate(calendarDay, date),
               })}
-              onClick={() => onCalendarClick(new Date(calendarDay.year, calendarDay.month, calendarDay.day))}
+              onClick={() => onCalendarClick(createDate(calendarDay.day, calendarDay.month, calendarDay.year))}
             >
               {calendarDay.day}
             </button>

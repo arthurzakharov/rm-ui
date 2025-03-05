@@ -1,7 +1,7 @@
 import type { ChangeEvent, FC } from 'react';
 import type { CalendarSelectProps } from './calendar-select.type';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { getNextIndex, isNumberInRange } from '../../utils/functions';
+import { getNextIndex, isNumberInRange } from '../../../../utils/functions';
 import css from './calendar-select.module.css';
 
 const CalendarSelect: FC<CalendarSelectProps> = ({ value, options, onChange }) => (

@@ -12,6 +12,7 @@ import {
   isDateInPeriod,
   isCalendarDayEqualsToDate,
   getYearButtonRef,
+  createDate,
 } from './functions';
 import { WEEK_DAY, MONTH } from './enums';
 
@@ -443,5 +444,23 @@ describe('📍 - getYearButtonRef', () => {
     const selectedRef = createRef<HTMLButtonElement>();
     const startRef = createRef<HTMLButtonElement>();
     expect(getYearButtonRef(false, ['2020', '2025', '2020'], [selectedRef, startRef])).toBe(startRef);
+  });
+});
+
+describe('📍 - createDate', () => {
+  test('Create date with time at begin of day', () => {
+    expect(createDate(1, 1, 2024, false)).toEqual(new Date('2024-02-01T00:00:00.000Z'));
+    expect(createDate(31, 11, 2024, false)).toEqual(new Date('2024-12-31T00:00:00.000Z'));
+    expect(createDate(32, 11, 2024, false)).toEqual(new Date('2024-12-01T00:00:00.000Z'));
+    expect(createDate(31, 12, 2024, false)).toEqual(new Date('2024-01-31T00:00:00.000Z'));
+  });
+  test('Create date with time at end of day', () => {
+    expect(createDate(1, 1, 2024, true)).toEqual(new Date('2024-02-01T23:59:59.000Z'));
+    expect(createDate(31, 11, 2024, true)).toEqual(new Date('2024-12-31T23:59:59.000Z'));
+    expect(createDate(32, 11, 2024, true)).toEqual(new Date('2024-12-01T23:59:59.000Z'));
+    expect(createDate(31, 12, 2024, true)).toEqual(new Date('2024-01-31T23:59:59.000Z'));
+  });
+  test('endDayTime default value', () => {
+    expect(createDate(1, 1, 2024)).toEqual(new Date('2024-02-01T00:00:00.000Z'));
   });
 });

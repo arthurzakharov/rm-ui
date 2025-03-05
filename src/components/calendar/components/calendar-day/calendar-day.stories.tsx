@@ -3,17 +3,17 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
 import CalendarDay from './calendar-day.component';
 import css from './calendar-day.module.css';
-import WithCalendarCSSVars from '../../../.storybook/decorators/withCalendarCSSVars';
-import { CalendarContext } from '../calendar/calendar.context';
-import { generateCalendar } from '../../utils/functions';
-import { MONTH, WEEK_DAY } from '../../utils/enums';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
+import { CalendarContext } from '../../calendar.context';
+import { generateCalendar } from '../../../../utils/functions';
+import { MONTH, WEEK_DAY } from '../../../../utils/enums';
 
 const TODAY = new Date();
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarDay',
   component: CalendarDay,
-  decorators: [WithCalendarCSSVars, withReactContext],
+  decorators: [WithCalendarCssVars, withReactContext],
   parameters: {
     layout: 'centered',
     reactContext: {
@@ -45,7 +45,7 @@ export const FullyInPeriod: Story = {
     await userEvent.click(days[22]);
     await expect(parameters.reactContext.contextValue.onCalendarClick).toHaveBeenNthCalledWith(
       1,
-      new Date(2024, MONTH.MARCH, 19),
+      new Date('2024-03-19T00:00:00.000Z'),
     );
   },
 };

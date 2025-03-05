@@ -1,9 +1,9 @@
 import type { CalendarProps } from './calendar.type';
 import type { FC } from 'react';
 import { useRef, useState, useCallback } from 'react';
-import CalendarButton from '../calendar-button/calendar-button.component';
+import CalendarButton from './components/calendar-button/calendar-button.component';
 import InputMasked from '../input-masked/input-masked.component';
-import CalendarModal from '../calendar-modal/calendar-modal.component';
+import CalendarModal from './components/calendar-modal/calendar-modal.component';
 import CalendarProvider from '../calendar/calendar.provider';
 import { WEEK_DAY } from '../../utils/enums';
 import { cn, convertMaskFormatToDate, isDateInPeriod } from '../../utils/functions';
