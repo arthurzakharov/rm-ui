@@ -52,18 +52,20 @@ describe('📍 - cn', () => {
 
 describe('📍 - getYearsBetween', () => {
   test('Start date is before end date, returns array of years including start and end year', () => {
-    expect(getYearsBetween([new Date(2000, MONTH.JANUARY, 1), new Date(2001, MONTH.JANUARY, 1)])).toEqual([2000, 2001]);
-    expect(getYearsBetween([new Date(2000, MONTH.JANUARY, 1), new Date(2003, MONTH.JANUARY, 1)])).toEqual([
+    expect(getYearsBetween([createDate(1, MONTH.JANUARY, 2000), createDate(1, MONTH.JANUARY, 2001)])).toEqual([
+      2000, 2001,
+    ]);
+    expect(getYearsBetween([createDate(1, MONTH.JANUARY, 2000), createDate(1, MONTH.JANUARY, 2003)])).toEqual([
       2000, 2001, 2002, 2003,
     ]);
   });
   test('Start date is after end date, returns empty array', () => {
-    expect(getYearsBetween([new Date(2001, MONTH.JANUARY, 1), new Date(2000, MONTH.JANUARY, 1)])).toEqual([]);
-    expect(getYearsBetween([new Date(2000, MONTH.NOVEMBER, 10), new Date(2000, MONTH.JANUARY, 1)])).toEqual([]);
+    expect(getYearsBetween([createDate(1, MONTH.JANUARY, 2001), createDate(1, MONTH.JANUARY, 2000)])).toEqual([]);
+    expect(getYearsBetween([createDate(10, MONTH.NOVEMBER, 2000), createDate(1, MONTH.JANUARY, 2000)])).toEqual([]);
   });
   test('Start date year equals end date year, returns array with this year', () => {
-    expect(getYearsBetween([new Date(2000, MONTH.JANUARY, 1), new Date(2000, MONTH.NOVEMBER, 10)])).toEqual([2000]);
-    expect(getYearsBetween([new Date(2000, MONTH.JANUARY, 1), new Date(2000, MONTH.JANUARY, 1)])).toEqual([2000]);
+    expect(getYearsBetween([createDate(1, MONTH.JANUARY, 2000), createDate(10, MONTH.NOVEMBER, 2000)])).toEqual([2000]);
+    expect(getYearsBetween([createDate(1, MONTH.JANUARY, 2000), createDate(1, MONTH.JANUARY, 2000)])).toEqual([2000]);
   });
 });
 
@@ -72,7 +74,7 @@ describe('📍 - generateCalendar', () => {
     const calendar = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.FEBRUARY, 2025],
-      [new Date(2023, MONTH.JANUARY, 1), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
     );
     expect(calendar.length).toEqual(5);
     expect(calendar[4][4]).toEqual({
@@ -94,7 +96,7 @@ describe('📍 - generateCalendar', () => {
     const calendar = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.FEBRUARY, 2100],
-      [new Date(2099, MONTH.JANUARY, 1), new Date(2101, MONTH.JANUARY, 1)],
+      [createDate(1, MONTH.JANUARY, 2099), createDate(1, MONTH.JANUARY, 2101, true)],
     );
     expect(calendar.length).toEqual(4);
     expect(calendar[3][6]).toEqual({
@@ -110,7 +112,7 @@ describe('📍 - generateCalendar', () => {
     const calendar = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.FEBRUARY, 2024],
-      [new Date(2023, MONTH.JANUARY, 1), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
     );
     expect(calendar.length).toEqual(5);
     expect(calendar[4][2]).toEqual({
@@ -136,7 +138,7 @@ describe('📍 - generateCalendar', () => {
     });
   });
   test('Check 30 and 31 days months', () => {
-    const PERIOD: [Date, Date] = [new Date(2023, MONTH.JANUARY, 1), new Date(2026, MONTH.JANUARY, 1)];
+    const PERIOD: [Date, Date] = [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)];
     const januar = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JANUARY, 2024], PERIOD);
     const march = generateCalendar(WEEK_DAY.MONDAY, [MONTH.MARCH, 2024], PERIOD);
     const april = generateCalendar(WEEK_DAY.MONDAY, [MONTH.APRIL, 2024], PERIOD);
@@ -177,7 +179,7 @@ describe('📍 - generateCalendar', () => {
     const may = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.MAY, 2024],
-      [new Date(2023, MONTH.JANUARY, 1), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026)],
     );
     expect(may.length).toEqual(5);
     expect(may[0][0].notThisMonth).toBeTruthy();
@@ -191,7 +193,7 @@ describe('📍 - generateCalendar', () => {
     const may = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.MAY, 2024],
-      [new Date(2023, MONTH.JANUARY, 1), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
     );
     may.forEach((week) => expect(week.length).toEqual(7));
   });
@@ -199,7 +201,7 @@ describe('📍 - generateCalendar', () => {
     const may = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.MAY, 2024],
-      [new Date(2024, MONTH.MAY, 15), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026, true)],
     );
     expect(may.length).toEqual(5);
     expect(may[0][0].outOfPeriod).toBeTruthy();
@@ -211,12 +213,12 @@ describe('📍 - generateCalendar', () => {
     const mayFirstMonday = generateCalendar(
       WEEK_DAY.MONDAY,
       [MONTH.MAY, 2024],
-      [new Date(2024, MONTH.MAY, 15), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
     );
     const mayFirstSunday = generateCalendar(
       WEEK_DAY.SUNDAY,
       [MONTH.MAY, 2024],
-      [new Date(2024, MONTH.MAY, 15), new Date(2026, MONTH.JANUARY, 1)],
+      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
     );
     expect(mayFirstMonday.length).toEqual(5);
     expect(mayFirstMonday[0][0].day).toEqual(29);
@@ -273,37 +275,37 @@ describe('📍 - formatNumberWithLeadingZero', () => {
 
 describe('📍 - convertDateToMaskFormat', () => {
   test('Use precision day level mask converts Date to mask formatted string', () => {
-    expect(convertDateToMaskFormat(new Date(2000, 1, 1), ['/', 'd', 'm', 'y'])).toEqual('01/02/2000');
-    expect(convertDateToMaskFormat(new Date(2000, 11, 15), ['/', 'd', 'm', 'y'])).toEqual('15/12/2000');
+    expect(convertDateToMaskFormat(createDate(1, MONTH.FEBRUARY, 2000), ['/', 'd', 'm', 'y'])).toEqual('01/02/2000');
+    expect(convertDateToMaskFormat(createDate(15, MONTH.DECEMBER, 2000), ['/', 'd', 'm', 'y'])).toEqual('15/12/2000');
   });
   test('Use precision month level mask converts Date to mask formatted string', () => {
-    expect(convertDateToMaskFormat(new Date(2000, 1, 1), ['/', 'm', 'y'])).toEqual('02/2000');
-    expect(convertDateToMaskFormat(new Date(2000, 11, 15), ['/', 'm', 'y'])).toEqual('12/2000');
+    expect(convertDateToMaskFormat(createDate(1, MONTH.FEBRUARY, 2000), ['/', 'm', 'y'])).toEqual('02/2000');
+    expect(convertDateToMaskFormat(createDate(15, MONTH.DECEMBER, 2000), ['/', 'm', 'y'])).toEqual('12/2000');
   });
   test('Mask can change order of day, month, year and separators in output ', () => {
-    expect(convertDateToMaskFormat(new Date(2000, 1, 1), ['-', 'm', 'd', 'y'])).toEqual('02-01-2000');
-    expect(convertDateToMaskFormat(new Date(2000, 11, 15), ['-', 'm', 'd', 'y'])).toEqual('12-15-2000');
-    expect(convertDateToMaskFormat(new Date(2000, 1, 1), ['-', 'y', 'm'])).toEqual('2000-02');
-    expect(convertDateToMaskFormat(new Date(2000, 11, 15), ['-', 'y', 'm'])).toEqual('2000-12');
+    expect(convertDateToMaskFormat(createDate(1, MONTH.FEBRUARY, 2000), ['-', 'm', 'd', 'y'])).toEqual('02-01-2000');
+    expect(convertDateToMaskFormat(createDate(15, MONTH.DECEMBER, 2000), ['-', 'm', 'd', 'y'])).toEqual('12-15-2000');
+    expect(convertDateToMaskFormat(createDate(1, MONTH.FEBRUARY, 2000), ['-', 'y', 'm'])).toEqual('2000-02');
+    expect(convertDateToMaskFormat(createDate(15, MONTH.DECEMBER, 2000), ['-', 'y', 'm'])).toEqual('2000-12');
   });
 });
 
 describe('📍 - convertMaskFormatToDate', () => {
   test('Using default mask for day precision DD/MM/YYYY', () => {
-    expect(convertMaskFormatToDate('01/02/2000', ['/', 'd', 'm', 'y'])).toEqual(new Date(2000, 1, 1));
-    expect(convertMaskFormatToDate('15/12/2000', ['/', 'd', 'm', 'y'])).toEqual(new Date(2000, 11, 15));
+    expect(convertMaskFormatToDate('01/02/2000', ['/', 'd', 'm', 'y'])).toEqual(createDate(1, MONTH.FEBRUARY, 2000));
+    expect(convertMaskFormatToDate('15/12/2000', ['/', 'd', 'm', 'y'])).toEqual(createDate(15, MONTH.DECEMBER, 2000));
   });
   test('Using default mask for month precision MM/YYYY', () => {
-    expect(convertMaskFormatToDate('02/2000', ['/', 'm', 'y'])).toEqual(new Date(2000, MONTH.FEBRUARY, 1));
-    expect(convertMaskFormatToDate('12/2000', ['/', 'm', 'y'])).toEqual(new Date(2000, MONTH.DECEMBER, 1));
+    expect(convertMaskFormatToDate('02/2000', ['/', 'm', 'y'])).toEqual(createDate(1, MONTH.FEBRUARY, 2000));
+    expect(convertMaskFormatToDate('12/2000', ['/', 'm', 'y'])).toEqual(createDate(1, MONTH.DECEMBER, 2000));
   });
   test('Using custom mask for day precision MM-YYYY-DD', () => {
-    expect(convertMaskFormatToDate('02-2000-01', ['-', 'm', 'y', 'd'])).toEqual(new Date(2000, MONTH.FEBRUARY, 1));
-    expect(convertMaskFormatToDate('12-2000-15', ['-', 'm', 'y', 'd'])).toEqual(new Date(2000, MONTH.DECEMBER, 15));
+    expect(convertMaskFormatToDate('02-2000-01', ['-', 'm', 'y', 'd'])).toEqual(createDate(1, MONTH.FEBRUARY, 2000));
+    expect(convertMaskFormatToDate('12-2000-15', ['-', 'm', 'y', 'd'])).toEqual(createDate(15, MONTH.DECEMBER, 2000));
   });
   test('Using custom mask for month precision YYYY-MM', () => {
-    expect(convertMaskFormatToDate('2000-01', ['-', 'y', 'm'])).toEqual(new Date(2000, MONTH.JANUARY, 1));
-    expect(convertMaskFormatToDate('2000-12', ['-', 'y', 'm'])).toEqual(new Date(2000, MONTH.DECEMBER, 1));
+    expect(convertMaskFormatToDate('2000-01', ['-', 'y', 'm'])).toEqual(createDate(1, MONTH.JANUARY, 2000));
+    expect(convertMaskFormatToDate('2000-12', ['-', 'y', 'm'])).toEqual(createDate(1, MONTH.DECEMBER, 2000));
   });
   test('Pass not real or not complete date, return null', () => {
     expect(convertMaskFormatToDate('99/44/1111', ['/', 'd', 'm', 'y'])).toBeNull();
@@ -319,69 +321,69 @@ describe('📍 - convertMaskFormatToDate', () => {
 
 describe('📍 - adjustDateToPeriod', () => {
   test('If date is after period return end date of period', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
     expect(
-      adjustDateToPeriod(new Date(2000, MONTH.NOVEMBER, 10), new Date(1992, MONTH.NOVEMBER, 10), [start, end]),
+      adjustDateToPeriod(createDate(10, MONTH.NOVEMBER, 2000), createDate(10, MONTH.NOVEMBER, 1992), [start, end]),
     ).toEqual(end);
   });
   test('If date is before period return first date of period', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
     expect(
-      adjustDateToPeriod(new Date(1980, MONTH.NOVEMBER, 10), new Date(1992, MONTH.NOVEMBER, 10), [start, end]),
+      adjustDateToPeriod(createDate(10, MONTH.NOVEMBER, 1980), createDate(10, MONTH.NOVEMBER, 1992), [start, end]),
     ).toEqual(start);
   });
   test('If date is within period return date', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
-    const date = new Date(1992, MONTH.NOVEMBER, 10);
-    expect(adjustDateToPeriod(date, new Date(1992, MONTH.NOVEMBER, 10), [start, end])).toEqual(date);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
+    const date = createDate(10, MONTH.NOVEMBER, 1992);
+    expect(adjustDateToPeriod(date, createDate(10, MONTH.NOVEMBER, 1992), [start, end])).toEqual(date);
   });
   test('If date is null and init is within period return init date', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
-    const init = new Date(1992, MONTH.NOVEMBER, 10);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
+    const init = createDate(10, MONTH.NOVEMBER, 1992);
     expect(adjustDateToPeriod(null, init, [start, end])).toEqual(init);
   });
   test('If date is null and init is before period return first date of period', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
-    const init = new Date(1980, MONTH.NOVEMBER, 10);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
+    const init = createDate(10, MONTH.NOVEMBER, 1980);
     expect(adjustDateToPeriod(null, init, [start, end])).toEqual(start);
   });
   test('If date is null and init is after period return last date of period', () => {
-    const start = new Date(1990, MONTH.NOVEMBER, 10);
-    const end = new Date(1994, MONTH.NOVEMBER, 10);
-    const init = new Date(1996, MONTH.NOVEMBER, 10);
+    const start = createDate(10, MONTH.NOVEMBER, 1990);
+    const end = createDate(10, MONTH.NOVEMBER, 1994, true);
+    const init = createDate(10, MONTH.NOVEMBER, 1996);
     expect(adjustDateToPeriod(null, init, [start, end])).toEqual(end);
   });
 });
 
 describe('📍 - isDateInPeriod', () => {
   test('If date is null return false', () => {
-    const start = new Date(2001, MONTH.FEBRUARY, 1);
-    const end = new Date(2002, MONTH.FEBRUARY, 1);
+    const start = createDate(1, MONTH.FEBRUARY, 2001);
+    const end = createDate(1, MONTH.FEBRUARY, 2002, true);
     expect(isDateInPeriod(null, [start, end])).toBeFalsy();
   });
   test('If date is not in period return false', () => {
-    const start = new Date(2001, MONTH.FEBRUARY, 1);
-    const end = new Date(2002, MONTH.FEBRUARY, 1);
-    expect(isDateInPeriod(new Date(2000, MONTH.FEBRUARY, 1), [start, end])).toBeFalsy();
-    expect(isDateInPeriod(new Date(2003, MONTH.FEBRUARY, 1), [start, end])).toBeFalsy();
+    const start = createDate(1, MONTH.FEBRUARY, 2001);
+    const end = createDate(1, MONTH.FEBRUARY, 2002, true);
+    expect(isDateInPeriod(createDate(1, MONTH.FEBRUARY, 2000), [start, end])).toBeFalsy();
+    expect(isDateInPeriod(createDate(1, MONTH.FEBRUARY, 2003), [start, end])).toBeFalsy();
   });
   test('If date is in period return true', () => {
-    const start = new Date(2001, MONTH.FEBRUARY, 1);
-    const end = new Date(2003, MONTH.FEBRUARY, 1);
-    expect(isDateInPeriod(new Date(2002, MONTH.FEBRUARY, 1), [start, end])).toBeTruthy();
+    const start = createDate(1, MONTH.FEBRUARY, 2001);
+    const end = createDate(1, MONTH.FEBRUARY, 2003, true);
+    expect(isDateInPeriod(createDate(1, MONTH.FEBRUARY, 2002), [start, end])).toBeTruthy();
   });
   test('Date is on edge values, period is counted as included dates', () => {
-    const start = new Date(2001, MONTH.FEBRUARY, 10);
-    const end = new Date(2002, MONTH.FEBRUARY, 10);
-    expect(isDateInPeriod(new Date(2001, MONTH.FEBRUARY, 10), [start, end])).toBeTruthy();
-    expect(isDateInPeriod(new Date(2002, MONTH.FEBRUARY, 10), [start, end])).toBeTruthy();
-    expect(isDateInPeriod(new Date(2001, MONTH.FEBRUARY, 9), [start, end])).toBeFalsy();
-    expect(isDateInPeriod(new Date(2002, MONTH.FEBRUARY, 11), [start, end])).toBeFalsy();
+    const start = createDate(10, MONTH.FEBRUARY, 2001);
+    const end = createDate(10, MONTH.FEBRUARY, 2002, true);
+    expect(isDateInPeriod(createDate(10, MONTH.FEBRUARY, 2001), [start, end])).toBeTruthy();
+    expect(isDateInPeriod(createDate(10, MONTH.FEBRUARY, 2002), [start, end])).toBeTruthy();
+    expect(isDateInPeriod(createDate(9, MONTH.FEBRUARY, 2001), [start, end])).toBeFalsy();
+    expect(isDateInPeriod(createDate(11, MONTH.FEBRUARY, 2002), [start, end])).toBeFalsy();
   });
 });
 
@@ -390,13 +392,13 @@ describe('📍 - isCalendarDayEqualsToDate', () => {
     expect(
       isCalendarDayEqualsToDate(
         { outOfPeriod: false, notThisMonth: false, day: 12, month: MONTH.FEBRUARY, year: 2020 },
-        new Date(2020, MONTH.FEBRUARY, 12),
+        createDate(12, MONTH.FEBRUARY, 2020),
       ),
     ).toBeTruthy();
     expect(
       isCalendarDayEqualsToDate(
         { outOfPeriod: true, notThisMonth: true, day: 12, month: MONTH.FEBRUARY, year: 2020 },
-        new Date(2020, MONTH.FEBRUARY, 12),
+        createDate(12, MONTH.FEBRUARY, 2020),
       ),
     ).toBeTruthy();
   });
@@ -404,13 +406,13 @@ describe('📍 - isCalendarDayEqualsToDate', () => {
     expect(
       isCalendarDayEqualsToDate(
         { outOfPeriod: false, notThisMonth: false, day: 12, month: MONTH.FEBRUARY, year: 2020 },
-        new Date(2020, MONTH.MARCH, 12),
+        createDate(12, MONTH.MARCH, 2020),
       ),
     ).toBeFalsy();
     expect(
       isCalendarDayEqualsToDate(
         { outOfPeriod: true, notThisMonth: true, day: 12, month: MONTH.FEBRUARY, year: 2020 },
-        new Date(2020, MONTH.MARCH, 12),
+        createDate(12, MONTH.MARCH, 2020),
       ),
     ).toBeFalsy();
   });

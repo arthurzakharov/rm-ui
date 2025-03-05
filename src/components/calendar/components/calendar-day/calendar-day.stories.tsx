@@ -24,7 +24,7 @@ const meta = {
         calendarData: generateCalendar(
           WEEK_DAY.MONDAY,
           [MONTH.MARCH, 2024],
-          [createDate(1, 1, 2024), createDate(31, 2, 2024, true)],
+          [createDate(1, MONTH.FEBRUARY, 2024), createDate(31, MONTH.MARCH, 2024, true)],
         ),
         onCalendarClick: fn(),
       },
@@ -58,7 +58,7 @@ export const NotFullyInPeriod: Story = {
         calendarData: generateCalendar(
           WEEK_DAY.MONDAY,
           [MONTH.MARCH, 2024],
-          [createDate(1, 1, 2024), createDate(20, 2, 2024, true)],
+          [createDate(1, MONTH.FEBRUARY, 2024), createDate(20, MONTH.MARCH, 2024, true)],
         ),
       },
     },
@@ -80,7 +80,7 @@ export const SelectedDate: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        date: createDate(19, 2, 2024),
+        date: createDate(19, MONTH.MARCH, 2024),
       },
     },
   },

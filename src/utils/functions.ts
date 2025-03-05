@@ -162,7 +162,7 @@ export const convertMaskFormatToDate = (date: string, maskExplanation: MaskExpla
       year: NaN,
     },
   );
-  const convertedDate = new Date(year, month - 1, day);
+  const convertedDate = createDate(day, month - 1, year);
   const localeConvertedDate = convertedDate.toLocaleDateString('en-US', {
     month: 'numeric',
     day: 'numeric',
@@ -191,10 +191,7 @@ export const adjustDateToPeriod = (date: Date | null, init: Date, [start, end]: 
 
 export const isDateInPeriod = (date: Date | null, [start, end]: [Date, Date]): boolean => {
   if (!date) return false;
-  const dateToCheck = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  const periodStart = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const periodEnd = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-  return dateToCheck >= periodStart && dateToCheck <= periodEnd;
+  return date >= start && date <= end;
 };
 
 export const isCalendarDayEqualsToDate = (calendarDay: CalendarDay, date: Date | null): boolean => {
