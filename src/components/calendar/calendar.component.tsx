@@ -6,7 +6,7 @@ import InputMasked from '../input-masked/input-masked.component';
 import CalendarModal from './components/calendar-modal/calendar-modal.component';
 import CalendarProvider from '../calendar/calendar.provider';
 import { WEEK_DAY } from '../../utils/enums';
-import { cn, convertMaskFormatToDate, isDateInPeriod } from '../../utils/functions';
+import { cn, convertMaskFormatToDate, createDate, isDateInPeriod } from '../../utils/functions';
 import css from './calendar.module.css';
 
 const Calendar: FC<CalendarProps> = (props) => {
@@ -22,7 +22,7 @@ const Calendar: FC<CalendarProps> = (props) => {
     rootElementId = 'root',
     modalTill = 1024,
     modalWidthDebounce = 250,
-    period = [new Date(2020, 2, 15), new Date(2025, 4, 1)],
+    period = [createDate(15, 2, 2020), createDate(1, 4, 2025, true)],
     mask = props.precision === 'day' ? 'TT/MM/JJJJ' : 'MM/JJJJ',
     maskExplanation = props.precision === 'day' ? ['/', 'd', 'm', 'y'] : ['/', 'm', 'y'],
     closeButton = 'Schließen',

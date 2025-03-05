@@ -36,13 +36,11 @@ export const generateCalendar = (
   [month, year]: [number, number],
   [start, end]: [Date, Date],
 ): CalendarDay[][] => {
-  const startDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-
-  const date = new Date(year, month, 1);
+  console.log('end', end);
+  const date = createDate(1, month, year);
   const firstDay = date.getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const daysInPreviousMonth = new Date(year, month, 0).getDate();
+  const daysInMonth = getDaysInMonth(month, year);
+  const daysInPreviousMonth = getDaysInPreviousMonth(month, year);
   const previousMonth = month === 0 ? 11 : month - 1;
   const previousYear = month === 0 ? year - 1 : year;
   const nextMonth = month === 11 ? 0 : month + 1;
@@ -59,9 +57,9 @@ export const generateCalendar = (
   }
 
   for (let i = offset; i > 0; i--) {
-    const currentDate = new Date(previousYear, previousMonth, daysInPreviousMonth - i + 1);
+    const currentDate = createDate(daysInPreviousMonth - i + 1, previousMonth, previousYear);
     week.push({
-      outOfPeriod: currentDate < startDate || currentDate > endDate,
+      outOfPeriod: currentDate < start || currentDate > end,
       notThisMonth: true,
       day: daysInPreviousMonth - i + 1,
       year: previousYear,
@@ -70,9 +68,9 @@ export const generateCalendar = (
   }
 
   while (day <= daysInMonth) {
-    const currentDate = new Date(year, month, day);
+    const currentDate = createDate(day, month, year);
     week.push({
-      outOfPeriod: currentDate < startDate || currentDate > endDate,
+      outOfPeriod: currentDate < start || currentDate > end,
       notThisMonth: false,
       day,
       year,
@@ -89,9 +87,9 @@ export const generateCalendar = (
   if (week.length > 0) {
     let nextMonthDay = 1;
     while (week.length < 7) {
-      const currentDate = new Date(nextYear, nextMonth, nextMonthDay);
+      const currentDate = createDate(nextMonthDay, nextMonth, nextYear);
       week.push({
-        outOfPeriod: currentDate < startDate || currentDate > endDate,
+        outOfPeriod: currentDate < start || currentDate > end,
         notThisMonth: true,
         day: nextMonthDay,
         year: nextYear,
@@ -281,4 +279,17 @@ export const createDate = (day: number, month: number, year: number, endDayTime 
   date.setUTCSeconds(endDayTime ? 59 : 0);
   date.setUTCMilliseconds(0);
   return date;
+};
+
+export const getDaysInMonth = (month: number, year: number): number => {
+  const currentDate = createDate(1, month, year);
+  currentDate.setUTCMonth(currentDate.getUTCMonth() + 1);
+  currentDate.setUTCDate(0);
+  return currentDate.getDate();
+};
+
+export const getDaysInPreviousMonth = (month: number, year: number): number => {
+  const currentDate = createDate(1, month, year);
+  currentDate.setUTCDate(0);
+  return currentDate.getDate();
 };

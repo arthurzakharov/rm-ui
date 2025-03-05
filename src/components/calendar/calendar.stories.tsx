@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Calendar from './calendar.component';
-import { MONTH, WEEK_DAY } from '../../utils/enums';
+import { WEEK_DAY } from '../../utils/enums';
 import { useState } from 'react';
+import { createDate } from '../../utils/functions.ts';
 
 const meta = {
   title: 'Components/Calendar',
@@ -15,11 +16,11 @@ const meta = {
     value: '',
     mode: 'dropdown',
     precision: 'day',
-    startPosition: new Date(1988, MONTH.MARCH, 19),
+    startPosition: createDate(19, 2, 1988),
     rootElementId: 'root',
     modalTill: 1024,
     modalWidthDebounce: 250,
-    period: [new Date(1920, MONTH.FEBRUARY, 15), new Date(2045, MONTH.FEBRUARY, 1)],
+    period: [createDate(15, 1, 1920), createDate(1, 1, 2045)],
     mask: 'TT/MM/JJJJ',
     maskExplanation: ['/', 'd', 'm', 'y'],
     dayNames: ['M', 'D', 'M', 'D', 'F', 'S', 'S'],

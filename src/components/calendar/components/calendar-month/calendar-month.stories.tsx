@@ -7,6 +7,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import { CalendarContext } from '../../calendar.context';
 import { MONTH } from '../../../../utils/enums';
 import css from './calendar-month.module.css';
+import { createDate } from '../../../../utils/functions.ts';
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarMonth',
@@ -18,7 +19,7 @@ const meta = {
       context: CalendarContext,
       contextValue: {
         monthNames: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-        startPosition: new Date(1988, MONTH.MARCH, 19),
+        startPosition: createDate(19, 2, 1988),
         yearList: [
           1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994,
           1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -57,7 +58,7 @@ export const SelectedDate: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        date: new Date(2016, MONTH.JUNE, 6),
+        date: createDate(6, 5, 2016),
       },
     },
   },
@@ -73,7 +74,7 @@ export const SelectedDateOutOfYearList: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        date: new Date(2040, MONTH.JUNE, 6),
+        date: createDate(6, 5, 2040),
       },
     },
   },
@@ -84,7 +85,7 @@ export const StartPositionOutOfYearList: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        startPosition: new Date(2040, MONTH.JUNE, 6),
+        startPosition: createDate(6, 5, 2040),
       },
     },
   },
@@ -95,7 +96,7 @@ export const ShortYearList: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        startPosition: new Date(2022, MONTH.MARCH, 19),
+        startPosition: createDate(19, 2, 2022),
         yearList: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
       },
     },

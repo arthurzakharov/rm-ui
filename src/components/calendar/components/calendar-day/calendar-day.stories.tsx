@@ -5,7 +5,7 @@ import CalendarDay from './calendar-day.component';
 import css from './calendar-day.module.css';
 import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
 import { CalendarContext } from '../../calendar.context';
-import { generateCalendar } from '../../../../utils/functions';
+import { createDate, generateCalendar } from '../../../../utils/functions';
 import { MONTH, WEEK_DAY } from '../../../../utils/enums';
 
 const TODAY = new Date();
@@ -24,7 +24,7 @@ const meta = {
         calendarData: generateCalendar(
           WEEK_DAY.MONDAY,
           [MONTH.MARCH, 2024],
-          [new Date(2024, MONTH.FEBRUARY, 1), new Date(2024, MONTH.MARCH, 31)],
+          [createDate(1, 1, 2024), createDate(31, 2, 2024, true)],
         ),
         onCalendarClick: fn(),
       },
@@ -58,12 +58,13 @@ export const NotFullyInPeriod: Story = {
         calendarData: generateCalendar(
           WEEK_DAY.MONDAY,
           [MONTH.MARCH, 2024],
-          [new Date(2024, MONTH.FEBRUARY, 1), new Date(2024, MONTH.MARCH, 20)],
+          [createDate(1, 1, 2024), createDate(20, 2, 2024, true)],
         ),
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, parameters }) => {
+    console.log(parameters.reactContext.contextValue.calendarData);
     const days = within(canvasElement).getAllByTestId('calendar-day');
     await expect(days[23]).not.toHaveClass(css.CalendarDayOutOfPeriod);
     await expect(days[24]).toHaveClass(css.CalendarDayOutOfPeriod);
@@ -79,7 +80,7 @@ export const SelectedDate: Story = {
   parameters: {
     reactContext: {
       contextValue: {
-        date: new Date(2024, MONTH.MARCH, 19),
+        date: createDate(19, 2, 2024),
       },
     },
   },
@@ -99,8 +100,8 @@ export const TodayDate: Story = {
           WEEK_DAY.MONDAY,
           [TODAY.getMonth(), TODAY.getFullYear()],
           [
-            new Date(TODAY.getFullYear(), TODAY.getMonth() - 2, 1),
-            new Date(TODAY.getFullYear(), TODAY.getMonth() + 2, 1),
+            createDate(1, TODAY.getMonth() - 2, TODAY.getFullYear()),
+            createDate(1, TODAY.getMonth() + 2, TODAY.getFullYear(), true),
           ],
         ),
       },
