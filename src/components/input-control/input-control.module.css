@@ -1,0 +1,99 @@
+:root {
+  @property --input-control-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 16px;
+  }
+  @property --input-control-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e3e3e3;
+  }
+  @property --input-control-primary {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --input-control-error {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e74c3c;
+  }
+}
+
+.InputControl {
+  /* Outer CSS Variables */
+  --input-control-size-scoped: var(--input-control-size, 16px);
+  --input-control-border-scoped: var(--input-control-border, #e3e3e3);
+  --input-control-primary-scoped: var(--input-control-primary, #ff8d02);
+  --input-control-error-scoped: var(--input-control-error, #e74c3c);
+  /* Inner CSS Variables */
+  --transition-time: 250ms;
+  cursor: pointer;
+}
+
+.InputControlDisabled {
+  cursor: not-allowed;
+}
+
+.InputControlCheckbox {
+  align-self: flex-start;
+  position: relative;
+  order: 1;
+  box-sizing: border-box;
+  padding: 2px;
+  width: var(--input-control-size-scoped);
+  height: var(--input-control-size-scoped);
+  border: 2px solid var(--input-control-border-scoped);
+  transition: border-color var(--transition-time) ease-in-out;
+}
+
+.InputControlCheckbox:after {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  display: block;
+  content: '';
+  background-color: transparent;
+  transition: background-color var(--transition-time) ease-in-out;
+}
+
+.InputControlCheckbox.InputControlChecked:after {
+  background-color: var(--input-control-primary-scoped);
+}
+
+.InputControlCheckbox.InputControlHovered:after {
+  background-color: var(--input-control-border-scoped);
+}
+
+.InputControlCheckbox.InputControlError {
+  border-color: var(--input-control-error-scoped);
+}
+
+.InputControlCheckbox.InputControlChecked.InputControlError:after {
+  background-color: var(--input-control-error-scoped);
+}
+
+.InputControlCheckbox.InputControlFocused {
+  border-color: var(--input-control-primary-scoped);
+}
+
+.InputControlCheckbox.InputControlDisabled {
+  opacity: 04;
+}
+
+.InputControlRadio {
+  align-self: flex-start;
+  position: relative;
+  order: 1;
+  box-sizing: border-box;
+  padding: 2px;
+  width: var(--input-control-size-scoped);
+  height: var(--input-control-size-scoped);
+  border: 2px solid var(--input-control-border-scoped);
+  transition: border-color var(--transition-time) ease-in-out;
+}

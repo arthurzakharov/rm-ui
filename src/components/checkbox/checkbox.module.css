@@ -76,50 +76,12 @@
   color: var(--checkbox-label-scoped);
 }
 
-.Checkbox:hover .CheckboxSquare:after {
-  background-color: var(--checkbox-border-scoped);
-}
-
-.CheckboxError .CheckboxSquare {
-  border-color: var(--checkbox-error-scoped);
-}
-
-.CheckboxError .CheckboxInput:checked + .CheckboxSquare::after {
-  background-color: var(--checkbox-error-scoped);
-}
-
 .CheckboxError .CheckboxLabel {
   color: var(--checkbox-error-scoped) !important;
 }
 
 .Checkbox:has(.CheckboxInput:disabled) {
   cursor: not-allowed;
-}
-
-.CheckboxSquare {
-  align-self: flex-start;
-  position: relative;
-  order: 1;
-  box-sizing: border-box;
-  padding: 2px;
-  width: var(--checkbox-square-size-scoped);
-  height: var(--checkbox-square-size-scoped);
-  border: 2px solid var(--checkbox-border-scoped);
-  transition: border-color 150ms ease-in-out;
-}
-
-.CheckboxSquare::after {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  height: 70%;
-  display: block;
-  content: '';
-  background-color: transparent;
-  transition: background-color 150ms ease-in-out;
 }
 
 .CheckboxLabel {
@@ -141,16 +103,7 @@
   clip: rect(0 0 0 0);
 }
 
-.CheckboxInput:checked + .CheckboxSquare::after {
-  background-color: var(--checkbox-primary-scoped);
-}
-
-.CheckboxInput:focus:not(:active) + .CheckboxSquare {
-  border-color: var(--checkbox-primary-scoped);
-}
-
-.CheckboxInput:disabled + .CheckboxSquare,
-.CheckboxInput:disabled + .CheckboxSquare + .CheckboxLabel {
+.CheckboxInput:disabled + * + .CheckboxLabel {
   opacity: 0.4;
 }
 
@@ -160,4 +113,11 @@
   font-weight: 300;
   line-height: 1.4;
   color: var(--checkbox-info-scoped);
+}
+
+.CheckboxControl {
+  --input-control-size: var(--checkbox-square-size-scoped);
+  --input-control-border: var(--checkbox-border-scoped);
+  --input-control-primary: var(--checkbox-primary-scoped);
+  --input-control-error: var(--checkbox-error-scoped);
 }

@@ -3,6 +3,7 @@ import type { CheckboxProps } from './checkbox.type';
 import { useState } from 'react';
 import { cn } from '../../utils/functions';
 import css from './checkbox.module.css';
+import InputControl from '../input-control/input-control.component.tsx';
 
 const Checkbox: FC<CheckboxProps> = ({
   value,
@@ -17,6 +18,7 @@ const Checkbox: FC<CheckboxProps> = ({
   onBlur = () => {},
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
+  const [hovered, setHovered] = useState<boolean>(false);
 
   const onLabelClick = (e: MouseEvent<HTMLLabelElement>): void => {
     if (disabled || focused) return;
@@ -48,6 +50,8 @@ const Checkbox: FC<CheckboxProps> = ({
       htmlFor={name}
       className={cn(css.Checkbox, className, { [css.CheckboxError]: invalid })}
       onClick={onLabelClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div className={css.CheckboxContent}>
         <input
@@ -63,7 +67,15 @@ const Checkbox: FC<CheckboxProps> = ({
           onBlur={onInputBlur}
           onChange={onInputChange}
         />
-        <div className={css.CheckboxSquare} />
+        <InputControl
+          className={css.CheckboxControl}
+          shape="checkbox"
+          checked={value}
+          hovered={hovered}
+          error={invalid}
+          focused={focused}
+          disabled={disabled}
+        />
         <div className={css.CheckboxLabel} dangerouslySetInnerHTML={{ __html: label }} />
       </div>
       {!!info && (
