@@ -5,11 +5,12 @@ const meta = {
   title: 'Components/InputControl',
   component: InputControl,
   args: {
-    checked: true,
-    hovered: true,
-    error: true,
-    focused: true,
-    disabled: true,
+    checked: false,
+    hovered: false,
+    error: false,
+    focused: false,
+    disabled: false,
+    size: 'md',
     className: 'custom-class-name',
   },
 } satisfies Meta<typeof InputControl>;

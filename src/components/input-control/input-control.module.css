@@ -29,26 +29,64 @@
   --input-control-error-scoped: var(--input-control-error, #e74c3c);
   /* Inner CSS Variables */
   --transition-time: 250ms;
-  cursor: pointer;
-}
-
-.InputControlDisabled {
-  cursor: not-allowed;
-}
-
-.InputControlCheckbox {
+  --size-step: 2px;
+  /* Styles */
   align-self: flex-start;
   position: relative;
   order: 1;
   box-sizing: border-box;
   padding: 2px;
-  width: var(--input-control-size-scoped);
-  height: var(--input-control-size-scoped);
   border: 2px solid var(--input-control-border-scoped);
   transition: border-color var(--transition-time) ease-in-out;
+  cursor: pointer;
 }
 
-.InputControlCheckbox:after {
+.InputControl[data-control-size="xs"] {
+  width: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
+  height: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
+}
+
+.InputControl[data-control-size="sm"] {
+  width: calc(var(--input-control-size-scoped) - var(--size-step));
+  height: calc(var(--input-control-size-scoped) - var(--size-step));
+}
+
+.InputControl[data-control-size="md"] {
+  width: var(--input-control-size-scoped);
+  height: var(--input-control-size-scoped);
+}
+
+.InputControl[data-control-size="lg"] {
+  width: calc(var(--input-control-size-scoped) + var(--size-step));
+  height: calc(var(--input-control-size-scoped) + var(--size-step));
+}
+
+.InputControl[data-control-size="xl"] {
+  width: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
+  height: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
+}
+
+.InputControl[data-control-size="2xl"] {
+  width: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
+  height: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
+}
+
+.InputControl[data-control-size="3xl"] {
+  width: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
+  height: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
+}
+
+.InputControl[data-control-shape="checkbox"],
+.InputControl[data-control-shape="checkbox"]:after {
+  border-radius: 0;
+}
+
+.InputControl[data-control-shape="radio"],
+.InputControl[data-control-shape="radio"]:after {
+  border-radius: 50%;
+}
+
+.InputControl:after {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -62,38 +100,27 @@
   transition: background-color var(--transition-time) ease-in-out;
 }
 
-.InputControlCheckbox.InputControlChecked:after {
+.InputControl.InputControlChecked:after {
   background-color: var(--input-control-primary-scoped);
 }
 
-.InputControlCheckbox.InputControlHovered:after {
+.InputControl.InputControlHovered:after {
   background-color: var(--input-control-border-scoped);
 }
 
-.InputControlCheckbox.InputControlError {
-  border-color: var(--input-control-error-scoped);
-}
-
-.InputControlCheckbox.InputControlChecked.InputControlError:after {
+.InputControl.InputControlChecked.InputControlError:after {
   background-color: var(--input-control-error-scoped);
 }
 
-.InputControlCheckbox.InputControlFocused {
+.InputControl.InputControlFocused {
   border-color: var(--input-control-primary-scoped);
 }
 
-.InputControlCheckbox.InputControlDisabled {
+.InputControl.InputControlDisabled {
+  cursor: not-allowed;
   opacity: 04;
 }
 
-.InputControlRadio {
-  align-self: flex-start;
-  position: relative;
-  order: 1;
-  box-sizing: border-box;
-  padding: 2px;
-  width: var(--input-control-size-scoped);
-  height: var(--input-control-size-scoped);
-  border: 2px solid var(--input-control-border-scoped);
-  transition: border-color var(--transition-time) ease-in-out;
+.InputControl.InputControlError {
+  border-color: var(--input-control-error-scoped);
 }
