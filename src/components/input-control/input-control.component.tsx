@@ -6,10 +6,10 @@ import css from './input-control.module.css';
 const InputControl: FC<InputControlProps> = ({
   shape,
   checked,
-  hovered,
-  error,
-  focused,
-  disabled,
+  hovered = false,
+  error = false,
+  focused = false,
+  disabled = false,
   size = 'md',
   className = '',
 }) => (

@@ -40,11 +40,9 @@ const CalendarMonth = () => {
   useEffect(() => {
     if (!wrapperRef.current || isMonthStep) return;
     if (yearRef.current) {
-      console.log('1');
       scroll(yearRef.current, wrapperRef.current);
     }
     if (!yearRef.current && yearStartRef.current) {
-      console.log('2');
       scroll(yearStartRef.current, wrapperRef.current);
     }
   }, [isMonthStep]);

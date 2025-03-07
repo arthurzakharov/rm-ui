@@ -33,7 +33,6 @@
   /* Styles */
   align-self: flex-start;
   position: relative;
-  order: 1;
   box-sizing: border-box;
   padding: 2px;
   border: 2px solid var(--input-control-border-scoped);

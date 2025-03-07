@@ -36,7 +36,6 @@ export const generateCalendar = (
   [month, year]: [number, number],
   [start, end]: [Date, Date],
 ): CalendarDay[][] => {
-  console.log('end', end);
   const date = createDate(1, month, year);
   const firstDay = date.getDay();
   const daysInMonth = getDaysInMonth(month, year);
@@ -214,7 +213,6 @@ export const getYearButtonRef = <T>(
 };
 
 export const generateStyleTag = (source: CSSStyleDeclaration, className: string): string => {
-  console.log('CLASSNAME', className);
   const cssVariableNames = [
     '--calendar-accent-scoped',
     '--calendar-error-scoped',
@@ -261,7 +259,6 @@ export const scroll = (element: HTMLElement, parent: HTMLElement): void => {
   const marginTop = parseInt(buttonStyles.getPropertyValue('margin-top'));
   const marginBottom = parseInt(buttonStyles.getPropertyValue('margin-bottom'));
   const buttonHeight = element.offsetHeight + Math.ceil((marginTop + marginBottom) / 2);
-  console.log('SCROLL TOP:', buttonTop - Math.ceil(clientHeight / 2) + buttonHeight);
   parent.scrollTo({
     top: buttonTop - Math.ceil(clientHeight / 2) + buttonHeight,
     behavior: 'smooth',
