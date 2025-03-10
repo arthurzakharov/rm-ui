@@ -1,7 +1,7 @@
 import { FC, MouseEvent } from 'react';
 import type { DropdownChoice, DropdownProps } from './dropdown.types';
 import { useState, useRef, useMemo, useEffect } from 'react';
-import { cn } from '../../utils/functions';
+import { cn, getElementSize } from '../../utils/functions';
 import IconChevron from '../../icons/chevron/chevron.component';
 import IconMagnifyingGlass from '../../icons/magnifying-glass/magnifying-glass.component';
 import InputControl from '../input-control/input-control.component';
@@ -54,10 +54,15 @@ const Dropdown: FC<DropdownProps> = ({
   useEffect(() => setSelectedChoices(Array.isArray(choice) ? choice : []), [choice]);
 
   useUpdateEffect(() => {
-    if (!isOpen) return onClose();
-    if (isOpen && inputRef.current && boxRef.current) {
-      inputRef.current.focus();
-      onOpen(boxRef.current.clientHeight, boxRef.current.clientWidth);
+    if (isOpen) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+      if (boxRef.current) {
+        onOpen(...getElementSize(boxRef.current));
+      }
+    } else {
+      onClose();
     }
   }, [isOpen]);
 

@@ -287,3 +287,16 @@ export const getDaysInMonth = (month: number, year: number): number => {
 };
 
 export const getDaysInPreviousMonth = (month: number, year: number): number => getDaysInMonth(month - 1, year);
+
+export const getElementSize = (element: HTMLElement, withoutMargins = false): [number, number] => {
+  const elementStyles = window.getComputedStyle(element);
+  const marginX = !withoutMargins
+    ? Number.parseInt(elementStyles.getPropertyValue('margin-left')) +
+      Number.parseInt(elementStyles.getPropertyValue('margin-right'))
+    : 0;
+  const marginY = !withoutMargins
+    ? Number.parseInt(elementStyles.getPropertyValue('margin-top')) +
+      Number.parseInt(elementStyles.getPropertyValue('margin-bottom'))
+    : 0;
+  return [element.clientHeight + marginY, element.clientWidth + marginX];
+};

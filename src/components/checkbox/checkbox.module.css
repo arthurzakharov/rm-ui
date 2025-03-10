@@ -1,61 +1,59 @@
-:root {
-  @property --checkbox-label {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #004473;
-  }
-  @property --checkbox-info {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #333333;
-  }
-  @property --checkbox-border {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #e3e3e3;
-  }
-  @property --checkbox-error {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #e74c3c;
-  }
-  @property --checkbox-primary {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff8d02;
-  }
-  @property --checkbox-square-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 16px;
-  }
-  @property --checkbox-font-family {
-    syntax: "<length>";
-    inherits: true;
-    initial-value: inherit;
-  }
-  @property --checkbox-font-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 16px;
-  }
-  @property --checkbox-font-weight {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 200;
-  }
+@property --checkbox-label {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #004473;
+}
+@property --checkbox-info {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #333333;
+}
+@property --checkbox-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e3e3e3;
+}
+@property --checkbox-error {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e74c3c;
+}
+@property --checkbox-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+@property --checkbox-square-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 16px;
+}
+@property --checkbox-font-family {
+  syntax: '<string>';
+  inherits: true;
+  initial-value: inherit;
+}
+@property --checkbox-font-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 16px;
+}
+@property --checkbox-font-weight {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 200;
 }
 
 .Checkbox {
-  --checkbox-label-scoped: var(--checkbox-label, #004473);
-  --checkbox-info-scoped: var(--checkbox-info, #333333);
-  --checkbox-border-scoped: var(--checkbox-border, #e3e3e3);
-  --checkbox-error-scoped: var(--checkbox-error, #e74c3c);
-  --checkbox-primary-scoped: var(--checkbox-primary, #ff8d02);
-  --checkbox-square-size-scoped: var(--checkbox-square-size, 16px);
-  --checkbox-font-family-scoped: var(--checkbox-font-family, 14px);
-  --checkbox-font-size-scoped: var(--checkbox-font-size, 14px);
-  --checkbox-font-weight-scoped: var(--checkbox-font-weight, 200);
+  --checkbox-label-scoped: var(--checkbox-label);
+  --checkbox-info-scoped: var(--checkbox-info);
+  --checkbox-border-scoped: var(--checkbox-border);
+  --checkbox-error-scoped: var(--checkbox-error);
+  --checkbox-primary-scoped: var(--checkbox-primary);
+  --checkbox-square-size-scoped: var(--checkbox-square-size);
+  --checkbox-font-family-scoped: var(--checkbox-font-family);
+  --checkbox-font-size-scoped: var(--checkbox-font-size);
+  --checkbox-font-weight-scoped: var(--checkbox-font-weight);
   cursor: pointer;
   display: flex;
   flex-direction: column;

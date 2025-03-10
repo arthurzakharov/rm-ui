@@ -1,92 +1,90 @@
-:root {
-  @property --dropdown-primary {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #302576;
-  }
-  @property --dropdown-focus {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff8d02;
-  }
-  @property --dropdown-success {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #2ecc71;
-  }
-  @property --dropdown-border {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #e3eaef;
-  }
-  @property --dropdown-separator {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #f4f7f9;
-  }
-  @property --dropdown-background {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ffffff;
-  }
-  @property --dropdown-hover {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #edf2f5;
-  }
-  @property --dropdown-text {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #535089;
-  }
-  @property --dropdown-close-btn {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff8d02;
-  }
-  @property --dropdown-close-btn-hover {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff981c;
-  }
-  @property --dropdown-input {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #333333;
-  }
-  @property --dropdown-font-family {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 'Open Sans';
-  }
-  @property --dropdown-font-weight {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 300;
-  }
-  @property --dropdown-font-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 14px;
-  }
+@property --dropdown-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #302576;
+}
+@property --dropdown-focus {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+@property --dropdown-success {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2ecc71;
+}
+@property --dropdown-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e3eaef;
+}
+@property --dropdown-separator {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f4f7f9;
+}
+@property --dropdown-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --dropdown-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #edf2f5;
+}
+@property --dropdown-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #535089;
+}
+@property --dropdown-close-btn {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+@property --dropdown-close-btn-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff981c;
+}
+@property --dropdown-input {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #333333;
+}
+@property --dropdown-font-family {
+  syntax: '<string>';
+  inherits: true;
+  initial-value: 'Open Sans';
+}
+@property --dropdown-font-weight {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 300;
+}
+@property --dropdown-font-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 14px;
 }
 
 .Dropdown {
   /* Outer CSS Variables */
-  --dropdown-primary-scoped: var(--dropdown-primary, #302576);
-  --dropdown-focus-scoped: var(--dropdown-focus, #ff8d02);
-  --dropdown-success-scoped: var(--dropdown-success, #2ecc71);
-  --dropdown-border-scoped: var(--dropdown-border, #e3eaef);
-  --dropdown-separator-scoped: var(--dropdown-separator, #f4f7f9);
-  --dropdown-background-scoped: var(--dropdown-background, #ffffff);
-  --dropdown-hover-scoped: var(--dropdown-hover, #edf2f5);
-  --dropdown-text-scoped: var(--dropdown-text, #535089);
-  --dropdown-close-btn-scoped: var(--dropdown-close-btn, #ff8d02);
-  --dropdown-close-btn-hover-scoped: var(--dropdown-close-btn-hover, #ff981c);
-  --dropdown-input-scoped: var(--dropdown-input, #333333);
-  --dropdown-font-family-scoped: var(--dropdown-font-family, 'Open Sans');
-  --dropdown-font-weight-scoped: var(--dropdown-font-weight, 300);
-  --dropdown-font-size-scoped: var(--dropdown-font-size, 14px);
+  --dropdown-primary-scoped: var(--dropdown-primary);
+  --dropdown-focus-scoped: var(--dropdown-focus);
+  --dropdown-success-scoped: var(--dropdown-success);
+  --dropdown-border-scoped: var(--dropdown-border);
+  --dropdown-separator-scoped: var(--dropdown-separator);
+  --dropdown-background-scoped: var(--dropdown-background);
+  --dropdown-hover-scoped: var(--dropdown-hover);
+  --dropdown-text-scoped: var(--dropdown-text);
+  --dropdown-close-btn-scoped: var(--dropdown-close-btn);
+  --dropdown-close-btn-hover-scoped: var(--dropdown-close-btn-hover);
+  --dropdown-input-scoped: var(--dropdown-input);
+  --dropdown-font-family-scoped: var(--dropdown-font-family);
+  --dropdown-font-weight-scoped: var(--dropdown-font-weight);
+  --dropdown-font-size-scoped: var(--dropdown-font-size);
   /* Inner CSS Variables */
   --transition-time: 250ms;
   --under-chevron: linear-gradient(90deg, rgba(255, 255, 255, 0) -10%, rgba(255, 255, 255, 0.5411764706) 25%, #fff 50%);
@@ -165,6 +163,7 @@
 }
 
 .DropdownBox {
+  margin-top: 4px;
   overflow: hidden;
   width: 100%;
   border-radius: 0 0 var(--border-radius) var(--border-radius);

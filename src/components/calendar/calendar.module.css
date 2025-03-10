@@ -1,121 +1,119 @@
-:root {
-  @property --calendar-accent {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff6600;
-  }
-  @property --calendar-error {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #f44336;
-  }
-  @property --calendar-primary {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #336b62;
-  }
-  @property --calendar-border-radius {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 3px;
-  }
-  @property --calendar-border-width {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 2px;
-  }
-  @property --calendar-background {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ffffff;
-  }
-  @property --calendar-icon-background {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #88a3a44d;
-  }
-  @property --calendar-input-font-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 18px;
-  }
-  @property --calendar-input-line-height {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 26px;
-  }
-  @property --calendar-input-placeholder {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #8da9ab;
-  }
-  @property --calendar-input-border {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #a2bac94d;
-  }
-  @property --calendar-modal-button-selected-text {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ffffff;
-  }
-  @property --calendar-modal-horizontal-padding {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 4px;
-  }
-  @property --calendar-modal-vertical-padding {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 8px;
-  }
-  @property --calendar-modal-font-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 14px;
-  }
-  @property --calendar-modal-line-height {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 22px;
-  }
-  @property --calendar-modal-button-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 36px;
-  }
-  @property --calendar-modal-button-gap {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 2px;
-  }
-  @property --calendar-modal-background {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #80808033;
-  }
+@property --calendar-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff6600;
+}
+@property --calendar-error {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f44336;
+}
+@property --calendar-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #336b62;
+}
+@property --calendar-border-radius {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 3px;
+}
+@property --calendar-border-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 2px;
+}
+@property --calendar-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --calendar-icon-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #88a3a44d;
+}
+@property --calendar-input-font-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 18px;
+}
+@property --calendar-input-line-height {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 26px;
+}
+@property --calendar-input-placeholder {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #8da9ab;
+}
+@property --calendar-input-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a2bac94d;
+}
+@property --calendar-modal-button-selected-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --calendar-modal-horizontal-padding {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 4px;
+}
+@property --calendar-modal-vertical-padding {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 8px;
+}
+@property --calendar-modal-font-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 14px;
+}
+@property --calendar-modal-line-height {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 22px;
+}
+@property --calendar-modal-button-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 36px;
+}
+@property --calendar-modal-button-gap {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 2px;
+}
+@property --calendar-modal-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #80808033;
 }
 
 .Calendar {
-  --calendar-accent-scoped: var(--calendar-accent, #ff6600);
-  --calendar-error-scoped: var(--calendar-error, #f44336);
-  --calendar-primary-scoped: var(--calendar-primary, #336b62);
-  --calendar-border-radius-scoped: var(--calendar-border-radius, 3px);
-  --calendar-border-width-scoped: var(--calendar-border-width, 2px);
-  --calendar-background-scoped: var(--calendar-background, #ffffff);
-  --calendar-icon-background-scoped: var(--calendar-icon-background, #88a3a44d);
-  --calendar-input-font-size-scoped: var(--calendar-input-font-size, 18px);
-  --calendar-input-line-height-scoped: var(--calendar-input-line-height, 26px);
-  --calendar-input-placeholder-scoped: var(--calendar-input-placeholder, #8da9ab);
-  --calendar-input-border-scoped: var(--calendar-input-border, #a2bac94d);
-  --calendar-modal-button-selected-text-scoped: var(--calendar-modal-button-selected-text, #ffffff);
-  --calendar-modal-horizontal-padding-scoped: var(--calendar-modal-horizontal-padding, 4px);
-  --calendar-modal-vertical-padding-scoped: var(--calendar-modal-vertical-padding, 8px);
-  --calendar-modal-font-size-scoped: var(--calendar-modal-font-size, 14px);
-  --calendar-modal-line-height-scoped: var(--calendar-modal-line-height, 22px);
-  --calendar-modal-button-size-scoped: var(--calendar-modal-button-size, 36px);
-  --calendar-modal-button-gap-scoped: var(--calendar-modal-button-gap, 2px);
-  --calendar-modal-background-scoped: var(--calendar-modal-background, #80808033);
+  --calendar-accent-scoped: var(--calendar-accent);
+  --calendar-error-scoped: var(--calendar-error);
+  --calendar-primary-scoped: var(--calendar-primary);
+  --calendar-border-radius-scoped: var(--calendar-border-radius);
+  --calendar-border-width-scoped: var(--calendar-border-width);
+  --calendar-background-scoped: var(--calendar-background);
+  --calendar-icon-background-scoped: var(--calendar-icon-background);
+  --calendar-input-font-size-scoped: var(--calendar-input-font-size);
+  --calendar-input-line-height-scoped: var(--calendar-input-line-height);
+  --calendar-input-placeholder-scoped: var(--calendar-input-placeholder);
+  --calendar-input-border-scoped: var(--calendar-input-border);
+  --calendar-modal-button-selected-text-scoped: var(--calendar-modal-button-selected-text);
+  --calendar-modal-horizontal-padding-scoped: var(--calendar-modal-horizontal-padding);
+  --calendar-modal-vertical-padding-scoped: var(--calendar-modal-vertical-padding);
+  --calendar-modal-font-size-scoped: var(--calendar-modal-font-size);
+  --calendar-modal-line-height-scoped: var(--calendar-modal-line-height);
+  --calendar-modal-button-size-scoped: var(--calendar-modal-button-size);
+  --calendar-modal-button-gap-scoped: var(--calendar-modal-button-gap);
+  --calendar-modal-background-scoped: var(--calendar-modal-background);
   font-family: inherit;
 }
 

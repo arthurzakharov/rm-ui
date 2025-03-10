@@ -1,32 +1,30 @@
-:root {
-  @property --input-control-size {
-    syntax: '<length>';
-    inherits: true;
-    initial-value: 16px;
-  }
-  @property --input-control-border {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #e3e3e3;
-  }
-  @property --input-control-primary {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #ff8d02;
-  }
-  @property --input-control-error {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #e74c3c;
-  }
+@property --input-control-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 16px;
+}
+@property --input-control-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e3e3e3;
+}
+@property --input-control-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+@property --input-control-error {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e74c3c;
 }
 
 .InputControl {
   /* Outer CSS Variables */
-  --input-control-size-scoped: var(--input-control-size, 16px);
-  --input-control-border-scoped: var(--input-control-border, #e3e3e3);
-  --input-control-primary-scoped: var(--input-control-primary, #ff8d02);
-  --input-control-error-scoped: var(--input-control-error, #e74c3c);
+  --input-control-size-scoped: var(--input-control-size);
+  --input-control-border-scoped: var(--input-control-border);
+  --input-control-primary-scoped: var(--input-control-primary);
+  --input-control-error-scoped: var(--input-control-error);
   /* Inner CSS Variables */
   --transition-time: 250ms;
   --size-step: 2px;
@@ -89,9 +87,9 @@
   z-index: 1;
   top: 50%;
   left: 50%;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
   transform: translate(-50%, -50%);
-  width: 70%;
-  height: 70%;
   display: block;
   content: '';
   background-color: transparent;
