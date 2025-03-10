@@ -1,32 +1,109 @@
+@property --navigation-button-previous-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --navigation-button-previous-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #efefef;
+}
+
+@property --navigation-button-previous-text-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #c7c7c7;
+}
+
+@property --navigation-button-next-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+
+@property --navigation-button-next-bg-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff981c;
+}
+
+@property --navigation-button-next-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --navigation-button-font-family {
+  syntax: '<string>';
+  inherits: true;
+  initial-value: 'Titillium Web';
+}
+
+@property --navigation-button-font-weight {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 600;
+}
+
+@property --navigation-button-font-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 20px;
+}
+
+@property --navigation-button-line-height {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 1.5;
+}
+
+@property --navigation-button-border-radius {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 5px;
+}
+
+@property --navigation-button-border-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 1px;
+}
+
+@property --navigation-button-step {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 8px;
+}
+
 .NavigationButtons {
-  padding-top: 35px;
+  --transition-time: 250ms;
+  --icon-size: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: calc(var(--navigation-button-step) * 2);
 }
 
-
 .NavigationButton {
-  position: relative;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  padding: 8px 24px;
+
+  border: var(--navigation-button-border-width) solid transparent;
+  border-radius: var(--navigation-button-border-radius);
+  padding: var(--navigation-button-step) calc(var(--navigation-button-step) * 3);
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  font-family: "Titillium Web", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.5;
+  font-family: var(--navigation-button-font-family), sans-serif;
+  font-weight: var(--navigation-button-font-weight);
+  font-size: var(--navigation-button-font-size);
+  line-height: var(--navigation-button-line-height);
   letter-spacing: 0.02em;
-  -webkit-font-smoothing: antialiased;
   transition:
-    color 150ms ease-in-out,
-    background-color 150ms ease-in-out,
-    border-color 150ms ease-in-out;
+    color var(--transition-time) ease-in-out,
+    background-color var(--transition-time) ease-in-out,
+    border-color var(--transition-time) ease-in-out;
 }
 
 .NavigationButton:hover {
@@ -42,44 +119,42 @@
 }
 
 .NavigationButtonPrev {
-  background-color: #ffffff;
-  border-color: #efefef;
-  color: #efefef;
+  background-color: var(--navigation-button-previous-bg);
+  border-color: var(--navigation-button-previous-text);
+  color: var(--navigation-button-previous-text);
 }
 
 .NavigationButtonPrev:hover {
-  border-color: #c7c7c7;
-  color: #c7c7c7;
+  border-color: var(--navigation-button-previous-text-hover);
+  color: var(--navigation-button-previous-text-hover);
 }
 
 .NavigationButtonNext {
-  background-color: #ff8d02;
-  border-color: #ff8d02;
-  color: #ffffff;
+  padding-right: calc(var(--navigation-button-step) * 2);
+  background-color: var(--navigation-button-next-bg);
+  border-color: var(--navigation-button-next-bg);
+  color: var(--navigation-button-next-text);
   text-shadow: 0 1px 2px #00000026;
 }
 
 .NavigationButtonNext:hover {
-  background-color: #ff981c;
-  border-color: #ff981c;
+  background-color: var(--navigation-button-next-bg-hover);
+  border-color: var(--navigation-button-next-bg-hover);
 }
 
-.NavigationButtonNext::after {
-  position: relative;
-  top: 50%;
-  right: 0;
-  margin-left: 6px;
-  font-family: Glyphicons-Pro-Regular, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1;
-  content: "\E224";
-  display: inline-block;
+.NavigationButtonNext > span {
+  flex-basis: calc(100% - var(--icon-size));
 }
 
-@media screen and (min-width: 448px) {
-  .NavigationButtons {
-    padding-top: 40px;
-  }
+.NavigationButtonNextArrow > path {
+  filter: drop-shadow(0px 1px 2px #00000033);
+}
+
+html[dir="rtl"] .NavigationButtonNext {
+  padding-right: calc(var(--navigation-button-step) * 3);
+  padding-left: calc(var(--navigation-button-step) * 2.125);
+}
+
+html[dir="rtl"] .NavigationButtonNextArrow {
+  transform: rotate(180deg);
 }
