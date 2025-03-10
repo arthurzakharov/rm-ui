@@ -9,6 +9,8 @@ import useClickOutside from '../../hooks/useClickOutside';
 import useUpdateEffect from '../../hooks/useUpdateEffect';
 import css from './dropdown.module.css';
 
+// TODO: Need to add two modes for dropdown: absolute and static same as for calendar
+
 const Dropdown: FC<DropdownProps> = ({
   choices,
   choice = null,

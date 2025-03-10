@@ -47,7 +47,7 @@
   @property --dropdown-font-family {
     syntax: '<length>';
     inherits: true;
-    initial-value: "Open Sans";
+    initial-value: 'Open Sans';
   }
   @property --dropdown-font-weight {
     syntax: '<length>';
@@ -69,10 +69,10 @@
   --dropdown-border-scoped: var(--dropdown-border, #e3eaef);
   --dropdown-separator-scoped: var(--dropdown-separator, #f4f7f9);
   --dropdown-background-scoped: var(--dropdown-background, #ffffff);
-  --dropdown-hover-scoped: var(--dropdown-hover , #edf2f5);
+  --dropdown-hover-scoped: var(--dropdown-hover, #edf2f5);
   --dropdown-text-scoped: var(--dropdown-text, #535089);
   --dropdown-input-scoped: var(--dropdown-input, #333333);
-  --dropdown-font-family-scoped: var(--dropdown-font-family, "Open Sans");
+  --dropdown-font-family-scoped: var(--dropdown-font-family, 'Open Sans');
   --dropdown-font-weight-scoped: var(--dropdown-font-weight, 300);
   --dropdown-font-size-scoped: var(--dropdown-font-size, 14px);
   /* Inner CSS Variables */
@@ -105,11 +105,11 @@
   cursor: pointer;
 }
 
-.DropdownBorder[data-success="false"] {
+.DropdownBorder[data-success='false'] {
   border-color: var(--dropdown-border-scoped);
 }
 
-.DropdownBorder[data-success="true"] {
+.DropdownBorder[data-success='true'] {
   border-color: var(--dropdown-success-scoped);
 }
 
@@ -128,12 +128,12 @@
   width: calc(var(--dropdown-font-size-scoped) + 2px);
 }
 
-.DropdownChevron[data-dropdown-open="false"] {
+.DropdownChevron[data-dropdown-open='false'] {
   transition: transform var(--transition-time) ease-in-out;
   transform: rotate(0deg);
 }
 
-.DropdownChevron[data-dropdown-open="true"] {
+.DropdownChevron[data-dropdown-open='true'] {
   transition: transform var(--transition-time) ease-in-out;
   transform: rotate(180deg);
 }
@@ -151,18 +151,10 @@
 }
 
 .DropdownBox {
-  position: absolute;
-  z-index: 10;
-  top: 100%;
-  left: 0;
   overflow: hidden;
-  height: auto;
   width: 100%;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   box-shadow: var(--box-shadow);
-  transition:
-    height var(--transition-time) ease-out,
-    opacity var(--transition-time) ease-out;
   background-color: var(--dropdown-background-scoped);
 }
 
@@ -258,11 +250,11 @@
   background-color: var(--dropdown-hover-scoped);
 }
 
-.DropdownChoice span[data-with-checkbox="false"] {
+.DropdownChoice span[data-with-checkbox='false'] {
   flex-basis: 100%;
 }
 
-.DropdownChoice span[data-with-checkbox="true"] {
+.DropdownChoice span[data-with-checkbox='true'] {
   flex-basis: calc(100% - 16px - 8px);
 }
 
