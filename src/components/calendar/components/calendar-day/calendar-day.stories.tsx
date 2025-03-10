@@ -63,7 +63,7 @@ export const NotFullyInPeriod: Story = {
       },
     },
   },
-  play: async ({ canvasElement, parameters }) => {
+  play: async ({ canvasElement }) => {
     const days = within(canvasElement).getAllByTestId('calendar-day');
     await expect(days[23]).not.toHaveClass(css.CalendarDayOutOfPeriod);
     await expect(days[24]).toHaveClass(css.CalendarDayOutOfPeriod);

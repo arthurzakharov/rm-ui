@@ -1,6 +1,6 @@
-import { FC, MouseEvent, useEffect } from 'react';
+import { FC, MouseEvent } from 'react';
 import type { DropdownChoice, DropdownProps } from './dropdown.types';
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { cn } from '../../utils/functions';
 import IconChevron from '../../icons/chevron/chevron.component';
 import IconMagnifyingGlass from '../../icons/magnifying-glass/magnifying-glass.component';
