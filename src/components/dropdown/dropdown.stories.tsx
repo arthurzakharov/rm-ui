@@ -25,6 +25,7 @@ const meta = {
     isSearchHidden: false,
     isSuccessHighlighted: false,
     closeButton: 'Close',
+    className: '',
     onChange: fn(),
   },
   render: (args) => {

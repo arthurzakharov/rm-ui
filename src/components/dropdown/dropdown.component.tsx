@@ -20,6 +20,7 @@ const Dropdown: FC<DropdownProps> = ({
   isSuccessHighlighted = false,
   multiple = false,
   closeButton = 'Schließen',
+  className = '',
   onChange,
   onOpen = () => {},
   onClose = () => {},
@@ -66,7 +67,7 @@ const Dropdown: FC<DropdownProps> = ({
   }, [borderRef]);
 
   return (
-    <div className={css.Dropdown}>
+    <div className={cn(css.Dropdown, className)}>
       <div
         data-testid="dropdown-border"
         ref={borderRef}

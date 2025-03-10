@@ -12,6 +12,7 @@ export interface DropdownProps {
   isSuccessHighlighted?: boolean;
   multiple?: boolean;
   closeButton?: string;
+  className?: string;
   onChange: (values: DropdownChoice[]) => void;
   onOpen?: (height: number, width: number) => void;
   onClose?: () => void;
