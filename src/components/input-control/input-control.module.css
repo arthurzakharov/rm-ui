@@ -31,7 +31,6 @@
   --transition-time: 250ms;
   --size-step: 2px;
   /* Styles */
-  align-self: flex-start;
   position: relative;
   box-sizing: border-box;
   padding: 2px;
@@ -40,48 +39,48 @@
   cursor: pointer;
 }
 
-.InputControl[data-control-size="xs"] {
+.InputControl[data-control-size='xs'] {
   width: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
   height: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
 }
 
-.InputControl[data-control-size="sm"] {
+.InputControl[data-control-size='sm'] {
   width: calc(var(--input-control-size-scoped) - var(--size-step));
   height: calc(var(--input-control-size-scoped) - var(--size-step));
 }
 
-.InputControl[data-control-size="md"] {
+.InputControl[data-control-size='md'] {
   width: var(--input-control-size-scoped);
   height: var(--input-control-size-scoped);
 }
 
-.InputControl[data-control-size="lg"] {
+.InputControl[data-control-size='lg'] {
   width: calc(var(--input-control-size-scoped) + var(--size-step));
   height: calc(var(--input-control-size-scoped) + var(--size-step));
 }
 
-.InputControl[data-control-size="xl"] {
+.InputControl[data-control-size='xl'] {
   width: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
   height: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
 }
 
-.InputControl[data-control-size="2xl"] {
+.InputControl[data-control-size='2xl'] {
   width: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
   height: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
 }
 
-.InputControl[data-control-size="3xl"] {
+.InputControl[data-control-size='3xl'] {
   width: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
   height: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
 }
 
-.InputControl[data-control-shape="checkbox"],
-.InputControl[data-control-shape="checkbox"]:after {
+.InputControl[data-control-shape='checkbox'],
+.InputControl[data-control-shape='checkbox']:after {
   border-radius: 0;
 }
 
-.InputControl[data-control-shape="radio"],
-.InputControl[data-control-shape="radio"]:after {
+.InputControl[data-control-shape='radio'],
+.InputControl[data-control-shape='radio']:after {
   border-radius: 50%;
 }
 
@@ -100,7 +99,7 @@
 }
 
 .InputControl.InputControlChecked:after {
-  background-color: var(--input-control-primary-scoped);
+  background-color: var(--input-control-primary-scoped) !important;
 }
 
 .InputControl.InputControlHovered:after {

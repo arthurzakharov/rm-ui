@@ -119,6 +119,7 @@ const Dropdown: FC<DropdownProps> = ({
                     <InputControl
                       shape="checkbox"
                       checked={selectedChoices.some((selectedChoice) => selectedChoice.value === value)}
+                      className={css.DropdownInputControl}
                     />
                   )}
                   <span data-with-checkbox={multiple}>{label}</span>

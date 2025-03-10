@@ -39,6 +39,16 @@
     inherits: true;
     initial-value: #535089;
   }
+  @property --dropdown-close-btn {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --dropdown-close-btn-hover {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff981c;
+  }
   @property --dropdown-input {
     syntax: '<color>';
     inherits: true;
@@ -71,6 +81,8 @@
   --dropdown-background-scoped: var(--dropdown-background, #ffffff);
   --dropdown-hover-scoped: var(--dropdown-hover, #edf2f5);
   --dropdown-text-scoped: var(--dropdown-text, #535089);
+  --dropdown-close-btn-scoped: var(--dropdown-close-btn, #ff8d02);
+  --dropdown-close-btn-hover-scoped: var(--dropdown-close-btn-hover, #ff981c);
   --dropdown-input-scoped: var(--dropdown-input, #333333);
   --dropdown-font-family-scoped: var(--dropdown-font-family, 'Open Sans');
   --dropdown-font-weight-scoped: var(--dropdown-font-weight, 300);
@@ -80,6 +92,8 @@
   --under-chevron: linear-gradient(90deg, rgba(255, 255, 255, 0) -10%, rgba(255, 255, 255, 0.5411764706) 25%, #fff 50%);
   --box-shadow: 0 14px 28px #ebeff3, 0 10px 10px #e3e9ee;
   --border-radius: 3px;
+  /* Update inner componet CSS variables */
+  --input-control-primary: var(--dropdown-focus, #ff8d02);
   /* Styles */
   position: relative;
   font-family: var(--dropdown-font-family-scoped), sans-serif;
@@ -164,9 +178,13 @@
   padding: 20px;
 }
 
+.DropdownInputControl {
+  align-self: center;
+}
+
 .DropdownClose {
   border-top: 2px var(--dropdown-separator-scoped) solid;
-  padding: 20px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -175,20 +193,21 @@
 
 .DropdownCloseButton {
   border-radius: var(--border-radius);
-  border: 2px solid var(--dropdown-border-scoped);
+  border: 2px solid var(--dropdown-close-btn-scoped);
   padding: 8px 24px;
-  background-color: transparent;
+  background-color: var(--dropdown-close-btn-scoped);
   font-family: inherit;
   font-weight: 500;
   font-size: inherit;
   line-height: inherit;
-  color: var(--dropdown-text-scoped);
+  color: var(--dropdown-background-scoped);
   transition: background-color var(--transition-time) ease-in-out;
 }
 
 .DropdownCloseButton:hover {
   cursor: pointer;
-  background-color: var(--dropdown-hover-scoped);
+  border-color: var(--dropdown-close-btn-hover-scoped);
+  background-color: var(--dropdown-close-btn-hover-scoped);
 }
 
 .DropdownInput {
@@ -229,7 +248,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  padding: 5px 20px;
+  padding: 8px 20px;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
