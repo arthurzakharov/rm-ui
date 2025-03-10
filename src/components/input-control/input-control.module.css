@@ -1,22 +1,24 @@
-@property --input-control-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 16px;
-}
-@property --input-control-border {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #e3e3e3;
-}
-@property --input-control-primary {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff8d02;
-}
-@property --input-control-error {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #e74c3c;
+:root {
+  @property --input-control-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 16px;
+  }
+  @property --input-control-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e3e3e3;
+  }
+  @property --input-control-primary {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --input-control-error {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e74c3c;
+  }
 }
 
 .InputControl {

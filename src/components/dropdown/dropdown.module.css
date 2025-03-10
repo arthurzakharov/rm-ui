@@ -1,82 +1,84 @@
-@property --dropdown-primary {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #302576;
-}
-@property --dropdown-focus {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff8d02;
-}
-@property --dropdown-success {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #2ecc71;
-}
-@property --dropdown-border {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #e3eaef;
-}
-@property --dropdown-separator {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #f4f7f9;
-}
-@property --dropdown-background {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ffffff;
-}
-@property --dropdown-hover {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #edf2f5;
-}
-@property --dropdown-text {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #535089;
-}
-@property --dropdown-close-btn-border {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff8d02;
-}
-@property --dropdown-close-btn-border-hover {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff981c;
-}
-@property --dropdown-close-btn {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff8d02;
-}
-@property --dropdown-close-btn-hover {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff981c;
-}
-@property --dropdown-input {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #333333;
-}
-@property --dropdown-font-family {
-  syntax: '<string>';
-  inherits: true;
-  initial-value: 'Open Sans';
-}
-@property --dropdown-font-weight {
-  syntax: '<integer>';
-  inherits: true;
-  initial-value: 300;
-}
-@property --dropdown-font-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 14px;
+:root {
+  @property --dropdown-primary {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #302576;
+  }
+  @property --dropdown-focus {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --dropdown-success {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #2ecc71;
+  }
+  @property --dropdown-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e3eaef;
+  }
+  @property --dropdown-separator {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f4f7f9;
+  }
+  @property --dropdown-background {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ffffff;
+  }
+  @property --dropdown-hover {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #edf2f5;
+  }
+  @property --dropdown-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #535089;
+  }
+  @property --dropdown-close-btn-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --dropdown-close-btn-border-hover {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff981c;
+  }
+  @property --dropdown-close-btn {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --dropdown-close-btn-hover {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff981c;
+  }
+  @property --dropdown-input {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #333333;
+  }
+  @property --dropdown-font-family {
+    syntax: '<string>';
+    inherits: true;
+    initial-value: 'Open Sans';
+  }
+  @property --dropdown-font-weight {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 300;
+  }
+  @property --dropdown-font-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 14px;
+  }
 }
 
 .Dropdown {

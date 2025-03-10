@@ -1,47 +1,49 @@
-@property --checkbox-label {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #004473;
-}
-@property --checkbox-info {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #333333;
-}
-@property --checkbox-border {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #e3e3e3;
-}
-@property --checkbox-error {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #e74c3c;
-}
-@property --checkbox-primary {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #ff8d02;
-}
-@property --checkbox-square-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 16px;
-}
-@property --checkbox-font-family {
-  syntax: '<string>';
-  inherits: true;
-  initial-value: 'Open Sans';
-}
-@property --checkbox-font-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 16px;
-}
-@property --checkbox-font-weight {
-  syntax: '<integer>';
-  inherits: true;
-  initial-value: 200;
+:root {
+  @property --checkbox-label {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #004473;
+  }
+  @property --checkbox-info {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #333333;
+  }
+  @property --checkbox-border {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e3e3e3;
+  }
+  @property --checkbox-error {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e74c3c;
+  }
+  @property --checkbox-primary {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ff8d02;
+  }
+  @property --checkbox-square-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 16px;
+  }
+  @property --checkbox-font-family {
+    syntax: '<string>';
+    inherits: true;
+    initial-value: 'Open Sans';
+  }
+  @property --checkbox-font-size {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 16px;
+  }
+  @property --checkbox-font-weight {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 200;
+  }
 }
 
 .Checkbox {
