@@ -38,6 +38,16 @@
   inherits: true;
   initial-value: #535089;
 }
+@property --dropdown-close-btn-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff8d02;
+}
+@property --dropdown-close-btn-border-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff981c;
+}
 @property --dropdown-close-btn {
   syntax: '<color>';
   inherits: true;
@@ -79,6 +89,8 @@
   --dropdown-background-scoped: var(--dropdown-background);
   --dropdown-hover-scoped: var(--dropdown-hover);
   --dropdown-text-scoped: var(--dropdown-text);
+  --dropdown-close-btn-border-scoped: var(--dropdown-close-btn-border);
+  --dropdown-close-btn-border-hover-scoped: var(--dropdown-close-btn-border-hover);
   --dropdown-close-btn-scoped: var(--dropdown-close-btn);
   --dropdown-close-btn-hover-scoped: var(--dropdown-close-btn-hover);
   --dropdown-input-scoped: var(--dropdown-input);
@@ -192,7 +204,7 @@
 
 .DropdownCloseButton {
   border-radius: var(--border-radius);
-  border: 2px solid var(--dropdown-close-btn-scoped);
+  border: 2px solid var(--dropdown-close-btn-border-scoped);
   padding: 8px 24px;
   background-color: var(--dropdown-close-btn-scoped);
   font-family: inherit;
@@ -205,7 +217,7 @@
 
 .DropdownCloseButton:hover {
   cursor: pointer;
-  border-color: var(--dropdown-close-btn-hover-scoped);
+  border-color: var(--dropdown-close-btn-border-hover-scoped);
   background-color: var(--dropdown-close-btn-hover-scoped);
 }
 

@@ -31,7 +31,7 @@
 @property --checkbox-font-family {
   syntax: '<string>';
   inherits: true;
-  initial-value: inherit;
+  initial-value: 'Open Sans';
 }
 @property --checkbox-font-size {
   syntax: '<length>';

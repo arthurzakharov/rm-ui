@@ -1,0 +1,85 @@
+.NavigationButtons {
+  padding-top: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.NavigationButton {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 8px 24px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    color 150ms ease-in-out,
+    background-color 150ms ease-in-out,
+    border-color 150ms ease-in-out;
+}
+
+.NavigationButton:hover {
+  cursor: pointer;
+}
+
+.NavigationButtonVisible {
+  display: inline-flex;
+}
+
+.NavigationButtonHidden {
+  display: none;
+}
+
+.NavigationButtonPrev {
+  background-color: #ffffff;
+  border-color: #efefef;
+  color: #efefef;
+}
+
+.NavigationButtonPrev:hover {
+  border-color: #c7c7c7;
+  color: #c7c7c7;
+}
+
+.NavigationButtonNext {
+  background-color: #ff8d02;
+  border-color: #ff8d02;
+  color: #ffffff;
+  text-shadow: 0 1px 2px #00000026;
+}
+
+.NavigationButtonNext:hover {
+  background-color: #ff981c;
+  border-color: #ff981c;
+}
+
+.NavigationButtonNext::after {
+  position: relative;
+  top: 50%;
+  right: 0;
+  margin-left: 6px;
+  font-family: Glyphicons-Pro-Regular, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+  content: "\E224";
+  display: inline-block;
+}
+
+@media screen and (min-width: 448px) {
+  .NavigationButtons {
+    padding-top: 40px;
+  }
+}
