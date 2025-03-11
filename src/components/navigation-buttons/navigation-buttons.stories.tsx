@@ -25,19 +25,23 @@ export const BothShown: Story = {
     showPrevious: true,
     showNext: true,
   },
-  play: async ({ args, canvasElement }) => {
+  play: async ({ args, canvasElement, step }) => {
     const previousButton = within(canvasElement).getByTestId('navigation-button-previous');
     const nextButton = within(canvasElement).getByTestId('navigation-button-next');
-    await expect(previousButton).toBeVisible();
-    await expect(nextButton).toBeVisible();
-    await expect(previousButton).toHaveTextContent('Zurück');
-    await expect(nextButton).toHaveTextContent('Weiter');
-    await userEvent.click(previousButton);
-    await expect(previousButton).not.toHaveFocus();
-    await expect(args.onPrevious).toHaveBeenCalledOnce();
-    await userEvent.click(nextButton);
-    await expect(nextButton).not.toHaveFocus();
-    await expect(args.onNext).toHaveBeenCalledOnce();
+    await step('Check buttons visibility and text', async () => {
+      await expect(previousButton).toBeVisible();
+      await expect(nextButton).toBeVisible();
+      await expect(previousButton).toHaveTextContent('Zurück');
+      await expect(nextButton).toHaveTextContent('Weiter');
+    });
+    await step('Click buttons, check props call and non focus state', async () => {
+      await userEvent.click(previousButton);
+      await expect(previousButton).not.toHaveFocus();
+      await expect(args.onPrevious).toHaveBeenCalledOnce();
+      await userEvent.click(nextButton);
+      await expect(nextButton).not.toHaveFocus();
+      await expect(args.onNext).toHaveBeenCalledOnce();
+    });
   },
 };
 
@@ -47,11 +51,13 @@ export const OnlyPrevious: Story = {
     showPrevious: true,
     showNext: false,
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const previousButton = within(canvasElement).getByTestId('navigation-button-previous');
     const nextButton = within(canvasElement).getByTestId('navigation-button-next');
-    await expect(previousButton).toBeVisible();
-    await expect(nextButton).not.toBeVisible();
+    await step('Check buttons visibility', async () => {
+      await expect(previousButton).toBeVisible();
+      await expect(nextButton).not.toBeVisible();
+    });
   },
 };
 
@@ -61,11 +67,13 @@ export const OnlyNext: Story = {
     showPrevious: false,
     showNext: true,
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const previousButton = within(canvasElement).getByTestId('navigation-button-previous');
     const nextButton = within(canvasElement).getByTestId('navigation-button-next');
-    await expect(previousButton).not.toBeVisible();
-    await expect(nextButton).toBeVisible();
+    await step('Check buttons visibility', async () => {
+      await expect(previousButton).not.toBeVisible();
+      await expect(nextButton).toBeVisible();
+    });
   },
 };
 
@@ -75,10 +83,12 @@ export const CustomLabels: Story = {
     previous: 'Previous',
     next: 'Next',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const previousButton = within(canvasElement).getByTestId('navigation-button-previous');
     const nextButton = within(canvasElement).getByTestId('navigation-button-next');
-    await expect(previousButton).toHaveTextContent('Previous');
-    await expect(nextButton).toHaveTextContent('Next');
+    await step('Check buttons text', async () => {
+      await expect(previousButton).toHaveTextContent('Previous');
+      await expect(nextButton).toHaveTextContent('Next');
+    });
   },
 };
