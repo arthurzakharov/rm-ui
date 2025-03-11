@@ -80,36 +80,16 @@
 }
 
 .Dropdown {
-  /* Outer CSS Variables */
-  --dropdown-primary-scoped: var(--dropdown-primary);
-  --dropdown-focus-scoped: var(--dropdown-focus);
-  --dropdown-success-scoped: var(--dropdown-success);
-  --dropdown-border-scoped: var(--dropdown-border);
-  --dropdown-separator-scoped: var(--dropdown-separator);
-  --dropdown-background-scoped: var(--dropdown-background);
-  --dropdown-hover-scoped: var(--dropdown-hover);
-  --dropdown-text-scoped: var(--dropdown-text);
-  --dropdown-close-btn-border-scoped: var(--dropdown-close-btn-border);
-  --dropdown-close-btn-border-hover-scoped: var(--dropdown-close-btn-border-hover);
-  --dropdown-close-btn-scoped: var(--dropdown-close-btn);
-  --dropdown-close-btn-hover-scoped: var(--dropdown-close-btn-hover);
-  --dropdown-input-scoped: var(--dropdown-input);
-  --dropdown-font-family-scoped: var(--dropdown-font-family);
-  --dropdown-font-weight-scoped: var(--dropdown-font-weight);
-  --dropdown-font-size-scoped: var(--dropdown-font-size);
-  /* Inner CSS Variables */
   --transition-time: 250ms;
   --under-chevron: linear-gradient(90deg, rgba(255, 255, 255, 0) -10%, rgba(255, 255, 255, 0.5411764706) 25%, #fff 50%);
   --box-shadow: 0 14px 28px #ebeff3, 0 10px 10px #e3e9ee;
   --border-radius: 3px;
-  /* Update inner componet CSS variables */
-  --input-control-primary: var(--dropdown-focus, #ff8d02);
-  /* Styles */
+  --input-control-primary: var(--dropdown-focus);
   position: relative;
-  font-family: var(--dropdown-font-family-scoped), sans-serif;
-  font-weight: var(--dropdown-font-weight-scoped);
-  font-size: var(--dropdown-font-size-scoped);
-  color: var(--dropdown-primary-scoped);
+  font-family: var(--dropdown-font-family), sans-serif;
+  font-weight: var(--dropdown-font-weight);
+  font-size: var(--dropdown-font-size);
+  color: var(--dropdown-primary);
 }
 
 .DropdownBorder {
@@ -117,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: var(--dropdown-background-scoped);
+  background: var(--dropdown-background);
   border-radius: var(--border-radius);
   border-width: 2px;
   border-style: solid;
@@ -130,11 +110,11 @@
 }
 
 .DropdownBorder[data-success='false'] {
-  border-color: var(--dropdown-border-scoped);
+  border-color: var(--dropdown-border);
 }
 
 .DropdownBorder[data-success='true'] {
-  border-color: var(--dropdown-success-scoped);
+  border-color: var(--dropdown-success);
 }
 
 .DropdownValue {
@@ -142,14 +122,14 @@
   font-weight: inherit;
   font-size: inherit;
   line-height: 1.7;
-  color: var(--dropdown-text-scoped);
+  color: var(--dropdown-text);
   flex-basis: calc(100% - 16px);
   white-space: nowrap;
   overflow: hidden;
 }
 
 .DropdownChevron {
-  width: calc(var(--dropdown-font-size-scoped) + 2px);
+  width: calc(var(--dropdown-font-size) + 2px);
 }
 
 .DropdownChevron[data-dropdown-open='false'] {
@@ -179,12 +159,12 @@
   width: 100%;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   box-shadow: var(--box-shadow);
-  background-color: var(--dropdown-background-scoped);
+  background-color: var(--dropdown-background);
 }
 
 .DropdownSearch {
   position: relative;
-  border-bottom: 2px var(--dropdown-separator-scoped) solid;
+  border-bottom: 2px var(--dropdown-separator) solid;
   padding: 20px;
 }
 
@@ -193,7 +173,7 @@
 }
 
 .DropdownClose {
-  border-top: 2px var(--dropdown-separator-scoped) solid;
+  border-top: 2px var(--dropdown-separator) solid;
   padding: 16px 20px;
   display: flex;
   flex-direction: row;
@@ -203,35 +183,35 @@
 
 .DropdownCloseButton {
   border-radius: var(--border-radius);
-  border: 2px solid var(--dropdown-close-btn-border-scoped);
+  border: 2px solid var(--dropdown-close-btn-border);
   padding: 8px 24px;
-  background-color: var(--dropdown-close-btn-scoped);
+  background-color: var(--dropdown-close-btn);
   font-family: inherit;
   font-weight: 500;
   font-size: inherit;
   line-height: inherit;
-  color: var(--dropdown-background-scoped);
+  color: var(--dropdown-background);
   transition: background-color var(--transition-time) ease-in-out;
 }
 
 .DropdownCloseButton:hover {
   cursor: pointer;
-  border-color: var(--dropdown-close-btn-border-hover-scoped);
-  background-color: var(--dropdown-close-btn-hover-scoped);
+  border-color: var(--dropdown-close-btn-border-hover);
+  background-color: var(--dropdown-close-btn-hover);
 }
 
 .DropdownInput {
   width: 100%;
   border-radius: var(--border-radius);
   padding: 9px 10px;
-  border: 1px var(--dropdown-border-scoped) solid;
+  border: 1px var(--dropdown-border) solid;
   box-sizing: border-box;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
   line-height: inherit;
-  color: var(--dropdown-input-scoped);
-  outline-color: var(--dropdown-focus-scoped);
+  color: var(--dropdown-input);
+  outline-color: var(--dropdown-focus);
 }
 
 .DropdownGlass {
@@ -240,8 +220,8 @@
   right: 31px;
   top: 50%;
   transform: translateY(-50%);
-  width: var(--dropdown-font-size-scoped);
-  color: var(--dropdown-primary-scoped);
+  width: var(--dropdown-font-size);
+  color: var(--dropdown-primary);
 }
 
 .DropdownChoices {
@@ -263,7 +243,7 @@
   font-weight: inherit;
   font-size: inherit;
   line-height: inherit;
-  color: var(--dropdown-text-scoped);
+  color: var(--dropdown-text);
 }
 
 .DropdownChoice:first-of-type {
@@ -276,7 +256,7 @@
 
 .DropdownChoice:hover {
   cursor: pointer;
-  background-color: var(--dropdown-hover-scoped);
+  background-color: var(--dropdown-hover);
 }
 
 .DropdownChoice span[data-with-checkbox='false'] {
@@ -288,6 +268,6 @@
 }
 
 .DropdownChoiceNoResult {
-  color: var(--dropdown-text-scoped);
+  color: var(--dropdown-text);
   text-align: center;
 }

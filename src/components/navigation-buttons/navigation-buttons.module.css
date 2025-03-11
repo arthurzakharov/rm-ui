@@ -86,7 +86,6 @@
 }
 
 .NavigationButton {
-
   border: var(--navigation-button-border-width) solid transparent;
   border-radius: var(--navigation-button-border-radius);
   padding: var(--navigation-button-step) calc(var(--navigation-button-step) * 3);

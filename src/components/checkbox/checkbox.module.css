@@ -45,22 +45,17 @@
 }
 
 .Checkbox {
-  --checkbox-label-scoped: var(--checkbox-label);
-  --checkbox-info-scoped: var(--checkbox-info);
-  --checkbox-border-scoped: var(--checkbox-border);
-  --checkbox-error-scoped: var(--checkbox-error);
-  --checkbox-primary-scoped: var(--checkbox-primary);
-  --checkbox-square-size-scoped: var(--checkbox-square-size);
-  --checkbox-font-family-scoped: var(--checkbox-font-family);
-  --checkbox-font-size-scoped: var(--checkbox-font-size);
-  --checkbox-font-weight-scoped: var(--checkbox-font-weight);
+  --input-control-size: var(--checkbox-square-size);
+  --input-control-border: var(--checkbox-border);
+  --input-control-primary: var(--checkbox-primary);
+  --input-control-error: var(--checkbox-error);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--checkbox-square-size-scoped) / 4);
-  font-family: var(--checkbox-font-family-scoped), sans-serif;
-  font-size: var(--checkbox-font-size-scoped);
-  font-weight: calc(var(--checkbox-font-weight-scoped));
+  gap: calc(var(--checkbox-square-size) / 4);
+  font-family: var(--checkbox-font-family), sans-serif;
+  font-size: var(--checkbox-font-size);
+  font-weight: calc(var(--checkbox-font-weight));
 }
 
 .CheckboxContent {
@@ -69,13 +64,13 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: var(--checkbox-square-size-scoped);
+  gap: var(--checkbox-square-size);
   line-height: 1.2;
-  color: var(--checkbox-label-scoped);
+  color: var(--checkbox-label);
 }
 
 .CheckboxError .CheckboxLabel {
-  color: var(--checkbox-error-scoped) !important;
+  color: var(--checkbox-error) !important;
 }
 
 .Checkbox:has(.CheckboxInput:disabled) {
@@ -83,7 +78,7 @@
 }
 
 .CheckboxLabel {
-  flex-basis: calc(100% - calc(var(--checkbox-square-size-scoped) * 2));
+  flex-basis: calc(100% - calc(var(--checkbox-square-size) * 2));
   order: 2;
   transition: color 150ms ease-in-out;
 }
@@ -106,16 +101,9 @@
 }
 
 .CheckboxInfo {
-  margin-left: calc(var(--checkbox-square-size-scoped) * 2);
+  margin-left: calc(var(--checkbox-square-size) * 2);
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 1.4;
-  color: var(--checkbox-info-scoped);
-}
-
-.CheckboxControl {
-  --input-control-size: var(--checkbox-square-size-scoped);
-  --input-control-border: var(--checkbox-border-scoped);
-  --input-control-primary: var(--checkbox-primary-scoped);
-  --input-control-error: var(--checkbox-error-scoped);
+  color: var(--checkbox-info);
 }

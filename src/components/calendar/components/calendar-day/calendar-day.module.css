@@ -7,36 +7,36 @@
 }
 
 .CalendarDay {
-  margin: var(--calendar-modal-button-gap-scoped);
+  margin: var(--calendar-modal-button-gap);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   padding: 0;
-  width: var(--calendar-modal-button-size-scoped);
-  height: var(--calendar-modal-button-size-scoped);
+  width: var(--calendar-modal-button-size);
+  height: var(--calendar-modal-button-size);
   border-radius: 50%;
   background-color: transparent;
   font-family: inherit;
   font-weight: 400;
-  font-size: var(--calendar-modal-font-size-scoped);
-  line-height: var(--calendar-modal-line-height-scoped);
-  color: var(--calendar-primary-scoped);
+  font-size: var(--calendar-modal-font-size);
+  line-height: var(--calendar-modal-line-height);
+  color: var(--calendar-primary);
   transition:
     border-color 125ms ease-in-out,
     background-color 125ms ease-in-out;
-  border: var(--calendar-border-width-scoped) solid transparent;
+  border: var(--calendar-border-width) solid transparent;
 }
 
 .CalendarDay:hover {
   cursor: pointer;
-  border-color: var(--calendar-accent-scoped);
+  border-color: var(--calendar-accent);
 }
 
 .CalendarDay:focus,
 .CalendarDay:active {
-  outline-color: var(--calendar-accent-scoped);
+  outline-color: var(--calendar-accent);
 }
 
 .CalendarDayOutOfPeriod:hover {
@@ -45,18 +45,18 @@
 
 .CalendarDayNotFromThisMonth {
   opacity: 0.38;
-  color: var(--calendar-input-placeholder-scoped);
+  color: var(--calendar-input-placeholder);
 }
 
 .CalendarDayToday {
-  border-color: var(--calendar-accent-scoped);
+  border-color: var(--calendar-accent);
 }
 
 .CalendarDayOutOfPeriod {
   position: relative;
   opacity: 0.2;
   background-color: transparent;
-  border-color: var(--calendar-error-scoped);
+  border-color: var(--calendar-error);
 }
 
 .CalendarDayOutOfPeriod:before {
@@ -68,16 +68,16 @@
   transform: rotate(45deg);
   width: 100%;
   height: 2px;
-  background-color: var(--calendar-error-scoped);
+  background-color: var(--calendar-error);
 }
 
 .CalendarDayOutOfPeriod:hover {
-  border-color: var(--calendar-error-scoped);
+  border-color: var(--calendar-error);
 }
 
 .CalendarDaySelected {
-  background-color: var(--calendar-accent-scoped);
-  color: var(--calendar-modal-button-selected-text-scoped);
+  background-color: var(--calendar-accent);
+  color: var(--calendar-modal-button-selected-text);
 }
 
 .CalendarDayNames {
@@ -95,12 +95,12 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  width: var(--calendar-modal-button-size-scoped);
-  height: var(--calendar-modal-button-size-scoped);
+  width: var(--calendar-modal-button-size);
+  height: var(--calendar-modal-button-size);
   border-radius: 50%;
   font-family: inherit;
   font-weight: 400;
-  font-size: var(--calendar-modal-font-size-scoped);
-  line-height: var(--calendar-modal-line-height-scoped);
-  color: var(--calendar-primary-scoped);
+  font-size: var(--calendar-modal-font-size);
+  line-height: var(--calendar-modal-line-height);
+  color: var(--calendar-primary);
 }

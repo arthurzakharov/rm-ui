@@ -20,56 +20,49 @@
 }
 
 .InputControl {
-  /* Outer CSS Variables */
-  --input-control-size-scoped: var(--input-control-size);
-  --input-control-border-scoped: var(--input-control-border);
-  --input-control-primary-scoped: var(--input-control-primary);
-  --input-control-error-scoped: var(--input-control-error);
-  /* Inner CSS Variables */
   --transition-time: 250ms;
   --size-step: 2px;
-  /* Styles */
   position: relative;
   box-sizing: border-box;
   padding: 2px;
-  border: 2px solid var(--input-control-border-scoped);
+  border: 2px solid var(--input-control-border);
   transition: border-color var(--transition-time) ease-in-out;
   cursor: pointer;
 }
 
 .InputControl[data-control-size='xs'] {
-  width: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
-  height: calc(var(--input-control-size-scoped) - var(--size-step) * 2);
+  width: calc(var(--input-control-size) - var(--size-step) * 2);
+  height: calc(var(--input-control-size) - var(--size-step) * 2);
 }
 
 .InputControl[data-control-size='sm'] {
-  width: calc(var(--input-control-size-scoped) - var(--size-step));
-  height: calc(var(--input-control-size-scoped) - var(--size-step));
+  width: calc(var(--input-control-size) - var(--size-step));
+  height: calc(var(--input-control-size) - var(--size-step));
 }
 
 .InputControl[data-control-size='md'] {
-  width: var(--input-control-size-scoped);
-  height: var(--input-control-size-scoped);
+  width: var(--input-control-size);
+  height: var(--input-control-size);
 }
 
 .InputControl[data-control-size='lg'] {
-  width: calc(var(--input-control-size-scoped) + var(--size-step));
-  height: calc(var(--input-control-size-scoped) + var(--size-step));
+  width: calc(var(--input-control-size) + var(--size-step));
+  height: calc(var(--input-control-size) + var(--size-step));
 }
 
 .InputControl[data-control-size='xl'] {
-  width: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
-  height: calc(var(--input-control-size-scoped) + var(--size-step) * 2);
+  width: calc(var(--input-control-size) + var(--size-step) * 2);
+  height: calc(var(--input-control-size) + var(--size-step) * 2);
 }
 
 .InputControl[data-control-size='2xl'] {
-  width: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
-  height: calc(var(--input-control-size-scoped) + var(--size-step) * 3);
+  width: calc(var(--input-control-size) + var(--size-step) * 3);
+  height: calc(var(--input-control-size) + var(--size-step) * 3);
 }
 
 .InputControl[data-control-size='3xl'] {
-  width: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
-  height: calc(var(--input-control-size-scoped) + var(--size-step) * 4);
+  width: calc(var(--input-control-size) + var(--size-step) * 4);
+  height: calc(var(--input-control-size) + var(--size-step) * 4);
 }
 
 .InputControl[data-control-shape='checkbox'],
@@ -97,19 +90,19 @@
 }
 
 .InputControl.InputControlChecked:after {
-  background-color: var(--input-control-primary-scoped) !important;
+  background-color: var(--input-control-primary) !important;
 }
 
 .InputControl.InputControlHovered:after {
-  background-color: var(--input-control-border-scoped);
+  background-color: var(--input-control-border);
 }
 
 .InputControl.InputControlChecked.InputControlError:after {
-  background-color: var(--input-control-error-scoped);
+  background-color: var(--input-control-error);
 }
 
 .InputControl.InputControlFocused {
-  border-color: var(--input-control-primary-scoped);
+  border-color: var(--input-control-primary);
 }
 
 .InputControl.InputControlDisabled {
@@ -118,5 +111,5 @@
 }
 
 .InputControl.InputControlError {
-  border-color: var(--input-control-error-scoped);
+  border-color: var(--input-control-error);
 }

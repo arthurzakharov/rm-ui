@@ -68,7 +68,6 @@ const Checkbox: FC<CheckboxProps> = ({
           onChange={onInputChange}
         />
         <InputControl
-          className={css.CheckboxControl}
           shape="checkbox"
           checked={value}
           hovered={hovered}

@@ -5,6 +5,9 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 const meta = {
   title: 'Components/NavigationButtons',
   component: NavigationButtons,
+  parameters: {
+    layout: 'centered',
+  },
   args: {
     showPrevious: true,
     showNext: true,

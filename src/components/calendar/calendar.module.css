@@ -95,25 +95,6 @@
 }
 
 .Calendar {
-  --calendar-accent-scoped: var(--calendar-accent);
-  --calendar-error-scoped: var(--calendar-error);
-  --calendar-primary-scoped: var(--calendar-primary);
-  --calendar-border-radius-scoped: var(--calendar-border-radius);
-  --calendar-border-width-scoped: var(--calendar-border-width);
-  --calendar-background-scoped: var(--calendar-background);
-  --calendar-icon-background-scoped: var(--calendar-icon-background);
-  --calendar-input-font-size-scoped: var(--calendar-input-font-size);
-  --calendar-input-line-height-scoped: var(--calendar-input-line-height);
-  --calendar-input-placeholder-scoped: var(--calendar-input-placeholder);
-  --calendar-input-border-scoped: var(--calendar-input-border);
-  --calendar-modal-button-selected-text-scoped: var(--calendar-modal-button-selected-text);
-  --calendar-modal-horizontal-padding-scoped: var(--calendar-modal-horizontal-padding);
-  --calendar-modal-vertical-padding-scoped: var(--calendar-modal-vertical-padding);
-  --calendar-modal-font-size-scoped: var(--calendar-modal-font-size);
-  --calendar-modal-line-height-scoped: var(--calendar-modal-line-height);
-  --calendar-modal-button-size-scoped: var(--calendar-modal-button-size);
-  --calendar-modal-button-gap-scoped: var(--calendar-modal-button-gap);
-  --calendar-modal-background-scoped: var(--calendar-modal-background);
   font-family: inherit;
 }
 
@@ -131,9 +112,9 @@
   padding: 8px 0 6px 0;
   border: none;
   transition: color 125ms ease-in-out;
-  font-size: var(--calendar-input-font-size-scoped);
-  line-height: var(--calendar-input-line-height-scoped);
-  color: var(--calendar-primary-scoped);
+  font-size: var(--calendar-input-font-size);
+  line-height: var(--calendar-input-line-height);
+  color: var(--calendar-primary);
   background-color: transparent;
 }
 
@@ -143,7 +124,7 @@
 }
 
 .CalendarInputPlaceholder {
-  color: var(--calendar-input-placeholder-scoped);
+  color: var(--calendar-input-placeholder);
 }
 
 .CalendarContainer {
@@ -156,13 +137,13 @@
 }
 
 .CalendarInputBorder {
-  border: var(--calendar-border-width-scoped) solid var(--calendar-input-border-scoped);
-  border-radius: var(--calendar-border-radius-scoped);
+  border: var(--calendar-border-width) solid var(--calendar-input-border);
+  border-radius: var(--calendar-border-radius);
   transition: border-color 125ms ease-in-out;
 }
 
 .CalendarInputBorderFocused {
-  border-color: var(--calendar-accent-scoped);
+  border-color: var(--calendar-accent);
 }
 
 .CalendarInputBorderDropdown {
