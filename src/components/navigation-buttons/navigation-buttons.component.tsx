@@ -44,7 +44,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
       }}
     >
       <span>{next}</span>
-      <ChevronRight height={26} width={26} strokeWidth={3} className={css.NavigationButtonNextArrow} />
+      <ChevronRight height={26} width={26} strokeWidth={4} className={css.NavigationButtonNextArrow} />
     </button>
   </div>
 );

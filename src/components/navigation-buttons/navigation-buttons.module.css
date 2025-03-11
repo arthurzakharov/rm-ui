@@ -43,7 +43,7 @@
 @property --navigation-button-font-weight {
   syntax: '<integer>';
   inherits: true;
-  initial-value: 600;
+  initial-value: 400;
 }
 
 @property --navigation-button-font-size {
@@ -53,9 +53,9 @@
 }
 
 @property --navigation-button-line-height {
-  syntax: '<integer>';
+  syntax: '<length>';
   inherits: true;
-  initial-value: 1.5;
+  initial-value: 30px;
 }
 
 @property --navigation-button-border-radius {
@@ -129,7 +129,6 @@
 }
 
 .NavigationButtonNext {
-  padding-right: calc(var(--navigation-button-step) * 2);
   background-color: var(--navigation-button-next-bg);
   border-color: var(--navigation-button-next-bg);
   color: var(--navigation-button-next-text);
@@ -145,15 +144,19 @@
   flex-basis: calc(100% - var(--icon-size));
 }
 
+.NavigationButtonNextArrow {
+  position: relative;
+  right: -6px;
+}
+
 .NavigationButtonNextArrow > path {
   filter: drop-shadow(0px 1px 2px #00000033);
 }
 
-html[dir="rtl"] .NavigationButtonNext {
-  padding-right: calc(var(--navigation-button-step) * 3);
-  padding-left: calc(var(--navigation-button-step) * 2.125);
+html[dir="rtl"] .NavigationButtonNextArrow {
+  transform: rotate(180deg);
 }
 
 html[dir="rtl"] .NavigationButtonNextArrow {
-  transform: rotate(180deg);
+  right: 6px;
 }

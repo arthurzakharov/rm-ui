@@ -271,3 +271,13 @@
   color: var(--dropdown-text);
   text-align: center;
 }
+
+html[dir="rtl"] .DropdownGlass {
+  left: 31px;
+  right: initial;
+}
+
+html[dir="rtl"] .DropdownChevronWrap {
+  left: 19px;
+  right: initial;
+}

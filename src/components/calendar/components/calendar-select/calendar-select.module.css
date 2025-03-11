@@ -54,3 +54,11 @@
 .CalendarSelectElement:active {
   outline-color: var(--calendar-accent);
 }
+
+html[dir="rtl"] .CalendarSelect {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .CalendarSelectElement {
+  padding: 10px 8px 10px 4px;
+}

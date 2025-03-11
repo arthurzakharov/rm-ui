@@ -162,3 +162,12 @@
 .CalendarInputBorderText .CalendarInputField {
   text-align: center;
 }
+
+html[dir="rtl"] .CalendarInputBorderDropdown {
+  padding-left: 0;
+  padding-right: 16px;
+}
+
+html[dir="rtl"] .CalendarInputBorderDropdown .CalendarInputField {
+  text-align: right;
+}
