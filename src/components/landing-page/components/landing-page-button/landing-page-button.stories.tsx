@@ -42,6 +42,7 @@ export const Enabled: Story = {
     const button = within(canvasElement).getByTestId('landing-page-button');
     await userEvent.click(button);
     await expect(button).not.toBeDisabled();
+    await expect(button).not.toHaveFocus();
     await expect(args.onClick).toHaveBeenNthCalledWith(1)
   },
 };

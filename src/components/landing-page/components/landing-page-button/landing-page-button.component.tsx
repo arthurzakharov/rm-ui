@@ -13,6 +13,7 @@ const LandingPageButton: FC<LandingPageButtonTypes> = ({ text, onClick, disabled
     className={cn(css.LandingPageButton, className, { [css.LandingPageButtonFullWidth]: fullWidth })}
     onClick={(e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
+      e.currentTarget.blur();
       onClick();
     }}
   >
