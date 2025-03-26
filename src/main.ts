@@ -3,8 +3,9 @@ export { default as Checkbox } from './components/checkbox/checkbox.component';
 export { default as Dropdown } from './components/dropdown/dropdown.component';
 export { default as InputControl } from './components/input-control/input-control.component';
 export { default as InputMasked } from './components/input-masked/input-masked.component';
-export { default as LandingPageAdvantages } from './components/landing-page/components/landing-page-advantages/landing-page-advantages.component'
-export { default as LandingPageButton } from './components/landing-page/components/landing-page-button/landing-page-button.component'
+export { default as LandingPageAdvantages } from './components/landing-page/components/landing-page-advantages/landing-page-advantages.component';
+export { default as LandingPageButton } from './components/landing-page/components/landing-page-button/landing-page-button.component';
+export { default as LandingPageContact } from './components/landing-page/components/landing-page-contact/landing-page-contact.component';
 export { default as NavigationButtons } from './components/navigation-buttons/navigation-buttons.component';
 export { default as IconCheck } from './icons/check/check.component';
 export { default as IconChevron } from './icons/chevron/chevron.component';
