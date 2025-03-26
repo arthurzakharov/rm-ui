@@ -8,11 +8,17 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
+// TODO: Check from time to time if there is a ready plugin to remove attrs for build
+
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: process.env.NODE_ENV === 'production' ? ['babel-plugin-jsx-remove-data-test-id'] : [],
+      },
+    }),
     libInjectCss(),
-    dts({ exclude: ['**/*.stories.tsx', 'src/test', '**/*.test.tsx', '**/*.test.ts'] }),
+    dts({ exclude: ['.storybook/**', 'src/test', '**/*.test.tsx', '**/*.test.ts'] }),
   ],
   build: {
     lib: {
