@@ -12,6 +12,7 @@ export default function LandingPageAdvantages(props: LandingPageAdvantagesProps)
     imageSrc = '',
     imageAlt = '',
     button = '',
+    className = '',
     onButtonClick = () => {},
   } = props;
 
@@ -21,7 +22,7 @@ export default function LandingPageAdvantages(props: LandingPageAdvantagesProps)
   return (
     <div
       data-testid="landing-page-advantages"
-      className={cn(css.AdvantageList, {
+      className={cn(css.AdvantageList, className, {
         [css.AdvantageListWithImage]: withImage,
       })}
     >

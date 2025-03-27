@@ -5,5 +5,6 @@ export interface LandingPageAdvantagesProps {
   imageSrc?: string;
   imageAlt?: string;
   button?: string;
+  className?: string;
   onButtonClick?: () => void;
 }

@@ -34,6 +34,7 @@ export const Default: Story = {
     imageSrc: undefined,
     imageAlt: undefined,
     button: undefined,
+    className: undefined,
     onButtonClick: undefined,
   },
   play: async ({ canvasElement, args }) => {
@@ -146,5 +147,16 @@ export const WithoutBottomLine: Story = {
     const bottomLine = within(canvasElement).queryByTestId('landing-page-advantages-bottom-line');
     await expect(topLine).toBeInTheDocument();
     await expect(bottomLine).not.toBeInTheDocument();
+  },
+};
+
+export const CustomClassName: Story = {
+  name: 'Custom className',
+  args: {
+    className: 'custom-class-name',
+  },
+  play: async ({ canvasElement, args }) => {
+    const advantages = within(canvasElement).getByTestId('landing-page-advantages');
+    await expect(advantages).toHaveClass(args.className || '');
   },
 };
