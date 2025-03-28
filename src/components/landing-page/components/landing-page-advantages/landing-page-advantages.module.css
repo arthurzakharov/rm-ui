@@ -137,9 +137,13 @@
     padding-left: 30px;
   }
 
+  .AdvantageListItems {
+    width: 65%;
+  }
+
   .AdvantageListImage {
     display: block;
-    width: 50%;
+    width: 35%;
     user-select: none;
   }
 
@@ -170,7 +174,12 @@
   }
 
   .AdvantageListItems {
+    width: 55%;
     font-size: calc(var(--landing-page-advantage-list-font-size) + 2px);
+  }
+
+  .AdvantageListImage {
+    width: 45%;
   }
 
   .AdvantageListHead {

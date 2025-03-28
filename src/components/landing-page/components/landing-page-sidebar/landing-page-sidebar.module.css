@@ -1,0 +1,49 @@
+@property --landing-page-sidebar-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+.LandingPageSidebar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.LandingPageSidebarBox {
+  padding: 0 15px;
+  background-color: var(--landing-page-sidebar-bg);
+}
+
+.LandingPageSidebarItem {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.LandingPageSidebarItem:first-of-type {
+  padding-top: 0;
+}
+
+.LandingPageSidebarItem:last-of-type {
+  padding-bottom: 0;
+}
+
+.LandingPageSidebarItem:only-of-type {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .LandingPageSidebarBox {
+    padding: 15px;
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.05), 0 0 10px rgba(0, 0, 0, 0.02);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .LandingPageSidebarBox {
+    padding: 30px;
+  }
+}

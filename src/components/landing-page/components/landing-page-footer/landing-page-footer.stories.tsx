@@ -3,13 +3,12 @@ import type {
   LandingPageAdvantageList,
   LandingPageAdvantageListNoButton,
   LandingPageContactUs,
-} from './landing-page-footer.types';
+} from '../../landing-page.types';
 import { expect, fn, within } from '@storybook/test';
 import LandingPageFooter from './landing-page-footer.component';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const ADVANTAGES: LandingPageAdvantageList = {
-  id: 'advantage-list',
   type: '###AdvantageList###',
   head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
   list: [
@@ -26,7 +25,6 @@ const ADVANTAGES: LandingPageAdvantageList = {
 };
 
 const ADVANTAGES_NO_BUTTON: LandingPageAdvantageListNoButton = {
-  id: 'advantage-list-no-button',
   type: '###AdvantageListNoButton###',
   head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
   list: [
@@ -41,7 +39,6 @@ const ADVANTAGES_NO_BUTTON: LandingPageAdvantageListNoButton = {
 };
 
 const CONTACT_US: LandingPageContactUs = {
-  id: 'contact-us',
   type: '###ContactUs###',
   submitted: false,
   onClick: fn(),
@@ -66,9 +63,9 @@ export const AdvantagesAndContactUs: Story = {
     items: [ADVANTAGES, CONTACT_US],
   },
   play: async ({ canvasElement }) => {
-    const advantageList = within(canvasElement).queryByTestId('advantage-list');
-    const advantageListNoButton = within(canvasElement).queryByTestId('advantage-list-no-button');
-    const contactUs = within(canvasElement).queryByTestId('contact-us');
+    const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
+    const advantageListNoButton = within(canvasElement).queryByTestId('###AdvantageListNoButton###');
+    const contactUs = within(canvasElement).queryByTestId('###ContactUs###');
     await expect(advantageList).toBeInTheDocument();
     await expect(advantageListNoButton).not.toBeInTheDocument();
     await expect(contactUs).toBeInTheDocument();
@@ -81,9 +78,9 @@ export const AdvantagesNoButtonAndContactUs: Story = {
     items: [ADVANTAGES_NO_BUTTON, CONTACT_US],
   },
   play: async ({ canvasElement }) => {
-    const advantageList = within(canvasElement).queryByTestId('advantage-list');
-    const advantageListNoButton = within(canvasElement).queryByTestId('advantage-list-no-button');
-    const contactUs = within(canvasElement).queryByTestId('contact-us');
+    const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
+    const advantageListNoButton = within(canvasElement).queryByTestId('###AdvantageListNoButton###');
+    const contactUs = within(canvasElement).queryByTestId('###ContactUs###');
     await expect(advantageList).not.toBeInTheDocument();
     await expect(advantageListNoButton).toBeInTheDocument();
     await expect(contactUs).toBeInTheDocument();
@@ -96,9 +93,9 @@ export const OnlyAdvantages: Story = {
     items: [ADVANTAGES],
   },
   play: async ({ canvasElement }) => {
-    const advantageList = within(canvasElement).queryByTestId('advantage-list');
-    const advantageListNoButton = within(canvasElement).queryByTestId('advantage-list-no-button');
-    const contactUs = within(canvasElement).queryByTestId('contact-us');
+    const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
+    const advantageListNoButton = within(canvasElement).queryByTestId('###AdvantageListNoButton###');
+    const contactUs = within(canvasElement).queryByTestId('###ContactUs###');
     await expect(advantageList).toBeInTheDocument();
     await expect(advantageListNoButton).not.toBeInTheDocument();
     await expect(contactUs).not.toBeInTheDocument();
@@ -111,9 +108,9 @@ export const OnlyAdvantagesNoButton: Story = {
     items: [ADVANTAGES_NO_BUTTON],
   },
   play: async ({ canvasElement }) => {
-    const advantageList = within(canvasElement).queryByTestId('advantage-list');
-    const advantageListNoButton = within(canvasElement).queryByTestId('advantage-list-no-button');
-    const contactUs = within(canvasElement).queryByTestId('contact-us');
+    const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
+    const advantageListNoButton = within(canvasElement).queryByTestId('###AdvantageListNoButton###');
+    const contactUs = within(canvasElement).queryByTestId('###ContactUs###');
     await expect(advantageList).not.toBeInTheDocument();
     await expect(advantageListNoButton).toBeInTheDocument();
     await expect(contactUs).not.toBeInTheDocument();
@@ -126,9 +123,9 @@ export const OnlyContactUs: Story = {
     items: [CONTACT_US],
   },
   play: async ({ canvasElement }) => {
-    const advantageList = within(canvasElement).queryByTestId('advantage-list');
-    const advantageListNoButton = within(canvasElement).queryByTestId('advantage-list-no-button');
-    const contactUs = within(canvasElement).queryByTestId('contact-us');
+    const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
+    const advantageListNoButton = within(canvasElement).queryByTestId('###AdvantageListNoButton###');
+    const contactUs = within(canvasElement).queryByTestId('###ContactUs###');
     await expect(advantageList).not.toBeInTheDocument();
     await expect(advantageListNoButton).not.toBeInTheDocument();
     await expect(contactUs).toBeInTheDocument();

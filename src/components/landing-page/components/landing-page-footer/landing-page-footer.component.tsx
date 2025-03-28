@@ -1,4 +1,4 @@
-import type { LandingPageFooterProps, LandingPageItem } from './landing-page-footer.types';
+import type { LandingPageFooterProps } from './landing-page-footer.types';
 import LandingPageAdvantages from '../landing-page-advantages/landing-page-advantages.component';
 import LandingPageContact from '../landing-page-contact/landing-page-contact.component';
 import css from './landing-page-footer.module.css';
@@ -8,8 +8,8 @@ export default function LandingPageFooter(props: LandingPageFooterProps) {
 
   return (
     <ul className={css.LandingPageFooter}>
-      {items.map((item: LandingPageItem) => (
-        <li key={item.id} data-testid={item.id} className={css.LandingPageFooterItem}>
+      {items.map((item) => (
+        <li key={item.type} data-testid={item.type} className={css.LandingPageFooterItem}>
           {item.type === '###AdvantageList###' && (
             <LandingPageAdvantages
               head={item.head}

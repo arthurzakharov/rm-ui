@@ -7,7 +7,11 @@ export { default as LandingPageAdvantages } from './components/landing-page/comp
 export { default as LandingPageButton } from './components/landing-page/components/landing-page-button/landing-page-button.component';
 export { default as LandingPageContact } from './components/landing-page/components/landing-page-contact/landing-page-contact.component';
 export { default as LandingPageFooter } from './components/landing-page/components/landing-page-footer/landing-page-footer.component';
+export { default as LandingPageLoader } from './components/landing-page/components/landing-page-loader/landing-page-loader.component';
+export { default as LandingPageSidebar } from './components/landing-page/components/landing-page-sidebar/landing-page-sidebar.component';
+export { default as Logos } from './components/logos/logos.component';
 export { default as NavigationButtons } from './components/navigation-buttons/navigation-buttons.component';
+export { default as OrderedList } from './components/ordered-list/ordered-list.component';
 export { default as IconCheck } from './icons/check/check.component';
 export { default as IconChevron } from './icons/chevron/chevron.component';
 export { default as IconCheckCircle } from './icons/check-circle/check-circle.component';

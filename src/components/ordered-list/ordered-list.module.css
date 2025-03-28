@@ -1,0 +1,116 @@
+@property --ordered-list-head-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #004473;
+}
+
+@property --ordered-list-head-font-family {
+  syntax: "<string>";
+  inherits: true;
+  initial-value: "Open Sans";
+}
+
+@property --ordered-list-head-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 18px;
+}
+
+@property --ordered-list-text-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #333333;
+}
+
+@property --ordered-list-text-font-family {
+  syntax: "<string>";
+  inherits: true;
+  initial-value: "Open Sans";
+}
+
+@property --ordered-list-text-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 14px;
+}
+
+@property --ordered-list-bullet-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff8e01;
+}
+
+@property --ordered-list-bullet-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+.OrderedList {
+  font-family: var(--ordered-list-text-font-family), sans-serif;
+  font-weight: 300;
+  font-size: var(--ordered-list-text-font-size);
+  line-height: 1.6;
+  color: var(--ordered-list-text-color);
+}
+
+.OrderedListHead {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: var(--ordered-list-head-font-family), sans-serif;
+  font-weight: 300;
+  font-size: var(--ordered-list-head-font-size);
+  line-height: 1.4;
+  color: var(--ordered-list-head-color);
+  text-align: center;
+}
+
+.OrderedListItems {
+  list-style: none;
+  margin: 0;
+  padding-left: 36px;
+}
+
+.OrderedListItem {
+  position: relative;
+}
+
+.OrderedListItem:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.OrderedListItem strong,
+.OrderedListItem b {
+  font-weight: 400;
+}
+
+.OrderedListBullet {
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  right: calc(100% + 10px);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ordered-list-bullet-bg);
+  font-family: var(--ordered-list-text-font-family), sans-serif;
+  font-weight: 400;
+  font-size: var(--ordered-list-text-font-size);
+  line-height: 1.6;
+  color: var(--ordered-list-bullet-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .OrderedListHead {
+    font-size: calc(var(--ordered-list-head-font-size) + 4px);
+    margin-bottom: 25px;
+  }
+
+  .OrderedListItem {
+    font-size: calc(var(--ordered-list-text-font-size) + 2px);
+    line-height: 1.5;
+  }
+}

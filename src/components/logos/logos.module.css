@@ -1,0 +1,29 @@
+.Logos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.LogosTls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.LogosIcon {
+  margin-bottom: 6px;
+  width: 39px;
+}
+
+.LogosText {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-accent-primary, #302576);
+}
+
+.LogosTuv {
+  width: 105px;
+}
