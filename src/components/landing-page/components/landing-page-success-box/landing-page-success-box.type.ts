@@ -19,7 +19,7 @@ type ListElement = {
   data: ListItem[];
 };
 
-export interface SuccessBoxProps {
+export interface LandingPageSuccessBoxProps {
   color: string;
   head: {
     primary?: string;

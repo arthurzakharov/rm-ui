@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SuccessBox from './success-box.component.tsx';
-import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width.tsx';
+import LandingPageSuccessBox from './landing-page-success-box.component';
+import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta = {
-  title: 'Components/LandingPage/SuccessBox',
-  component: SuccessBox,
+  title: 'Components/LandingPage/LandingPageSuccessBox',
+  component: LandingPageSuccessBox,
   decorators: [MaxWidthDecorator(615)],
   args: {
     color: '#00b649',
@@ -58,12 +58,12 @@ const meta = {
       },
     ],
   },
-} satisfies Meta<typeof SuccessBox>;
+} satisfies Meta<typeof LandingPageSuccessBox>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'SuccessBox',
+  name: 'LandingPageSuccessBox',
 };

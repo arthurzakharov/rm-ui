@@ -9,6 +9,7 @@ export { default as LandingPageContact } from './components/landing-page/compone
 export { default as LandingPageFooter } from './components/landing-page/components/landing-page-footer/landing-page-footer.component';
 export { default as LandingPageLoader } from './components/landing-page/components/landing-page-loader/landing-page-loader.component';
 export { default as LandingPageSidebar } from './components/landing-page/components/landing-page-sidebar/landing-page-sidebar.component';
+export { default as LandingPageSuccessBox } from './components/landing-page/components/landing-page-success-box/landing-page-success-box.component';
 export { default as Logos } from './components/logos/logos.component';
 export { default as NavigationButtons } from './components/navigation-buttons/navigation-buttons.component';
 export { default as OrderedList } from './components/ordered-list/ordered-list.component';

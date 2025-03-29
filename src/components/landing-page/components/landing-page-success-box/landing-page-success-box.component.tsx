@@ -1,13 +1,13 @@
-import type { SuccessBoxProps } from './success-box.type.ts';
+import type { LandingPageSuccessBoxProps } from './landing-page-success-box.type';
 import { Check, X } from 'lucide-react';
-import IconCheckCircle from '../../../../icons/check-circle/check-circle.component.tsx';
-import IconQuestion from '../../../../icons/question/question.component.tsx';
-import IconExclamation from '../../../../icons/exclamation/exclamation.component.tsx';
-import IconExclamationTriangle from '../../../../icons/exclamation-triangle/exclamation-triangle.component.tsx';
-import { cn } from '../../../../utils/functions.ts';
-import css from './success-box.module.css';
+import IconCheckCircle from '../../../../icons/check-circle/check-circle.component';
+import IconQuestion from '../../../../icons/question/question.component';
+import IconExclamation from '../../../../icons/exclamation/exclamation.component';
+import IconExclamationTriangle from '../../../../icons/exclamation-triangle/exclamation-triangle.component';
+import { cn } from '../../../../utils/functions';
+import css from './landing-page-success-box.module.css';
 
-export default function SuccessBox(props: SuccessBoxProps) {
+export default function LandingPageSuccessBox(props: LandingPageSuccessBoxProps) {
   const { color, head, main } = props;
 
   return (
@@ -73,4 +73,4 @@ export default function SuccessBox(props: SuccessBoxProps) {
   );
 }
 
-SuccessBox.displayName = 'SuccessBox';
+LandingPageSuccessBox.displayName = 'LandingPageSuccessBox';
