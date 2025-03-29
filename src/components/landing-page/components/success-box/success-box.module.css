@@ -1,0 +1,354 @@
+@property --success-box-primary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #00b649;
+}
+
+@property --success-box-a {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff8d02;
+}
+
+@property --success-box-main-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --success-box-text-primary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #333333;
+}
+
+@property --success-box-icon-check {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #00b649;
+}
+
+@property --success-box-icon-question {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3d5afe;
+}
+
+@property --success-box-icon-exclamation {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e53935;
+}
+
+@property --success-box-icon-cross {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e53935;
+}
+
+@property --success-box-warning-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fcf6f0;
+}
+
+@property --success-box-warning {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff5c01;
+}
+
+@property --success-box-warning-icon {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff4d01;
+}
+
+.SuccessBox {
+  border-bottom: 2px solid var(--success-box-primary);
+}
+
+.SuccessBox a {
+  color: var(--success-box-a);
+  text-decoration: none;
+}
+
+.SuccessBox a:hover {
+  text-decoration: underline;
+}
+
+.Header {
+  position: relative;
+  border: 2px solid var(--success-box-primary);
+  padding: 8px 15px 15px;
+  background-color: var(--success-box-primary);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  color:  #ffffff;
+}
+
+.Header:after {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  background-color: inherit;
+  width: 24px;
+  height: 24px;
+  bottom: -10px;
+  left: calc(50% - 12px);
+  transform: rotate(134deg);
+}
+
+.Icon {
+  margin-bottom: auto;
+  margin-top: 7px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+}
+
+.Text {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.Text > span:nth-child(2) {
+  font-weight: 600;
+  line-height: 22px;
+  text-decoration: underline;
+}
+
+.Main {
+  padding: 30px 20px;
+  background-color: var(--success-box-main-bg);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+}
+
+.MainTitle {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 24px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--success-box-primary);
+}
+
+.MainHtml {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--success-box-text-primary);
+}
+
+.MainList {
+  --icon-width: 14px;
+  --gap: 4px;
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.MainListItem {
+  padding-bottom: 8px;
+}
+
+.MainListItem:not([data-list-type]) {
+  padding-left: calc(var(--icon-width) + var(--gap));
+}
+
+.MainListItem[data-list-type="check"],
+.MainListItem[data-list-type="check"] .MainListContent > span {
+  color: var(--success-box-icon-check);
+}
+
+.MainListItem[data-list-type="question"],
+.MainListItem[data-list-type="question"] .MainListContent > span {
+  color: var(--success-box-icon-question);
+}
+
+.MainListItem[data-list-type="exclamation"],
+.MainListItem[data-list-type="exclamation"] .MainListContent > span {
+  color: var(--success-box-icon-exclamation);
+}
+
+.MainListItem[data-list-type="cross"],
+.MainListItem[data-list-type="cross"] .MainListContent > span {
+  color: var(--success-box-icon-cross);
+}
+
+.MainListText {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap);
+}
+
+.MainListText:not(:last-of-type) {
+  margin-bottom: 12px;
+}
+
+.MainListContent {
+  flex-basis: calc(100% - var(--icon-width) - var(--gap));
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--success-box-text-primary);
+}
+
+.MainListContent > span {
+  font-weight: 400;
+}
+
+.MainListContent ol,
+.MainListContent ul {
+  padding-left: 16px;
+}
+
+.MainListContent strong,
+.MainListContent b {
+  font-weight: 400;
+}
+
+.MainListIcon {
+  position: relative;
+  top: 5px;
+  left: -3px;
+  stroke-width: 4;
+  width: var(--icon-width);
+  height: var(--icon-width);
+}
+
+.MainWarning {
+  margin-top: 11px;
+  margin-bottom: 6px;
+  margin-left: calc(var(--icon-width) + var(--gap));
+  border-radius: 8px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--success-box-warning-bg);
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--success-box-warning);
+}
+
+.MainWarningIcon {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+  color: var(--success-box-warning-icon);
+}
+
+.MainWarningIconSingle {
+  width: 24px;
+  height: 24px;
+}
+
+.MainWarningIconMultiple {
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.MainWarningContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.MainWarningText {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.MainWarningText b,
+.MainWarningText strong {
+  font-weight: 600;
+}
+
+
+@media screen and (min-width: 1024px) {
+  .Main {
+    padding: 30px;
+  }
+
+  .MainTitle {
+    font-size: 22px;
+  }
+
+  .MainHtml {
+    font-size: 16px;
+  }
+
+  .MainListContent {
+    font-size: 16px;
+  }
+
+  .MainListItem {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .SuccessBox {
+    border: 2px solid var(--success-box-primary);
+    border-radius: 5px;
+    padding: 4px;
+    box-shadow:
+      0 0 28px rgba(68, 178, 86, 0.0509803922),
+      0 0 10px rgba(68, 178, 86, 0.0196078431);
+  }
+
+  .Main {
+    margin: 0 -4px;
+  }
+
+  .Header {
+    margin: -4px -4px 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Header {
+    padding: 18px 24px 20px;
+    border: none;
+  }
+
+  .Icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .Text {
+    padding-left: 20px;
+    font-size: 26px;
+  }
+
+  .Text > span:nth-child(2) {
+    font-size: 20px;
+  }
+}
