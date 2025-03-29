@@ -77,7 +77,7 @@
   text-decoration: underline;
 }
 
-.Header {
+.Head {
   position: relative;
   border: 2px solid var(--success-box-primary);
   padding: 8px 15px 15px;
@@ -88,7 +88,7 @@
   color:  #ffffff;
 }
 
-.Header:after {
+.Head:after {
   display: block;
   content: "";
   position: absolute;
@@ -101,7 +101,7 @@
   transform: rotate(134deg);
 }
 
-.Icon {
+.HeadIcon {
   margin-bottom: auto;
   margin-top: 7px;
   width: 40px;
@@ -109,7 +109,7 @@
   opacity: 0.8;
 }
 
-.Text {
+.HeadText {
   position: relative;
   z-index: 2;
   margin-top: 0;
@@ -119,13 +119,17 @@
   flex-direction: column;
   font-family: "Titillium Web", sans-serif;
   font-size: 18px;
-  font-weight: 400;
-  line-height: 1.4;
 }
 
-.Text > span:nth-child(2) {
+.HeadTextPrimary {
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.HeadTextSecondary {
   font-weight: 600;
-  line-height: 22px;
+  line-height: 1.2;
   text-decoration: underline;
 }
 
@@ -136,7 +140,7 @@
   font-weight: 300;
 }
 
-.MainTitle {
+.Title {
   margin-top: 0;
   margin-bottom: 0;
   padding-bottom: 24px;
@@ -147,7 +151,7 @@
   color: var(--success-box-primary);
 }
 
-.MainHtml {
+.Html {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -155,7 +159,7 @@
   color: var(--success-box-text-primary);
 }
 
-.MainList {
+.List {
   --icon-width: 14px;
   --gap: 4px;
   display: block;
@@ -164,69 +168,42 @@
   list-style: none;
 }
 
-.MainListItem {
+.ListItem {
   padding-bottom: 8px;
 }
 
-.MainListItem:not([data-list-type]) {
-  padding-left: calc(var(--icon-width) + var(--gap));
-}
-
-.MainListItem[data-list-type="check"],
-.MainListItem[data-list-type="check"] .MainListContent > span {
+.ListItemCheck,
+.ListItemCheck .ListItemText > span {
   color: var(--success-box-icon-check);
 }
 
-.MainListItem[data-list-type="question"],
-.MainListItem[data-list-type="question"] .MainListContent > span {
+.ListItemQuestion,
+.ListItemQuestion .ListItemText > span {
   color: var(--success-box-icon-question);
 }
 
-.MainListItem[data-list-type="exclamation"],
-.MainListItem[data-list-type="exclamation"] .MainListContent > span {
+.ListItemExclamation,
+.ListItemExclamation .ListItemText > span {
   color: var(--success-box-icon-exclamation);
 }
 
-.MainListItem[data-list-type="cross"],
-.MainListItem[data-list-type="cross"] .MainListContent > span {
+.ListItemCross,
+.ListItemCross .ListItemText > span {
   color: var(--success-box-icon-cross);
 }
 
-.MainListText {
+.ListItemSection {
   display: inline-flex;
   align-items: flex-start;
   justify-content: flex-start;
   gap: var(--gap);
 }
 
-.MainListText:not(:last-of-type) {
+.ListItemSection:not(:last-of-type) {
   margin-bottom: 12px;
 }
 
-.MainListContent {
-  flex-basis: calc(100% - var(--icon-width) - var(--gap));
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--success-box-text-primary);
-}
-
-.MainListContent > span {
-  font-weight: 400;
-}
-
-.MainListContent ol,
-.MainListContent ul {
-  padding-left: 16px;
-}
-
-.MainListContent strong,
-.MainListContent b {
-  font-weight: 400;
-}
-
-.MainListIcon {
+.ListItemIcon {
   position: relative;
   top: 5px;
   left: -3px;
@@ -235,7 +212,30 @@
   height: var(--icon-width);
 }
 
-.MainWarning {
+.ListItemText {
+  flex-basis: calc(100% - var(--icon-width) - var(--gap));
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--success-box-text-primary);
+}
+
+.ListItemText > span {
+  font-weight: 400;
+}
+
+.ListItemText ol,
+.ListItemText ul {
+  padding-left: 16px;
+}
+
+.ListItemText strong,
+.ListItemText b {
+  font-weight: 400;
+}
+
+.Warning {
   margin-top: 11px;
   margin-bottom: 6px;
   margin-left: calc(var(--icon-width) + var(--gap));
@@ -255,24 +255,24 @@
   color: var(--success-box-warning);
 }
 
-.MainWarningIcon {
+.WarningIcon {
   width: 36px;
   height: 36px;
   margin-right: 12px;
   color: var(--success-box-warning-icon);
 }
 
-.MainWarningIconSingle {
+.WarningIconSingle {
   width: 24px;
   height: 24px;
 }
 
-.MainWarningIconMultiple {
+.WarningIconMultiple {
   align-self: flex-start;
   margin-top: 2px;
 }
 
-.MainWarningContent {
+.WarningContent {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -280,38 +280,16 @@
   justify-content: flex-start;
 }
 
-.MainWarningText {
+.WarningText {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.MainWarningText b,
-.MainWarningText strong {
+.WarningText b,
+.WarningText strong {
   font-weight: 600;
 }
 
-
-@media screen and (min-width: 1024px) {
-  .Main {
-    padding: 30px;
-  }
-
-  .MainTitle {
-    font-size: 22px;
-  }
-
-  .MainHtml {
-    font-size: 16px;
-  }
-
-  .MainListContent {
-    font-size: 16px;
-  }
-
-  .MainListItem {
-    font-size: 16px;
-  }
-}
 
 @media screen and (min-width: 768px) {
   .SuccessBox {
@@ -323,32 +301,56 @@
       0 0 10px rgba(68, 178, 86, 0.0196078431);
   }
 
-  .Main {
-    margin: 0 -4px;
+  .Head {
+    margin: -4px -4px 0;
   }
 
-  .Header {
-    margin: -4px -4px 0;
+  .Main {
+    margin: 0 -4px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .Header {
+  .Head {
     padding: 18px 24px 20px;
     border: none;
   }
 
-  .Icon {
+  .HeadIcon {
     width: 60px;
     height: 60px;
   }
 
-  .Text {
+  .HeadText {
     padding-left: 20px;
-    font-size: 26px;
   }
 
-  .Text > span:nth-child(2) {
+  .HeadTextPrimary {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .HeadTextSecondary {
     font-size: 20px;
+  }
+
+  .Main {
+    padding: 30px;
+  }
+
+  .Title {
+    font-size: 22px;
+  }
+
+  .Html {
+    font-size: 16px;
+  }
+
+  .ListItem {
+    font-size: 16px;
+  }
+
+  .ListItemText {
+    font-size: 16px;
   }
 }
