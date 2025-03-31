@@ -13,7 +13,10 @@ export { default as LandingPageSuccessBox } from './components/landing-page/comp
 export { default as Logos } from './components/logos/logos.component';
 export { default as NavigationButtons } from './components/navigation-buttons/navigation-buttons.component';
 export { default as OrderedList } from './components/ordered-list/ordered-list.component';
+export { default as IconCheck } from './icons/check/check.component';
 export { default as IconChevron } from './icons/chevron/chevron.component';
+export { default as IconCheckCircle } from './icons/check-circle/check-circle.component';
+export { default as IconCross } from './icons/cross/cross.component';
 export { default as IconExclamation } from './icons/exclamation/exclamation.component';
 export { default as IconExclamationTriangle } from './icons/exclamation-triangle/exclamation-triangle.component';
 export { default as IconMagnifyingGlass } from './icons/magnifying-glass/magnifying-glass.component';
