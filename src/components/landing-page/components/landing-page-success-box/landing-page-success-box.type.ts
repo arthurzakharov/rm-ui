@@ -1,3 +1,5 @@
+import { RefObject } from 'react';
+
 type ListItem = {
   type: 'check' | 'question' | 'exclamation' | 'cross';
   content: string;
@@ -26,4 +28,8 @@ export interface LandingPageSuccessBoxProps {
     secondary: string;
   };
   main: (TitleElement | HtmlElement | ListElement)[];
+  refs?: {
+    head?: RefObject<HTMLDivElement>;
+    main?: RefObject<HTMLDivElement>;
+  };
 }

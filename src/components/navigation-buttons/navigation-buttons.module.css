@@ -35,7 +35,7 @@
 }
 
 @property --navigation-button-font-family {
-  syntax: '<string>';
+  syntax: '*';
   inherits: true;
   initial-value: 'Titillium Web';
 }

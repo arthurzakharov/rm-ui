@@ -29,7 +29,7 @@
   initial-value: 16px;
 }
 @property --checkbox-font-family {
-  syntax: '<string>';
+  syntax: '*';
   inherits: true;
   initial-value: 'Open Sans';
 }

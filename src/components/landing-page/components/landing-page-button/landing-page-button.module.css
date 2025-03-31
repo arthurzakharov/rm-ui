@@ -11,7 +11,7 @@
 }
 
 @property --landing-page-btn-font-family {
-  syntax: '<string>';
+  syntax: '*';
   inherits: true;
   initial-value: 'Titillium Web';
 }

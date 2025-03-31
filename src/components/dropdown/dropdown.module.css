@@ -64,7 +64,7 @@
   initial-value: #333333;
 }
 @property --dropdown-font-family {
-  syntax: '<string>';
+  syntax: '*';
   inherits: true;
   initial-value: 'Open Sans';
 }

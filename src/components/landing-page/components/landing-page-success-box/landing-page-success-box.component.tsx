@@ -8,7 +8,7 @@ import { cn } from '../../../../utils/functions';
 import css from './landing-page-success-box.module.css';
 
 export default function LandingPageSuccessBox(props: LandingPageSuccessBoxProps) {
-  const { color, head, main } = props;
+  const { color, head, main, refs } = props;
 
   return (
     <div className={css.SuccessBox}>
@@ -19,14 +19,14 @@ export default function LandingPageSuccessBox(props: LandingPageSuccessBoxProps)
           }
         `}
       </style>
-      <div className={css.Head}>
+      <div ref={refs?.head} className={css.Head}>
         <IconCheckCircle className={css.HeadIcon} />
         <h5 className={css.HeadText}>
           {head.primary && <span className={css.HeadTextPrimary}>{head.primary}</span>}
           {head.secondary && <span className={css.HeadTextSecondary}>{head.secondary}</span>}
         </h5>
       </div>
-      <div className={cn(css.Main)}>
+      <div ref={refs?.main} className={cn(css.Main)}>
         {main.map((item, i) => {
           switch (item.type) {
             case 'title':
