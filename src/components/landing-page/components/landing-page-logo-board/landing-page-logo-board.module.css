@@ -1,0 +1,62 @@
+@property --landing-page-logo-board-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fcf6f0;
+}
+
+@property --landing-page-logo-board-not-found {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #bdc4c9;
+}
+
+.LogoBoard {
+  --image-not-found-width: 32px;
+  --image-height: 32px;
+  --item-padding: 5px 10px;
+
+  padding: 14px 12px;
+  border-radius: 8px;
+  background-color: var(--landing-page-logo-board-bg);
+}
+
+.Wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.Item {
+  padding: var(--item-padding);
+  line-height: 1.1;
+}
+
+.Image {
+  width: auto;
+  height: var(--image-height);
+}
+
+.NotFound {
+  padding: var(--item-padding);
+  width: var(--image-not-found-width);
+  height: var(--image-height);
+  background-color: var(--landing-page-logo-board-not-found);
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .LogoBoard {
+    --image-not-found-width: 64px;
+    --image-height: 36px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .LogoBoard {
+    --image-not-found-width: 71px;
+    --image-height: 40px;
+    --item-padding: 6px 12px;
+  }
+}
