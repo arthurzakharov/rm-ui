@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import Calendar from './calendar.component';
 import { MONTH, WEEK_DAY } from '../../utils/enums';
 import { useState } from 'react';
-import { createDate } from '../../utils/functions.ts';
+import { createDate } from '../../utils/functions';
 
 const meta = {
   title: 'Components/Calendar',

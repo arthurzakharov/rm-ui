@@ -3,7 +3,7 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
 import CalendarDay from './calendar-day.component';
 import css from './calendar-day.module.css';
-import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 import { CalendarContext } from '../../calendar.context';
 import { createDate, generateCalendar } from '../../../../utils/functions';
 import { MONTH, WEEK_DAY } from '../../../../utils/enums';

@@ -97,10 +97,10 @@ export const Default: Story = {
 export const WithHead: Story = {
   name: 'With head',
   args: {
-    head: 'FAQ: Weitere häufig gestellte Fragen',
+    head: '<b>FAQ:</b> Weitere häufig gestellte Fragen',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ args, canvasElement }) => {
     const head = within(canvasElement).getByTestId('landing-page-accordion-head');
-    await expect(head).toBeInTheDocument();
+    await expect(head).toContainHTML(args.head || '');
   },
 };

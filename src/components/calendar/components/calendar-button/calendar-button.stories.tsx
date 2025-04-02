@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn, within, expect, userEvent } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
 import CalendarButton from './calendar-button.component';
-import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 import { CalendarContext } from '../../calendar.context';
 
 const meta = {

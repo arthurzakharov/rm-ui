@@ -17,9 +17,7 @@ export default function LandingPageAccordion(props: LandingPageAccordionProps) {
   return (
     <div className={css.Accordion}>
       {head && (
-        <h6 data-testid="landing-page-accordion-head" className={css.Header}>
-          {head}
-        </h6>
+        <h6 data-testid="landing-page-accordion-head" className={css.Head} dangerouslySetInnerHTML={{ __html: head }} />
       )}
       {blocks.map((block, i) => (
         <div key={i} data-testid="landing-page-accordion-block" className={css.Block}>

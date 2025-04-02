@@ -1,11 +1,12 @@
 import type { OrderedListProps } from './ordered-list.type';
+import { cn } from '../../utils/functions';
 import css from './ordered-list.module.css';
 
 export default function OrderedList(props: OrderedListProps) {
-  const { head, list } = props;
+  const { head, list, className = '' } = props;
 
   return (
-    <div className={css.OrderedList}>
+    <div className={cn(css.OrderedList, className)}>
       <h6 data-testid="ordered-list-head" className={css.OrderedListHead}>
         {head}
       </h6>

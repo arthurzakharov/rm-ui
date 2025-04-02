@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, waitFor, within } from '@storybook/test';
 import LandingPageLogoBoard from './landing-page-logo-board.component';
-import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width.tsx';
+import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta = {
   title: 'Components/LandingPage/LandingPageLogoBoard',

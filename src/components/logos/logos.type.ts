@@ -4,4 +4,5 @@ export interface LogosProps {
   show: LogoName[];
   tlsSrc?: string;
   tuvSrc?: string;
+  className?: string;
 }

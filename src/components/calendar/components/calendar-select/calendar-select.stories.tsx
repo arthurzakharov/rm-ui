@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn, within, expect, userEvent } from '@storybook/test';
 import CalendarSelect from './calendar-select.component';
-import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars.tsx';
+import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarSelect',

@@ -7,7 +7,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import { CalendarContext } from '../../calendar.context';
 import { MONTH } from '../../../../utils/enums';
 import css from './calendar-month.module.css';
-import { createDate } from '../../../../utils/functions.ts';
+import { createDate } from '../../../../utils/functions';
 
 const meta = {
   title: 'Components/Calendar/Components/CalendarMonth',

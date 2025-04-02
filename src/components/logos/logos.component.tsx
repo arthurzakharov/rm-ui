@@ -1,11 +1,12 @@
 import type { LogosProps } from './logos.type';
+import { cn } from '../../utils/functions';
 import css from './logos.module.css';
 
 export default function Logos(props: LogosProps) {
-  const { show, tlsSrc = '', tuvSrc = '' } = props;
+  const { show, tlsSrc = '', tuvSrc = '', className = '' } = props;
 
   return (
-    <div className={css.Logos}>
+    <div className={cn(css.Logos, className)}>
       {show.map((logo) => {
         switch (logo) {
           case 'tuv':

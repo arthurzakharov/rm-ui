@@ -3,7 +3,7 @@ import type { CheckboxProps } from './checkbox.type';
 import { useState } from 'react';
 import { cn } from '../../utils/functions';
 import css from './checkbox.module.css';
-import InputControl from '../input-control/input-control.component.tsx';
+import InputControl from '../input-control/input-control.component';
 
 const Checkbox: FC<CheckboxProps> = ({
   value,
