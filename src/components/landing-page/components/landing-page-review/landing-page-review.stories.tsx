@@ -94,3 +94,17 @@ export const WithoutBottomLine: Story = {
     await expect(bottomLine).not.toBeInTheDocument();
   },
 };
+
+export const WithoutBothLines: Story = {
+  name: 'Without both lines',
+  args: {
+    hideTopSeparator: true,
+    hideBottomSeparator: true,
+  },
+  play: async ({ canvasElement }) => {
+    const topLine = within(canvasElement).queryByTestId('landing-page-review-top-line');
+    const bottomLine = within(canvasElement).queryByTestId('landing-page-review-bottom-line');
+    await expect(topLine).not.toBeInTheDocument();
+    await expect(bottomLine).not.toBeInTheDocument();
+  },
+};

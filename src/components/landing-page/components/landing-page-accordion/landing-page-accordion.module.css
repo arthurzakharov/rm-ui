@@ -1,0 +1,140 @@
+@property --landing-page-accordion-text-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #4b4b4b;
+}
+
+@property --landing-page-accordion-primary-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #004473;
+}
+
+@property --landing-page-accordion-head-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 18px;
+}
+
+@property --landing-page-accordion-title-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+
+@property --landing-page-accordion-text-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 14px;
+}
+
+.Accordion {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.Header {
+  margin: 0 0 26px 0;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  font-size: var(--landing-page-accordion-head-font-size);
+  line-height: 1.4;
+  color: var(--landing-page-accordion-primary-color);
+}
+
+.Block {
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 4px solid #f5f8f9;
+}
+
+.Block:last-of-type {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.Title {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.Text {
+  margin: 0 0 0 8px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  font-size: var(--landing-page-accordion-title-font-size);
+  line-height: 1.4;
+  color: var(--landing-page-accordion-primary-color);
+}
+
+.Arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 6px 0 6px;
+  border-color: var(--landing-page-accordion-primary-color) transparent transparent transparent;
+  margin-top: 6px;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+.ArrowOpen {
+  animation-name: openRotation;
+  animation-timing-function: ease-out;
+}
+
+.ArrowClose {
+  animation-name: closeRotation;
+  animation-timing-function: ease-in;
+}
+
+.Body {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition-property: height;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.Content {
+  padding: 20px 0 0 20px;
+  height: auto;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: var(--landing-page-accordion-text-font-size);
+  line-height: 1.6;
+  color: var(--landing-page-accordion-text-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .Content {
+    font-size: calc(var(--landing-page-accordion-text-font-size) + 2px);
+  }
+}
+
+@keyframes openRotation {
+  0% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes closeRotation {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
