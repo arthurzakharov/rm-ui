@@ -1,7 +1,6 @@
 export interface LandingPageAdvantagesProps {
-  head: string;
+  title: string;
   list: string[];
-  lines?: [boolean, boolean];
   imageSrc?: string;
   imageAlt?: string;
   button?: string;

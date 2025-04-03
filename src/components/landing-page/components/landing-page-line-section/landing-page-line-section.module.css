@@ -1,0 +1,40 @@
+@property --landing-page-line-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f6f8f9;
+}
+
+@property --landing-page-line-width {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 3px;
+}
+
+@property --landing-page-line-space {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 25px;
+}
+
+.Section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.Line {
+  margin: 0;
+  padding: 0;
+  border: var(--landing-page-line-width) solid var(--landing-page-line-color);
+  background: none;
+}
+
+.Line:first-child {
+  margin-bottom: var(--landing-page-line-space);
+}
+
+.Line:last-child {
+  margin-top: var(--landing-page-line-space);
+}

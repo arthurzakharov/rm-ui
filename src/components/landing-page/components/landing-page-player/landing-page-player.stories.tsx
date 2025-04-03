@@ -6,13 +6,13 @@ import css from './landing-page-player.module.css';
 
 const meta = {
   title: 'Components/LandingPage/LandingPagePlayer',
+  decorators: [MaxWidthDecorator(555)],
   component: LandingPagePlayer,
   args: {
     videoId: 'KJDcZmVg1fA',
     description: 'Noi3e MC',
     onPlay: fn(),
   },
-  decorators: [MaxWidthDecorator(1030)],
 } satisfies Meta<typeof LandingPagePlayer>;
 
 export default meta;

@@ -12,7 +12,7 @@ export default function LandingPageFooter(props: LandingPageFooterProps) {
         <li key={item.type} data-testid={item.type} className={css.LandingPageFooterItem}>
           {item.type === '###AdvantageList###' && (
             <LandingPageAdvantages
-              head={item.head}
+              title={item.head}
               list={item.list}
               imageSrc={item.imageSrc}
               imageAlt={item.imageAlt}
@@ -22,7 +22,7 @@ export default function LandingPageFooter(props: LandingPageFooterProps) {
           )}
           {item.type === '###AdvantageListNoButton###' && (
             <LandingPageAdvantages
-              head={item.head}
+              title={item.head}
               list={item.list}
               imageSrc={item.imageSrc}
               imageAlt={item.imageAlt}

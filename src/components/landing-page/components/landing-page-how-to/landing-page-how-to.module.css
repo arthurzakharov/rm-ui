@@ -1,29 +1,8 @@
-@property --how-to-line {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #f6f8f9;
-}
-
 .HowTo {
-  display: block;
-  width: 100%;
-}
-
-.Line {
-  margin-top: 0;
-  margin-bottom: 0;
-  border: 3px solid var(--how-to-line);
-  background: none;
-}
-
-.Line:first-of-type {
-  margin-bottom: 30px;
-}
-
-.Logos {
-  margin-bottom: 30px;
-}
-
-.OrderedList {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 30px
 }

@@ -10,12 +10,6 @@
   initial-value: #004473;
 }
 
-@property --landing-page-advantage-line-color {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #f6f8f9;
-}
-
 @property --landing-page-advantage-check-color {
   syntax: "<color>";
   inherits: true;
@@ -34,34 +28,34 @@
   initial-value: 14px;
 }
 
-.AdvantageList {
+.Advantages {
   box-sizing: border-box;
   width: 100%;
 }
 
-.AdvantageListWithImage {
+.AdvantagesWithImage {
   position: relative;
   box-shadow: 0 0 28px rgba(0, 0, 0, 0.0509803922), 0 0 10px rgba(0, 0, 0, 0.0196078431);
   padding: 30px 15px;
   border-radius: 5px;
 }
 
-.AdvantageListWithImage .AdvantageListHead {
+.AdvantagesWithImage .Title {
   padding-top: 0;
   padding-bottom: 18px;
   font-weight: 300;
 }
 
-.AdvantageListWithImage .AdvantageListItems {
+.AdvantagesWithImage .List {
   padding-left: 20px;
   padding-bottom: 0;
 }
 
-.AdvantageListWithImage .AdvantageListItem {
+.AdvantagesWithImage .ListItem {
   font-family: "Open Sans", sans-serif;
 }
 
-.AdvantageListHead {
+.Title {
   margin: 0;
   padding-top: 25px;
   padding-bottom: 20px;
@@ -73,14 +67,7 @@
   text-align: center;
 }
 
-.AdvantageListLine {
-  margin-top: 0;
-  margin-bottom: 0;
-  border: 3px solid var(--landing-page-advantage-line-color);
-  background: none;
-}
-
-.AdvantageListItems {
+.List {
   box-sizing: border-box;
   list-style: none;
   margin: 0;
@@ -93,16 +80,16 @@
   color: var(--landing-page-advantage-color);
 }
 
-.AdvantageListItem {
+.ListItem {
   position: relative;
   padding-left: 26px;
 }
 
-.AdvantageListItem:not(:last-of-type) {
+.ListItem:not(:last-of-type) {
   margin-bottom: 8px;
 }
 
-.AdvantageListIcon {
+.CheckIcon {
   position: absolute;
   z-index: 1;
   left: 0;
@@ -113,41 +100,41 @@
   stroke-width: 6px;
 }
 
-.AdvantageListImage {
+.Image {
   display: none;
 }
 
-.AdvantageListButton {
+.Button {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .AdvantageListWithImage {
+  .AdvantagesWithImage {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
   }
 
-  .AdvantageListWithImage .AdvantageListHead {
+  .AdvantagesWithImage .Title {
     flex-basis: 100%;
   }
 
-  .AdvantageListWithImage .AdvantageListItems {
+  .AdvantagesWithImage .List {
     padding-left: 30px;
   }
 
-  .AdvantageListItems {
+  .List {
     width: 65%;
   }
 
-  .AdvantageListImage {
+  .Image {
     display: block;
     width: 35%;
     user-select: none;
   }
 
-  .AdvantageListButton {
+  .Button {
     flex-basis: 50%;
     display: block;
     padding-top: 25px;
@@ -156,37 +143,37 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .AdvantageListWithImage {
+  .AdvantagesWithImage {
     padding: 30px 60px;
   }
 
-  .AdvantageListWithImage .AdvantageListHead {
+  .AdvantagesWithImage .Title {
     line-height: 1.4;
   }
 
-  .AdvantageListWithImage .AdvantageListItems {
+  .AdvantagesWithImage .List {
     padding-bottom: 0;
     padding-left: 0;
   }
 
-  .AdvantageListWithImage .AdvantageListItem {
+  .AdvantagesWithImage .ListItem {
     line-height: 1.6;
   }
 
-  .AdvantageListItems {
+  .List {
     width: 55%;
     font-size: calc(var(--landing-page-advantage-list-font-size) + 2px);
   }
 
-  .AdvantageListImage {
+  .Image {
     width: 45%;
   }
 
-  .AdvantageListHead {
+  .Title {
     font-size: calc(var(--landing-page-advantage-head-font-size) + 4px);
   }
 
-  .AdvantageListButton {
+  .Button {
     padding-left: 100px;
   }
 }

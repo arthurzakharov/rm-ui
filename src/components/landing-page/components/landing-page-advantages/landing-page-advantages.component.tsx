@@ -5,16 +5,7 @@ import { cn } from '../../../../utils/functions';
 import css from './landing-page-advantages.module.css';
 
 export default function LandingPageAdvantages(props: LandingPageAdvantagesProps) {
-  const {
-    head,
-    list,
-    lines = [true, true],
-    imageSrc = '',
-    imageAlt = '',
-    button = '',
-    className = '',
-    onButtonClick = () => {},
-  } = props;
+  const { title, list, imageSrc = '', imageAlt = '', button = '', className = '', onButtonClick = () => {} } = props;
 
   const withImage = !!props.imageSrc && !!props.imageAlt;
   const withButton = !!props.button && !!props.onButtonClick;
@@ -22,39 +13,28 @@ export default function LandingPageAdvantages(props: LandingPageAdvantagesProps)
   return (
     <div
       data-testid="landing-page-advantages"
-      className={cn(css.AdvantageList, className, {
-        [css.AdvantageListWithImage]: withImage,
+      className={cn(css.Advantages, className, {
+        [css.AdvantagesWithImage]: withImage,
       })}
     >
-      {!withImage && lines[0] && (
-        <hr data-testid="landing-page-advantages-top-line" className={css.AdvantageListLine} />
-      )}
-      <h6 data-testid="landing-page-advantages-head" className={css.AdvantageListHead}>
-        {head}
+      <h6 data-testid="landing-page-advantages-head" className={css.Title}>
+        {title}
       </h6>
-      <ul className={css.AdvantageListItems}>
+      <ul className={css.List}>
         {list.map((listItem, i) => (
-          <li key={i} data-testid="landing-page-advantages-list-item" className={css.AdvantageListItem}>
-            <Check className={css.AdvantageListIcon} />
+          <li key={i} data-testid="landing-page-advantages-list-item" className={css.ListItem}>
+            <Check className={css.CheckIcon} />
             {listItem}
           </li>
         ))}
         {withImage && withButton && (
-          <li data-testid="landing-page-advantages-button" className={css.AdvantageListButton}>
+          <li data-testid="landing-page-advantages-button" className={css.Button}>
             <LandingPageButton text={button} onClick={onButtonClick} />
           </li>
         )}
       </ul>
       {withImage && (
-        <img
-          data-testid="landing-page-advantages-image"
-          src={imageSrc}
-          alt={imageAlt}
-          className={css.AdvantageListImage}
-        />
-      )}
-      {!withImage && lines[1] && (
-        <hr data-testid="landing-page-advantages-bottom-line" className={css.AdvantageListLine} />
+        <img data-testid="landing-page-advantages-image" src={imageSrc} alt={imageAlt} className={css.Image} />
       )}
     </div>
   );

@@ -6,10 +6,10 @@ import css from './landing-page-advantages.module.css';
 
 const meta = {
   title: 'Components/LandingPage/LandingPageAdvantages',
-  component: LandingPageAdvantages,
   decorators: [MaxWidthDecorator(1030)],
+  component: LandingPageAdvantages,
   args: {
-    head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+    title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
     list: [
       'Größte Verkehrsrechtskanzlei in Deutschland',
       'Erfahrung aus über 150.000 Mandate',
@@ -30,7 +30,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   args: {
-    lines: undefined,
     imageSrc: undefined,
     imageAlt: undefined,
     button: undefined,
@@ -38,14 +37,14 @@ export const Default: Story = {
     onButtonClick: undefined,
   },
   play: async ({ canvasElement, args }) => {
+    const advantages = within(canvasElement).getByTestId('landing-page-advantages');
     const head = within(canvasElement).getByTestId('landing-page-advantages-head');
     const items = within(canvasElement).getAllByTestId('landing-page-advantages-list-item');
     const image = within(canvasElement).queryByTestId('landing-page-advantages-image');
     const button = within(canvasElement).queryByTestId('landing-page-advantages-button');
-    const topLine = within(canvasElement).getByTestId('landing-page-advantages-top-line');
-    const bottomLine = within(canvasElement).getByTestId('landing-page-advantages-bottom-line');
+    await expect(advantages.className).toEqual(css.Advantages);
     await expect(head).toBeInTheDocument();
-    await expect(head).toHaveTextContent(args.head);
+    await expect(head).toHaveTextContent(args.title);
     await expect(items.length).toEqual(args.list.length);
     for (const item of items) {
       const i = items.indexOf(item);
@@ -53,8 +52,6 @@ export const Default: Story = {
     }
     await expect(image).not.toBeInTheDocument();
     await expect(button).not.toBeInTheDocument();
-    await expect(topLine).toBeInTheDocument();
-    await expect(bottomLine).toBeInTheDocument();
   },
 };
 
@@ -74,7 +71,7 @@ export const WithImageAndButton: Story = {
     const image = within(canvasElement).getByTestId('landing-page-advantages-image');
     const button = within(canvasElement).getByTestId('landing-page-advantages-button');
     const cta = within(button).getByRole('button');
-    await expect(advantages.className).toEqual(`${css.AdvantageList} ${css.AdvantageListWithImage}`);
+    await expect(advantages.className).toEqual(`${css.Advantages} ${css.AdvantagesWithImage}`);
     await expect(topLine).not.toBeInTheDocument();
     await expect(bottomLine).not.toBeInTheDocument();
     await expect(image).toBeInTheDocument();
@@ -88,7 +85,7 @@ export const WithImageAndButton: Story = {
 };
 
 export const WithImageAndWithoutButton: Story = {
-  name: 'With image and button',
+  name: 'With image and without button',
   args: {
     ...Default.args,
     imageSrc: '/tablets-dlp.jpg',
@@ -106,57 +103,13 @@ export const WithoutImageAndButton: Story = {
   name: 'Without image and button',
   args: {
     ...Default.args,
-    lines: [true, true],
   },
   play: async ({ canvasElement }) => {
     const advantages = within(canvasElement).getByTestId('landing-page-advantages');
-    const topLine = within(canvasElement).getByTestId('landing-page-advantages-top-line');
-    const bottomLine = within(canvasElement).getByTestId('landing-page-advantages-bottom-line');
     const button = within(canvasElement).queryByTestId('landing-page-advantages-button');
     const image = within(canvasElement).queryByTestId('landing-page-advantages-image');
-    await expect(advantages.className).toEqual(css.AdvantageList);
-    await expect(topLine).toBeInTheDocument();
-    await expect(bottomLine).toBeInTheDocument();
+    await expect(advantages.className).toEqual(css.Advantages);
     await expect(button).not.toBeInTheDocument();
     await expect(image).not.toBeInTheDocument();
-  },
-};
-
-export const WithoutTopLine: Story = {
-  name: 'Without top line',
-  args: {
-    ...WithoutImageAndButton.args,
-    lines: [false, true],
-  },
-  play: async ({ canvasElement }) => {
-    const topLine = within(canvasElement).queryByTestId('landing-page-advantages-top-line');
-    const bottomLine = within(canvasElement).getByTestId('landing-page-advantages-bottom-line');
-    await expect(topLine).not.toBeInTheDocument();
-    await expect(bottomLine).toBeInTheDocument();
-  },
-};
-
-export const WithoutBottomLine: Story = {
-  name: 'Without bottom line',
-  args: {
-    ...WithoutImageAndButton.args,
-    lines: [true, false],
-  },
-  play: async ({ canvasElement }) => {
-    const topLine = within(canvasElement).getByTestId('landing-page-advantages-top-line');
-    const bottomLine = within(canvasElement).queryByTestId('landing-page-advantages-bottom-line');
-    await expect(topLine).toBeInTheDocument();
-    await expect(bottomLine).not.toBeInTheDocument();
-  },
-};
-
-export const CustomClassName: Story = {
-  name: 'Custom className',
-  args: {
-    className: 'custom-class-name',
-  },
-  play: async ({ canvasElement, args }) => {
-    const advantages = within(canvasElement).getByTestId('landing-page-advantages');
-    await expect(advantages).toHaveClass(args.className || '');
   },
 };

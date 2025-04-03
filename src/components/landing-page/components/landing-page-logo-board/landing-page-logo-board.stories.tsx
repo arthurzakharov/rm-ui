@@ -5,7 +5,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta = {
   title: 'Components/LandingPage/LandingPageLogoBoard',
-  decorators: [MaxWidthDecorator(768)],
+  decorators: [MaxWidthDecorator(555)],
   component: LandingPageLogoBoard,
   args: {
     paths: import.meta.glob('../../../../../.storybook/assets/companies/*', {

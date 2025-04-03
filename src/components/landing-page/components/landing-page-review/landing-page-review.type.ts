@@ -8,7 +8,6 @@ type Review = {
 };
 
 export interface LandingPageReviewProps {
+  title?: string;
   reviews: Review[];
-  hideTopSeparator?: boolean;
-  hideBottomSeparator?: boolean;
 }

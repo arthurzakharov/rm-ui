@@ -5,7 +5,7 @@ import LandingPageReview from './landing-page-review.component';
 
 const meta = {
   title: 'Components/LandingPage/LandingPageReview',
-  decorators: [MaxWidthDecorator(768)],
+  decorators: [MaxWidthDecorator(555)],
   component: LandingPageReview,
   args: {
     reviews: [
@@ -44,17 +44,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Default',
+  name: 'Default (without title)',
   args: {
-    hideTopSeparator: undefined,
-    hideBottomSeparator: undefined,
+    title: undefined,
   },
   play: async ({ args, canvasElement }) => {
-    const topLine = within(canvasElement).getByTestId('landing-page-review-top-line');
-    const bottomLine = within(canvasElement).getByTestId('landing-page-review-bottom-line');
+    const title = within(canvasElement).queryByTestId('landing-page-review-title');
     const reviews = within(canvasElement).getAllByTestId('landing-page-review-item');
-    await expect(topLine).toBeInTheDocument();
-    await expect(bottomLine).toBeInTheDocument();
+    await expect(title).not.toBeInTheDocument();
     for (const review of reviews) {
       const i = reviews.indexOf(review);
       await expect(within(review).getByTestId('landing-page-review-message')).toHaveTextContent(
@@ -67,44 +64,13 @@ export const Default: Story = {
   },
 };
 
-export const WithoutTopLine: Story = {
-  name: 'Without top line',
+export const WithTitle: Story = {
+  name: 'With title',
   args: {
-    hideTopSeparator: true,
-    hideBottomSeparator: false,
+    title: '<b>Erfahrungen:</b> Das sagen unsere Mandanten',
   },
   play: async ({ canvasElement }) => {
-    const topLine = within(canvasElement).queryByTestId('landing-page-review-top-line');
-    const bottomLine = within(canvasElement).getByTestId('landing-page-review-bottom-line');
-    await expect(topLine).not.toBeInTheDocument();
-    await expect(bottomLine).toBeInTheDocument();
-  },
-};
-
-export const WithoutBottomLine: Story = {
-  name: 'Without bottom line',
-  args: {
-    hideTopSeparator: false,
-    hideBottomSeparator: true,
-  },
-  play: async ({ canvasElement }) => {
-    const topLine = within(canvasElement).getByTestId('landing-page-review-top-line');
-    const bottomLine = within(canvasElement).queryByTestId('landing-page-review-bottom-line');
-    await expect(topLine).toBeInTheDocument();
-    await expect(bottomLine).not.toBeInTheDocument();
-  },
-};
-
-export const WithoutBothLines: Story = {
-  name: 'Without both lines',
-  args: {
-    hideTopSeparator: true,
-    hideBottomSeparator: true,
-  },
-  play: async ({ canvasElement }) => {
-    const topLine = within(canvasElement).queryByTestId('landing-page-review-top-line');
-    const bottomLine = within(canvasElement).queryByTestId('landing-page-review-bottom-line');
-    await expect(topLine).not.toBeInTheDocument();
-    await expect(bottomLine).not.toBeInTheDocument();
+    const title = within(canvasElement).getByTestId('landing-page-review-title');
+    await expect(title).toBeInTheDocument();
   },
 };

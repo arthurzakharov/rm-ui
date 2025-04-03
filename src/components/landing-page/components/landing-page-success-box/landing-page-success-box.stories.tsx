@@ -5,7 +5,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 const meta = {
   title: 'Components/LandingPage/LandingPageSuccessBox',
   component: LandingPageSuccessBox,
-  decorators: [MaxWidthDecorator(615)],
+  decorators: [MaxWidthDecorator(555)],
   args: {
     color: '#00b649',
     head: {
