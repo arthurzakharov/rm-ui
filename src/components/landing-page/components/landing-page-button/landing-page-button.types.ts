@@ -1,4 +1,4 @@
-export interface LandingPageButtonTypes {
+export interface LandingPageButtonProps {
   text: string;
   onClick: () => void;
   disabled?: boolean;

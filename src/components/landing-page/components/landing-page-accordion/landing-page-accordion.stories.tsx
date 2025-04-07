@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   args: {
-    head: undefined,
+    title: undefined,
   },
   play: async ({ args, canvasElement, step }) => {
     const ARROW_CLOSE = `${css.Arrow} ${css.ArrowClose}`;
@@ -97,10 +97,10 @@ export const Default: Story = {
 export const WithHead: Story = {
   name: 'With head',
   args: {
-    head: '<b>FAQ:</b> Weitere häufig gestellte Fragen',
+    title: '<b>FAQ:</b> Weitere häufig gestellte Fragen',
   },
   play: async ({ args, canvasElement }) => {
     const head = within(canvasElement).getByTestId('landing-page-accordion-head');
-    await expect(head).toContainHTML(args.head || '');
+    await expect(head).toContainHTML(args.title || '');
   },
 };

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import css from './landing-page-logo-board.module.css';
 
 export default function LandingPageLogoBoard(props: LandingPageLogoBoardProps) {
-  const { paths, logos } = props;
+  const { paths, logos = [] } = props;
   const [failedLogos, setFailedLogos] = useState<number[]>([]);
 
   const getSrc = (name: string): string => {

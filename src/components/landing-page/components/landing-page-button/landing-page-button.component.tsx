@@ -1,10 +1,10 @@
 import type { MouseEvent } from 'react';
-import type { LandingPageButtonTypes } from './landing-page-button.types';
+import type { LandingPageButtonProps } from './landing-page-button.types';
 import { ChevronRight } from 'lucide-react';
 import { cn } from '../../../../utils/functions';
 import css from './landing-page-button.module.css';
 
-export default function LandingPageButton(props: LandingPageButtonTypes) {
+export default function LandingPageButton(props: LandingPageButtonProps) {
   const { text, onClick, disabled = false, className = '', optimizely = 'landing-cta', fullWidth = false } = props;
 
   return (

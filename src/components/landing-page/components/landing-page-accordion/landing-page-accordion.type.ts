@@ -4,6 +4,6 @@ type Block = {
 };
 
 export interface LandingPageAccordionProps {
-  head?: string;
+  title?: string;
   blocks: Block[];
 }

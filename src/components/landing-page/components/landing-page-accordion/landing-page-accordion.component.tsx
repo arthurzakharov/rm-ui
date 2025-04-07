@@ -4,7 +4,7 @@ import { cn } from '../../../../utils/functions';
 import css from './landing-page-accordion.module.css';
 
 export default function LandingPageAccordion(props: LandingPageAccordionProps) {
-  const { blocks, head = '' } = props;
+  const { blocks, title = '' } = props;
   const [current, setCurrent] = useState(-1);
   const [bodyHeight, setBodyHeight] = useState(0);
   const refs = useRef<HTMLDivElement[]>([]);
@@ -16,14 +16,18 @@ export default function LandingPageAccordion(props: LandingPageAccordionProps) {
 
   return (
     <div className={css.Accordion}>
-      {head && (
-        <h6 data-testid="landing-page-accordion-head" className={css.Head} dangerouslySetInnerHTML={{ __html: head }} />
+      {title && (
+        <h6
+          data-testid="landing-page-accordion-head"
+          className={css.Title}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
       )}
       {blocks.map((block, i) => (
         <div key={i} data-testid="landing-page-accordion-block" className={css.Block}>
           <div
             data-testid="landing-page-accordion-title"
-            className={css.Title}
+            className={css.BlockTitle}
             onClick={() => updateCurrentAccordion(i)}
           >
             <div

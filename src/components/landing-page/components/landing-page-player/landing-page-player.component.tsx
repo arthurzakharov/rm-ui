@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, Fragment } from 'react';
 import { cn } from '../../../../utils/functions';
 import css from './landing-page-player.module.css';
 
-export default function Player(props: LandingPagePlayerProps) {
+export default function LandingPagePlayer(props: LandingPagePlayerProps) {
   const { videoId, description, onPlay } = props;
 
   const videoRef = useRef<HTMLDivElement>(null);
@@ -104,4 +104,4 @@ export default function Player(props: LandingPagePlayerProps) {
   );
 }
 
-Player.displayName = 'Player';
+LandingPagePlayer.displayName = 'LandingPagePlayer';

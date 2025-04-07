@@ -155,7 +155,7 @@ export const NotDefinedPriority: Story = {
     const images = within(canvasElement).getAllByTestId('logo-board-image');
     await expect(images.length).toEqual(5);
     for (const logoName of args.logos.map((logo) => logo.name)) {
-      const i = args.logos.map((logo) => logo.name).indexOf(logoName);
+      const i = args?.logos.map((logo) => logo.name).indexOf(logoName);
       await expect(images[i].getAttribute('src')).toContain(logoName);
       await expect(images[i].getAttribute('alt')).toEqual(logoName);
     }
