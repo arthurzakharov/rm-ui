@@ -1,11 +1,8 @@
 export { default as Calendar } from './components/calendar/calendar.component';
 export { default as Checkbox } from './components/checkbox/checkbox.component';
 export { default as Dropdown } from './components/dropdown/dropdown.component';
-export { default as LandingPageFooter } from './components/landing-page/components/landing-page-footer/landing-page-footer.component';
+export { default as LandingPage } from './components/landing-page/landing-page.component';
 export { default as LandingPageLoader } from './components/landing-page/components/landing-page-loader/landing-page-loader.component';
-export { default as LandingPageQuestions } from './components/landing-page/components/landing-page-questions/landing-page-questions.component';
-export { default as LandingPageSidebar } from './components/landing-page/components/landing-page-sidebar/landing-page-sidebar.component';
-export { default as LandingPageSuccessBox } from './components/landing-page/components/landing-page-success-box/landing-page-success-box.component';
 export { default as Logos } from './components/logos/logos.component';
 export { default as NavigationButtons } from './components/navigation-buttons/navigation-buttons.component';
 export { default as OrderedList } from './components/ordered-list/ordered-list.component';

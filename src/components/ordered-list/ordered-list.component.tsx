@@ -3,17 +3,17 @@ import { cn } from '../../utils/functions';
 import css from './ordered-list.module.css';
 
 export default function OrderedList(props: OrderedListProps) {
-  const { head, list, className = '' } = props;
+  const { title, list, className = '' } = props;
 
   return (
     <div className={cn(css.OrderedList, className)}>
-      <h6 data-testid="ordered-list-head" className={css.OrderedListHead}>
-        {head}
+      <h6 data-testid="ordered-list-title" className={css.Title}>
+        {title}
       </h6>
-      <ol className={css.OrderedListItems}>
+      <ol className={css.List}>
         {list.map((listItem, i) => (
-          <li key={i} data-testid="ordered-list-item" className={css.OrderedListItem}>
-            <span className={css.OrderedListBullet}>{i + 1}</span>
+          <li key={i} data-testid="ordered-list-item" className={css.ListItem}>
+            <span className={css.Bullet}>{i + 1}</span>
             <span dangerouslySetInnerHTML={{ __html: listItem }} />
           </li>
         ))}

@@ -10,7 +10,7 @@ import { cn } from '../../../../utils/functions';
 import css from './landing-page-questions.module.css';
 
 export default function LandingPageQuestions(props: LandingPageQuestionsProps) {
-  const { list } = props;
+  const { list, className = '' } = props;
 
   const questionHasTopLine = (questions: Question[], idx: number): boolean => {
     return !questions[idx].hideTop && idx >= 1;
@@ -26,7 +26,7 @@ export default function LandingPageQuestions(props: LandingPageQuestionsProps) {
   };
 
   return (
-    <div className={css.Questions}>
+    <div className={cn(css.Questions, className)}>
       {list.map((question, idx, questions) => (
         <section
           key={question.id}

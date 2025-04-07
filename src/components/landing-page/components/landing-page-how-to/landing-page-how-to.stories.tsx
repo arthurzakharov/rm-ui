@@ -8,7 +8,7 @@ const meta = {
   component: LandingPageHowTo,
   args: {
     orderedList: {
-      head: 'Jetzt Vollmacht erteilen',
+      title: 'Jetzt Vollmacht erteilen',
       list: [
         'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
         'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',

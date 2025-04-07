@@ -1,13 +1,15 @@
 import type { LandingPageLoaderProps } from './landing-page-loader.type';
+import { cn } from '../../../../utils/functions';
 import css from './landing-page-loader.module.css';
 
 export default function LandingPageLoader(props: LandingPageLoaderProps) {
   const {
     text = '<strong>Vielen Dank.</strong> Bitte haben Sie einen Augenblick Geduld, wir analysieren gerade Ihre Angaben...',
+    className = '',
   } = props;
 
   return (
-    <div className={css.LandingPageLoader}>
+    <div className={cn(css.LandingPageLoader, className)}>
       <div className={css.LandingPageLoaderContent}>
         <div className={css.LandingPageLoaderImage}>
           <div className={css.LandingPageLoaderLine} />

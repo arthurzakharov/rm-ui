@@ -8,7 +8,7 @@ export default function LandingPageContact(props: LandingPageContactProps) {
   const {
     submitted,
     onClick,
-    head = 'Sie haben noch Fragen?',
+    title = 'Sie haben noch Fragen?',
     main = 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
     button = 'Kontaktieren Sie uns',
     success = 'Vielen Dank, wir haben Ihre Anfrage erhalten.',
@@ -28,7 +28,7 @@ export default function LandingPageContact(props: LandingPageContactProps) {
           data-testid="landing-page-contact-wait"
           className={cn(css.LandingPageContactWait, { [css.LandingPageContactWaitSidebar]: sidebar })}
         >
-          <h6 className={css.LandingPageContactHead}>{head}</h6>
+          <h6 className={css.LandingPageContactHead}>{title}</h6>
           <p className={css.LandingPageContactMain}>{main}</p>
           <button
             data-testid="landing-page-contact-button"

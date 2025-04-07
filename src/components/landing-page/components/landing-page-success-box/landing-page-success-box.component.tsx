@@ -8,10 +8,10 @@ import { cn } from '../../../../utils/functions';
 import css from './landing-page-success-box.module.css';
 
 export default function LandingPageSuccessBox(props: LandingPageSuccessBoxProps) {
-  const { color, head, main, refs } = props;
+  const { color, head, main, refs, className = '' } = props;
 
   return (
-    <div className={css.SuccessBox}>
+    <div className={cn(css.SuccessBox, className)}>
       <style type="text/css">
         {`
           .${css.SuccessBox} {

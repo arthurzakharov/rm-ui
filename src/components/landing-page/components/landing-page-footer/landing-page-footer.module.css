@@ -1,23 +1,22 @@
-.LandingPageFooter {
-  list-style: none;
+.Footer {
   margin: 0;
   padding: 0;
 }
 
-.LandingPageFooterContactUs {
+.Contact {
   padding-top: 30px;
 }
 
-.LandingPageFooterItem:only-of-type .LandingPageFooterContactUs {
+.Item:only-of-type .Contact {
   padding-top: 0;
 }
 
 @media screen and (min-width: 768px) {
-  .LandingPageFooterContactUs {
+  .Contact {
     padding-top: 60px;
   }
 
-  .LandingPageFooterItem:only-of-type .LandingPageFooterContactUs {
+  .Item:only-of-type .Contact {
     padding-top: 30px;
   }
 }

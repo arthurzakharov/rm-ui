@@ -1,7 +1,7 @@
 export interface LandingPageContactProps {
   submitted: boolean;
   onClick: () => void;
-  head?: string;
+  title?: string;
   main?: string;
   button?: string;
   success?: string;

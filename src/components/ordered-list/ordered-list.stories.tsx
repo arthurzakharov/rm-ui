@@ -8,7 +8,7 @@ const meta: Meta<typeof OrderedList> = {
   title: 'Components/OrderedList',
   decorators: [MaxWidthDecorator(315)],
   args: {
-    head: 'Jetzt Vollmacht erteilen',
+    title: 'Jetzt Vollmacht erteilen',
     list: [
       'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
       'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
@@ -23,9 +23,9 @@ type Story = StoryObj<typeof OrderedList>;
 export const Default: Story = {
   name: 'Show TUV and TLS',
   play: async ({ args, canvasElement }) => {
-    const head = within(canvasElement).getByTestId('ordered-list-head');
+    const head = within(canvasElement).getByTestId('ordered-list-title');
     const items = within(canvasElement).getAllByTestId('ordered-list-item');
-    await expect(head).toHaveTextContent(args.head);
+    await expect(head).toHaveTextContent(args.title);
     for (const item of items) {
       const i = items.indexOf(item);
       await expect(item).toHaveTextContent(args.list[i]);

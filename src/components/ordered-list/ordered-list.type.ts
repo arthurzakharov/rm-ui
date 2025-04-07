@@ -1,5 +1,5 @@
 export interface OrderedListProps {
-  head: string;
+  title: string;
   list: string[];
   className?: string;
 }

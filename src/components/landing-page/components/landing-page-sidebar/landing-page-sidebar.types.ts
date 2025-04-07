@@ -1,10 +1,6 @@
-import {
-  LandingPageButton,
-  LandingPageContactUs,
-  LandingPageLogos,
-  LandingPageOrderedList,
-} from '../../landing-page.types';
+import type { Question } from '../landing-page-questions/landing-page-questions.type';
 
 export interface LandingPageSidebarProps {
-  items: (LandingPageOrderedList | LandingPageButton | LandingPageLogos | LandingPageContactUs)[];
+  list: Question[];
+  className?: string;
 }

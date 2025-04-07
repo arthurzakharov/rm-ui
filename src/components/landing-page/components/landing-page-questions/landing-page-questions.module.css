@@ -152,10 +152,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .Questions {
-    box-shadow: 0 0 28px rgba(0, 0, 0, 0.05), 0 0 10px rgba(0, 0, 0, 0.02);
-  }
-
   .Section {
     margin-bottom: 48px;
   }

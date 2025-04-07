@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   args: {
-    head: undefined,
+    title: undefined,
     main: undefined,
     button: undefined,
     success: undefined,
@@ -72,7 +72,7 @@ export const Submitted: Story = {
 export const NotSubmitted: Story = {
   name: 'NotSubmitted',
   args: {
-    head: 'Sie haben noch Fragen?',
+    title: 'Sie haben noch Fragen?',
     main: 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
     button: 'Kontaktieren Sie uns',
     submitted: false,
@@ -85,7 +85,7 @@ export const NotSubmitted: Story = {
     await expect(wait).toBeInTheDocument();
     await expect(wait).toHaveClass(css.LandingPageContactWait);
     await expect(wait).not.toHaveClass(css.LandingPageContactWaitSidebar);
-    await expect(wait).toHaveTextContent(args.head || '');
+    await expect(wait).toHaveTextContent(args.title || '');
     await expect(wait).toHaveTextContent(args.main || '');
     await expect(button).toHaveTextContent(args.button || '');
     await userEvent.click(button);

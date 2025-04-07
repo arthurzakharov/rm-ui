@@ -32,4 +32,5 @@ export interface LandingPageSuccessBoxProps {
     head?: RefObject<HTMLDivElement>;
     main?: RefObject<HTMLDivElement>;
   };
+  className?: string;
 }

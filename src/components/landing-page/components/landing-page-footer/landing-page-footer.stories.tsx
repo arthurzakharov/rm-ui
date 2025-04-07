@@ -1,51 +1,84 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type {
-  LandingPageAdvantageList,
-  LandingPageAdvantageListNoButton,
-  LandingPageContactUs,
-} from '../../landing-page.types';
 import { expect, fn, within } from '@storybook/test';
 import LandingPageFooter from './landing-page-footer.component';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
+import { Question } from '../landing-page-questions/landing-page-questions.type.ts';
 
-const ADVANTAGES: LandingPageAdvantageList = {
+const ADVANTAGES: Question = {
+  id: 124973,
   type: '###AdvantageList###',
-  head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
-  list: [
-    'Größte Verkehrsrechtskanzlei in Deutschland',
-    'Erfahrung aus über 150.000 Mandate',
-    'Einfach und unkompliziert',
-    'Sofortige Hilfe',
-    'Deutschlandweit tätig',
+  hideTop: false,
+  hideBottom: false,
+  title: '',
+  body: [
+    {
+      type: '###AdvantageList###',
+      content: '',
+      props: {
+        title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+        list: [
+          'Größte Verkehrsrechtskanzlei in Deutschland',
+          'Erfahrung aus über 150.000 Mandate',
+          'Einfach und unkompliziert',
+          'Sofortige Hilfe',
+          'Deutschlandweit tätig',
+        ],
+        imageSrc: '/tablets-dlp.jpg',
+        imageAlt: 'tablets-dlp',
+        button: 'Vollmacht ansehen',
+        onButtonClick: fn(),
+      },
+    },
   ],
-  imageSrc: '/tablets-dlp.jpg',
-  imageAlt: 'tablets-dlp',
-  button: 'Vollmacht',
-  onClick: fn(),
 };
 
-const ADVANTAGES_NO_BUTTON: LandingPageAdvantageListNoButton = {
+const ADVANTAGES_NO_BUTTON: Question = {
+  id: 124973,
   type: '###AdvantageListNoButton###',
-  head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
-  list: [
-    'Größte Verkehrsrechtskanzlei in Deutschland',
-    'Erfahrung aus über 150.000 Mandate',
-    'Einfach und unkompliziert',
-    'Sofortige Hilfe',
-    'Deutschlandweit tätig',
+  hideTop: false,
+  hideBottom: false,
+  title: '',
+  body: [
+    {
+      type: '###AdvantageList###',
+      content: '',
+      props: {
+        title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+        list: [
+          'Größte Verkehrsrechtskanzlei in Deutschland',
+          'Erfahrung aus über 150.000 Mandate',
+          'Einfach und unkompliziert',
+          'Sofortige Hilfe',
+          'Deutschlandweit tätig',
+        ],
+        imageSrc: '/tablets-dlp.jpg',
+        imageAlt: 'tablets-dlp',
+      },
+    },
   ],
-  imageSrc: '/tablets-dlp.jpg',
-  imageAlt: 'tablets-dlp',
 };
 
-const CONTACT_US: LandingPageContactUs = {
+const CONTACT_US: Question = {
+  id: 823464,
   type: '###ContactUs###',
-  submitted: false,
-  onClick: fn(),
-  head: 'Sie haben noch Fragen?',
-  main: 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
-  button: 'Kontaktieren Sie uns',
-  success: 'Vielen Dank, wir haben Ihre Anfrage erhalten.',
+  hideTop: false,
+  hideBottom: false,
+  title: '',
+  body: [
+    {
+      type: '###ContactUs###',
+      content: '',
+      props: {
+        submitted: false,
+        onClick: fn(),
+        title: 'Sie haben noch Fragen?',
+        main: 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
+        button: 'Kontaktieren Sie uns',
+        success: 'Vielen Dank, wir haben Ihre Anfrage erhalten.',
+        sidebar: false,
+      },
+    },
+  ],
 };
 
 const meta = {
@@ -60,7 +93,7 @@ type Story = StoryObj<typeof meta>;
 export const AdvantagesAndContactUs: Story = {
   name: 'Advantages and Contact',
   args: {
-    items: [ADVANTAGES, CONTACT_US],
+    list: [ADVANTAGES, CONTACT_US],
   },
   play: async ({ canvasElement }) => {
     const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
@@ -75,7 +108,7 @@ export const AdvantagesAndContactUs: Story = {
 export const AdvantagesNoButtonAndContactUs: Story = {
   name: 'AdvantagesNoButton and Contact',
   args: {
-    items: [ADVANTAGES_NO_BUTTON, CONTACT_US],
+    list: [ADVANTAGES_NO_BUTTON, CONTACT_US],
   },
   play: async ({ canvasElement }) => {
     const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
@@ -90,7 +123,7 @@ export const AdvantagesNoButtonAndContactUs: Story = {
 export const OnlyAdvantages: Story = {
   name: 'Only Advantages',
   args: {
-    items: [ADVANTAGES],
+    list: [ADVANTAGES],
   },
   play: async ({ canvasElement }) => {
     const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
@@ -105,7 +138,7 @@ export const OnlyAdvantages: Story = {
 export const OnlyAdvantagesNoButton: Story = {
   name: 'Only AdvantagesNoButton',
   args: {
-    items: [ADVANTAGES_NO_BUTTON],
+    list: [ADVANTAGES_NO_BUTTON],
   },
   play: async ({ canvasElement }) => {
     const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');
@@ -120,7 +153,7 @@ export const OnlyAdvantagesNoButton: Story = {
 export const OnlyContactUs: Story = {
   name: 'Only ContactUs',
   args: {
-    items: [CONTACT_US],
+    list: [CONTACT_US],
   },
   play: async ({ canvasElement }) => {
     const advantageList = within(canvasElement).queryByTestId('###AdvantageList###');

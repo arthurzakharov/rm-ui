@@ -1,9 +1,5 @@
-import type {
-  LandingPageAdvantageList,
-  LandingPageAdvantageListNoButton,
-  LandingPageContactUs,
-} from '../../landing-page.types';
+import type { Question } from '../landing-page-questions/landing-page-questions.type';
 
 export interface LandingPageFooterProps {
-  items: (LandingPageAdvantageList | LandingPageAdvantageListNoButton | LandingPageContactUs)[];
+  list: Question[];
 }

@@ -301,9 +301,6 @@
     border: 2px solid var(--success-box-primary);
     border-radius: 5px;
     padding: 4px;
-    box-shadow:
-      0 0 28px rgba(68, 178, 86, 0.0509803922),
-      0 0 10px rgba(68, 178, 86, 0.0196078431);
   }
 
   .Head {

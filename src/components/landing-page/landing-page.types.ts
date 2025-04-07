@@ -1,8 +1,11 @@
+import type { RefObject } from 'react';
 import type { LogoName } from '../logos/logos.type';
+import type { Question } from './components/landing-page-questions/landing-page-questions.type';
+import type { LandingPageSuccessBoxProps } from './components/landing-page-success-box/landing-page-success-box.type';
 
 export type LandingPageAdvantageList = {
   type: '###AdvantageList###';
-  head: string;
+  title: string;
   list: string[];
   imageSrc: string;
   imageAlt: string;
@@ -12,7 +15,7 @@ export type LandingPageAdvantageList = {
 
 export type LandingPageAdvantageListNoButton = {
   type: '###AdvantageListNoButton###';
-  head: string;
+  title: string;
   list: string[];
   imageSrc: string;
   imageAlt: string;
@@ -22,7 +25,7 @@ export type LandingPageContactUs = {
   type: '###ContactUs###';
   submitted: boolean;
   onClick: () => void;
-  head: string;
+  title: string;
   main: string;
   button: string;
   success: string;
@@ -30,7 +33,7 @@ export type LandingPageContactUs = {
 
 export type LandingPageOrderedList = {
   type: '###OrderedList###';
-  head: string;
+  title: string;
   list: string[];
 };
 
@@ -47,10 +50,14 @@ export type LandingPageLogos = {
   tuvSrc: string;
 };
 
-export type LandingPageItem =
-  | LandingPageAdvantageList
-  | LandingPageAdvantageListNoButton
-  | LandingPageContactUs
-  | LandingPageOrderedList
-  | LandingPageButton
-  | LandingPageLogos;
+export interface LandingPageProps {
+  loaded: boolean;
+  refs: {
+    container: RefObject<HTMLDivElement>;
+    successBox: RefObject<HTMLDivElement>;
+  };
+  successBox: Omit<LandingPageSuccessBoxProps, 'refs'>;
+  questions: Question[];
+  sidebar: Question[];
+  footer: Question[];
+}
