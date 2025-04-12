@@ -1,6 +1,6 @@
-import type { PrioElement } from './string-replacer.ts';
+import type { PrioElement } from '../landing-page.types';
 import { describe, expect, test } from 'vitest';
-import StringReplacer from './string-replacer.ts';
+import StringReplacer from './string-replacer';
 
 const ANSWERS = {
   answerOne: {

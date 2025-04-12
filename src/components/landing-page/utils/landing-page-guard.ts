@@ -16,8 +16,8 @@ export default class LandingPageGuard {
     if (!BaseGuard.isString(obj.value)) return false;
     if (!BaseGuard.isObject(obj.extra)) return false;
     if (!BaseGuard.isArray(obj.extra.condition)) return false;
-    if (!this.isExtraMode(obj.extra.mode)) return false;
-    return obj.extra.condition.every(this.isExtraCondition);
+    if (!LandingPageGuard.isExtraMode(obj.extra.mode)) return false;
+    return obj.extra.condition.every(LandingPageGuard.isExtraCondition);
   }
 
   static isPrioElement(obj: unknown): obj is PrioElement {
@@ -28,7 +28,7 @@ export default class LandingPageGuard {
     if (!BaseGuard.isString(obj.content) && !BaseGuard.isUndefined(obj.content)) return false;
     if (!BaseGuard.isString(obj.subContent) && !BaseGuard.isUndefined(obj.subContent)) return false;
     return Object.values(obj.condition).every(
-      (condition) => BaseGuard.isArray(condition) && condition.every(this.isCondition),
+      (condition) => BaseGuard.isArray(condition) && condition.every(LandingPageGuard.isCondition),
     );
   }
 }
