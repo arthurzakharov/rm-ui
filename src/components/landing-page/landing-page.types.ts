@@ -3,6 +3,32 @@ import type { LogoName } from '../logos/logos.type';
 import type { Question } from './components/landing-page-questions/landing-page-questions.type';
 import type { LandingPageSuccessBoxProps } from './components/landing-page-success-box/landing-page-success-box.type';
 
+export type Answer = { label: string; value: string };
+
+export type Answers = Record<string, Answer>;
+
+export type KeyToReplace = 'content' | 'subContent';
+
+export type ExtraMode = 'some' | 'every';
+
+export type ExtraCondition = Record<string, string>;
+
+export type Condition = {
+  value: string;
+  extra: {
+    mode: ExtraMode;
+    condition: ExtraCondition[];
+  };
+};
+
+export type PrioElement = {
+  type: string;
+  id: number;
+  condition: Record<string, Condition[]>;
+  content?: string;
+  subContent?: string;
+};
+
 export type LandingPageAdvantageList = {
   type: '###AdvantageList###';
   title: string;
