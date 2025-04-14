@@ -1,6 +1,6 @@
 {
   "name": "@arthurzakharov/rm-ui",
-  "version": "1.0.116",
+  "version": "1.0.117",
   "description": "UI library for rm projects",
   "license": "MIT",
   "private": false,
@@ -48,7 +48,8 @@
   "dependencies": {
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",

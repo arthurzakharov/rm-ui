@@ -35,6 +35,8 @@ const PRIO: PrioElement = {
       },
     ],
   },
+  content: '',
+  subContent: '',
 };
 
 const stringReplacer = new StringReplacer(ANSWERS);
@@ -100,8 +102,7 @@ describe('StringReplacer', () => {
     expect(stringReplacer.replace(prio).subContent).toEqual('Test Answer 1.');
   });
   test('Prio has no "content" and "subContent"', () => {
-    const prio = { ...PRIO };
-    expect(stringReplacer.replace(prio)).toEqual(prio);
+    expect(stringReplacer.replace(PRIO)).toEqual(PRIO);
   });
   test('Prio has no "subContent"', () => {
     const prio = { ...PRIO, content: 'Test ###answerOne###.' };

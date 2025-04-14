@@ -2,32 +2,38 @@ import type { RefObject } from 'react';
 import type { LogoName } from '../logos/logos.type';
 import type { Question } from './components/landing-page-questions/landing-page-questions.type';
 import type { LandingPageSuccessBoxProps } from './components/landing-page-success-box/landing-page-success-box.type';
+import { z } from 'zod';
 
-export type Answer = { label: string; value: string };
+const PrioElement = z.object({
+  type: z.string(),
+  id: z.number(),
+  condition: z.record(
+    z.array(
+      z.object({
+        value: z.string(),
+        extra: z.object({
+          mode: z.union([z.literal('some'), z.literal('every')]),
+          condition: z.array(z.record(z.string())),
+        }),
+      }),
+    ),
+  ),
+  content: z.string(),
+  subContent: z.string(),
+});
 
-export type Answers = Record<string, Answer>;
+export const getSafePrioElement = (obj: unknown): PrioElement | null => {
+  const { data, success } = PrioElement.safeParse(obj);
+  return success ? data : null;
+};
 
-export type KeyToReplace = 'content' | 'subContent';
-
-export type ExtraMode = 'some' | 'every';
-
-export type ExtraCondition = Record<string, string>;
-
-export type Condition = {
+export type Answer = {
   value: string;
-  extra: {
-    mode: ExtraMode;
-    condition: ExtraCondition[];
-  };
+  label: string;
 };
-
-export type PrioElement = {
-  type: string;
-  id: number;
-  condition: Record<string, Condition[]>;
-  content?: string;
-  subContent?: string;
-};
+export type Answers = Record<string, Answer>;
+export type KeyToReplace = 'content' | 'subContent';
+export type PrioElement = z.infer<typeof PrioElement>;
 
 export type LandingPageAdvantageList = {
   type: '###AdvantageList###';

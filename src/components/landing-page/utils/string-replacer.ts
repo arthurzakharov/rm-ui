@@ -1,5 +1,5 @@
-import type { Answer, Answers, KeyToReplace, PrioElement } from '../landing-page.types';
-import LandingPageGuard from './landing-page-guard';
+import type { Answers, Answer, KeyToReplace, PrioElement } from '../landing-page.types';
+import { getSafePrioElement } from '../landing-page.types';
 import { SYMBOL } from './constants';
 
 export default class StringReplacer {
@@ -57,14 +57,11 @@ export default class StringReplacer {
     return this.restoreString(contents, placeholders);
   }
 
-  public replace(prioElement: PrioElement, keysToReplace: KeyToReplace[] = ['content', 'subContent']): PrioElement {
-    if (!LandingPageGuard.isPrioElement(prioElement) || !Array.isArray(keysToReplace)) return prioElement;
-    if (keysToReplace.includes('content') && !!prioElement.content) {
-      prioElement.content = this.parse(prioElement.content);
-    }
-    if (keysToReplace.includes('subContent') && !!prioElement.subContent) {
-      prioElement.subContent = this.parse(prioElement.subContent);
-    }
-    return prioElement;
+  public replace(element: PrioElement, keys: KeyToReplace[] = ['content', 'subContent']): PrioElement {
+    const prio = getSafePrioElement(element);
+    if (!prio) return element;
+    if (keys.includes('content')) prio.content = this.parse(prio.content);
+    if (keys.includes('subContent')) prio.subContent = this.parse(prio.subContent);
+    return prio;
   }
 }
