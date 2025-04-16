@@ -1,8 +1,7 @@
-import type { Answers, Answer, KeyToReplace, PrioElement } from '../landing-page.types';
-import { getSafePrioElement } from '../landing-page.types';
+import type { Answers, Answer } from '../landing-page.types';
 import { SYMBOL } from './constants';
 
-export default class StringReplacer {
+export default class Replacer {
   private readonly answers: Answers;
 
   constructor(answers: Answers) {
@@ -57,11 +56,7 @@ export default class StringReplacer {
     return this.restoreString(contents, placeholders);
   }
 
-  public replace(element: PrioElement, keys: KeyToReplace[] = ['content', 'subContent']): PrioElement {
-    const prio = getSafePrioElement(element);
-    if (!prio) return element;
-    if (keys.includes('content')) prio.content = this.parse(prio.content);
-    if (keys.includes('subContent')) prio.subContent = this.parse(prio.subContent);
-    return prio;
+  public replace(str: string): string {
+    return str ? this.parse(str) : str;
   }
 }

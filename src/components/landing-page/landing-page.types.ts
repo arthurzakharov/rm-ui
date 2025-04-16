@@ -2,38 +2,47 @@ import type { RefObject } from 'react';
 import type { LogoName } from '../logos/logos.type';
 import type { Question } from './components/landing-page-questions/landing-page-questions.type';
 import type { LandingPageSuccessBoxProps } from './components/landing-page-success-box/landing-page-success-box.type';
-import { z } from 'zod';
+import { object, string, number, optional, union, array, record, literal, InferInput } from 'valibot';
 
-const PrioElement = z.object({
-  type: z.string(),
-  id: z.number(),
-  condition: z.record(
-    z.array(
-      z.object({
-        value: z.string(),
-        extra: z.object({
-          mode: z.union([z.literal('some'), z.literal('every')]),
-          condition: z.array(z.record(z.string())),
-        }),
-      }),
-    ),
-  ),
-  content: z.string(),
-  subContent: z.string(),
-});
-
-export const getSafePrioElement = (obj: unknown): PrioElement | null => {
-  const { data, success } = PrioElement.safeParse(obj);
-  return success ? data : null;
-};
-
+export type FormAnswers = Record<string, string>;
 export type Answer = {
   value: string;
   label: string;
 };
 export type Answers = Record<string, Answer>;
-export type KeyToReplace = 'content' | 'subContent';
-export type PrioElement = z.infer<typeof PrioElement>;
+
+export const ModeSchema = union([literal('some'), literal('every')]);
+export const ExtraConditionSchema = record(string(), string());
+export const ExtraSchema = object({
+  mode: optional(ModeSchema, 'some'),
+  condition: array(ExtraConditionSchema),
+});
+export const ScreenSchema = object({
+  lessThan: optional(number(), -1),
+  moreThan: optional(number(), -1),
+});
+export const FormKeyConditionSchema = object({
+  value: string(),
+  extra: optional(ExtraSchema),
+});
+export const FormSchema = record(string(), array(FormKeyConditionSchema));
+export const ConditionSchema = object({
+  mode: optional(ModeSchema, 'some'),
+  screen: optional(ScreenSchema, {
+    lessThan: -1,
+    moreThan: -1,
+  }),
+  form: optional(FormSchema, {}),
+});
+
+// Optional: Output types
+export type Mode = InferInput<typeof ModeSchema>;
+export type ExtraCondition = InferInput<typeof ExtraConditionSchema>;
+export type Screen = InferInput<typeof ScreenSchema>;
+export type Form = InferInput<typeof FormSchema>;
+export type Extra = InferInput<typeof ExtraSchema>;
+export type FormKeyCondition = InferInput<typeof FormKeyConditionSchema>;
+export type Condition = InferInput<typeof ConditionSchema>;
 
 export type LandingPageAdvantageList = {
   type: '###AdvantageList###';

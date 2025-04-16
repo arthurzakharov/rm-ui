@@ -22,7 +22,7 @@ export { default as LandingPageQuestions } from './components/landing-page/compo
 export { default as LandingPageReview } from './components/landing-page/components/landing-page-review/landing-page-review.component';
 export { default as LandingPageSidebar } from './components/landing-page/components/landing-page-sidebar/landing-page-sidebar.component';
 export { default as LandingPageSuccessBox } from './components/landing-page/components/landing-page-success-box/landing-page-success-box.component';
-export { default as StringReplacer } from './components/landing-page/utils/string-replacer.ts';
+export { default as StringReplacer } from './components/landing-page/utils/replacer.ts';
 // ICONS
 export { default as CheckIcon } from './icons/check/check.component';
 export { default as CheckCircleIcon } from './icons/check-circle/check-circle.component';
