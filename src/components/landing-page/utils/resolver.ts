@@ -1,13 +1,13 @@
-import {
+import type {
   FormAnswers,
   Condition,
   ExtraCondition,
-  ScreenSchema,
   Screen,
   Form,
   Mode,
   FormKeyCondition,
 } from '../landing-page.types';
+import { ScreenSchema } from '../landing-page.types';
 import { ConditionSchema } from '../landing-page.types';
 import { SYMBOL } from './constants';
 import { getDefaults, safeParse } from 'valibot';
