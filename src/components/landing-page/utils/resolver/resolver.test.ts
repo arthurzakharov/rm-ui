@@ -1,6 +1,6 @@
-import type { Condition, Screen } from '../landing-page.types';
+import type { Condition, Screen } from '../types.ts';
 import { describe, expect, test } from 'vitest';
-import Resolver from './resolver';
+import Resolver from './resolver.ts';
 
 const FORM_ANSWERS = {
   one: 'a',

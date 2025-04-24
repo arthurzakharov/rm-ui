@@ -1,5 +1,5 @@
-import type { Answers, Answer } from '../landing-page.types';
-import { SYMBOL } from './constants';
+import type { Answers, Answer } from '../types.ts';
+import { SYMBOL } from '../constants.ts';
 
 export default class Replacer {
   private readonly answers: Answers;
@@ -52,7 +52,7 @@ export default class Replacer {
     const placeholders = str
       .split(SYMBOL.PLACEHOLDER)
       .filter((_, i) => i % 2)
-      .map((placeholder: string) => this.parsePlaceholderForCondition(placeholder));
+      .map((placeholder) => this.parsePlaceholderForCondition(placeholder));
     return this.restoreString(contents, placeholders);
   }
 

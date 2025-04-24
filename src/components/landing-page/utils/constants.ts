@@ -1,4 +1,5 @@
 export const SYMBOL = {
+  COMPONENT: '@@@',
   PLACEHOLDER: '###',
   ACTION: '>>>',
   SEPARATOR: '|',

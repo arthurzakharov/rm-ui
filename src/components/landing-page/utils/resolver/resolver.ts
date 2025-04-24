@@ -1,15 +1,6 @@
-import type {
-  FormAnswers,
-  Condition,
-  ExtraCondition,
-  Screen,
-  Form,
-  Mode,
-  FormKeyCondition,
-} from '../landing-page.types';
-import { ScreenSchema } from '../landing-page.types';
-import { ConditionSchema } from '../landing-page.types';
-import { SYMBOL } from './constants';
+import type { FormAnswers, Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types.ts';
+import { ConditionSchema, ScreenSchema } from '../schemas.ts';
+import { SYMBOL } from '../constants.ts';
 import { getDefaults, safeParse } from 'valibot';
 
 export default class Resolver {
@@ -21,7 +12,7 @@ export default class Resolver {
     this.width = width;
   }
 
-  // Get form answers key in secure way
+  // Get form answers key in a secure way
 
   private getFormAnswer(key: string): string {
     return this.formAnswers[key] || '';
