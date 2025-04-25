@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, within } from '@storybook/test';
 import LandingPageFooter from './landing-page-footer.component';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
-import { Question } from '../landing-page-questions/landing-page-questions.type.ts';
+import { Question } from '../landing-page-questions/landing-page-questions.type';
 
 const ADVANTAGES: Question = {
   id: 124973,

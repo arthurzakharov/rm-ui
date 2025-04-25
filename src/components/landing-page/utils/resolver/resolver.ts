@@ -1,6 +1,6 @@
-import type { FormAnswers, Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types.ts';
-import { ConditionSchema, ScreenSchema } from '../schemas.ts';
-import { SYMBOL } from '../constants.ts';
+import type { FormAnswers, Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types';
+import { ConditionSchema, ScreenSchema } from '../schemas';
+import { SYMBOL } from '../constants';
 import { getDefaults, safeParse } from 'valibot';
 
 export default class Resolver {

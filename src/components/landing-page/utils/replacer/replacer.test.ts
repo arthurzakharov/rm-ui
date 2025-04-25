@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import Replacer from './replacer.ts';
+import Replacer from './replacer';
 
 const ANSWERS = {
   one: {

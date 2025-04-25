@@ -13,7 +13,7 @@ import {
   hexColor,
   nullable,
 } from 'valibot';
-import { ContentGeneric } from './types.ts';
+import { ContentGeneric } from './types';
 
 // Schema factories
 function prioElement<T extends ContentGeneric>(content: T) {

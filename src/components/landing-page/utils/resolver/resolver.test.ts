@@ -1,6 +1,6 @@
-import type { Condition, Screen } from '../types.ts';
+import type { Condition, Screen } from '../types';
 import { describe, expect, test } from 'vitest';
-import Resolver from './resolver.ts';
+import Resolver from './resolver';
 
 const FORM_ANSWERS = {
   one: 'a',

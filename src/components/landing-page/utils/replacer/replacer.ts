@@ -1,5 +1,5 @@
-import type { Answers, Answer } from '../types.ts';
-import { SYMBOL } from '../constants.ts';
+import type { Answers, Answer } from '../types';
+import { SYMBOL } from '../constants';
 
 export default class Replacer {
   private readonly answers: Answers;
