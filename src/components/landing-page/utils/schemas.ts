@@ -41,7 +41,7 @@ export const ListTypeSchema = union([literal('check'), literal('question'), lite
 // Condition
 export const ExtraConditionSchema = record(string(), string());
 export const ExtraSchema = object({
-  mode: optional(ModeTypeSchema, 'some'),
+  mode: ModeTypeSchema,
   condition: array(ExtraConditionSchema),
 });
 export const ScreenSchema = object({
@@ -50,17 +50,27 @@ export const ScreenSchema = object({
 });
 export const FormKeyConditionSchema = object({
   value: string(),
-  extra: optional(ExtraSchema),
+  extra: nullable(ExtraSchema),
 });
 export const FormSchema = record(string(), array(FormKeyConditionSchema));
-export const ConditionSchema = object({
-  mode: optional(ModeTypeSchema, 'some'),
-  screen: optional(ScreenSchema, {
-    lessThan: -1,
-    moreThan: -1,
+export const ConditionSchema = fallback(
+  object({
+    mode: ModeTypeSchema,
+    screen: nullable(ScreenSchema, {
+      lessThan: -1,
+      moreThan: -1,
+    }),
+    form: nullable(FormSchema, {}),
   }),
-  form: optional(FormSchema, {}),
-});
+  {
+    mode: 'some',
+    screen: {
+      lessThan: -1,
+      moreThan: -1,
+    },
+    form: {},
+  },
+);
 // Prio fil
 export const SuccessBoxSchema = fallback(
   object({

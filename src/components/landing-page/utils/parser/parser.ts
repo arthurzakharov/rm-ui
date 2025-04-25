@@ -8,6 +8,9 @@ import type {
   LandingPageBlueprint,
   Condition,
   Schema,
+  QuestionBlueprint,
+  SidebarBlueprint,
+  FooterBlueprint,
 } from '../types';
 import { getFallback, safeParse } from 'valibot';
 import { FooterSchema, QuestionSchema, SidebarSchema, SuccessBoxSchema, VariationSchema } from '../schemas';
@@ -124,7 +127,7 @@ export default class Parser {
   /**
    * Get ready to use blueprint for Sidebar, Footer or Question with all elements are checked for condition.
    */
-  private getSimpleBlueprint<T extends Schema, O>(schema: T, data: unknown): O {
+  private getSimpleBlueprint<O>(schema: Schema, data: unknown): O {
     const { success, output } = safeParse(schema, data);
     return success
       ? ((output as Array<{ content: unknown; props: Record<string, unknown> | null; condition: Condition | null }>)
@@ -140,9 +143,9 @@ export default class Parser {
   private getBlueprint(): LandingPageBlueprint {
     return this.deepMapStrings({
       successBox: this.getSuccessBoxBlueprint(),
-      question: this.getSimpleBlueprint(QuestionSchema, this.prio.question),
-      sidebar: this.getSimpleBlueprint(SidebarSchema, this.prio.sidebar),
-      footer: this.getSimpleBlueprint(FooterSchema, this.prio.footer),
+      question: this.getSimpleBlueprint<QuestionBlueprint>(QuestionSchema, this.prio.question),
+      sidebar: this.getSimpleBlueprint<SidebarBlueprint>(SidebarSchema, this.prio.sidebar),
+      footer: this.getSimpleBlueprint<FooterBlueprint>(FooterSchema, this.prio.footer),
     });
   }
 }

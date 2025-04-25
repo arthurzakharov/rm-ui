@@ -1,7 +1,7 @@
 import type { FormAnswers, Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types';
 import { ConditionSchema, ScreenSchema } from '../schemas';
 import { SYMBOL } from '../constants';
-import { getDefaults, safeParse } from 'valibot';
+import { getDefaults, getFallback, safeParse } from 'valibot';
 
 export default class Resolver {
   private readonly formAnswers: FormAnswers;
@@ -78,20 +78,22 @@ export default class Resolver {
     );
   }
 
-  private checkScreen(screen: Screen): boolean {
+  private checkScreen(screen: Screen | null): boolean {
+    if (!screen) return true;
     const screenDefaults = getDefaults(ScreenSchema);
     const lessThan = screen.lessThan || screenDefaults.lessThan;
     const moreThan = screen.moreThan || screenDefaults.moreThan;
     return [this.width >= moreThan || moreThan === -1, this.width < lessThan || lessThan === -1].every(Boolean);
   }
 
-  private checkScreenPassed(screen: Screen): boolean {
+  private checkScreenPassed(screen: Screen | null): boolean {
+    if (!screen) return true;
     const screenDefaults = getDefaults(ScreenSchema);
     return screen.lessThan !== screenDefaults.lessThan || screen.moreThan !== screenDefaults.moreThan;
   }
 
-  private checkFormPassed(form: Form): boolean {
-    return Object.entries(form).length > 0;
+  private checkFormPassed(form: Form | null): boolean {
+    return !!form && Object.entries(form).length > 0;
   }
 
   private checkFormKey([formAnswerKey, conditions]: [string, FormKeyCondition[]]) {
@@ -114,7 +116,8 @@ export default class Resolver {
     return Object.entries(extraCondition).some(([formAnswerKey, value]) => this.checkValueString(formAnswerKey, value));
   }
 
-  private checkForm(form: Form, mode: Mode): boolean {
+  private checkForm(form: Form | null, mode: Mode): boolean {
+    if (!form) return true;
     return mode === 'some'
       ? Object.entries(form).some((entry) => this.checkFormKey(entry))
       : Object.entries(form).every((entry) => this.checkFormKey(entry));
@@ -122,9 +125,9 @@ export default class Resolver {
 
   // Get secure condition
 
-  private getCondition(condition: Condition): Required<Condition> {
+  private getCondition(condition: Condition): Condition {
     const { success, output } = safeParse(ConditionSchema, condition);
-    return success ? output : getDefaults(ConditionSchema);
+    return success ? output : getFallback(ConditionSchema);
   }
 
   // Final method to check if condition resolves or not
