@@ -2,25 +2,8 @@
   padding: 2px 0 0;
 }
 
-.Sidebar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  outline: 2px solid transparent;
-  border-radius: 5px;
-  box-shadow:
-    0 0 28px rgba(0, 0, 0, 0.05),
-    0 0 10px rgba(0, 0, 0, 0.02);
-}
-
 .Loader {
   margin-top: 54px;
-}
-
-.Questions {
-  margin: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -37,73 +20,16 @@
     display: flex;
     justify-content: space-between;
   }
-
-  .Main {
-    width: calc(100% - 275px - 15px);
-  }
-
-  .SuccessBox {
-    box-shadow:
-      0 0 28px rgba(68, 178, 86, 0.05),
-      0 0 10px rgba(68, 178, 86, 0.02);
-  }
-
-  .Questions {
-    margin: 20px 0;
-    box-shadow:
-      0 0 28px rgba(0, 0, 0, 0.05),
-      0 0 10px rgba(0, 0, 0, 0.02);
-  }
-
-  .Sidebar {
-    width: 275px;
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: flex-start;
-    box-shadow: none;
-  }
-
-  @supports (position: sticky) {
-    .Sidebar {
-      position: sticky;
-      top: 15px;
-      left: 0;
-    }
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .Landing {
     padding: 30px 40px;
   }
-
-  .Sidebar {
-    width: 325px;
-  }
-
-  .Main {
-    width: calc(100% - 325px - 15px);
-  }
-
-  .Questions {
-    margin: 40px 0;
-  }
 }
 
 @media screen and (min-width: 1200px) {
   .Landing {
     padding-top: 40px;
-  }
-
-  .Sidebar {
-    width: 375px;
-    top: 24px;
-  }
-
-  .Main {
-    width: calc(100% - 375px - 40px);
   }
 }

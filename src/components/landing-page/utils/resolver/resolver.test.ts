@@ -1,4 +1,4 @@
-import type { Condition, Screen } from '../types';
+import type { Condition } from '../types';
 import { describe, expect, test } from 'vitest';
 import Resolver from './resolver';
 
@@ -21,7 +21,7 @@ describe('Resolver.', () => {
     test('Screen and form resolve, mode is not defined, default is "some".', () => {
       const condition: Condition = {
         mode: 'some',
-        screen: { moreThan: 414 },
+        screen: { moreThan: 414, lessThan: null },
         form: { one: [{ value: 'a', extra: null }] },
       };
       expect(laptop.check(condition)).toBeTruthy();
@@ -29,7 +29,7 @@ describe('Resolver.', () => {
     test('Screen and form resolve, mode is "some".', () => {
       const condition: Condition = {
         mode: 'some',
-        screen: { moreThan: 414 },
+        screen: { moreThan: 414, lessThan: null },
         form: { one: [{ value: 'a', extra: null }] },
       };
       expect(laptop.check(condition)).toBeTruthy();
@@ -37,7 +37,7 @@ describe('Resolver.', () => {
     test('Screen and form resolve, mode is "every".', () => {
       const condition: Condition = {
         mode: 'every',
-        screen: { moreThan: 414 },
+        screen: { moreThan: 414, lessThan: null },
         form: { one: [{ value: 'a', extra: null }] },
       };
       expect(laptop.check(condition)).toBeTruthy();
@@ -45,7 +45,7 @@ describe('Resolver.', () => {
     test('Screen does not resolve, form resolves, mode is "some".', () => {
       const condition: Condition = {
         mode: 'some',
-        screen: { moreThan: 1400 },
+        screen: { moreThan: 1400, lessThan: null },
         form: { one: [{ value: 'a', extra: null }] },
       };
       expect(laptop.check(condition)).toBeTruthy();
@@ -53,7 +53,7 @@ describe('Resolver.', () => {
     test('Screen does not resolve, form resolves, mode is "every".', () => {
       const condition: Condition = {
         mode: 'every',
-        screen: { moreThan: 1400 },
+        screen: { moreThan: 1400, lessThan: null },
         form: { one: [{ value: 'a', extra: null }] },
       };
       expect(laptop.check(condition)).toBeFalsy();
@@ -61,7 +61,7 @@ describe('Resolver.', () => {
     test('Screen resolves, forms does not resolve, mode is "some".', () => {
       const condition: Condition = {
         mode: 'some',
-        screen: { moreThan: 414 },
+        screen: { moreThan: 414, lessThan: null },
         form: { one: [{ value: 'x', extra: null }] },
       };
       expect(laptop.check(condition)).toBeTruthy();
@@ -69,18 +69,18 @@ describe('Resolver.', () => {
     test('Screen resolves, forms does not resolve, mode is "every".', () => {
       const condition: Condition = {
         mode: 'every',
-        screen: { moreThan: 414 },
+        screen: { moreThan: 414, lessThan: null },
         form: { one: [{ value: 'x', extra: null }] },
       };
       expect(laptop.check(condition)).toBeFalsy();
     });
     test('Screen and form are not passed, mode is "some".', () => {
       const condition: Condition = { mode: 'some', screen: null, form: null };
-      expect(laptop.check(condition)).toBeFalsy();
+      expect(laptop.check(condition)).toBeTruthy();
     });
     test('Screen and form are not passed, mode is "every".', () => {
       const condition: Condition = { mode: 'every', screen: null, form: null };
-      expect(laptop.check(condition)).toBeFalsy();
+      expect(laptop.check(condition)).toBeTruthy();
     });
     test('Screen not passed, form resolves, mode is "some".', () => {
       const condition: Condition = { mode: 'some', screen: null, form: { one: [{ value: 'a', extra: null }] } };
@@ -91,23 +91,23 @@ describe('Resolver.', () => {
       expect(laptop.check(condition)).toBeTruthy();
     });
     test('Screen resolves, form not passed, mode is "some".', () => {
-      const condition: Condition = { mode: 'some', screen: { moreThan: 414 }, form: null };
+      const condition: Condition = { mode: 'some', screen: { moreThan: 414, lessThan: null }, form: null };
       expect(laptop.check(condition)).toBeTruthy();
     });
     test('Screen resolves, form not passed, mode is "every".', () => {
-      const condition: Condition = { mode: 'every', screen: { moreThan: 414 }, form: null };
+      const condition: Condition = { mode: 'every', screen: { moreThan: 414, lessThan: null }, form: null };
       expect(laptop.check(condition)).toBeTruthy();
     });
   });
   describe('Different variations of screen values.', () => {
     test('screen.moreThen 414.', () => {
-      const condition: Condition = { mode: 'some', screen: { moreThan: 414 }, form: null };
+      const condition: Condition = { mode: 'some', screen: { moreThan: 414, lessThan: null }, form: null };
       expect(zero.check(condition)).toBeFalsy();
       expect(tablet.check(condition)).toBeTruthy();
       expect(laptop.check(condition)).toBeTruthy();
     });
     test('screen.lessThen 1024.', () => {
-      const condition: Condition = { mode: 'some', screen: { lessThan: 1024 }, form: null };
+      const condition: Condition = { mode: 'some', screen: { lessThan: 1024, moreThan: null }, form: null };
       expect(zero.check(condition)).toBeTruthy();
       expect(tablet.check(condition)).toBeTruthy();
       expect(laptop.check(condition)).toBeFalsy();
@@ -121,7 +121,10 @@ describe('Resolver.', () => {
     test('Screen keys are undefined. Form key matches. Screen does not play any role.', () => {
       const condition: Condition = {
         mode: 'some',
-        screen: {},
+        screen: {
+          moreThan: null,
+          lessThan: null,
+        },
         form: {
           one: [
             {
@@ -139,25 +142,6 @@ describe('Resolver.', () => {
       const condition: Condition = {
         mode: 'some',
         screen: null,
-        form: {
-          one: [
-            {
-              value: 'a',
-              extra: null,
-            },
-          ],
-        },
-      };
-      expect(zero.check(condition)).toBeTruthy();
-      expect(tablet.check(condition)).toBeTruthy();
-      expect(laptop.check(condition)).toBeTruthy();
-    });
-    test('Screen not valid object. Form key matches. Screen does not play any role.', () => {
-      const condition: Condition = {
-        mode: 'some',
-        screen: {
-          a: 1,
-        } as Screen,
         form: {
           one: [
             {

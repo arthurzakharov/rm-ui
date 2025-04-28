@@ -1,6 +1,6 @@
 {
   "name": "@arthurzakharov/rm-ui",
-  "version": "1.0.119",
+  "version": "1.0.123",
   "description": "UI library for rm projects",
   "license": "MIT",
   "private": false,
@@ -41,11 +41,14 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
+    "clsx": "^2.1.1",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "valibot": "^1.0.0"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -54,14 +57,15 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
     "@eslint/js": "^9.20.0",
+    "@storybook/addon-console": "^3.0.0",
     "@storybook/addon-coverage": "^1.0.5",
-    "@storybook/addon-essentials": "^8.6.9",
-    "@storybook/addon-interactions": "^8.6.9",
-    "@storybook/addon-links": "^8.6.9",
-    "@storybook/blocks": "^8.6.9",
-    "@storybook/react": "^8.6.9",
-    "@storybook/react-vite": "^8.6.9",
-    "@storybook/test": "^8.6.9",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-links": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-vite": "^8.6.12",
+    "@storybook/test": "^8.6.12",
     "@storybook/test-runner": "^0.22.0",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^20.17.0",
@@ -79,8 +83,8 @@
     "globals": "^15.14.0",
     "jsdom": "^26.0.0",
     "prettier": "^3.5.1",
-    "storybook": "^8.6.9",
-    "storybook-addon-rtl": "^1.0.1",
+    "storybook": "^8.6.12",
+    "storybook-addon-rtl": "^1.1.0",
     "storybook-react-context": "^0.7.0",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.24.1",

@@ -1,12 +1,14 @@
 import type { LogosProps } from './logos.type';
-import { cn } from '../../utils/functions';
+import clsx from 'clsx';
+import tlsFallbackSrc from './assets/tls.png';
+import tuvFallbackSrc from './assets/tuv.jpeg';
 import css from './logos.module.css';
 
 export default function Logos(props: LogosProps) {
-  const { show, tlsSrc = '', tuvSrc = '', className = '' } = props;
+  const { show = ['tuv', 'tls'], tlsSrc = tlsFallbackSrc, tuvSrc = tuvFallbackSrc, className = '' } = props;
 
   return (
-    <div className={cn(css.Logos, className)}>
+    <div className={clsx(css.Logos, className)}>
       {show.map((logo) => {
         switch (logo) {
           case 'tuv':

@@ -2,7 +2,6 @@ import {
   object,
   string,
   number,
-  optional,
   union,
   array,
   record,
@@ -13,31 +12,11 @@ import {
   hexColor,
   nullable,
 } from 'valibot';
-import { ContentGeneric } from './types';
 
-// Schema factories
-function prioElement<T extends ContentGeneric>(content: T) {
-  return fallback(
-    array(
-      object({
-        content,
-        props: nullable(record(string(), unknown())),
-        condition: nullable(ConditionSchema),
-      }),
-    ),
-    [],
-  );
-}
-function successBoxElement<T extends ContentGeneric>(content: T) {
-  return object({
-    variationId: number(),
-    content,
-    condition: nullable(ConditionSchema),
-  });
-}
 // Union types
 export const ModeTypeSchema = union([literal('some'), literal('every')]);
-export const ListTypeSchema = union([literal('check'), literal('question'), literal('exclamation'), literal('cross')]);
+const ListTypeSchema = union([literal('check'), literal('question'), literal('exclamation'), literal('cross')]);
+const BodyTypeSchema = union([literal('title'), literal('html'), literal('list')]);
 // Condition
 export const ExtraConditionSchema = record(string(), string());
 export const ExtraSchema = object({
@@ -45,8 +24,8 @@ export const ExtraSchema = object({
   condition: array(ExtraConditionSchema),
 });
 export const ScreenSchema = object({
-  lessThan: optional(number(), -1),
-  moreThan: optional(number(), -1),
+  lessThan: nullable(number()),
+  moreThan: nullable(number()),
 });
 export const FormKeyConditionSchema = object({
   value: string(),
@@ -56,50 +35,76 @@ export const FormSchema = record(string(), array(FormKeyConditionSchema));
 export const ConditionSchema = fallback(
   object({
     mode: ModeTypeSchema,
-    screen: nullable(ScreenSchema, {
-      lessThan: -1,
-      moreThan: -1,
-    }),
-    form: nullable(FormSchema, {}),
+    screen: nullable(ScreenSchema),
+    form: nullable(FormSchema),
   }),
   {
     mode: 'some',
-    screen: {
-      lessThan: -1,
-      moreThan: -1,
-    },
-    form: {},
+    screen: null,
+    form: null,
   },
 );
 // Prio fil
+export const VariationSchema = fallback(
+  object({
+    color: pipe(string(), hexColor()),
+    order: array(BodyTypeSchema),
+    head: number(),
+    title: number(),
+    html: number(),
+    list: number(),
+    condition: nullable(ConditionSchema),
+  }),
+  {
+    color: '#00b649',
+    order: ['title', 'list', 'html'],
+    head: 1,
+    title: 1,
+    html: 1,
+    list: 1,
+    condition: null,
+  },
+);
+export const SuccessBoxHeadSchema = object({
+  variationId: number(),
+  content: object({
+    primary: string(),
+    secondary: string(),
+  }),
+  condition: nullable(ConditionSchema),
+});
+export const SuccessBoxTitleSchema = object({
+  variationId: number(),
+  content: string(),
+  condition: nullable(ConditionSchema),
+});
+export const SuccessBoxHtmlSchema = object({
+  variationId: number(),
+  content: string(),
+  condition: nullable(ConditionSchema),
+});
+export const SuccessBoxListSchema = object({
+  variationId: number(),
+  content: object({
+    priority: array(ListTypeSchema),
+    content: array(
+      object({
+        type: ListTypeSchema,
+        content: string(),
+        subContent: array(string()),
+        condition: nullable(ConditionSchema),
+      }),
+    ),
+  }),
+  condition: nullable(ConditionSchema),
+});
 export const SuccessBoxSchema = fallback(
   object({
-    head: array(
-      successBoxElement(
-        object({
-          primary: string(),
-          secondary: string(),
-        }),
-      ),
-    ),
+    head: array(SuccessBoxHeadSchema),
     body: object({
-      title: array(successBoxElement(string())),
-      html: array(successBoxElement(string())),
-      list: array(
-        successBoxElement(
-          object({
-            priority: array(ListTypeSchema),
-            content: array(
-              object({
-                type: ListTypeSchema,
-                content: string(),
-                subContent: array(string()),
-                condition: nullable(ConditionSchema),
-              }),
-            ),
-          }),
-        ),
-      ),
+      title: array(SuccessBoxTitleSchema),
+      html: array(SuccessBoxHtmlSchema),
+      list: array(SuccessBoxListSchema),
     }),
   }),
   {
@@ -111,39 +116,22 @@ export const SuccessBoxSchema = fallback(
     },
   },
 );
-export const VariationSchema = fallback(
-  object({
-    color: nullable(pipe(string(), hexColor())),
-    head: nullable(number()),
-    title: nullable(number()),
-    html: nullable(number()),
-    list: nullable(number()),
-    condition: nullable(ConditionSchema),
-  }),
-  {
-    color: '#333',
-    head: 1,
-    title: 1,
-    html: 1,
-    list: 1,
-    condition: null,
-  },
-);
-export const QuestionSchema = prioElement(
-  object({
+// TODO: convert to Object, so Can use in type for blueprint
+export const GroupSchema = object({
+  content: object({
     head: string(),
     body: string(),
   }),
-);
-export const SidebarSchema = prioElement(string());
-export const FooterSchema = prioElement(string());
+  props: nullable(record(string(), unknown())),
+  condition: nullable(ConditionSchema),
+});
 export const PrioSchema = fallback(
   object({
     variation: nullable(array(VariationSchema)),
     successBox: nullable(SuccessBoxSchema),
-    question: nullable(QuestionSchema),
-    sidebar: nullable(SidebarSchema),
-    footer: nullable(FooterSchema),
+    question: nullable(array(GroupSchema)),
+    sidebar: nullable(array(GroupSchema)),
+    footer: nullable(array(GroupSchema)),
   }),
   {
     variation: null,

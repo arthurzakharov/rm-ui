@@ -1,6 +1,7 @@
-import type { FormAnswers, Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types';
+import type { Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types';
+import type { FormAnswers } from '../../landing-page.types';
 import { ConditionSchema, ScreenSchema } from '../schemas';
-import { SYMBOL } from '../constants';
+import SYMBOL from '../symbol';
 import { getDefaults, getFallback, safeParse } from 'valibot';
 
 export default class Resolver {
@@ -79,11 +80,11 @@ export default class Resolver {
   }
 
   private checkScreen(screen: Screen | null): boolean {
-    if (!screen) return true;
-    const screenDefaults = getDefaults(ScreenSchema);
-    const lessThan = screen.lessThan || screenDefaults.lessThan;
-    const moreThan = screen.moreThan || screenDefaults.moreThan;
-    return [this.width >= moreThan || moreThan === -1, this.width < lessThan || lessThan === -1].every(Boolean);
+    if (screen === null) return true;
+    return [
+      screen.moreThan === null || this.width >= screen.moreThan,
+      screen.lessThan === null || this.width < screen.lessThan,
+    ].every(Boolean);
   }
 
   private checkScreenPassed(screen: Screen | null): boolean {
@@ -117,7 +118,7 @@ export default class Resolver {
   }
 
   private checkForm(form: Form | null, mode: Mode): boolean {
-    if (!form) return true;
+    if (form === null) return true;
     return mode === 'some'
       ? Object.entries(form).some((entry) => this.checkFormKey(entry))
       : Object.entries(form).every((entry) => this.checkFormKey(entry));
@@ -134,12 +135,12 @@ export default class Resolver {
 
   public check(condition: Condition): boolean {
     const { mode, screen, form } = this.getCondition(condition);
+    if (screen === null && form === null) return true;
+    const resultCheck = [];
     const screenPassed = this.checkScreenPassed(screen);
     const formPassed = this.checkFormPassed(form);
-    const resultCheck = [];
-    if (screenPassed) resultCheck.push(this.checkScreen(screen));
-    if (formPassed) resultCheck.push(this.checkForm(form, mode));
-    if (!resultCheck.length) return false;
+    if (screenPassed && screen !== null) resultCheck.push(this.checkScreen(screen));
+    if (formPassed && form !== null) resultCheck.push(this.checkForm(form, mode));
     return mode === 'some' ? resultCheck.some(Boolean) : resultCheck.every(Boolean);
   }
 }

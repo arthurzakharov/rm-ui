@@ -1,7 +1,7 @@
 import type { FC, MouseEvent } from 'react';
 import type { NavigationButtonsProps } from './navigation-buttons.types';
 import { ChevronRight } from 'lucide-react';
-import { cn } from '../../utils/functions';
+import clsx from 'clsx';
 import css from './navigation-buttons.module.css';
 
 const NavigationButtons: FC<NavigationButtonsProps> = ({
@@ -16,7 +16,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
     <button
       data-testid="navigation-button-previous"
       type="button"
-      className={cn(
+      className={clsx(
         css.NavigationButton,
         css.NavigationButtonPrev,
         showPrevious ? css.NavigationButtonVisible : css.NavigationButtonHidden,
@@ -32,7 +32,7 @@ const NavigationButtons: FC<NavigationButtonsProps> = ({
     <button
       data-testid="navigation-button-next"
       type="button"
-      className={cn(
+      className={clsx(
         css.NavigationButton,
         css.NavigationButtonNext,
         showNext ? css.NavigationButtonVisible : css.NavigationButtonHidden,

@@ -1,0 +1,161 @@
+@property --landing-page-questions-title-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #004473;
+}
+
+@property --landing-page-questions-title-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 18px;
+}
+
+@property --landing-page-questions-body-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #4b4b4b;
+}
+
+@property --landing-page-questions-body-font-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 14px;
+}
+
+@property --landing-page-questions-link-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff8d01;
+}
+
+@property --landing-page-questions-line-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f6f8f9;
+}
+
+@property --landing-page-questions-line-width {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 3px;
+}
+
+@property --landing-page-questions-line-space {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 25px;
+}
+
+
+.Main {
+  width:  100%;
+}
+
+.Groups {
+  --space: 24px;
+  margin: 0;
+  padding: 30px 20px;
+}
+
+.Group {
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.Group:last-child {
+  margin-bottom: 0;
+}
+
+.GroupTopLine {
+  margin-top: 25px;
+  padding-top: 22px;
+  border-top: var(--landing-page-questions-line-width) solid var(--landing-page-questions-line-color);
+}
+
+.GroupBottomLine {
+  margin-bottom: 25px;
+  padding-bottom: 22px;
+  border-bottom: var(--landing-page-questions-line-width) solid var(--landing-page-questions-line-color);
+}
+
+.Title {
+  margin-top: 0;
+  margin-bottom: var(--space);
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: var(--landing-page-questions-title-font-size);
+  line-height: 1.4;
+  color: var(--landing-page-questions-title-color);
+}
+
+.Title b {
+  font-weight: 400;
+}
+
+.Blocks {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: var(--space);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: var(--landing-page-questions-body-font-size);
+  line-height: 1.6;
+  color: var(--landing-page-questions-body-color);
+}
+
+.Block {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .Main {
+    width: calc(100% - 275px - 15px);
+  }
+
+  .Groups {
+    margin: 20px 0;
+    box-shadow:
+      0 0 28px rgba(0, 0, 0, 0.05),
+      0 0 10px rgba(0, 0, 0, 0.02);
+  }
+
+  .Group {
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Main {
+    width: calc(100% - 325px - 15px);
+  }
+
+  .Groups {
+    margin: 40px 0;
+    padding: 30px;
+  }
+
+  .Title {
+    font-size: calc(var(--landing-page-questions-body-font-size) + 4px);
+  }
+
+  .Blocks {
+    font-size: calc(var(--landing-page-questions-body-font-size) + 2px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .Main {
+    width: calc(100% - 375px - 40px);
+  }
+}

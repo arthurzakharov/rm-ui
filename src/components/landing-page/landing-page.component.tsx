@@ -1,33 +1,33 @@
 import type { LandingPageProps } from './landing-page.types';
-import { Fragment } from 'react';
-import LandingPageSuccessBox from './components/landing-page-success-box/landing-page-success-box.component';
-import LandingPageQuestions from './components/landing-page-questions/landing-page-questions.component';
-import LandingPageSidebar from './components/landing-page-sidebar/landing-page-sidebar.component';
-import LandingPageFooter from './components/landing-page-footer/landing-page-footer.component';
-import LandingPageLoader from './components/landing-page-loader/landing-page-loader.component';
+import Loader from './components/loader';
+import Sidebar from './components/sidebar';
+import Footer from './components/footer';
+import Main from './components/main';
+import useViewportSize from '../../hooks/useViewportSize';
+import Parser from './utils/parser';
 import css from './landing-page.module.css';
 
 export default function LandingPage(props: LandingPageProps) {
-  const { loaded, refs, successBox, questions, sidebar, footer } = props;
+  const { loaded, prio, data, answers } = props;
+  const { width } = useViewportSize();
+
+  const {
+    page: { successBox, question, sidebar, footer },
+  } = new Parser(prio, data, answers, width);
 
   return (
     <div className={css.Landing}>
       {loaded ? (
-        <Fragment>
-          <div ref={refs.container} className={css.Container}>
-            <main className={css.Main}>
-              <LandingPageSuccessBox {...successBox} refs={{ head: refs.successBox }} className={css.SuccessBox} />
-              <LandingPageQuestions list={questions} className={css.Questions} />
-            </main>
-            <LandingPageSidebar list={sidebar} className={css.Sidebar} />
+        <>
+          <div className={css.Container}>
+            <Main successBox={successBox} groups={question} />
+            <Sidebar groups={sidebar} />
           </div>
-          <LandingPageFooter list={footer} />
-        </Fragment>
+          <Footer groups={footer} />
+        </>
       ) : (
-        <LandingPageLoader className={css.Loader} />
+        <Loader className={css.Loader} />
       )}
     </div>
   );
 }
-
-LandingPage.displayName = 'LandingPage';

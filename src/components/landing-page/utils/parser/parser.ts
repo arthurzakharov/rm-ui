@@ -1,35 +1,58 @@
-import type {
-  Answers,
-  FormAnswers,
-  Prio,
-  Variation,
-  SuccessBoxBlueprint,
-  SuccessBoxItem,
-  LandingPageBlueprint,
-  Condition,
-  Schema,
-  QuestionBlueprint,
-  SidebarBlueprint,
-  FooterBlueprint,
-} from '../types';
+import type { Prio, Variation, SuccessBoxItem } from '../types';
+import type { Answers, FormAnswers } from '../../landing-page.types';
+import type { AccordionProps } from '../../components/accordion';
+import type { AdvantagesProps } from '../../components/advantages';
+import type { HowToProps } from '../../components/how-to';
+import type { ContactProps } from '../../components/contact';
+import type { OrderedListProps } from '../../components/ordered-list';
+import type { CtaButtonProps } from '../../components/cta-button';
+import type { LogosProps } from '../../../logos';
+import type { PlayerProps } from '../../components/player';
+import type { LogoBoardProps } from '../../components/logo-board';
+import type { ReviewProps } from '../../components/review';
+import type { SuccessBoxProps } from '../../components/success-box';
+import type { Group } from '../../components/group';
 import { getFallback, safeParse } from 'valibot';
-import { FooterSchema, QuestionSchema, SidebarSchema, SuccessBoxSchema, VariationSchema } from '../schemas';
+import { GroupSchema, PrioSchema, SuccessBoxSchema, VariationSchema } from '../schemas';
 import Replacer from '../replacer';
 import Resolver from '../resolver';
+import { BLOCK, type Block } from '../../components/block';
+import SYMBOL from '../symbol';
+import fallback from '../fallback';
 
 export default class Parser {
   private readonly prio: Prio;
   private readonly replacer: Replacer;
   private readonly resolver: Resolver;
   private readonly variation: Variation;
-  public readonly blueprint: LandingPageBlueprint;
+  public readonly page: {
+    successBox: SuccessBoxProps;
+    question: Array<Group>;
+    sidebar: Array<Group>;
+    footer: Array<Group>;
+  };
 
-  constructor(prio: Prio, data: FormAnswers, answers: Answers, width: number) {
-    this.prio = prio;
+  constructor(prio: unknown, data: FormAnswers, answers: Answers, width: number) {
+    const { success, output } = safeParse(PrioSchema, prio);
+    const safePrio = success ? output : getFallback(PrioSchema);
+    this.prio = safePrio;
     this.replacer = new Replacer(answers);
     this.resolver = new Resolver(data, width);
-    this.variation = this.getVariation(prio);
-    this.blueprint = this.getBlueprint();
+    this.variation = this.getVariation(safePrio);
+    this.page = this.deepMapStrings({
+      successBox: this.getSuccessBoxProps(),
+      question: this.getLandingPageGroups(safePrio.question),
+      sidebar: this.getLandingPageGroups(safePrio.sidebar),
+      footer: this.getLandingPageGroups(safePrio.footer),
+    });
+  }
+
+  private isValidBlock(value: string): value is BLOCK {
+    return Object.values(BLOCK).includes(value as BLOCK);
+  }
+
+  private getKey<T>(obj: Record<string, unknown> | null, path: string, fb: T): T {
+    return !!obj && !!obj[path] ? { ...fb, ...obj[path] } : fb;
   }
 
   /**
@@ -84,7 +107,7 @@ export default class Parser {
    * - variationId matches the provided variation, and
    * - if item has condition, it must pass the resolver.check() test.
    */
-  private getSuccessBoxItem<L extends SuccessBoxItem>(list: L[], variation: number | null): L | undefined {
+  private getSuccessBoxItem<L extends SuccessBoxItem>(list: Array<L>, variation: number | null): L | undefined {
     return list.find(({ variationId, condition }) => {
       const variationIdMatched = variationId === variation;
       return condition ? variationIdMatched && this.resolver.check(condition) : variationIdMatched;
@@ -95,7 +118,7 @@ export default class Parser {
    * Get ready to use blueprint for Sidebar with all elements are checked for condition selected according to variation.
    * List items are sorted according to priority that is provided.
    */
-  private getSuccessBoxBlueprint(): SuccessBoxBlueprint {
+  private getSuccessBoxProps(): SuccessBoxProps {
     const { success, output } = safeParse(SuccessBoxSchema, this.prio.successBox);
     const successBox = success ? output : getFallback(SuccessBoxSchema);
     const head = this.getSuccessBoxItem(successBox.head, this.variation.head);
@@ -104,48 +127,106 @@ export default class Parser {
     const list = this.getSuccessBoxItem(successBox.body.list, this.variation.list);
     const { content, priority } = list ? list.content : { priority: [], content: [] };
     return {
+      color: this.variation.color,
       head: {
         primary: head ? head.content.primary : '',
         secondary: head ? head.content.secondary : '',
       },
-      body: {
-        title: title ? title.content : '',
-        html: html ? html.content : '',
-        list: content
-          .filter(({ condition }) => !condition || this.resolver.check(condition))
-          .sort((a, b) => {
-            const aIndex = priority.indexOf(a.type);
-            const bIndex = priority.indexOf(b.type);
-            const safeAIndex = aIndex === -1 ? priority.length : aIndex;
-            const safeBIndex = bIndex === -1 ? priority.length : bIndex;
-            return safeAIndex - safeBIndex;
-          }),
-      },
+      body: this.variation.order.map((type) => {
+        switch (type) {
+          case 'list':
+            return {
+              type,
+              data: content
+                .filter(({ condition }) => !condition || this.resolver.check(condition))
+                .sort((a, b) => {
+                  const aIndex = priority.indexOf(a.type);
+                  const bIndex = priority.indexOf(b.type);
+                  const safeAIndex = aIndex === -1 ? priority.length : aIndex;
+                  const safeBIndex = bIndex === -1 ? priority.length : bIndex;
+                  return safeAIndex - safeBIndex;
+                }),
+            };
+          case 'title':
+            return {
+              type,
+              data: title ? title.content : '',
+            };
+          case 'html':
+            return {
+              type,
+              data: html ? html.content : '',
+            };
+        }
+      }),
     };
   }
 
   /**
    * Get ready to use blueprint for Sidebar, Footer or Question with all elements are checked for condition.
    */
-  private getSimpleBlueprint<O>(schema: Schema, data: unknown): O {
-    const { success, output } = safeParse(schema, data);
-    return success
-      ? ((output as Array<{ content: unknown; props: Record<string, unknown> | null; condition: Condition | null }>)
-          .filter(({ content, condition }) => !!content && (!condition || this.resolver.check(condition)))
-          .map(({ content, props }) => ({ content, props })) as O)
-      : (getFallback(schema) as O);
-  }
-
-  /**
-   * Get ready to use blueprint for LandingPage with all elements are checked for condition.
-   * Before dispatching blueprint, all nested string values are passed through Replacer to check for placeholders.
-   */
-  private getBlueprint(): LandingPageBlueprint {
-    return this.deepMapStrings({
-      successBox: this.getSuccessBoxBlueprint(),
-      question: this.getSimpleBlueprint<QuestionBlueprint>(QuestionSchema, this.prio.question),
-      sidebar: this.getSimpleBlueprint<SidebarBlueprint>(SidebarSchema, this.prio.sidebar),
-      footer: this.getSimpleBlueprint<FooterBlueprint>(FooterSchema, this.prio.footer),
-    });
+  private getLandingPageGroups(data: unknown): Array<Group> {
+    const groups = Array.isArray(data)
+      ? data
+          .map((d) => {
+            const { success, output } = safeParse(GroupSchema, d);
+            return success ? output : null;
+          })
+          .filter((d) => !!d)
+      : [];
+    return groups
+      .filter(({ content, condition }) => !!content && (!condition || this.resolver.check(condition)))
+      .map(({ content, props }) => ({ content, props }))
+      .map(({ content, props }): Group => {
+        return {
+          id: Math.ceil(Math.random() * 1000000),
+          type: this.isValidBlock(content.body) ? content.body : BLOCK.QUESTION,
+          title: content.head,
+          blocks: content.body
+            .split(SYMBOL.COMPONENT)
+            .reduce<Block[]>((elements, chunk, idx) => {
+              const component = SYMBOL.COMPONENT + chunk + SYMBOL.COMPONENT;
+              const type = this.isValidBlock(component) ? component : BLOCK.QUESTION;
+              return [
+                ...elements,
+                {
+                  type,
+                  content: idx % 2 === 1 ? '' : chunk,
+                  props: ((type) => {
+                    switch (type) {
+                      case BLOCK.ACCORDION:
+                        return this.getKey<AccordionProps>(props, 'accordion', fallback.accordion);
+                      case BLOCK.HOW_TO_GO_NEXT:
+                        return this.getKey<HowToProps>(props, 'howTo', fallback.howTo);
+                      case BLOCK.ADVANTAGE_LIST:
+                        return this.getKey<AdvantagesProps>(props, 'advantageList', fallback.advantages);
+                      case BLOCK.ADVANTAGE_LIST_NO_BUTTON:
+                        return this.getKey<AdvantagesProps>(props, 'advantageListNoButton', fallback.advantages);
+                      case BLOCK.CONTACT_US:
+                        return this.getKey<ContactProps>(props, 'contact', fallback.contact);
+                      case BLOCK.ORDERED_LIST:
+                        return this.getKey<OrderedListProps>(props, 'orderedList', fallback.orderedList);
+                      case BLOCK.BUTTON:
+                        return this.getKey<CtaButtonProps>(props, 'button', fallback.ctaButtons);
+                      case BLOCK.LOGOS:
+                        return this.getKey<LogosProps>(props, 'logos', fallback.logos);
+                      case BLOCK.PLAYER:
+                        return this.getKey<PlayerProps>(props, 'player', fallback.player);
+                      case BLOCK.LOGO_CLOUD:
+                        return this.getKey<LogoBoardProps>(props, 'logoBoard', fallback.logoBoard);
+                      case BLOCK.REVIEW:
+                        return this.getKey<ReviewProps>(props, 'review', fallback.review);
+                      case BLOCK.QUESTION:
+                        return null;
+                    }
+                  })(type),
+                } as Block,
+              ];
+            }, [])
+            .filter(({ type, content }) => !(type === BLOCK.QUESTION && !content)),
+          hideTop: false,
+          hideBottom: false,
+        };
+      });
   }
 }

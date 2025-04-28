@@ -1,5 +1,5 @@
-import type { Answers, Answer } from '../types';
-import { SYMBOL } from '../constants';
+import type { Answers, Answer } from '../../landing-page.types';
+import SYMBOL from '../symbol';
 
 export default class Replacer {
   private readonly answers: Answers;

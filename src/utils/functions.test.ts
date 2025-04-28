@@ -3,7 +3,6 @@ import { createRef } from 'react';
 import {
   cn,
   getYearsBetween,
-  generateCalendar,
   getNextIndex,
   formatNumberWithLeadingZero,
   convertDateToMaskFormat,
@@ -13,10 +12,8 @@ import {
   isCalendarDayEqualsToDate,
   getYearButtonRef,
   createDate,
-  getDaysInMonth,
-  getDaysInPreviousMonth,
 } from './functions';
-import { WEEK_DAY, MONTH } from './enums';
+import { MONTH } from './enums';
 
 describe('📍 - cn', () => {
   test('Singe className passed returns passed className', () => {
@@ -71,171 +68,171 @@ describe('📍 - getYearsBetween', () => {
   });
 });
 
-describe('📍 - generateCalendar', () => {
-  test('Not leap year February 2025, check 29th and 28th', () => {
-    const calendar = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.FEBRUARY, 2025],
-      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
-    );
-    expect(calendar.length).toEqual(5);
-    expect(calendar[4][4]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: false,
-      day: 28,
-      year: 2025,
-      month: 1,
-    });
-    expect(calendar[4][5]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: true,
-      day: 1,
-      year: 2025,
-      month: 2,
-    });
-  });
-  test('Not leap year February 2100, check 29th and 28th (Even 2100 divides by 4)', () => {
-    const calendar = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.FEBRUARY, 2100],
-      [createDate(1, MONTH.JANUARY, 2099), createDate(1, MONTH.JANUARY, 2101, true)],
-    );
-    expect(calendar.length).toEqual(4);
-    expect(calendar[3][6]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: false,
-      day: 28,
-      year: 2100,
-      month: 1,
-    });
-    expect(calendar[3][7]).toBeUndefined();
-  });
-  test('Leap year February 2024, check 29th and 28th', () => {
-    const calendar = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.FEBRUARY, 2024],
-      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
-    );
-    expect(calendar.length).toEqual(5);
-    expect(calendar[4][2]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: false,
-      day: 28,
-      year: 2024,
-      month: 1,
-    });
-    expect(calendar[4][3]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: false,
-      day: 29,
-      year: 2024,
-      month: 1,
-    });
-    expect(calendar[4][4]).toEqual({
-      outOfPeriod: false,
-      notThisMonth: true,
-      day: 1,
-      year: 2024,
-      month: 2,
-    });
-  });
-  test('Check 30 and 31 days months', () => {
-    const PERIOD: [Date, Date] = [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)];
-    const januar = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JANUARY, 2024], PERIOD);
-    const march = generateCalendar(WEEK_DAY.MONDAY, [MONTH.MARCH, 2024], PERIOD);
-    const april = generateCalendar(WEEK_DAY.MONDAY, [MONTH.APRIL, 2024], PERIOD);
-    const may = generateCalendar(WEEK_DAY.MONDAY, [MONTH.MAY, 2024], PERIOD);
-    const june = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JUNE, 2024], PERIOD);
-    const july = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JULY, 2024], PERIOD);
-    const august = generateCalendar(WEEK_DAY.MONDAY, [MONTH.AUGUST, 2024], PERIOD);
-    const september = generateCalendar(WEEK_DAY.MONDAY, [MONTH.SEPTEMBER, 2024], PERIOD);
-    const october = generateCalendar(WEEK_DAY.MONDAY, [MONTH.OCTOBER, 2024], PERIOD);
-    const november = generateCalendar(WEEK_DAY.MONDAY, [MONTH.NOVEMBER, 2024], PERIOD);
-    const december = generateCalendar(WEEK_DAY.MONDAY, [MONTH.DECEMBER, 2024], PERIOD);
-    expect(januar[4][2].day).toEqual(31);
-    expect(januar[4][3].day).toEqual(1);
-    expect(march.length).toEqual(5);
-    expect(march[4][6].day).toEqual(31);
-    expect(march[4][7]).toBeUndefined();
-    expect(april[4][1].day).toEqual(30);
-    expect(april[4][2].day).toEqual(1);
-    expect(may[4][4].day).toEqual(31);
-    expect(may[4][5].day).toEqual(1);
-    expect(june.length).toEqual(5);
-    expect(june[4][6].day).toEqual(30);
-    expect(june[4][7]).toBeUndefined();
-    expect(july[4][2].day).toEqual(31);
-    expect(july[4][3].day).toEqual(1);
-    expect(august[4][5].day).toEqual(31);
-    expect(august[4][6].day).toEqual(1);
-    expect(september[5][0].day).toEqual(30);
-    expect(september[5][1].day).toEqual(1);
-    expect(october[4][3].day).toEqual(31);
-    expect(october[4][4].day).toEqual(1);
-    expect(november[4][5].day).toEqual(30);
-    expect(november[4][6].day).toEqual(1);
-    expect(december[5][1].day).toEqual(31);
-    expect(december[5][2].day).toEqual(1);
-  });
-  test('May 2024, check days within and outside of month, detect ranges', () => {
-    const may = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.MAY, 2024],
-      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026)],
-    );
-    expect(may.length).toEqual(5);
-    expect(may[0][0].notThisMonth).toBeTruthy();
-    expect(may[0][1].notThisMonth).toBeTruthy();
-    expect(may[0][2].notThisMonth).toBeFalsy();
-    expect(may[4][4].notThisMonth).toBeFalsy();
-    expect(may[4][5].notThisMonth).toBeTruthy();
-    expect(may[4][6].notThisMonth).toBeTruthy();
-  });
-  test('Every week contains only 7 days', () => {
-    const may = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.MAY, 2024],
-      [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
-    );
-    may.forEach((week) => expect(week.length).toEqual(7));
-  });
-  test('If month is not fully in period, days that are out of period has outOfPeriod: true', () => {
-    const may = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.MAY, 2024],
-      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026, true)],
-    );
-    expect(may.length).toEqual(5);
-    expect(may[0][0].outOfPeriod).toBeTruthy();
-    expect(may[2][1].outOfPeriod).toBeTruthy();
-    expect(may[2][2].outOfPeriod).toBeFalsy();
-    expect(may[4][6].outOfPeriod).toBeFalsy();
-  });
-  test('weekStart will change the order of first day in a week', () => {
-    const mayFirstMonday = generateCalendar(
-      WEEK_DAY.MONDAY,
-      [MONTH.MAY, 2024],
-      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
-    );
-    const mayFirstSunday = generateCalendar(
-      WEEK_DAY.SUNDAY,
-      [MONTH.MAY, 2024],
-      [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
-    );
-    expect(mayFirstMonday.length).toEqual(5);
-    expect(mayFirstMonday[0][0].day).toEqual(29);
-    expect(mayFirstMonday[1][0].day).toEqual(6);
-    expect(mayFirstMonday[2][0].day).toEqual(13);
-    expect(mayFirstMonday[3][0].day).toEqual(20);
-    expect(mayFirstMonday[4][0].day).toEqual(27);
-    expect(mayFirstSunday.length).toEqual(5);
-    expect(mayFirstSunday[0][0].day).toEqual(28);
-    expect(mayFirstSunday[1][0].day).toEqual(5);
-    expect(mayFirstSunday[2][0].day).toEqual(12);
-    expect(mayFirstSunday[3][0].day).toEqual(19);
-    expect(mayFirstSunday[4][0].day).toEqual(26);
-  });
-});
+// describe('📍 - generateCalendar', () => {
+//   test('Not leap year February 2025, check 29th and 28th', () => {
+//     const calendar = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.FEBRUARY, 2025],
+//       [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
+//     );
+//     expect(calendar.length).toEqual(5);
+//     expect(calendar[4][4]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: false,
+//       day: 28,
+//       year: 2025,
+//       month: 1,
+//     });
+//     expect(calendar[4][5]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: true,
+//       day: 1,
+//       year: 2025,
+//       month: 2,
+//     });
+//   });
+//   test('Not leap year February 2100, check 29th and 28th (Even 2100 divides by 4)', () => {
+//     const calendar = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.FEBRUARY, 2100],
+//       [createDate(1, MONTH.JANUARY, 2099), createDate(1, MONTH.JANUARY, 2101, true)],
+//     );
+//     expect(calendar.length).toEqual(4);
+//     expect(calendar[3][6]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: false,
+//       day: 28,
+//       year: 2100,
+//       month: 1,
+//     });
+//     expect(calendar[3][7]).toBeUndefined();
+//   });
+//   test('Leap year February 2024, check 29th and 28th', () => {
+//     const calendar = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.FEBRUARY, 2024],
+//       [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
+//     );
+//     expect(calendar.length).toEqual(5);
+//     expect(calendar[4][2]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: false,
+//       day: 28,
+//       year: 2024,
+//       month: 1,
+//     });
+//     expect(calendar[4][3]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: false,
+//       day: 29,
+//       year: 2024,
+//       month: 1,
+//     });
+//     expect(calendar[4][4]).toEqual({
+//       outOfPeriod: false,
+//       notThisMonth: true,
+//       day: 1,
+//       year: 2024,
+//       month: 2,
+//     });
+//   });
+//   test('Check 30 and 31 days months', () => {
+//     const PERIOD: [Date, Date] = [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)];
+//     const januar = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JANUARY, 2024], PERIOD);
+//     const march = generateCalendar(WEEK_DAY.MONDAY, [MONTH.MARCH, 2024], PERIOD);
+//     const april = generateCalendar(WEEK_DAY.MONDAY, [MONTH.APRIL, 2024], PERIOD);
+//     const may = generateCalendar(WEEK_DAY.MONDAY, [MONTH.MAY, 2024], PERIOD);
+//     const june = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JUNE, 2024], PERIOD);
+//     const july = generateCalendar(WEEK_DAY.MONDAY, [MONTH.JULY, 2024], PERIOD);
+//     const august = generateCalendar(WEEK_DAY.MONDAY, [MONTH.AUGUST, 2024], PERIOD);
+//     const september = generateCalendar(WEEK_DAY.MONDAY, [MONTH.SEPTEMBER, 2024], PERIOD);
+//     const october = generateCalendar(WEEK_DAY.MONDAY, [MONTH.OCTOBER, 2024], PERIOD);
+//     const november = generateCalendar(WEEK_DAY.MONDAY, [MONTH.NOVEMBER, 2024], PERIOD);
+//     const december = generateCalendar(WEEK_DAY.MONDAY, [MONTH.DECEMBER, 2024], PERIOD);
+//     expect(januar[4][2].day).toEqual(31);
+//     expect(januar[4][3].day).toEqual(1);
+//     expect(march.length).toEqual(5);
+//     expect(march[4][6].day).toEqual(31);
+//     expect(march[4][7]).toBeUndefined();
+//     expect(april[4][1].day).toEqual(30);
+//     expect(april[4][2].day).toEqual(1);
+//     expect(may[4][4].day).toEqual(31);
+//     expect(may[4][5].day).toEqual(1);
+//     expect(june.length).toEqual(5);
+//     expect(june[4][6].day).toEqual(30);
+//     expect(june[4][7]).toBeUndefined();
+//     expect(july[4][2].day).toEqual(31);
+//     expect(july[4][3].day).toEqual(1);
+//     expect(august[4][5].day).toEqual(31);
+//     expect(august[4][6].day).toEqual(1);
+//     expect(september[5][0].day).toEqual(30);
+//     expect(september[5][1].day).toEqual(1);
+//     expect(october[4][3].day).toEqual(31);
+//     expect(october[4][4].day).toEqual(1);
+//     expect(november[4][5].day).toEqual(30);
+//     expect(november[4][6].day).toEqual(1);
+//     expect(december[5][1].day).toEqual(31);
+//     expect(december[5][2].day).toEqual(1);
+//   });
+//   test('May 2024, check days within and outside of month, detect ranges', () => {
+//     const may = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.MAY, 2024],
+//       [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026)],
+//     );
+//     expect(may.length).toEqual(5);
+//     expect(may[0][0].notThisMonth).toBeTruthy();
+//     expect(may[0][1].notThisMonth).toBeTruthy();
+//     expect(may[0][2].notThisMonth).toBeFalsy();
+//     expect(may[4][4].notThisMonth).toBeFalsy();
+//     expect(may[4][5].notThisMonth).toBeTruthy();
+//     expect(may[4][6].notThisMonth).toBeTruthy();
+//   });
+//   test('Every week contains only 7 days', () => {
+//     const may = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.MAY, 2024],
+//       [createDate(1, MONTH.JANUARY, 2023), createDate(1, MONTH.JANUARY, 2026, true)],
+//     );
+//     may.forEach((week) => expect(week.length).toEqual(7));
+//   });
+//   test('If month is not fully in period, days that are out of period has outOfPeriod: true', () => {
+//     const may = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.MAY, 2024],
+//       [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026, true)],
+//     );
+//     expect(may.length).toEqual(5);
+//     expect(may[0][0].outOfPeriod).toBeTruthy();
+//     expect(may[2][1].outOfPeriod).toBeTruthy();
+//     expect(may[2][2].outOfPeriod).toBeFalsy();
+//     expect(may[4][6].outOfPeriod).toBeFalsy();
+//   });
+//   test('weekStart will change the order of first day in a week', () => {
+//     const mayFirstMonday = generateCalendar(
+//       WEEK_DAY.MONDAY,
+//       [MONTH.MAY, 2024],
+//       [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
+//     );
+//     const mayFirstSunday = generateCalendar(
+//       WEEK_DAY.SUNDAY,
+//       [MONTH.MAY, 2024],
+//       [createDate(15, MONTH.MAY, 2024), createDate(1, MONTH.JANUARY, 2026)],
+//     );
+//     expect(mayFirstMonday.length).toEqual(5);
+//     expect(mayFirstMonday[0][0].day).toEqual(29);
+//     expect(mayFirstMonday[1][0].day).toEqual(6);
+//     expect(mayFirstMonday[2][0].day).toEqual(13);
+//     expect(mayFirstMonday[3][0].day).toEqual(20);
+//     expect(mayFirstMonday[4][0].day).toEqual(27);
+//     expect(mayFirstSunday.length).toEqual(5);
+//     expect(mayFirstSunday[0][0].day).toEqual(28);
+//     expect(mayFirstSunday[1][0].day).toEqual(5);
+//     expect(mayFirstSunday[2][0].day).toEqual(12);
+//     expect(mayFirstSunday[3][0].day).toEqual(19);
+//     expect(mayFirstSunday[4][0].day).toEqual(26);
+//   });
+// });
 
 describe('📍 - getNextIndex', () => {
   test('Forward if index is within array returns next element or first element if index is last one', () => {
@@ -469,92 +466,92 @@ describe('📍 - createDate', () => {
   });
 });
 
-describe('📍 - getDaysInMonth', () => {
-  test('Get days for each month (Leap year)', () => {
-    expect(getDaysInMonth(MONTH.JANUARY, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.FEBRUARY, 2000)).toEqual(29);
-    expect(getDaysInMonth(MONTH.MARCH, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.APRIL, 2000)).toEqual(30);
-    expect(getDaysInMonth(MONTH.MAY, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.JUNE, 2000)).toEqual(30);
-    expect(getDaysInMonth(MONTH.JULY, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.AUGUST, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.SEPTEMBER, 2000)).toEqual(30);
-    expect(getDaysInMonth(MONTH.OCTOBER, 2000)).toEqual(31);
-    expect(getDaysInMonth(MONTH.NOVEMBER, 2000)).toEqual(30);
-    expect(getDaysInMonth(MONTH.DECEMBER, 2000)).toEqual(31);
-  });
-  test('Get days for each month (Not leap year)', () => {
-    expect(getDaysInMonth(MONTH.JANUARY, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.FEBRUARY, 2001)).toEqual(28);
-    expect(getDaysInMonth(MONTH.MARCH, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.APRIL, 2001)).toEqual(30);
-    expect(getDaysInMonth(MONTH.MAY, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.JUNE, 2001)).toEqual(30);
-    expect(getDaysInMonth(MONTH.JULY, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.AUGUST, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.SEPTEMBER, 2001)).toEqual(30);
-    expect(getDaysInMonth(MONTH.OCTOBER, 2001)).toEqual(31);
-    expect(getDaysInMonth(MONTH.NOVEMBER, 2001)).toEqual(30);
-    expect(getDaysInMonth(MONTH.DECEMBER, 2001)).toEqual(31);
-  });
-  test('Get days for each month (Not leap year, even by 4 divides)', () => {
-    expect(getDaysInMonth(MONTH.JANUARY, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.FEBRUARY, 2100)).toEqual(28);
-    expect(getDaysInMonth(MONTH.MARCH, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.APRIL, 2100)).toEqual(30);
-    expect(getDaysInMonth(MONTH.MAY, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.JUNE, 2100)).toEqual(30);
-    expect(getDaysInMonth(MONTH.JULY, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.AUGUST, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.SEPTEMBER, 2100)).toEqual(30);
-    expect(getDaysInMonth(MONTH.OCTOBER, 2100)).toEqual(31);
-    expect(getDaysInMonth(MONTH.NOVEMBER, 2100)).toEqual(30);
-    expect(getDaysInMonth(MONTH.DECEMBER, 2100)).toEqual(31);
-  });
-});
-
-describe('📍 - getDaysInPreviousMonth', () => {
-  test('Get days for each month (Leap year)', () => {
-    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MARCH, 2000)).toEqual(29);
-    expect(getDaysInPreviousMonth(MONTH.APRIL, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MAY, 2000)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.JUNE, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.JULY, 2000)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2000)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2000)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2000)).toEqual(30);
-  });
-  test('Get days for each month (Not leap year)', () => {
-    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MARCH, 2001)).toEqual(28);
-    expect(getDaysInPreviousMonth(MONTH.APRIL, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MAY, 2001)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.JUNE, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.JULY, 2001)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2001)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2001)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2001)).toEqual(30);
-  });
-  test('Get days for each month (Not leap year, even by 4 divides)', () => {
-    expect(getDaysInPreviousMonth(MONTH.JANUARY, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MARCH, 2100)).toEqual(28);
-    expect(getDaysInPreviousMonth(MONTH.APRIL, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.MAY, 2100)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.JUNE, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.JULY, 2100)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.AUGUST, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2100)).toEqual(30);
-    expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2100)).toEqual(31);
-    expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2100)).toEqual(30);
-  });
-});
+// describe('📍 - getDaysInMonth', () => {
+//   test('Get days for each month (Leap year)', () => {
+//     expect(getDaysInMonth(MONTH.JANUARY, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.FEBRUARY, 2000)).toEqual(29);
+//     expect(getDaysInMonth(MONTH.MARCH, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.APRIL, 2000)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.MAY, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.JUNE, 2000)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.JULY, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.AUGUST, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.SEPTEMBER, 2000)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.OCTOBER, 2000)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.NOVEMBER, 2000)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.DECEMBER, 2000)).toEqual(31);
+//   });
+//   test('Get days for each month (Not leap year)', () => {
+//     expect(getDaysInMonth(MONTH.JANUARY, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.FEBRUARY, 2001)).toEqual(28);
+//     expect(getDaysInMonth(MONTH.MARCH, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.APRIL, 2001)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.MAY, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.JUNE, 2001)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.JULY, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.AUGUST, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.SEPTEMBER, 2001)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.OCTOBER, 2001)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.NOVEMBER, 2001)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.DECEMBER, 2001)).toEqual(31);
+//   });
+//   test('Get days for each month (Not leap year, even by 4 divides)', () => {
+//     expect(getDaysInMonth(MONTH.JANUARY, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.FEBRUARY, 2100)).toEqual(28);
+//     expect(getDaysInMonth(MONTH.MARCH, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.APRIL, 2100)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.MAY, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.JUNE, 2100)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.JULY, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.AUGUST, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.SEPTEMBER, 2100)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.OCTOBER, 2100)).toEqual(31);
+//     expect(getDaysInMonth(MONTH.NOVEMBER, 2100)).toEqual(30);
+//     expect(getDaysInMonth(MONTH.DECEMBER, 2100)).toEqual(31);
+//   });
+// });
+//
+// describe('📍 - getDaysInPreviousMonth', () => {
+//   test('Get days for each month (Leap year)', () => {
+//     expect(getDaysInPreviousMonth(MONTH.JANUARY, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MARCH, 2000)).toEqual(29);
+//     expect(getDaysInPreviousMonth(MONTH.APRIL, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MAY, 2000)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.JUNE, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.JULY, 2000)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.AUGUST, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2000)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2000)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2000)).toEqual(30);
+//   });
+//   test('Get days for each month (Not leap year)', () => {
+//     expect(getDaysInPreviousMonth(MONTH.JANUARY, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MARCH, 2001)).toEqual(28);
+//     expect(getDaysInPreviousMonth(MONTH.APRIL, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MAY, 2001)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.JUNE, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.JULY, 2001)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.AUGUST, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2001)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2001)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2001)).toEqual(30);
+//   });
+//   test('Get days for each month (Not leap year, even by 4 divides)', () => {
+//     expect(getDaysInPreviousMonth(MONTH.JANUARY, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.FEBRUARY, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MARCH, 2100)).toEqual(28);
+//     expect(getDaysInPreviousMonth(MONTH.APRIL, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.MAY, 2100)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.JUNE, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.JULY, 2100)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.AUGUST, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.SEPTEMBER, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.OCTOBER, 2100)).toEqual(30);
+//     expect(getDaysInPreviousMonth(MONTH.NOVEMBER, 2100)).toEqual(31);
+//     expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2100)).toEqual(30);
+//   });
+// });

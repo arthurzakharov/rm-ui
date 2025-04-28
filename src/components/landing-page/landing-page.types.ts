@@ -1,63 +1,39 @@
-import type { RefObject } from 'react';
-import type { LogoName } from '../logos/logos.type';
-import type { Question } from './components/landing-page-questions/landing-page-questions.type';
-import type { LandingPageSuccessBoxProps } from './components/landing-page-success-box/landing-page-success-box.type';
+import type { AccordionProps } from './components/accordion';
+import type { AdvantagesProps } from './components/advantages';
+import type { HowToProps } from './components/how-to';
+import type { ContactProps } from './components/contact';
+import type { CtaButtonProps } from './components/cta-button';
+import type { LogoBoardProps } from './components/logo-board';
+import type { LogosProps } from '../logos';
+import type { PlayerProps } from './components/player';
+import type { OrderedListProps } from './components/ordered-list';
+import type { ReviewProps } from './components/review';
 
-export type LandingPageAdvantageList = {
-  type: '###AdvantageList###';
-  title: string;
-  list: string[];
-  imageSrc: string;
-  imageAlt: string;
-  button: string;
-  onClick: () => void;
+export type Fallback = {
+  accordion: AccordionProps;
+  advantages: AdvantagesProps;
+  howTo: HowToProps;
+  contact: ContactProps;
+  ctaButtons: CtaButtonProps;
+  logoBoard: LogoBoardProps;
+  logos: LogosProps;
+  player: PlayerProps;
+  orderedList: OrderedListProps;
+  review: ReviewProps;
 };
 
-export type LandingPageAdvantageListNoButton = {
-  type: '###AdvantageListNoButton###';
-  title: string;
-  list: string[];
-  imageSrc: string;
-  imageAlt: string;
+export type Answer = {
+  value: string;
+  label: string;
 };
 
-export type LandingPageContactUs = {
-  type: '###ContactUs###';
-  submitted: boolean;
-  onClick: () => void;
-  title: string;
-  main: string;
-  button: string;
-  success: string;
-};
+export type Answers = Record<string, Answer>;
 
-export type LandingPageOrderedList = {
-  type: '###OrderedList###';
-  title: string;
-  list: string[];
-};
-
-export type LandingPageButton = {
-  type: '###Button###';
-  text: string;
-  onClick: () => void;
-};
-
-export type LandingPageLogos = {
-  type: '###Logos###';
-  show: LogoName[];
-  tlsSrc: string;
-  tuvSrc: string;
-};
+export type FormAnswers = Record<string, string>;
 
 export interface LandingPageProps {
   loaded: boolean;
-  refs: {
-    container: RefObject<HTMLDivElement>;
-    successBox: RefObject<HTMLDivElement>;
-  };
-  successBox: Omit<LandingPageSuccessBoxProps, 'refs'>;
-  questions: Question[];
-  sidebar: Question[];
-  footer: Question[];
+  prio: unknown;
+  data: FormAnswers;
+  answers: Answers;
 }
