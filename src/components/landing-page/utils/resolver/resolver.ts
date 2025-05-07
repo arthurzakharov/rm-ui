@@ -134,7 +134,9 @@ export default class Resolver {
   // Final method to check if condition resolves or not
 
   public check(condition: Condition): boolean {
-    const { mode, screen, form } = this.getCondition(condition);
+    const { forceResult, mode, screen, form } = this.getCondition(condition);
+    if (forceResult === 'fail') return false;
+    if (forceResult === 'success') return true;
     if (screen === null && form === null) return true;
     const resultCheck = [];
     const screenPassed = this.checkScreenPassed(screen);
