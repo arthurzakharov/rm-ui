@@ -1,0 +1,1637 @@
+import { Prio } from '../../../utils/types';
+
+const prio: Prio = {
+  variation: [
+    {
+      color: '#00b649',
+      order: ['title', 'list', 'html'],
+      head: 1,
+      title: -1,
+      html: 1,
+      list: -1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Geschwindigkeitsverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[wieviel-kmh]': '>>>NOT>>>Unsicher',
+                  },
+                  {
+                    'extra[wo-unterwegs]': '>>>NOT>>>Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Rotlichtverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[verkehrsteilnehmer]': '>>>NOT>>>Unsicher',
+                  },
+                  {
+                    'extra[beschaedigung]': '>>>NOT>>>Unsicher',
+                  },
+                  {
+                    'extra[ampel]': '>>>NOT>>>Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Abstandsverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[schnell-unterwegs]': '>>>NOT>>>Unsicher',
+                  },
+                  {
+                    'extra[abstand]': '>>>NOT>>>Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Handyverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[womit-unterwegs]': '>>>NOT>>>Als Fahrradfahrer',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Alkohol- / Drogenverstoß',
+              extra: null,
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': '>>>NOT>>>Nichts',
+                  },
+                  {
+                    'extra[parkort]': '>>>NOT>>>Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    'extra[rettungsfahrzeuge]': 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    'extra[parkort]': 'Autobahn / Kraftfahrstraße',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[halte-umstaende]': 'Ja',
+                  },
+                  {
+                    'extra[halteort]': '>>>NOT>>>Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Drogen',
+              extra: null,
+            },
+          ],
+        },
+      },
+    },
+    {
+      color: '#00b649',
+      order: ['title', 'list', 'html'],
+      head: 2,
+      title: 2,
+      html: 1,
+      list: -1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Geschwindigkeitsverstoß',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    'extra[wieviel-kmh]': 'Unsicher',
+                  },
+                  {
+                    'extra[wo-unterwegs]': 'Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Rotlichtverstoß',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    'extra[verkehrsteilnehmer]': 'Unsicher',
+                  },
+                  {
+                    'extra[beschaedigung]': 'Unsicher',
+                  },
+                  {
+                    'extra[ampel]': 'Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Abstandsverstoß',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    'extra[schnell-unterwegs]': 'Unsicher',
+                  },
+                  {
+                    'extra[abstand]': 'Unsicher',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Lenk- und Ruhezeiten',
+              extra: null,
+            },
+            {
+              value: 'Unfall',
+              extra: null,
+            },
+            {
+              value: 'Anderer Tatvorwurf',
+              extra: null,
+            },
+          ],
+        },
+      },
+    },
+    {
+      color: '#ffaa02',
+      order: ['title', 'list', 'html'],
+      head: 2,
+      title: 2,
+      html: -1,
+      list: 1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Verstoß-Placeholder da im Augenblick kein Verstoß hier sinnvoll ist',
+              extra: null,
+            },
+          ],
+        },
+      },
+    },
+    {
+      color: '#00b649',
+      order: ['title', 'list', 'html'],
+      head: 4,
+      title: 4,
+      html: -1,
+      list: 1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Handyverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[womit-unterwegs]': 'Als Fahrradfahrer',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      color: '#d82727',
+      order: ['title', 'list', 'html'],
+      head: 3,
+      title: 3,
+      html: -1,
+      list: 1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': 'Nichts',
+                  },
+                  {
+                    'extra[parkort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': '>>>NOT>>>Nichts',
+                  },
+                  {
+                    'extra[parkort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': 'Nichts',
+                  },
+                  {
+                    'extra[parkort]': '>>>NOT>>>Nichts>>>NOT>>>Autobahn / Kraftfahrstraße',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[halte-umstaende]': '>>>NOT>>>Ja',
+                  },
+                  {
+                    'extra[halteort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[parkverstoss]': 'Unsicher',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  successBox: {
+    head: [
+      {
+        variationId: 1,
+        content: {
+          primary: 'Vielen Dank für Ihre Anfrage beim Bußgeldcheck von SOS-Verkehrsrecht',
+          secondary: '',
+        },
+        condition: null,
+      },
+      {
+        variationId: 2,
+        content: {
+          primary: 'Vielen Dank für Ihre Anfrage beim Bußgeldcheck von SOS-Verkehrsrecht',
+          secondary: '',
+        },
+        condition: null,
+      },
+      {
+        variationId: 3,
+        content: {
+          primary: 'Vielen Dank für Ihre Anfrage:',
+          secondary: 'Ein Einspruch lohnt sich nicht!',
+        },
+        condition: null,
+      },
+      {
+        variationId: 4,
+        content: {
+          primary: 'Vielen Dank für Ihre Anfrage:',
+          secondary: 'Ein Einspruch lohnt sich eher nicht.',
+        },
+        condition: null,
+      },
+    ],
+    body: {
+      title: [
+        {
+          variationId: 1,
+          content: '',
+          condition: null,
+        },
+        {
+          variationId: 2,
+          content:
+            'Um eine abschließende Einschätzung vornehmen zu können, benötigen wir weiterführende Informationen. Ein Einspruch könnte sich lohnen.',
+          condition: null,
+        },
+        {
+          variationId: 3,
+          content: 'Unsere Analyse hat ergeben, dass sich ein Einspruch in Ihrem Fall nicht lohnt.',
+          condition: null,
+        },
+        {
+          variationId: 4,
+          content: 'Unsere Analyse hat ergeben, dass sich ein Einspruch in Ihrem Fall eher nicht lohnt.',
+          condition: null,
+        },
+      ],
+      html: [
+        {
+          variationId: 1,
+          content:
+            '<div style="padding-bottom: 16px;">Ihr Anliegen ist uns wichtig, daher werden wir Ihre Anfrage umgehend bearbeiten.</div><div style="padding-bottom: 16px;">Im Rahmen eines kostenlosen und unverbindlichen Telefonats wird Ihnen unser geschultes Team das Ergebnis des Bußgeldchecks mitteilen bzw. offene Fragen mit Ihnen klären.</div><div>Mit freundlichen Grüßen<br>Bußgeldcheck - präsentiert von SOS-Verkehrsrecht.de</div>',
+          condition: {
+            forceResult: 'none',
+            mode: 'some',
+            screen: null,
+            form: {
+              accusation: [
+                {
+                  value: 'Geschwindigkeitsverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[wieviel-kmh]': '>>>NOT>>>Unsicher',
+                      },
+                      {
+                        'extra[wo-unterwegs]': '>>>NOT>>>Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Rotlichtverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[verkehrsteilnehmer]': '>>>NOT>>>Unsicher',
+                      },
+                      {
+                        'extra[beschaedigung]': '>>>NOT>>>Unsicher',
+                      },
+                      {
+                        'extra[ampel]': '>>>NOT>>>Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Abstandsverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[schnell-unterwegs]': '>>>NOT>>>Unsicher',
+                      },
+                      {
+                        'extra[abstand]': '>>>NOT>>>Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Handyverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[womit-unterwegs]': '>>>NOT>>>Als Fahrradfahrer',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Alkohol- / Drogenverstoß',
+                  extra: null,
+                },
+                {
+                  value: 'Parkverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[park-umstaende]': '>>>NOT>>>Nichts',
+                      },
+                      {
+                        'extra[parkort]': '>>>NOT>>>Nichts',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Parkverstoß',
+                  extra: {
+                    mode: 'some',
+                    condition: [
+                      {
+                        'extra[rettungsfahrzeuge]': 'Ja',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Parkverstoß',
+                  extra: {
+                    mode: 'some',
+                    condition: [
+                      {
+                        'extra[parkort]': 'Autobahn / Kraftfahrstraße',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Parkverstoß',
+                  extra: {
+                    mode: 'every',
+                    condition: [
+                      {
+                        'extra[halte-umstaende]': 'Ja',
+                      },
+                      {
+                        'extra[halteort]': '>>>NOT>>>Nichts',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Drogen',
+                  extra: null,
+                },
+                {
+                  value: 'Geschwindigkeitsverstoß',
+                  extra: {
+                    mode: 'some',
+                    condition: [
+                      {
+                        'extra[wieviel-kmh]': 'Unsicher',
+                      },
+                      {
+                        'extra[wo-unterwegs]': 'Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Rotlichtverstoß',
+                  extra: {
+                    mode: 'some',
+                    condition: [
+                      {
+                        'extra[verkehrsteilnehmer]': 'Unsicher',
+                      },
+                      {
+                        'extra[beschaedigung]': 'Unsicher',
+                      },
+                      {
+                        'extra[ampel]': 'Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Abstandsverstoß',
+                  extra: {
+                    mode: 'some',
+                    condition: [
+                      {
+                        'extra[schnell-unterwegs]': 'Unsicher',
+                      },
+                      {
+                        'extra[abstand]': 'Unsicher',
+                      },
+                    ],
+                  },
+                },
+                {
+                  value: 'Lenk- und Ruhezeiten',
+                  extra: null,
+                },
+                {
+                  value: 'Unfall',
+                  extra: null,
+                },
+                {
+                  value: 'Anderer Tatvorwurf',
+                  extra: null,
+                },
+              ],
+            },
+          },
+        },
+      ],
+      list: [
+        {
+          variationId: 1,
+          content: {
+            priority: ['check', 'question', 'exclamation', 'cross'],
+            content: [
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung mit ###extra[wieviel-kmh]>>>label|lowerCaseFirstLetter### zu schnell, ###extra[wo-unterwegs]>>>lowerCaseFirstLetter###.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Geschwindigkeitsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[wieviel-kmh]': '>>>NOT>>>Unsicher',
+                            },
+                            {
+                              'extra[wo-unterwegs]': '>>>NOT>>>Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung, ###extra[wo-unterwegs]>>>lowerCaseFirstLetter###.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Geschwindigkeitsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[wieviel-kmh]': 'Unsicher',
+                            },
+                            {
+                              'extra[wo-unterwegs]': '>>>NOT>>>Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung, mit ###extra[wieviel-kmh]>>>label|lowerCaseFirstLetter### zu schnell.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Geschwindigkeitsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[wieviel-kmh]': '>>>NOT>>>Unsicher',
+                            },
+                            {
+                              'extra[wo-unterwegs]': 'Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung ohne weitere Angaben.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Geschwindigkeitsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[wieviel-kmh]': 'Unsicher',
+                            },
+                            {
+                              'extra[wo-unterwegs]': 'Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Rotlichtverstoß mit Ampel ###extra[ampel]### rot.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': '>>>NOT>>>Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Rotlichtverstoß mit Gefährdung anderer Verkehrsteilnehmer.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '>>>NOT>>>1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': 'Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': '>>>NOT>>>Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Rotlichtverstoß mit Sachschaden.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '>>>NOT>>>1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': 'Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Rotlichtverstoß mit Ampel ###extra[ampel]### rot und Gefährdung anderer Verkehrsteilnehmer.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': 'Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': '>>>NOT>>>Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Rotlichtverstoß mit Ampel ###extra[ampel]### rot und Sachschaden.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': 'Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Rotlichtverstoß ohne weitere Angaben.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Rotlichtverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[ampel]': '>>>NOT>>>1 Sekunde oder länger',
+                            },
+                            {
+                              'extra[verkehrsteilnehmer]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[beschaedigung]': '>>>NOT>>>Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Abstand, bei Geschwindigkeit von ###extra[schnell-unterwegs]>>>label|lowerCaseFirstLetter### mit ###extra[abstand]>>>label###, nicht eingehalten.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Abstandsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[schnell-unterwegs]': '>>>NOT>>>Unsicher',
+                            },
+                            {
+                              'extra[abstand]': '>>>NOT>>>Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Abstand mit ###extra[abstand]>>>label### nicht eingehalten.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Abstandsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[schnell-unterwegs]': 'Unsicher',
+                            },
+                            {
+                              'extra[abstand]': '>>>NOT>>>Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Abstand, bei Geschwindigkeit von ###extra[schnell-unterwegs]>>>label|lowerCaseFirstLetter###, nicht eingehalten.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Abstandsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[schnell-unterwegs]': '>>>NOT>>>Unsicher',
+                            },
+                            {
+                              'extra[abstand]': 'Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Abstandsverstoß ohne weitere Angaben.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Abstandsverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[schnell-unterwegs]': 'Unsicher',
+                            },
+                            {
+                              'extra[abstand]': 'Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Handyverstoß.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Handyverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[womit-unterwegs]': '>>>NOT>>>Als Fahrradfahrer',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Ein Handyverstoß als Fahrradfahrer gilt als geringfügiger Verstoß, der lediglich ein Verwarngeld zur Folge hat. Ein Bußgeldverfahren wird hier nur nach nicht angenommener Verwarnung eröffnet und lässt weitere Kosten entstehen. Ein Einspruch gegen eine Verwarnung ist in der Regel nicht wert, da die Verwarnung mit verhältnismäßig geringen Kosten verbunden ist. Beim begleichen der Verwarnung, entstehen keine rechtlichen Konsequenzen. Es findet keinen Eintrag im Fahreignungsregister (FAER) statt.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Handyverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[womit-unterwegs]': 'Als Fahrradfahrer',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> ###accusation###.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Alkohol- / Drogenverstoß>>>OR>>>Lenk- und Ruhezeiten>>>OR>>>Drogen>>>OR>>>Unfall',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Keine Angabe. Die Angabe des genauen Verstoßes ist für eine seriöse Einschätzung wesentlich. Wie werden Sie schnellstmöglich kontaktieren um gemeinsam zu erörtern, was Ihnen vorgeworfen wird.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Anderer Tatvorwurf',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Parkverstoß mit Behinderung von Rettungsfahrzeugen.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': 'Behinderung',
+                            },
+                            {
+                              'extra[rettungsfahrzeuge]': 'Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Parkverstoß (mit ###extra[park-umstaende]###, ###extra[parkort]###).',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': 'Behinderung>>>OR>>>Gefährdung>>>OR>>>Sachbeschädigung',
+                            },
+                            {
+                              'extra[parkort]': '>>>NOT>>>Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Parkverstoß (###extra[park-umstaende]###, ###extra[parkort]###).',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': '> 15 Minuten>>>OR>>>> 15 Minuten mit Behinderung',
+                            },
+                            {
+                              'extra[parkort]': '>>>NOT>>>Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Parkverstoß mit ###extra[park-umstaende]###.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': 'Behinderung>>>OR>>>Gefährdung>>>OR>>>Sachbeschädigung',
+                            },
+                            {
+                              'extra[parkort]': 'Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Parkverstoß (###extra[park-umstaende]###).',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': '> 15 Minuten>>>OR>>>> 15 Minuten mit Behinderung',
+                            },
+                            {
+                              'extra[parkort]': 'Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Tatvorwurf:</span> Parkverstoß (###extra[parkort]###).',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': 'Nichts',
+                            },
+                            {
+                              'extra[parkort]': '>>>NOT>>>Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> Halteverstoß (mit Behinderung, Gefährdung oder Sachbeschädigung, ###extra[halteort]###).',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[halte-umstaende]': 'Ja',
+                            },
+                            {
+                              'extra[halteort]': '>>>NOT>>>Nichts',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Tatvorwurf:</span> geringfügiger Parkverstoß / Verwarnung, der lediglich ein Verwarngeld zur Folge hat. Ein Bußgeldverfahren wird hier nur nach nicht angenommener Verwarnung eröffnet und lässt weitere Kosten entstehen. Ein Einspruch gegen eine Verwarnung ist in der Regel nicht wert, da die Verwarnung mit verhältnismäßig geringen Kosten verbunden ist. Beim begleichen der Verwarnung, entstehen keine rechtlichen Konsequenzen. Es findet keinen Eintrag im Fahreignungsregister (FAER) statt.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    accusation: [
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[park-umstaende]': 'Nichts',
+                            },
+                            {
+                              'extra[parkort]': 'Nichts',
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[halte-umstaende]': 'Ja',
+                            },
+                            {
+                              'extra[halteort]': 'Nichts',
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[halte-umstaende]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[halteort]': '>>>NOT>>>Nichts',
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[halte-umstaende]': '>>>NOT>>>Ja',
+                            },
+                            {
+                              'extra[halteort]': 'Nichts',
+                            },
+                          ],
+                        },
+                      },
+                      {
+                        value: 'Parkverstoß',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              'extra[parkverstoss]': 'Unsicher',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          },
+          condition: null,
+        },
+      ],
+    },
+  },
+  question: [
+    {
+      content: {
+        head: '',
+        body: '@@@HowToGoNext@@@',
+      },
+      props: {
+        howToGoNext: {
+          head: "Wie geht's jetzt weiter?",
+          list: [
+            "Wir setzen uns schnellstmöglich mit Ihnen in Verbindung, um <b class='question__bold'>kostenlos und unverbindlich</b> Ihren Fall zu besprechen und alle Ihre Fragen zu beantworten.",
+            "Sie überlegen Sich, ob Sie - gegebenenfalls mit unserer Unterstützung - <b class='question__bold'>Einspruch einlegen</b> oder nicht.",
+          ],
+        },
+      },
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value:
+                'Geschwindigkeitsverstoß>>>OR>>>Rotlichtverstoß>>>OR>>>Abstandsverstoß>>>OR>>>Alkohol- / Drogenverstoß>>>OR>>>Lenk- und Ruhezeiten>>>OR>>>Drogen>>>OR>>>Unfall>>>OR>>>Anderer Tatvorwurf',
+              extra: null,
+            },
+            {
+              value: 'Handyverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[womit-unterwegs]': '>>>NOT>>>Als Fahrradfahrer',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': '>>>NOT>>>Nichts',
+                  },
+                  {
+                    'extra[parkort]': '>>>NOT>>>Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[rettungsfahrzeuge]': 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[parkort]': 'Autobahn / Kraftfahrstraße',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[halte-umstaende]': 'Ja',
+                  },
+                  {
+                    'extra[halteort]': '>>>NOT>>>Nichts',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@HowToGoNext@@@',
+      },
+      props: {
+        howToGoNext: {
+          head: "Wie geht's jetzt weiter?",
+          list: [
+            'Wir empfehlen Ihnen keinen Einspruch einzulegen.',
+            'Sollten Sie sich dennoch unsicher sein oder meinen Sie, falsche Angaben gemacht zu haben, füllen Sie das Formular bitte erneut aus oder kontaktieren uns unter 030 / 2555 858 00.',
+          ],
+        },
+      },
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: {
+          accusation: [
+            {
+              value: 'Handyverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[womit-unterwegs]': 'Als Fahrradfahrer',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': 'Nichts',
+                  },
+                  {
+                    'extra[parkort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': '>>>NOT>>>Nichts',
+                  },
+                  {
+                    'extra[parkort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[park-umstaende]': 'Nichts',
+                  },
+                  {
+                    'extra[parkort]': '>>>NOT>>>Nichts>>>NOT>>>Autobahn / Kraftfahrstraße',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[halte-umstaende]': '>>>NOT>>>Ja',
+                  },
+                  {
+                    'extra[halteort]': 'Nichts',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Parkverstoß',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    'extra[parkverstoss]': 'Unsicher',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  sidebar: [
+    {
+      content: {
+        head: '',
+        body: '@@@OrderedList@@@',
+      },
+      props: {
+        orderedList: {
+          head: "Wie geht's jetzt weiter?",
+          list: [
+            "Wir setzen uns schnellstmöglich mit Ihnen in Verbindung, um <b class='question__bold'>kostenlos und unverbindlich</b> Ihren Fall zu besprechen und alle Ihre Fragen zu beantworten.",
+            "Sie überlegen Sich, ob Sie - gegebenenfalls mit unserer Unterstützung - <b class='question__bold'>Einspruch einlegen</b> oder nicht.",
+          ],
+        },
+      },
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: {
+          moreThan: 768,
+          lessThan: null,
+        },
+        form: null,
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@Logos@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+  ],
+  footer: [
+    {
+      content: {
+        head: '',
+        body: '@@@AdvantageListNoButton@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+  ],
+};
+
+export default prio;

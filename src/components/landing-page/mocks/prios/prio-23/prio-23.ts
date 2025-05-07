@@ -1,0 +1,900 @@
+import { Prio } from '../../../utils/types';
+
+const prio: Prio = {
+  variation: [
+    {
+      color: '#ec2556',
+      order: ['title', 'list', 'html'],
+      head: 3,
+      title: 3,
+      html: 3,
+      list: -1,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          topic: [
+            {
+              value: 'ToDo',
+              extra: {
+                mode: 'some',
+                condition: [
+                  {
+                    signedAnnullationContract: 'Ja',
+                  },
+                  {
+                    wasFired: 'Nein>>>OR>>>Lead gekündigt',
+                  },
+                  {
+                    specialRole: 'Nein',
+                  },
+                  {
+                    specialRoleProbationTime: 'Nein',
+                  },
+                  {
+                    specialSituationKnowledge: 'Nein',
+                  },
+                  {
+                    specialSituationKnowledgeProbationTime: 'Nein',
+                  },
+                  {
+                    employmentDate: 'Nein',
+                  },
+                ],
+              },
+            },
+            {
+              value:
+                'Kündigung>>>OR>>>Arbeitsvertrag prüfen>>>OR>>>Gleichbehandlung>>>OR>>>Abmahnung erhalten>>>OR>>>Sonstiges / Keine Angabe',
+              extra: null,
+            },
+          ],
+        },
+      },
+    },
+  ],
+  successBox: {
+    head: [
+      {
+        variationId: 3,
+        content: {
+          primary: 'Vielen Dank für Ihre Anfrage:',
+          secondary: '',
+        },
+        condition: null,
+      },
+    ],
+    body: {
+      title: [
+        {
+          variationId: 3,
+          content: 'Leider können wir Ihnen aktuell nicht helfen',
+          condition: null,
+        },
+      ],
+      html: [
+        {
+          variationId: 3,
+          content:
+            '<div style="margin-top: -24px; margin-bottom: 16px; line-height: 24px; font-weight:300;"><p>Basierend auf Ihren Angaben können wir leider unseren Service derzeit nicht anbieten. Wir stehen Ihnen aber für sämtliche sonstigen Arbeitsrechtsfragen gerne zur Verfügung.</p><p>Ihr rightmart Team</p></div>',
+          condition: null,
+        },
+      ],
+      list: [
+        {
+          variationId: 3,
+          content: {
+            priority: ['cross', 'exclamation', 'check', 'question'],
+            content: [
+              {
+                type: 'cross',
+                content:
+                  '<span>Aufenthaltstitel:</span> Aufenthaltstitel reicht nicht für die Einbürgerung aus. Damit Sie den Einbürgerungsprozess starten können, sollten Sie den Aufenthaltstitel zunächst wechseln. Mit folgenden Aufenthaltstitel ist eine Einbürgerung nicht möglich: : §§ 16a, 16b, 16d, 16e, 16f, 17, 18d, 18f, 19, 19b, 19e, 20, 22, 23 Absatz 1, den §§ 23a, 24, 25 Absatz 3 bis 5 und § 104c AufenthG.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17347: [
+                      {
+                        value: 'Einbürgerung',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              q17358:
+                                '§ 16a>>>OR>>>§ 16b>>>OR>>>§ 16d>>>OR>>>§ 16e>>>OR>>>§ 16f>>>OR>>>§ 17>>>OR>>>§ 18f>>>OR>>>§ 19>>>OR>>>§ 19b>>>OR>>>§ 19e>>>OR>>>§ 20>>>OR>>>§ 22>>>OR>>>§ 23a>>>OR>>>§ 24>>>OR>>>§ 25 Abs. 3>>>OR>>>§ 25 Abs. 4>>>OR>>>§ 25 Abs. 5>>>OR>>>§ 104c',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'cross',
+                content:
+                  '<span>Aufenthalt in Deutschland:</span> Es sieht aus als würden Sie nicht die benötigten fünf Jahre Aufenthalt in Deutschland erfüllen. Eine Einbürgerung wird erstmal nicht möglich sein.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17347: [
+                      {
+                        value: 'Einbürgerung',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              q17348: '2025>>>OR>>>2024',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'exclamation',
+                content:
+                  '<span>Duldung:</span> Achtung: Wahrscheinlich hatten Sie eine Duldung vor diesem Aufenthaltstitel. Man müsste sich Ihre Aufenthaltszeiten genauer ansehen.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17358: [
+                      {
+                        value: '§ 19d>>>OR>>>§ 25a>>>OR>>>§ 25b',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'exclamation',
+                content:
+                  '<span>Fiktionsbescheinigung:</span> Sie haben derzeit eine Fiktionsbescheinigung. Das ist kein Problem. Sie sollten allerdings Druck auf die Ausländerbehörde aufbauen. Mit einer Fiktionsbescheinigung können Sie nicht eingebürgert werden. Sie sollten den dafür vorhergesehenen Aufenthaltstitel vorweisen können.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17356: [
+                      {
+                        value: 'Fiktionsbescheinigung',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Sprachkenntnisse:</span> Sie haben ein ausreichendes Sprachzertifikat.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17369: [
+                      {
+                        value: 'B1>>>OR>>>B2>>>OR>>>C1>>>OR>>>C2',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Ausbildung:</span> Ihre Ausbildung in Deutschland ist hoch genug für den notwendigen Sprachnachweis.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17368: [
+                      {
+                        value:
+                          '9. Klasse Abschluss>>>OR>>>10. Klasse Abschluss>>>OR>>>Abitur oder Fachabitur>>>OR>>>Ausbildung>>>OR>>>Studium',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'exclamation',
+                content:
+                  '<span>Ausbildung:</span> Es ist fraglich, ob Sie ausreichende Deutschkenntnisse besitzen. Fehlen die entsprechenden Sprachnachweise bestehen zwei Möglichkeiten:<ol><li style="margin-top:16px;">Es greifen Ausnahmen. <a href="https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/#Deutschkenntnisse" target="_blank">Gängige Ausnahmen finden Sie hier</a>.</li><li style="margin-top:16px;">Sie können den Sprachnachweis nachholen.</li></ol>',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17368: [
+                      {
+                        value:
+                          '>>>NOT>>>9. Klasse Abschluss>>>NOT>>>10. Klasse Abschluss>>>NOT>>>Abitur oder Fachabitur>>>NOT>>>Ausbildung>>>NOT>>>Studium',
+                        extra: {
+                          mode: 'every',
+                          condition: [
+                            {
+                              q17369: '>>>NOT>>>B1>>>NOT>>>B2>>>NOT>>>C1>>>NOT>>>C2',
+                            },
+                            {
+                              q17370: '>>>NOT>>>Ja',
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content: '<span>Einbürgerungstest:</span> Sie können den Einbürgerungstest vorweisen.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17370: [
+                      {
+                        value: 'Ja',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Gesicherter Lebensunerhalt:</span> Sie beziehen derzeit kein Bürgergeld. Damit sollte eine Einbürgerung möglich sein.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q18261: [
+                      {
+                        value: 'Nein',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'exclamation',
+                content:
+                  '<span>Gesicherter Lebensunerhalt:</span> Sie beziehen derzeit Bürgergeld. Damit ist eine Einbürgerung sehr schwierig. Mögliche Ausnahmen können Sie <a href="https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/#Lebensunterhalt" target="_blank">hier nachlesen</a>.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q18261: [
+                      {
+                        value: 'Ja',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'question',
+                content:
+                  '<span>Gesicherter Lebensunerhalt:</span> Sollten Sie derzeit Bürgergeld beziehen wäre eine Einbürgerung sehr schwierig. Mögliche Ausnahmen können Sie <a href="https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/#Lebensunterhalt" target="_blank">hier nachlesen</a>.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q18261: [
+                      {
+                        value: 'Keine Angabe',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'check',
+                content:
+                  '<span>Pass oder Passersatz:</span> Sie können derzeit auf einen gültigen Pass oder Passersatz zurückgreifen.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17375: [
+                      {
+                        value: 'Ja',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                type: 'question',
+                content:
+                  '<span>Straftaten:</span> Wichtig ist, dass Sie sich nur in geringem Maße in Deutschland strafbar gemacht haben.',
+                subContent: [],
+                condition: {
+                  forceResult: 'none',
+                  mode: 'some',
+                  screen: null,
+                  form: {
+                    q17347: [
+                      {
+                        value: 'Einbürgerung',
+                        extra: null,
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          },
+          condition: null,
+        },
+      ],
+    },
+  },
+  question: [
+    {
+      content: {
+        head: "<b class='question__bold'>Frage:</b> Wie geht es jetzt weiter? Was sind die nächsten Schritte?",
+        body: "<ol class='question__list'><li class='question__list-item'>Sie stellen sicher, dass sie alle Voraussetzungen für den Antrag erfüllen. Sollten Sie Fragen haben, können Sie uns eine <a onclick=\"window.pushToDataLayer({event:'GAEvent',eventCategory:'long-read',eventAction:'whatsapp-click'})\" href=\"https://wa.me/491735342762\" target=\"_blank\">Kontaktanfrage über Whatsapp</a> schicken.</li><li class='question__list-item'>Sie führen erneut unseren <a href=\"https://passexperten.de/pruefer/\" target=\"_blank\">kostenlosen Test</a> aus.</li></ol>",
+      },
+      props: null,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          q17347: [
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2021>>>OR>>>2022>>>OR>>>2023>>>OR>>>2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor>>>OR>>>Keine Angabe',
+                  },
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                  {
+                    q17368: 'Ausbildung',
+                  },
+                  {
+                    q17370: '>>>NOT>>>Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2021>>>OR>>>2022>>>OR>>>2023>>>OR>>>2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor>>>OR>>>Keine Angabe',
+                  },
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                  {
+                    q17368:
+                      '>>>NOT>>>9. Klasse Abschluss>>>NOT>>>10. Klasse Abschluss>>>NOT>>>Abitur oder Fachabitur>>>NOT>>>Studium',
+                  },
+                  {
+                    q17369: 'B1>>>OR>>>B2>>>OR>>>C1>>>OR>>>C2',
+                  },
+                  {
+                    q17370: '>>>NOT>>>Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2021>>>OR>>>2022>>>OR>>>2023>>>OR>>>2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor>>>OR>>>Keine Angabe',
+                  },
+                  {
+                    q17358: '§ 19d>>>OR>>>§ 25a>>>OR>>>§ 25b',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348: 'Keine Angabe',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17375: 'Nein',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q18261: '>>>NOT>>>Nein',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17356: 'Duldung>>>OR>>>Fiktionsbescheinigung>>>OR>>>Ich weiß es nicht',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      content: {
+        head: "<b class='question__bold'>Frage:</b> Wie geht es jetzt weiter? Was sind die nächsten Schritte?",
+        body: "<ol class='question__list'><li class='question__list-item'>Kontaktieren Sie uns für eine  <a onclick=\"window.pushToDataLayer({event:'GAEvent',eventCategory:'long-read',eventAction:'whatsapp-click'})\" href=\"https://wa.me/491735342762\" target=\"_blank\">kostenlose und unverbindliche Erstberatung</a>.</li><li class='question__list-item'>Wenn Sie interessiert sind, helfen wir Ihnen, Ihre Einbürgerung schnell und zuverlässig zu erhalten.</li></ol>",
+      },
+      props: null,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          q17347: [
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor',
+                  },
+                  {
+                    q17356: 'Unbefristetes Aufenthaltsrecht>>>OR>>>EU-Bürger',
+                  },
+                  {
+                    q17368:
+                      '9. Klasse Abschluss>>>OR>>>10. Klasse Abschluss>>>OR>>>Abitur oder Fachabitur>>>OR>>>Studium',
+                  },
+                  {
+                    q18261: 'Nein',
+                  },
+                  {
+                    q17375: 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor',
+                  },
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                  {
+                    q17356: 'Befristetes Aufenthaltsrecht',
+                  },
+                  {
+                    q17368:
+                      '9. Klasse Abschluss>>>OR>>>10. Klasse Abschluss>>>OR>>>Abitur oder Fachabitur>>>OR>>>Studium',
+                  },
+                  {
+                    q18261: 'Nein',
+                  },
+                  {
+                    q17375: 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor',
+                  },
+                  {
+                    q17356: 'Unbefristetes Aufenthaltsrecht>>>OR>>>EU-Bürger',
+                  },
+                  {
+                    q17368: 'Ausbildung',
+                  },
+                  {
+                    q17370: 'Ja',
+                  },
+                  {
+                    q18261: 'Nein',
+                  },
+                  {
+                    q17375: 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor',
+                  },
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                  {
+                    q17356: 'Befristetes Aufenthaltsrecht',
+                  },
+                  {
+                    q17368: 'Ausbildung',
+                  },
+                  {
+                    q17370: 'Ja',
+                  },
+                  {
+                    q18261: 'Nein',
+                  },
+                  {
+                    q17375: 'Ja',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348:
+                      '2020>>>OR>>>2019>>>OR>>>2018>>>OR>>>2017>>>OR>>>2016>>>OR>>>2015>>>OR>>>2014>>>OR>>>2013>>>OR>>>2012 oder davor',
+                  },
+                  {
+                    q17356: 'Unbefristetes Aufenthaltsrecht>>>OR>>>EU-Bürger',
+                  },
+                  {
+                    q17368:
+                      '>>>NOT>>>9. Klasse Abschluss>>>NOT>>>10. Klasse Abschluss>>>NOT>>>Abitur oder Fachabitur>>>NOT>>>Studium',
+                  },
+                  {
+                    q17369: 'B1>>>OR>>>B2>>>OR>>>C1>>>OR>>>C2',
+                  },
+                  {
+                    q17370: 'Ja',
+                  },
+                  {
+                    q18261: 'Nein',
+                  },
+                  {
+                    q17375: 'Ja',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      content: {
+        head: "<b class='question__bold'>Frage:</b> Warum soll ich PassExperten mit der Einbürgerung beauftragen?",
+        body: "<p class='question__paragraph'>Die Einbürgerung ist ein komplexer und zeitaufwendiger Prozess. Ohne professionelle Unterstützung kann die Bearbeitung durch die Behörden mehrere Jahre dauern. Mit PassExperten profitieren Sie von einer schnelleren und rechtssicheren Einbürgerung durch unsere erfahrenen Anwälte.</p><b class='question__bold'>Ihre Vorteile mit PassExperten:</b><p></p><ol class='question__list'><li class='question__list-item'><b class='question__bold'>Schnellere Bearbeitung:</b> Durch vollständige und fehlerfreie Antragstellung reduziert sich die Bearbeitungszeit deutlich.</li><li class='question__list-item'><b class='question__bold'>Rechtssicherheit:</b> Unsere spezialisierten Anwälte prüfen Ihre Voraussetzungen vor Antragstellung und vermeiden unnötige Ablehnungen.</li><li class='question__list-item'><b class='question__bold'>Volle Unterstützung:</b> Wir übernehmen die gesamte Kommunikation mit den Behörden, helfen bei der Beschaffung fehlender Dokumente und setzen uns für eine beschleunigte Bearbeitung ein.</li><li class='question__list-item'><b class='question__bold'>Schutz vor Verzögerungen:</b> Sollte Ihre Behörde nicht reagieren, können wir eine <b class='question__bold'>Untätigkeitsklage</b> einreichen, um den Prozess zu beschleunigen.</li><li class='question__list-item'><b class='question__bold'>Transparente Kosten:</b> Nach einer <b class='question__bold'>kostenlosen Erstberatung</b> erhalten Sie ein Festpreisangebot - ohne versteckte Gebühren.</li></ol>",
+      },
+      props: null,
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          q17347: [
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348: '>>>NOT>>>2024>>>NOT>>>2025',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@Review@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: {
+          moreThan: 768,
+          lessThan: null,
+        },
+        form: {
+          q17347: [
+            {
+              value: 'ToDo',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348: '>>>NOT>>>2024>>>NOT>>>2025',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'ToDo',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17358:
+                      '>>>NOT>>>§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+    {
+      content: {
+        head: "<b class='question__bold'>FAQ:</b> Weitere häufig gestellte Fragen",
+        body: '@@@Accordion@@@',
+      },
+      props: {
+        accordion: {
+          blocks: [
+            {
+              title: 'Wie läuft das Verfahren ab?',
+              content:
+                "<p class='question__paragraph'>Das Verfahren zur Beantragung einer Niederlassungserlaubnis oder Einbürgerung gliedert sich in mehrere Schritte:</p><ol class='question__list'><li class='question__list-item'><b class='question__bold'>Antragstellung:</b>  Wir stellen den Antrag auf Niederlassungserlaubnis oder Einbürgerung.</li><li class='question__list-item'><b class='question__bold'>Prüfung des Antrags durch die Ausländer- oder Einbürgerungsbehörde:</b> Die Ausländer- oder Einbürgerungsbehörde prüft Ihren Antrag, um sicherzustellen, dass alle erforderlichen Unterlagen vollständig sind und den rechtlichen Anforderungen entsprechen.</li><li class='question__list-item'><b class='question__bold'>Erteilung der Niederlassungserlaubnis oder Einbürgerung:</b> Nach erfolgreicher Prüfung und Erfüllung aller erforderlichen Voraussetzungen wird Ihnen die Niederlassungserlaubnis oder Einbürgerung erteilt. Damit ist Ihr Verfahren abgeschlossen</li></ol><p>Verläuft Ihr Verfahren schleppend, greifen wir ein. Mithilfe einer Untätigkeitsklage bauen wir Druck auf und zwingen die Behörde so zu einer zeitnahmen entscheidung.</p><p>Auch im <b class='question__bold'>Falle einer Ablehnung</b> lassen wir Sie nicht allein: Wir klagen gegen eine derartige Entscheidung und fordern so Korrektur ein.</p>",
+            },
+            {
+              title: 'Wie lange dauert das Verfahren?',
+              content:
+                "<p class='question__paragraph'>Die Dauer eines Einbürgerungsverfahrens hängt von unterschiedlichen Faktoren ab. Maßgeblich ist dabei, die Vollständigkeit Ihres Antrages. Muss die Behörde fehelnde Unterlagen nachfordern, kann sich die Bearbeitung Ihres Antrages stark in die Länge ziehen. Wir sorgen dafür, dass das nicht passiert. Im Vorfeld klären wir genau ab, welche Dokumente von Ihnen bei den Behörden einzureichen sind. Bei Bedarf unterstützen wir Sie auch bei der Beschaffung fehlender Unterlagen. So halten wir die Verfahrenszeiten möglichst kurz, mit mehreren Monaten müssen Sie dennoch rechnen</p><p>Verzögerungen im Einbürgerungsverahren sind jedch auch bei vollständigen Anträgen keine Seltenheit. Viele Einbürgerungsbehörden sind überlastet und kommen nicht gegen die Vielzahl der Anträge an. Ohne anwaltliche Unterstützung ziehen sich die Verfahrenszeiten dabei schon mal deutlich über ein Jahr hin.</p>",
+            },
+            {
+              title: 'Welche Unterlagen werden benötigt?',
+              content:
+                "<p class='question__paragraph'>Welche Unterlaen wir beziehungsweise die Ausländer- oder Einbürgerungsbehörde von Ihnen benötigt, lässt sich nicht pauschal sagen. Das hängt von Ihrer persönlichen Situation ab. Wir prüfen Ihre Umstände und informieren Sie darüber, welche Nachweise für Ihr Anliegen erforderlich sind. Zudem unterstützen wir Sie bei der beschaffung fehlender Unterlagen. Sprechen Sie uns gerne an.</p>",
+            },
+            {
+              title: 'Welche Voraussetzungen muss ich für die Einbürgerung erfüllen?',
+              content:
+                "<p class='question__paragraph'>Die Einbürgerung ist an verschiedene Voraussetzungen gebunden. Darunter finden sich zum Beispiel:</p><ul class='question__list'><li class='question__list-item'>ein mindestens 5-jähriger Aufenthalt in Deuschland,</li><li class='question__list-item'>ein gültiger Aufenthaltstitel,</li><li class='question__list-item'>ausreichende Deutschkenntnisse und</li><li class='question__list-item'>ein gesicherter Lebensunterhalt.</li></ul><p><a href=\"https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/\" target=\"_blank\">Einbürgerung und ihre Voraussetzungen</a> finden Sie eine komplette Auflistung aller Bedingungen mit weterführenden Informationen.</p>",
+            },
+            {
+              title: 'Ich habe noch keinen Einbürgerungstest gemacht. Kann ich trotzdem schon den Antrag stellen?',
+              content:
+                "<p class='question__paragraph'>Wichtig ist, dass der Einbürgerungstest zu dem Zeitpunkt vorliegt, an dem die Behörde über Ihren Antrag entscheidet. Aufgrund der langen Bearbeitungszeiten kann es sinnvoll sein, den Antrag zu stellen, bevor der Einbürgerungstest gemacht wurde. Das Ergebnis können Sie nachreichen. Wir unterstützen sehr gerne in dem Prozess.</p>",
+            },
+          ],
+        },
+      },
+      condition: {
+        forceResult: 'none',
+        mode: 'some',
+        screen: null,
+        form: {
+          q17347: [
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17348: '>>>NOT>>>2024>>>NOT>>>2025',
+                  },
+                ],
+              },
+            },
+            {
+              value: 'Einbürgerung',
+              extra: {
+                mode: 'every',
+                condition: [
+                  {
+                    q17358:
+                      '§ 19d>>>NOT>>>§ 25a>>>NOT>>>§ 25b>>>NOT>>>§ 16a>>>NOT>>>§ 16b>>>NOT>>>§ 16d>>>NOT>>>§ 16e>>>NOT>>>§ 16f>>>NOT>>>§ 17>>>NOT>>>§ 18f>>>NOT>>>§ 19>>>NOT>>>§ 19b>>>NOT>>>§ 19e>>>NOT>>>§ 20>>>NOT>>>§ 22>>>NOT>>>§ 23a>>>NOT>>>§ 24>>>NOT>>>§ 25 Abs. 3>>>NOT>>>§ 25 Abs. 4>>>NOT>>>§ 25 Abs. 5>>>NOT>>>§ 104c',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  sidebar: [
+    {
+      content: {
+        head: '',
+        body: '@@@OrderedList@@@',
+      },
+      props: {
+        orderedList: {
+          head: 'Jetzt Vollmacht erteilen',
+          list: [
+            'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
+            'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
+          ],
+        },
+      },
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@Button@@@',
+      },
+      props: {
+        button: {
+          text: 'Vollmacht ansehen',
+          action: 'clickLongReadCta',
+        },
+      },
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@Logos@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@ContactUs@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+  ],
+  footer: [
+    {
+      content: {
+        head: '',
+        body: '@@@AdvantageListNoButton@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+    {
+      content: {
+        head: '',
+        body: '@@@ContactUs@@@',
+      },
+      props: null,
+      condition: {
+        forceResult: 'fail',
+        mode: 'some',
+        screen: null,
+        form: null,
+      },
+    },
+  ],
+};
+
+export default prio;

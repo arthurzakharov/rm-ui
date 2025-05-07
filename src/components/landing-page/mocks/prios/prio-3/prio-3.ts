@@ -1,4 +1,4 @@
-import { Prio } from '../../utils/types';
+import { Prio } from '../../../utils/types';
 
 const prio: Prio = {
   variation: null,
@@ -34,6 +34,7 @@ const prio: Prio = {
                   '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung mit ###extra[wieviel-kmh]>>>label|lowerCaseFirstLetter### zu schnell, ###extra[wo-unterwegs]>>>lowerCaseFirstLetter###.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -62,6 +63,7 @@ const prio: Prio = {
                   '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung, ###extra[wo-unterwegs]>>>lowerCaseFirstLetter###.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -90,6 +92,7 @@ const prio: Prio = {
                   '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung, mit ###extra[wieviel-kmh]>>>label|lowerCaseFirstLetter### zu schnell.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -117,6 +120,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Geschwindigkeitsüberschreitung.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -144,6 +148,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Rotlichtverstoß mit Ampel ###extra[ampel]### rot.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -168,6 +173,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Rotlichtverstoß.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -193,6 +199,7 @@ const prio: Prio = {
                   '<span>Tatvorwurf:</span> Abstand, bei Geschwindigkeit von ###extra[schnell-unterwegs]>>>label|lowerCaseFirstLetter### mit ###extra[abstand]>>>label###, nicht eingehalten.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -220,6 +227,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Abstand mit ###extra[abstand]>>>label### nicht eingehalten.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -248,6 +256,7 @@ const prio: Prio = {
                   '<span>Tatvorwurf:</span> Abstand, bei Geschwindigkeit von ###extra[schnell-unterwegs]>>>label|lowerCaseFirstLetter###, nicht eingehalten.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -275,6 +284,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Abstandsverstoß.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -302,6 +312,7 @@ const prio: Prio = {
                 content: '<span>Tatvorwurf:</span> Handyverstoß.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -320,6 +331,7 @@ const prio: Prio = {
                   '<span>Punkte in Flensburg:</span> ###extra[punkte-flensburg]>>>label### Punkte vorhanden. Aber Vorsicht! Bereits ab dem ersten Verstoß sind Sie vorgemerkt zur Überprüfung der Fahreignung. Jeder Punkt bleibt für 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -338,6 +350,7 @@ const prio: Prio = {
                   '<span>Punkte in Flensburg:</span> Bereits ###extra[punkte-flensburg]>>>label### vorhanden. Also Vorsicht! Bereits ab dem ersten Verstoß sind Sie vorgemerkt zur Überprüfung der Fahreignung. Jeder Punkt bleibt für 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -356,6 +369,7 @@ const prio: Prio = {
                   '<span>Punkte in Flensburg:</span> Bereits ###extra[punkte-flensburg]>>>label### vorhanden. Also Vorsicht! Sie sind zur Überprüfung der Fahreignung vorgemerkt. Jeder Punkt bleibt für 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -374,6 +388,7 @@ const prio: Prio = {
                   '<span>Punkte in Flensburg:</span> ###extra[punkte-flensburg]>>>label###. Vorsicht! Jeder Punkt bleibt für 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich. Unter Umständen sind Sie zur Überprüfung der Fahreignung vorgemerkt.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -392,6 +407,7 @@ const prio: Prio = {
                   '<span>Auf Führerschein angewiesen:</span> Sie haben angegeben, dass Sie aus beruflichen Gründen auf Ihren Führerschein angewiesen sind.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -476,6 +492,7 @@ const prio: Prio = {
                   '<span>Auf Führerschein angewiesen:</span> Sie haben angegeben, dass Sie aus sonstigen Gründen auf Ihren Führerschein angewiesen sind.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -560,6 +577,7 @@ const prio: Prio = {
                   '<span>Rechtsschutzversicherung:</span> Sie haben angegeben, dass Sie rechtsschutzversichert sind.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -578,6 +596,7 @@ const prio: Prio = {
                   '<span>Rechtsschutzversicherung:</span> Wenn Sie nicht rechtsschutzversichert sind, können Sie über den Abschluss einer rückwirkenden Rechtsschutzversicherung den vollen Versicherungsschutz, auch für Fälle die bereits eingetreten sind, genießen.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -596,6 +615,7 @@ const prio: Prio = {
                   '<span>Postleitzahl:</span> ###zip###. Sie wohnen in einem Postleitzahlgebiet, in dem bereits mehr als 10.000 Bußgeldbescheide für ungültig erklärt wurden.',
                 subContent: [],
                 condition: {
+                  forceResult: 'none',
                   mode: 'some',
                   screen: null,
                   form: {
@@ -744,6 +764,7 @@ const prio: Prio = {
         },
       },
       condition: {
+        forceResult: 'none',
         mode: 'some',
         screen: {
           moreThan: 768,
@@ -772,6 +793,7 @@ const prio: Prio = {
       },
       props: null,
       condition: {
+        forceResult: 'none',
         mode: 'some',
         screen: {
           moreThan: 768,
@@ -787,6 +809,7 @@ const prio: Prio = {
       },
       props: null,
       condition: {
+        forceResult: 'none',
         mode: 'some',
         screen: {
           moreThan: 768,

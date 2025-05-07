@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import LandingPage from './landing-page.component';
 import { ANSWERS_1 } from './mocks/answers';
 import { DATA_1 } from './mocks/form-answers';
-import Prio3 from './mocks/prios/prio-3.json';
+import Prio3 from './mocks/prios/prio-3/prio-3.json';
 import MaxWidthDecorator from '../../../.storybook/decorators/max-width';
 
 const meta = {

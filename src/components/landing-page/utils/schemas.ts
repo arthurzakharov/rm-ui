@@ -17,6 +17,7 @@ import {
 export const ModeTypeSchema = union([literal('some'), literal('every')]);
 const ListTypeSchema = union([literal('check'), literal('question'), literal('exclamation'), literal('cross')]);
 const BodyTypeSchema = union([literal('title'), literal('html'), literal('list')]);
+const ForceResultSchema = union([literal('success'), literal('fail'), literal('none')]);
 // Condition
 export const ExtraConditionSchema = record(string(), string());
 export const ExtraSchema = object({
@@ -34,11 +35,13 @@ export const FormKeyConditionSchema = object({
 export const FormSchema = record(string(), array(FormKeyConditionSchema));
 export const ConditionSchema = fallback(
   object({
+    forceResult: ForceResultSchema,
     mode: ModeTypeSchema,
     screen: nullable(ScreenSchema),
     form: nullable(FormSchema),
   }),
   {
+    forceResult: 'none',
     mode: 'some',
     screen: null,
     form: null,
