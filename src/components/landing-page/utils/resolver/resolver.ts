@@ -1,6 +1,6 @@
-import type { Mode, ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types';
+import type { ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types/condition';
 import type { FormAnswers } from '../../landing-page.types';
-import { ConditionSchema, ScreenSchema } from '../schemas';
+import { ConditionSchema, ScreenSchema } from '../schemas/condition';
 import SYMBOL from '../symbol';
 import { getDefaults, getFallback, safeParse } from 'valibot';
 
@@ -117,7 +117,8 @@ export default class Resolver {
     return Object.entries(extraCondition).some(([formAnswerKey, value]) => this.checkValueString(formAnswerKey, value));
   }
 
-  private checkForm(form: Form | null, mode: Mode): boolean {
+  private checkForm(condition: Condition): boolean {
+    const { mode, form } = this.getCondition(condition);
     if (form === null) return true;
     return mode === 'some'
       ? Object.entries(form).some((entry) => this.checkFormKey(entry))
@@ -142,7 +143,7 @@ export default class Resolver {
     const screenPassed = this.checkScreenPassed(screen);
     const formPassed = this.checkFormPassed(form);
     if (screenPassed && screen !== null) resultCheck.push(this.checkScreen(screen));
-    if (formPassed && form !== null) resultCheck.push(this.checkForm(form, mode));
+    if (formPassed && form !== null) resultCheck.push(this.checkForm(condition));
     return mode === 'some' ? resultCheck.some(Boolean) : resultCheck.every(Boolean);
   }
 }

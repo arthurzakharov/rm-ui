@@ -1,4 +1,4 @@
-import { Prio } from '../../../utils/types';
+import { Prio } from '../../../utils/types/prio';
 
 const prio: Prio = {
   variation: null,

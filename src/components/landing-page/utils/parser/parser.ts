@@ -1,4 +1,4 @@
-import type { Prio, Variation, SuccessBoxItem } from '../types';
+import type { Prio, Variation, SuccessBoxItem } from '../types/prio';
 import type { Answers, FormAnswers } from '../../landing-page.types';
 import type { AccordionProps } from '../../components/accordion';
 import type { AdvantagesProps } from '../../components/advantages';
@@ -13,7 +13,7 @@ import type { ReviewProps } from '../../components/review';
 import type { SuccessBoxProps } from '../../components/success-box';
 import type { Group } from '../../components/group';
 import { getFallback, safeParse } from 'valibot';
-import { GroupSchema, PrioSchema, SuccessBoxSchema, VariationSchema } from '../schemas';
+import { GroupSchema, PrioSchema, SuccessBoxSchema, VariationSchema } from '../schemas/prio';
 import Replacer from '../replacer';
 import Resolver from '../resolver';
 import { BLOCK, type Block } from '../../components/block';

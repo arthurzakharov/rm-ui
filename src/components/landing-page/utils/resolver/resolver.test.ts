@@ -1,4 +1,4 @@
-import type { Condition } from '../types';
+import type { Condition } from '../types/condition';
 import { describe, expect, test } from 'vitest';
 import Resolver from './resolver';
 
