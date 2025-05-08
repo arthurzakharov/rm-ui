@@ -1,12 +1,13 @@
 import { Fragment, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import clsx from 'clsx';
 import CalendarMonth from '../calendar-month/calendar-month.component';
 import CalendarDay from '../calendar-day/calendar-day.component';
 import CalendarSelect from '../calendar-select/calendar-select.component';
 import { useCalendarContext } from '../../calendar.context';
 import useViewportSize from '../../../../hooks/useViewportSize';
 import useClickOutside from '../../../../hooks/useClickOutside';
-import { cn, generateStyleTag } from '../../../../utils/functions';
+import { generateStyleTag } from '../../../../utils/functions';
 import css from './calendar-modal.module.css';
 
 const CalendarModal = () => {
@@ -39,7 +40,7 @@ const CalendarModal = () => {
     return (
       <div
         ref={modalRef}
-        className={cn(css.CalendarModal, {
+        className={clsx(css.CalendarModal, {
           [css.CalendarModalDesktop]: isDesktop,
           [css.CalendarModalMobile]: !isDesktop,
         })}
@@ -84,7 +85,7 @@ const CalendarModal = () => {
     return isDesktop ? (
       <div
         ref={calendarModalRef}
-        className={cn(css.CalendarModalAttached, {
+        className={clsx(css.CalendarModalAttached, {
           [css.CalendarModalAttachedStatic]: modalPosition === 'static',
           [css.CalendarModalAttachedAbsolute]: modalPosition === 'absolute',
         })}

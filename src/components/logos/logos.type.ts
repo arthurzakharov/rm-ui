@@ -1,8 +1,6 @@
-export type LogoName = 'tls' | 'tuv';
+import type { InferInput } from 'valibot';
+import { LogoNameSchema, LogosPropsSchema } from './logos.schemas';
 
-export interface LogosProps {
-  show: LogoName[];
-  tlsSrc?: string;
-  tuvSrc?: string;
-  className?: string;
-}
+export type LogoName = InferInput<typeof LogoNameSchema>;
+
+export type LogosProps = InferInput<typeof LogosPropsSchema>;

@@ -1,13 +1,4 @@
-type Review = {
-  message: string;
-  name: string;
-  link: {
-    href: string;
-    text: string;
-  };
-};
+import type { InferInput } from 'valibot';
+import { ReviewPropsSchema } from './review.schemas';
 
-export interface ReviewProps {
-  title?: string;
-  reviews: Review[];
-}
+export type ReviewProps = InferInput<typeof ReviewPropsSchema>;

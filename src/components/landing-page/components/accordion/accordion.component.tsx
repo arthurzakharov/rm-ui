@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import css from './accordion.module.css';
 
 export default function Accordion(props: AccordionProps) {
-  const { blocks = [], title = '' } = props;
+  const { title = '', blocks = [] } = props;
   const [current, setCurrent] = useState(-1);
   const [bodyHeight, setBodyHeight] = useState(0);
   const refs = useRef<HTMLDivElement[]>([]);

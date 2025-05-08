@@ -2,25 +2,6 @@ import type { RefObject } from 'react';
 import type { WEEK_DAY } from './enums';
 import type { CalendarDay, MaskExplanation } from '../components/calendar/calendar.type';
 
-export const cn = (baseCn: string, ...otherCns: (string | Record<string, boolean>)[]): string => {
-  const resultCn = [baseCn.trim()];
-  otherCns.forEach((otherCn): void => {
-    if (typeof otherCn === 'string') {
-      resultCn.push(otherCn.trim());
-    } else {
-      for (const key in otherCn) {
-        if (otherCn[key]) {
-          resultCn.push(key.trim());
-        }
-      }
-    }
-  });
-  return resultCn
-    .map((cn) => cn.replace(/\s+/g, ''))
-    .filter((cn) => !!cn)
-    .join(' ');
-};
-
 export const getYearsBetween = ([start, end]: [Date, Date]): number[] => {
   const startYear = start.getFullYear();
   const endYear = end.getFullYear();

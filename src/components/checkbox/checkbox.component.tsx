@@ -1,7 +1,7 @@
 import type { FC, MouseEvent, ChangeEvent } from 'react';
 import type { CheckboxProps } from './checkbox.type';
 import { useState } from 'react';
-import { cn } from '../../utils/functions';
+import clsx from 'clsx';
 import css from './checkbox.module.css';
 import InputControl from '../input-control/input-control.component';
 
@@ -48,7 +48,7 @@ const Checkbox: FC<CheckboxProps> = ({
     <label
       data-testid="checkbox"
       htmlFor={name}
-      className={cn(css.Checkbox, className, { [css.CheckboxError]: invalid })}
+      className={clsx(css.Checkbox, className, { [css.CheckboxError]: invalid })}
       onClick={onLabelClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

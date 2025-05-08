@@ -1,7 +1,7 @@
 import type { ChangeEvent, FocusEvent, KeyboardEvent, RefObject, MouseEvent } from 'react';
 import type { InputMaskedProps } from './input-masked.type';
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { cn } from '../../utils/functions';
+import clsx from 'clsx';
 
 const isDigit = (char: string): boolean => /\d/.test(char);
 
@@ -167,7 +167,7 @@ const InputMasked = ({
       type="text"
       name={name}
       value={inputValue}
-      className={cn(inputClassName, {
+      className={clsx(inputClassName, {
         [placeholderClassName]: inputValue === mask,
       })}
       onKeyDown={handleKeyStroke}

@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 import { useCalendarContext } from '../../calendar.context';
-import { cn, createDate, getYearButtonRef, scroll } from '../../../../utils/functions';
+import { createDate, getYearButtonRef, scroll } from '../../../../utils/functions';
 import css from './calendar-month.module.css';
 
 const CalendarMonth = () => {
@@ -20,7 +21,7 @@ const CalendarMonth = () => {
         key={name}
         type="button"
         ref={getYearButtonRef(isMonth, [name, year, String(startPosition.getFullYear())], [yearRef, yearStartRef])}
-        className={cn(css.CalendarMonthButton, {
+        className={clsx(css.CalendarMonthButton, {
           [css.CalendarMonthButtonSelected]: name === (isMonth ? month : year),
         })}
         onClick={() => {
@@ -58,7 +59,7 @@ const CalendarMonth = () => {
     <div
       data-testid="calendar-month"
       ref={wrapperRef}
-      className={cn(css.CalendarMonth, {
+      className={clsx(css.CalendarMonth, {
         [css.CalendarMonthYearSmallList]: yearList.length <= 12,
       })}
     >

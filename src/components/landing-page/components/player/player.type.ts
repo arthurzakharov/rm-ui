@@ -1,5 +1,4 @@
-export interface PlayerProps {
-  videoId: string;
-  description: string;
-  onPlay?: (id: string) => void;
-}
+import type { InferInput } from 'valibot';
+import { PlayerPropsSchema } from './player.schemas';
+
+export type PlayerProps = InferInput<typeof PlayerPropsSchema>;

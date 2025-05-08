@@ -1,8 +1,4 @@
-type Logo = {
-  name: string;
-  priority?: number;
-};
+import type { InferInput } from 'valibot';
+import { LogoBoardPropsSchema } from './logo-board.schemas';
 
-export interface LogoBoardProps {
-  logos: Logo[];
-}
+export type LogoBoardProps = InferInput<typeof LogoBoardPropsSchema>;

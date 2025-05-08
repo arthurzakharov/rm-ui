@@ -675,7 +675,7 @@ const prio: Prio = {
       },
       props: {
         advantageList: {
-          head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+          title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
         },
       },
       condition: {
@@ -840,7 +840,7 @@ const prio: Prio = {
       props: {
         button: {
           text: 'Vollmacht ansehen',
-          action: 'clickLongReadCta',
+          onClick: 'clickLongReadCta',
         },
       },
       condition: {
@@ -860,145 +860,151 @@ const prio: Prio = {
       },
       props: {
         accordion: {
+          title: '',
           blocks: [
             {
               title: 'Kann ein Einspruch meine Lage verschlechtern?',
               content:
                 "<p class='question__paragraph'>Nein, die Strafe kann sich im laufenden Verfahren durch einen Einspruch nicht verschlechtern, sondern immer nur verbessern oder gänzlich entfallen.</p>",
+              condition: null,
             },
             {
               title: 'Wie kann ich ein dohendes Fahrverbot abwenden?',
               content:
                 "<p class='question__paragraph'>Unser primäres Ziel ist es, die Einstellung Ihres gesamten Bußgeldverfahrens zu erwirken, indem wir der Behörde Fehler in der Messung und/oder Bearbeitung Ihres Falles nachweisen.</p><p class='question__paragraph'>Darüber hinaus haben wir unabhängig davon immer die Möglichkeit, einen Fahrverbotsvermeidungsantrag zu stellen. In diesem Fall entscheidet die Behörde bzw. das Gericht darüber, ob das Fahrverbot gegen eine erhöhte Bußgeldzahlung entfällt. Damit dies gelingt, helfen uns unsere jahrelange Erfahrung sowie gute Kontakte bei den Behörden und Gerichten.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>40>>>OR>>>31-40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Innerorts',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>40>>>OR>>>31-40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Innerorts',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Außerorts',
-                        },
-                      ],
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Außerorts',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Unsicher',
-                        },
-                      ],
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Unsicher',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '26-30',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Innerorts',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '26-30',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Innerorts',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '26-30>>>OR>>>31-40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Außerorts',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '26-30>>>OR>>>31-40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Außerorts',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '26-30>>>OR>>>31-40>>>OR>>>>40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Unsicher',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '26-30>>>OR>>>31-40>>>OR>>>>40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Unsicher',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'some',
-                      condition: [
-                        {
-                          'extra[ampel]': '1 Sekunde oder länger',
-                        },
-                        {
-                          'extra[verkehrsteilnehmer]': 'Ja',
-                        },
-                        {
-                          'extra[beschaedigung]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'some',
+                        condition: [
+                          {
+                            'extra[ampel]': '1 Sekunde oder länger',
+                          },
+                          {
+                            'extra[verkehrsteilnehmer]': 'Ja',
+                          },
+                          {
+                            'extra[beschaedigung]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': 'Zwischen 101 Km/h und 130 Km/h>>>OR>>>Schneller als 131 Km/h',
-                        },
-                        {
-                          'extra[abstand]':
-                            '3/10 des Tachowertes>>>OR>>>2/10 des Tachowertes>>>OR>>>1/10 des Tachowertes',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': 'Zwischen 101 Km/h und 130 Km/h>>>OR>>>Schneller als 131 Km/h',
+                          },
+                          {
+                            'extra[abstand]':
+                              '3/10 des Tachowertes>>>OR>>>2/10 des Tachowertes>>>OR>>>1/10 des Tachowertes',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1006,59 +1012,63 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Diese Entscheidung können wir Ihnen nicht abnehmen.</p><p class='question__paragraph'>Generell gilt: Je länger sie punktefrei fahren, desto besser. Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein. Unsere Erfahrung zeigt, dass sich ein Einspruch beim ersten Punkt besonders häufig lohnt, weil man als “Erst-Täter” bessere Chancen hat als ein Widerholungstäter. Das bedeutet für Sie: Wenn Sie warten bis sie erneut geblitzt werden, können die Chancen schlechter stehen als beim ersten Punkt.</p><p class='question__paragraph'>Bereits ab dem ersten Verstoß sind Sie zur Überprüfung der Fahreignung vorgemerkt. Jeder Punkt bleibt für mindestens 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet. Künftige Bußgelder können vom Sachbearbeiter erhöht werden, sobald Sie der Behörde einmal negativ aufgefallen sind.</p><p class='question__paragraph'>Außerdem verlangen viele Versicherungen schon beim ersten Punkt einen Preisaufschlag von bis zu 30% auf die Prämie der KFZ-Versicherung. Mitunter verweigern sie mit dem ersten Punkt komplett den Neuabschluss.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>>>NOT>>><16',
-                        },
-                        {
-                          'extra[punkte-flensburg]': 'Keine',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>>>NOT>>><16',
+                          },
+                          {
+                            'extra[punkte-flensburg]': 'Keine',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': 'Keine',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': 'Keine',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
-                        },
-                        {
-                          'extra[punkte-flensburg]': 'Keine',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
+                          },
+                          {
+                            'extra[punkte-flensburg]': 'Keine',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Handyverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': 'Keine',
-                        },
-                      ],
+                    {
+                      value: 'Handyverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': 'Keine',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1066,59 +1076,63 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Diese Entscheidung können wir Ihnen nicht abnehmen. Generell gilt: Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein.</p><p class='question__paragraph'>Bereits ab dem ersten Verstoß sind Sie zur Überprüfung der Fahreignung vorgemerkt. Jeder Punkt bleibt für mindestens 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet. Künftige Bußgelder können vom Sachbearbeiter erhöht werden, sobald sie der Behörde einmal negativ aufgefallen sind.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>>>NOT>>><16',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>>>NOT>>><16',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Handyverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
-                        },
-                      ],
+                    {
+                      value: 'Handyverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '1 - 3 (Vormerkung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1126,59 +1140,63 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Generell gilt: Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein.</p><p class='question__paragraph'>Jeder Punkt bleibt für mindestens 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet.</p><p class='question__paragraph'>Bereits vor Rechtskraft des 6. Punktes, am Tag der Begehung, entfällt die Möglichkeit zum Punkteabbau durch ein Aufbauseminar. Es lohnt sich also gegen jeden Punkt vorzugehen, um künftig höhere Kosten durch beispielsweise eine MPU oder Punktebedingt erhöhte Bußgelder zu vermeiden.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>>>NOT>>><16',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>>>NOT>>><16',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Handyverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
-                        },
-                      ],
+                    {
+                      value: 'Handyverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '4 - 5 (Ermahnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1186,59 +1204,63 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Generell gilt: Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein. <b class='question__bold'>Ab 6 Punkte kann bereits dieser Verstoß zum Führerscheinentzug führen.</b></p><p class='question__paragraph'>Jeder Punkt bleibt für mindestens 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet. Es lohnt sich also gegen jeden Punkt vorzugehen, um künftig höhere Kosten durch eine MPU und den Fahrerlaubnisentzug zu vermeiden.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>>>NOT>>><16',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>>>NOT>>><16',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
-                        },
-                        {
-                          'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h>>>OR>>>Unsicher',
+                          },
+                          {
+                            'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Handyverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
-                        },
-                      ],
+                    {
+                      value: 'Handyverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': '6 - 7 (Verwarnung)',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1246,59 +1268,63 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Diese Entscheidung können wir Ihnen nicht abnehmen. Generell gilt: Je länger sie punktefrei fahren, desto besser. Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein.</p><p class='question__paragraph'>Unsere Erfahrung zeigt, dass sich ein Einspruch beim ersten Punkt besonders häufig lohnt, weil man als “Erst-Täter” häufig bessere Chancen hat als ein Widerholungstäter. Das bedeutet für Sie: Wenn sie warten bis sie erneut geblitzt werden, können die Chancen schlechter stehen als beim ersten Punkt.</p><p class='question__paragraph'></p><p class='question__paragraph'>Jeder Punkt bleibt für mindestens 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet. Es lohnt sich also gegen jeden Punkt vorzugehen, um künftig höhere Kosten durch eine MPU und den Fahrerlaubnisentzug zu vermeiden.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[wieviel-kmh]': '>>>NOT>>><16',
-                        },
-                        {
-                          'extra[punkte-flensburg]': 'Unsicher',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[wieviel-kmh]': '>>>NOT>>><16',
+                          },
+                          {
+                            'extra[punkte-flensburg]': 'Unsicher',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Rotlichtverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': 'Unsicher',
-                        },
-                      ],
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': 'Unsicher',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Abstandsverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h',
-                        },
-                        {
-                          'extra[punkte-flensburg]': 'Unsicher',
-                        },
-                      ],
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[schnell-unterwegs]': '>>>NOT>>>Langsamer als 80 Km/h',
+                          },
+                          {
+                            'extra[punkte-flensburg]': 'Unsicher',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Handyverstoß',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          'extra[punkte-flensburg]': 'Unsicher',
-                        },
-                      ],
+                    {
+                      value: 'Handyverstoß',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            'extra[punkte-flensburg]': 'Unsicher',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1306,137 +1332,142 @@ const prio: Prio = {
               content:
                 'Wenn Sie aus beruflichen oder sonstigen Gründen auf Ihren Führerschein angewiesen sind, bemühen wir uns darum, die sogenannte “Härtefallregelung” für sie geltend zu machen. D.h. wir versuchen, ein Fahrverbot in jedem Fall abzuwenden, wenn dies durch Ihre besondere Situation begründet werden kann.',
               condition: {
-                'extra[fuehrerschein-angewiesen]': [
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Geschwindigkeitsverstoß',
-                        },
-                        {
-                          'extra[wieviel-kmh]': '>40>>>OR>>>31-40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Innerorts',
-                        },
-                      ],
+                forceResult: 'none',
+                mode: 'some',
+                screen: null,
+                form: {
+                  'extra[fuehrerschein-angewiesen]': [
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Geschwindigkeitsverstoß',
+                          },
+                          {
+                            'extra[wieviel-kmh]': '>40>>>OR>>>31-40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Innerorts',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Geschwindigkeitsverstoß',
-                        },
-                        {
-                          'extra[wieviel-kmh]': '>40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Außerorts',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Geschwindigkeitsverstoß',
+                          },
+                          {
+                            'extra[wieviel-kmh]': '>40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Außerorts',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Geschwindigkeitsverstoß',
-                        },
-                        {
-                          'extra[wieviel-kmh]': '26-30',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Innerorts',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Geschwindigkeitsverstoß',
+                          },
+                          {
+                            'extra[wieviel-kmh]': '26-30',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Innerorts',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Geschwindigkeitsverstoß',
-                        },
-                        {
-                          'extra[wieviel-kmh]': '26-30>>>OR>>>31-40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Außerorts',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Geschwindigkeitsverstoß',
+                          },
+                          {
+                            'extra[wieviel-kmh]': '26-30>>>OR>>>31-40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Außerorts',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Geschwindigkeitsverstoß',
-                        },
-                        {
-                          'extra[wieviel-kmh]': '26-30>>>OR>>>31-40>>>OR>>>>40',
-                        },
-                        {
-                          'extra[wo-unterwegs]': 'Unsicher',
-                        },
-                        {
-                          'extra[blitzer]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Geschwindigkeitsverstoß',
+                          },
+                          {
+                            'extra[wieviel-kmh]': '26-30>>>OR>>>31-40>>>OR>>>>40',
+                          },
+                          {
+                            'extra[wo-unterwegs]': 'Unsicher',
+                          },
+                          {
+                            'extra[blitzer]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'some',
-                      condition: [
-                        {
-                          'extra[ampel]': '1 Sekunde oder länger',
-                        },
-                        {
-                          'extra[verkehrsteilnehmer]': 'Ja',
-                        },
-                        {
-                          'extra[beschaedigung]': 'Ja',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'some',
+                        condition: [
+                          {
+                            'extra[ampel]': '1 Sekunde oder länger',
+                          },
+                          {
+                            'extra[verkehrsteilnehmer]': 'Ja',
+                          },
+                          {
+                            'extra[beschaedigung]': 'Ja',
+                          },
+                        ],
+                      },
                     },
-                  },
-                  {
-                    value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          accusation: 'Abstandsverstoß',
-                        },
-                        {
-                          'extra[schnell-unterwegs]': 'Zwischen 101 Km/h und 130 Km/h>>>OR>>>Schneller als 131 Km/h',
-                        },
-                        {
-                          'extra[abstand]':
-                            '3/10 des Tachowertes>>>OR>>>2/10 des Tachowertes>>>OR>>>1/10 des Tachowertes',
-                        },
-                      ],
+                    {
+                      value: 'Ja, aus beruflichen Gründen>>>OR>>>Ja, aus sonstigen Gründen',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            accusation: 'Abstandsverstoß',
+                          },
+                          {
+                            'extra[schnell-unterwegs]': 'Zwischen 101 Km/h und 130 Km/h>>>OR>>>Schneller als 131 Km/h',
+                          },
+                          {
+                            'extra[abstand]':
+                              '3/10 des Tachowertes>>>OR>>>2/10 des Tachowertes>>>OR>>>1/10 des Tachowertes',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1444,12 +1475,17 @@ const prio: Prio = {
               content:
                 'Wer sich noch in der Probezeit befindet, sollte unserer Erfahrung nach unbedingt Einspruch gegen den Bußgeldbescheid einlegen, um Schlimmeres wie z.B. eine Verlängerung der Probezeit oder einen Aufbauseminar zu verhindern.',
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                'extra[besitz-fuehrerschein]': [
-                  {
-                    value: 'Weniger als 2 Jahre',
-                  },
-                ],
+                screen: null,
+                form: {
+                  'extra[besitz-fuehrerschein]': [
+                    {
+                      value: 'Weniger als 2 Jahre',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1457,11 +1493,17 @@ const prio: Prio = {
               content:
                 'Ja. Ein Großteil unserer Mandanten ist tatsächlich zu schnell gefahren. Dies ist aber nicht ausschlaggebend für ein aus Ihrer Sicht erfolgreiches Verfahren. Wichtig ist, dass der Nachweis ihrer Geschwindigkeitsüberschreitung zweifelsfrei erbracht werden kann. Wir sind darauf spezialisiert, genau diesen Nachweis zu verhindern.',
               condition: {
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                  },
-                ],
+                forceResult: 'none',
+                mode: 'some',
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1469,11 +1511,17 @@ const prio: Prio = {
               content:
                 'Ja. Ein Großteil unserer Mandanten ist tatsächlich über Rot gefahren. Dies ist aber nicht ausschlaggebend für ein aus ihrer Sicht erfolgreiches Verfahren. Wichtig ist, dass der Nachweis ihres Rotlichtverstoßes zweifelsfrei erbracht werden kann. Wir sind darauf spezialisiert, genau diesen Nachweis zu verhindern.',
               condition: {
-                accusation: [
-                  {
-                    value: 'Rotlichtverstoß',
-                  },
-                ],
+                forceResult: 'none',
+                mode: 'some',
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1481,11 +1529,17 @@ const prio: Prio = {
               content:
                 'Ja. Ein Großteil unserer Mandanten ist tatsächlich zu dicht aufgefahren. Dies ist aber nicht ausschlaggebend für ein aus ihrer Sicht erfolgreiches Verfahren. Wichtig ist, dass der Nachweis ihres Abstandverstoßes zweifelsfrei erbracht werden kann. Wir sind darauf spezialisiert, genau diesen Nachweis zu verhindern.',
               condition: {
-                accusation: [
-                  {
-                    value: 'Abstandsverstoß',
-                  },
-                ],
+                forceResult: 'none',
+                mode: 'some',
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1493,12 +1547,17 @@ const prio: Prio = {
               content:
                 'Das Foto ist aus juristischer Sicht erstmal irrelevant. Das sagt im Prinzip nur aus, dass Sie im Auto gesessen haben. Und das wollen wir ja auch gar nicht anzweifeln. Das was wir anzweifeln, ist die Messung selbst, dass Sie so schnell gefahren sind, wie von der Behörde behauptet. Außerdem müssen Sie immer bedenken, dass der Sachbearbeiter der Behörde, der Ihren Fall bearbeitet, Sie nicht persönlich kennt und somit nicht zwangsläufig nachvollziehen kann, ob Sie das auf dem Foto tatsächlich sind (für den Fall, dass wir das Bildmaterial in Frage stellen).',
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Geschwindigkeitsverstoß',
-                  },
-                ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Geschwindigkeitsverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1506,12 +1565,17 @@ const prio: Prio = {
               content:
                 'Das Foto ist aus juristischer Sicht erstmal irrelevant. Das sagt im Prinzip nur aus, dass Sie im Auto gesessen haben. Und das wollen wir ja auch gar nicht anzweifeln. Das was wir anzweifeln, ist die Messung selbst. Außerdem müssen Sie immer bedenken, dass der Sachbearbeiter der Behörde, der Ihren Fall bearbeitet, Sie nicht persönlich kennt und somit nicht zwangsläufig nachvollziehen kann, ob Sie das auf dem Foto tatsächlich sind.',
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Rotlichtverstoß',
-                  },
-                ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Rotlichtverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1519,30 +1583,41 @@ const prio: Prio = {
               content:
                 'Das Video ist aus juristischer Sicht erstmal irrelevant. Das sagt im Prinzip nur aus, dass Sie im Auto gesessen haben. Und das wollen wir ja auch gar nicht anzweifeln. Das was wir anzweifeln, ist die Messung selbst. Dafür schauen wir uns u.a. das Videomaterial der Messung an. Außerdem müssen Sie immer bedenken, dass der Sachbearbeiter der Behörde, der Ihren Fall bearbeitet, Sie nicht persönlich kennt und somit nicht zwangsläufig nachvollziehen kann, ob Sie das auf dem Video tatsächlich sind.',
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Abstandsverstoß',
-                  },
-                ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Abstandsverstoß',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
               title: 'Ich bin gefahren, aber das Fahrzeug ist nicht auf mich gemeldet. Wie verhalte ich mich richtig?',
               content:
                 'Kein Problem, als Fahrer verteidigen wir Sie unabhängig davon, ob Sie der Halter des Fahrzeuges sind.',
+              condition: null,
             },
             {
               title: 'Mir liegt ein Zeugenfragebogen vor. Wie verhalte ich mich richtig?',
               content:
                 "<p class='question__paragraph'>Wenn Ihnen bisher nur ein Zeugenfragebogen vorliegt, prüfen Sie zuerst, ob Sie mit dem Fahrzeug gefahren sind.</p><p class='question__paragraph'>Falls Ihre Antwort “Nein” lautet, geben Sie an “Fahrzeug wurde überlassen an:” + Name und Anschrift des Fahrers.</p><p class='question__paragraph'><b class='question__bold'>Falls Ihre Antwort “Ja” lautet, empfehlen wir Ihnen, uns ab jetzt mit der anwaltlichen Vertretung zu beauftragen, um eine größtmögliche Chance auf die Einstellung des Verfahrens zu haben.</b></p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                'extra[behoerde-bescheid]': [
-                  {
-                    value: 'Zeugenfragebogen',
-                  },
-                ],
+                screen: null,
+                form: {
+                  'extra[behoerde-bescheid]': [
+                    {
+                      value: 'Zeugenfragebogen',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1550,12 +1625,17 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'>Wenn Ihnen bereits ein Anhörungsbogen vorliegt, prüfen Sie die personenbezogenen Daten (Name, Anschrift, Geburtsdatum und Geburtsort) auf dem Schreiben. Sollten diese fehlerhaft sein, müssen Sie diese korrigieren und den Anhörungsbogen binnen 7 Tagen an die Behörde zurückschicken.</p><p class='question__paragraph'><b class='question__bold'>Wir empfehlen Ihnen, uns ab jetzt mit der anwaltlichen Vertretung zu beauftragen, um eine größtmögliche Chance auf die Einstellung des Verfahrens zu haben.</b></p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                'extra[behoerde-bescheid]': [
-                  {
-                    value: 'Anhörungsbogen',
-                  },
-                ],
+                screen: null,
+                form: {
+                  'extra[behoerde-bescheid]': [
+                    {
+                      value: 'Anhörungsbogen',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1563,12 +1643,17 @@ const prio: Prio = {
               content:
                 "Wenn Ihnen bereits ein Bußgeldbescheid vorliegt, ist Eile geboten. Ab dem Tag der Zustellung läuft die 14-tägige Einspruchsfrist. Um das Verfahren nicht rechtskräftig werden zu lassen, sollte daher schnellstmöglich Einspruch eingelegt werden. Bitte zögern Sie nicht, uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                'extra[behoerde-bescheid]': [
-                  {
-                    value: 'Bußgeldbescheid',
-                  },
-                ],
+                screen: null,
+                form: {
+                  'extra[behoerde-bescheid]': [
+                    {
+                      value: 'Bußgeldbescheid',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1576,12 +1661,17 @@ const prio: Prio = {
               content:
                 "<p class='question__paragraph'><b class='question__bold' style='color:#004473'>Zeugenfragebogen</b></p><p class='question__paragraph'>Wenn Ihnen bisher nur ein Zeugenfragebogen vorliegt, prüfen Sie zuerst, ob Sie mit dem Fahrzeug gefahren sind.</p><p class='question__paragraph'>Falls Ihre Antwort “Nein” lautet, geben Sie an “Fahrzeug wurde überlassen an:” + Name und Anschrift des Fahrers.</p><p class='question__paragraph'><b class='question__bold'>Falls Ihre Antwort “Ja” lautet, empfehlen wir Ihnen, uns ab jetzt mit der anwaltlichen Vertretung zu beauftragen, um eine größtmögliche Chance auf die Einstellung des Verfahrens zu haben.</b></p><p class='question__paragraph'><b class='question__bold' style='color:#004473'>Anhörungsbogen</b></p><p class='question__paragraph'>Wenn Ihnen bereits ein Anhörungsbogen vorliegt, prüfen Sie die personenbezogenen Daten (Name, Anschrift, Geburtsdatum und Geburtsort) auf dem Schreiben. Sollten diese fehlerhaft sein, müssen Sie diese korrigieren und den Anhörungsbogen binnen 7 Tagen an die Behörde zurückschicken.</p><p class='question__paragraph'><b class='question__bold'>Wir empfehlen Ihnen, uns ab jetzt mit der anwaltlichen Vertretung zu beauftragen, um eine größtmögliche Chance auf die Einstellung des Verfahrens zu haben.</b></p><p class='question__paragraph'><b class='question__bold' style='color:#004473'>Bußgeldbescheid</b></p><p class='question__paragraph'>Wenn Ihnen bereits ein Bußgeldbescheid vorliegt, ist Eile geboten. Ab dem Tag der Zustellung läuft die 14-tägige Einspruchsfrist. Um das Verfahren nicht rechtskräftig werden zu lassen, <b class='question__bold'>sollte daher schnellstmöglich Einspruch eingelegt werden</b>. Bitte zögern Sie nicht, uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                'extra[behoerde-bescheid]': [
-                  {
-                    value: 'Unsicher',
-                  },
-                ],
+                screen: null,
+                form: {
+                  'extra[behoerde-bescheid]': [
+                    {
+                      value: 'Unsicher',
+                      extra: null,
+                    },
+                  ],
+                },
               },
             },
             {
@@ -1589,7 +1679,13 @@ const prio: Prio = {
               content:
                 "Bitte zögern Sie nicht uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.",
               condition: {
-                screenMoreThan: 768,
+                forceResult: 'none',
+                mode: 'some',
+                screen: {
+                  moreThan: 768,
+                  lessThan: null,
+                },
+                form: null,
               },
             },
           ],
@@ -1606,7 +1702,7 @@ const prio: Prio = {
       },
       props: {
         orderedList: {
-          head: 'Jetzt Vollmacht erteilen',
+          title: 'Jetzt Vollmacht erteilen',
           list: [
             'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
             'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
@@ -1631,7 +1727,7 @@ const prio: Prio = {
       props: {
         button: {
           text: 'Vollmacht ansehen',
-          action: 'clickLongReadCta',
+          onClick: 'clickLongReadCta',
         },
       },
       condition: null,

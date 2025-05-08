@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import clsx from 'clsx';
 import { useCalendarContext } from '../../calendar.context';
-import { cn, createDate, isCalendarDayEqualsToDate } from '../../../../utils/functions';
+import { createDate, isCalendarDayEqualsToDate } from '../../../../utils/functions';
 import css from './calendar-day.module.css';
 
 const CalendarDay = () => {
@@ -23,7 +24,7 @@ const CalendarDay = () => {
               key={dayIndex}
               type="button"
               disabled={calendarDay.outOfPeriod}
-              className={cn(css.CalendarDay, {
+              className={clsx(css.CalendarDay, {
                 [css.CalendarDayOutOfPeriod]: calendarDay.outOfPeriod,
                 [css.CalendarDayNotFromThisMonth]: calendarDay.notThisMonth,
                 [css.CalendarDayToday]: isCalendarDayEqualsToDate(calendarDay, new Date()),

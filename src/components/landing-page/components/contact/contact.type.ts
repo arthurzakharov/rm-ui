@@ -1,9 +1,4 @@
-export interface ContactProps {
-  submitted?: boolean;
-  sidebar?: boolean;
-  title?: string;
-  main?: string;
-  button?: string;
-  success?: string;
-  onClick?: () => void;
-}
+import type { InferInput } from 'valibot';
+import { ContactPropsSchema } from './contact.schemas';
+
+export type ContactProps = InferInput<typeof ContactPropsSchema>;

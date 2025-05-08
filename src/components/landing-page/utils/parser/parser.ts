@@ -196,26 +196,26 @@ export default class Parser {
                     switch (type) {
                       case BLOCK.ACCORDION:
                         return this.getKey<AccordionProps>(props, 'accordion', fallback.accordion);
-                      case BLOCK.HOW_TO_GO_NEXT:
-                        return this.getKey<HowToProps>(props, 'howTo', fallback.howTo);
                       case BLOCK.ADVANTAGE_LIST:
                         return this.getKey<AdvantagesProps>(props, 'advantageList', fallback.advantages);
                       case BLOCK.ADVANTAGE_LIST_NO_BUTTON:
                         return this.getKey<AdvantagesProps>(props, 'advantageListNoButton', fallback.advantages);
                       case BLOCK.CONTACT_US:
                         return this.getKey<ContactProps>(props, 'contact', fallback.contact);
-                      case BLOCK.ORDERED_LIST:
-                        return this.getKey<OrderedListProps>(props, 'orderedList', fallback.orderedList);
                       case BLOCK.BUTTON:
                         return this.getKey<CtaButtonProps>(props, 'button', fallback.ctaButtons);
-                      case BLOCK.LOGOS:
-                        return this.getKey<LogosProps>(props, 'logos', fallback.logos);
-                      case BLOCK.PLAYER:
-                        return this.getKey<PlayerProps>(props, 'player', fallback.player);
+                      case BLOCK.HOW_TO_GO_NEXT:
+                        return this.getKey<HowToProps>(props, 'howTo', fallback.howTo);
                       case BLOCK.LOGO_CLOUD:
                         return this.getKey<LogoBoardProps>(props, 'logoBoard', fallback.logoBoard);
+                      case BLOCK.PLAYER:
+                        return this.getKey<PlayerProps>(props, 'player', fallback.player);
                       case BLOCK.REVIEW:
                         return this.getKey<ReviewProps>(props, 'review', fallback.review);
+                      case BLOCK.ORDERED_LIST:
+                        return this.getKey<OrderedListProps>(props, 'orderedList', fallback.orderedList);
+                      case BLOCK.LOGOS:
+                        return this.getKey<LogosProps>(props, 'logos', fallback.logos);
                       case BLOCK.QUESTION:
                         return null;
                     }

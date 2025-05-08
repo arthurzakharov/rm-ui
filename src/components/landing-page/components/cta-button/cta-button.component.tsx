@@ -5,14 +5,7 @@ import clsx from 'clsx';
 import css from './cta-button.module.css';
 
 export default function CtaButton(props: CtaButtonProps) {
-  const {
-    text = '',
-    className = '',
-    optimizely = 'landing-cta',
-    disabled = false,
-    fullWidth = false,
-    onClick = () => {},
-  } = props;
+  const { text = '', className = '', optimizely = 'landing-cta', disabled = false, fullWidth = false, onClick } = props;
 
   return (
     <button
@@ -24,7 +17,17 @@ export default function CtaButton(props: CtaButtonProps) {
       onClick={(e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         e.currentTarget.blur();
-        onClick();
+        if (!onClick) return;
+        if (typeof onClick === 'string') {
+          const windowFunction = window[onClick as keyof Window & string];
+          if (typeof windowFunction === 'function') {
+            windowFunction();
+          } else {
+            return;
+          }
+        } else {
+          onClick();
+        }
       }}
     >
       <span>{text}</span>

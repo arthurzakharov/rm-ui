@@ -1,5 +1,5 @@
 import type { LoaderProps } from './loader.type';
-import { cn } from '../../../../utils/functions';
+import clsx from 'clsx';
 import css from './loader.module.css';
 
 export default function Loader(props: LoaderProps) {
@@ -9,7 +9,7 @@ export default function Loader(props: LoaderProps) {
   } = props;
 
   return (
-    <div className={cn(css.PageLoader, className)}>
+    <div className={clsx(css.PageLoader, className)}>
       <div className={css.PageLoaderContent}>
         <div className={css.PageLoaderImage}>
           <div className={css.PageLoaderLine} />

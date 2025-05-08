@@ -26,5 +26,3 @@ export default function Logos(props: LogosProps) {
     </div>
   );
 }
-
-Logos.displaayName = 'Logos';

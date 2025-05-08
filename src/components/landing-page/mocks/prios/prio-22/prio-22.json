@@ -710,26 +710,32 @@
       },
       "props": {
         "accordion": {
+          "title": "",
           "blocks": [
             {
               "title": "Wie läuft das Verfahren ab?",
-              "content": "<p class='question__paragraph'>Das Verfahren zur Beantragung einer Niederlassungserlaubnis oder Einbürgerung gliedert sich in mehrere Schritte:</p><ol class='question__list'><li class='question__list-item'><b class='question__bold'>Antragstellung:</b>  Wir stellen den Antrag auf Niederlassungserlaubnis oder Einbürgerung.</li><li class='question__list-item'><b class='question__bold'>Prüfung des Antrags durch die Ausländer- oder Einbürgerungsbehörde:</b> Die Ausländer- oder Einbürgerungsbehörde prüft Ihren Antrag, um sicherzustellen, dass alle erforderlichen Unterlagen vollständig sind und den rechtlichen Anforderungen entsprechen.</li><li class='question__list-item'><b class='question__bold'>Erteilung der Niederlassungserlaubnis oder Einbürgerung:</b> Nach erfolgreicher Prüfung und Erfüllung aller erforderlichen Voraussetzungen wird Ihnen die Niederlassungserlaubnis oder Einbürgerung erteilt. Damit ist Ihr Verfahren abgeschlossen</li></ol><p>Verläuft Ihr Verfahren schleppend, greifen wir ein. Mithilfe einer Untätigkeitsklage bauen wir Druck auf und zwingen die Behörde so zu einer zeitnahmen entscheidung.</p><p>Auch im <b class='question__bold'>Falle einer Ablehnung</b> lassen wir Sie nicht allein: Wir klagen gegen eine derartige Entscheidung und fordern so Korrektur ein.</p>"
+              "content": "<p class='question__paragraph'>Das Verfahren zur Beantragung einer Niederlassungserlaubnis oder Einbürgerung gliedert sich in mehrere Schritte:</p><ol class='question__list'><li class='question__list-item'><b class='question__bold'>Antragstellung:</b>  Wir stellen den Antrag auf Niederlassungserlaubnis oder Einbürgerung.</li><li class='question__list-item'><b class='question__bold'>Prüfung des Antrags durch die Ausländer- oder Einbürgerungsbehörde:</b> Die Ausländer- oder Einbürgerungsbehörde prüft Ihren Antrag, um sicherzustellen, dass alle erforderlichen Unterlagen vollständig sind und den rechtlichen Anforderungen entsprechen.</li><li class='question__list-item'><b class='question__bold'>Erteilung der Niederlassungserlaubnis oder Einbürgerung:</b> Nach erfolgreicher Prüfung und Erfüllung aller erforderlichen Voraussetzungen wird Ihnen die Niederlassungserlaubnis oder Einbürgerung erteilt. Damit ist Ihr Verfahren abgeschlossen</li></ol><p>Verläuft Ihr Verfahren schleppend, greifen wir ein. Mithilfe einer Untätigkeitsklage bauen wir Druck auf und zwingen die Behörde so zu einer zeitnahmen entscheidung.</p><p>Auch im <b class='question__bold'>Falle einer Ablehnung</b> lassen wir Sie nicht allein: Wir klagen gegen eine derartige Entscheidung und fordern so Korrektur ein.</p>",
+              "condition": null
             },
             {
               "title": "Wie lange dauert das Verfahren?",
-              "content": "<p class='question__paragraph'>Die Dauer eines Einbürgerungsverfahrens hängt von unterschiedlichen Faktoren ab. Maßgeblich ist dabei, die Vollständigkeit Ihres Antrages. Muss die Behörde fehelnde Unterlagen nachfordern, kann sich die Bearbeitung Ihres Antrages stark in die Länge ziehen. Wir sorgen dafür, dass das nicht passiert. Im Vorfeld klären wir genau ab, welche Dokumente von Ihnen bei den Behörden einzureichen sind. Bei Bedarf unterstützen wir Sie auch bei der Beschaffung fehlender Unterlagen. So halten wir die Verfahrenszeiten möglichst kurz, mit mehreren Monaten müssen Sie dennoch rechnen</p><p>Verzögerungen im Einbürgerungsverahren sind jedch auch bei vollständigen Anträgen keine Seltenheit. Viele Einbürgerungsbehörden sind überlastet und kommen nicht gegen die Vielzahl der Anträge an. Ohne anwaltliche Unterstützung ziehen sich die Verfahrenszeiten dabei schon mal deutlich über ein Jahr hin.</p>"
+              "content": "<p class='question__paragraph'>Die Dauer eines Einbürgerungsverfahrens hängt von unterschiedlichen Faktoren ab. Maßgeblich ist dabei, die Vollständigkeit Ihres Antrages. Muss die Behörde fehelnde Unterlagen nachfordern, kann sich die Bearbeitung Ihres Antrages stark in die Länge ziehen. Wir sorgen dafür, dass das nicht passiert. Im Vorfeld klären wir genau ab, welche Dokumente von Ihnen bei den Behörden einzureichen sind. Bei Bedarf unterstützen wir Sie auch bei der Beschaffung fehlender Unterlagen. So halten wir die Verfahrenszeiten möglichst kurz, mit mehreren Monaten müssen Sie dennoch rechnen</p><p>Verzögerungen im Einbürgerungsverahren sind jedch auch bei vollständigen Anträgen keine Seltenheit. Viele Einbürgerungsbehörden sind überlastet und kommen nicht gegen die Vielzahl der Anträge an. Ohne anwaltliche Unterstützung ziehen sich die Verfahrenszeiten dabei schon mal deutlich über ein Jahr hin.</p>",
+              "condition": null
             },
             {
               "title": "Welche Unterlagen werden benötigt?",
-              "content": "<p class='question__paragraph'>Welche Unterlaen wir beziehungsweise die Ausländer- oder Einbürgerungsbehörde von Ihnen benötigt, lässt sich nicht pauschal sagen. Das hängt von Ihrer persönlichen Situation ab. Wir prüfen Ihre Umstände und informieren Sie darüber, welche Nachweise für Ihr Anliegen erforderlich sind. Zudem unterstützen wir Sie bei der beschaffung fehlender Unterlagen. Sprechen Sie uns gerne an.</p>"
+              "content": "<p class='question__paragraph'>Welche Unterlaen wir beziehungsweise die Ausländer- oder Einbürgerungsbehörde von Ihnen benötigt, lässt sich nicht pauschal sagen. Das hängt von Ihrer persönlichen Situation ab. Wir prüfen Ihre Umstände und informieren Sie darüber, welche Nachweise für Ihr Anliegen erforderlich sind. Zudem unterstützen wir Sie bei der beschaffung fehlender Unterlagen. Sprechen Sie uns gerne an.</p>",
+              "condition": null
             },
             {
               "title": "Welche Voraussetzungen muss ich für die Einbürgerung erfüllen?",
-              "content": "<p class='question__paragraph'>Die Einbürgerung ist an verschiedene Voraussetzungen gebunden. Darunter finden sich zum Beispiel:</p><ul class='question__list'><li class='question__list-item'>ein mindestens 5-jähriger Aufenthalt in Deuschland,</li><li class='question__list-item'>ein gültiger Aufenthaltstitel,</li><li class='question__list-item'>ausreichende Deutschkenntnisse und</li><li class='question__list-item'>ein gesicherter Lebensunterhalt.</li></ul><p><a href=\"https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/\" target=\"_blank\">Einbürgerung und ihre Voraussetzungen</a> finden Sie eine komplette Auflistung aller Bedingungen mit weterführenden Informationen.</p>"
+              "content": "<p class='question__paragraph'>Die Einbürgerung ist an verschiedene Voraussetzungen gebunden. Darunter finden sich zum Beispiel:</p><ul class='question__list'><li class='question__list-item'>ein mindestens 5-jähriger Aufenthalt in Deuschland,</li><li class='question__list-item'>ein gültiger Aufenthaltstitel,</li><li class='question__list-item'>ausreichende Deutschkenntnisse und</li><li class='question__list-item'>ein gesicherter Lebensunterhalt.</li></ul><p><a href=\"https://passexperten.de/ratgeber/einbuergerung-voraussetzungen/\" target=\"_blank\">Einbürgerung und ihre Voraussetzungen</a> finden Sie eine komplette Auflistung aller Bedingungen mit weterführenden Informationen.</p>",
+              "condition": null
             },
             {
               "title": "Ich habe noch keinen Einbürgerungstest gemacht. Kann ich trotzdem schon den Antrag stellen?",
-              "content": "<p class='question__paragraph'>Wichtig ist, dass der Einbürgerungstest zu dem Zeitpunkt vorliegt, an dem die Behörde über Ihren Antrag entscheidet. Aufgrund der langen Bearbeitungszeiten kann es sinnvoll sein, den Antrag zu stellen, bevor der Einbürgerungstest gemacht wurde. Das Ergebnis können Sie nachreichen. Wir unterstützen sehr gerne in dem Prozess.</p>"
+              "content": "<p class='question__paragraph'>Wichtig ist, dass der Einbürgerungstest zu dem Zeitpunkt vorliegt, an dem die Behörde über Ihren Antrag entscheidet. Aufgrund der langen Bearbeitungszeiten kann es sinnvoll sein, den Antrag zu stellen, bevor der Einbürgerungstest gemacht wurde. Das Ergebnis können Sie nachreichen. Wir unterstützen sehr gerne in dem Prozess.</p>",
+              "condition": null
             }
           ]
         }
@@ -775,7 +781,7 @@
       },
       "props": {
         "orderedList": {
-          "head": "Jetzt Vollmacht erteilen",
+          "title": "Jetzt Vollmacht erteilen",
           "list": [
             "Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.",
             "Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen."
@@ -797,7 +803,7 @@
       "props": {
         "button": {
           "text": "Vollmacht ansehen",
-          "action": "clickLongReadCta"
+          "onClick": "clickLongReadCta"
         }
       },
       "condition": {

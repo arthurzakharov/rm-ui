@@ -1,7 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { createRef } from 'react';
 import {
-  cn,
   getYearsBetween,
   getNextIndex,
   formatNumberWithLeadingZero,
@@ -14,40 +13,6 @@ import {
   createDate,
 } from './functions';
 import { MONTH } from './enums';
-
-describe('📍 - cn', () => {
-  test('Singe className passed returns passed className', () => {
-    expect(cn('')).toEqual('');
-    expect(cn('foo')).toEqual('foo');
-  });
-  test('Several classNames passed returns merged classNames with space', () => {
-    expect(cn('foo', 'bar')).toEqual('foo bar');
-    expect(cn('foo', 'bar', 'too')).toEqual('foo bar too');
-    expect(cn('foo', '', 'bar')).toEqual('foo bar');
-    expect(cn('foo', 'bar', '')).toEqual('foo bar');
-    expect(cn('foo', '')).toEqual('foo');
-    expect(cn('foo', ' ')).toEqual('foo');
-    expect(cn('foo', ' ', 'bar')).toEqual('foo bar');
-    expect(cn('foo', 'bar', ' ')).toEqual('foo bar');
-  });
-  test('Passed Records with true values are added to base className', () => {
-    expect(cn('foo', { bar: true })).toEqual('foo bar');
-    expect(cn('foo', { bar: true, car: true })).toEqual('foo bar car');
-    expect(cn('foo', { bar: true }, { car: true })).toEqual('foo bar car');
-  });
-  test('Passed Records with false values are ignored', () => {
-    expect(cn('foo', { bar: false })).toEqual('foo');
-    expect(cn('foo', { bar: false, car: false })).toEqual('foo');
-    expect(cn('foo', { bar: false }, { car: false })).toEqual('foo');
-  });
-  test('Passed empty Records is ignored', () => {
-    expect(cn('foo', {})).toEqual('foo');
-    expect(cn('foo', {}, {})).toEqual('foo');
-  });
-  test('classNames passed as strings or Records are trimmed', () => {
-    expect(cn('foo ', 'bar ', { ['too ']: true })).toEqual('foo bar too');
-  });
-});
 
 describe('📍 - getYearsBetween', () => {
   test('Start date is before end date, returns array of years including start and end year', () => {

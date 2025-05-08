@@ -14,16 +14,19 @@ const meta = {
         title: '<b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing',
         content:
           'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi<br/><br/>ut aliquip ex ea commodo consequat.',
+        condition: null,
       },
       {
         title: '<b>2.</b> Lorem ipsum dolor sit amet, consectetur adipiscing',
         content:
           'Ut enim ad <b>minim veniam</b>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        condition: null,
       },
       {
         title: '<b>3.</b> Lorem ipsum dolor sit amet, consectetur adipiscing',
         content:
           '<i>Ut enim ad minim veniam</i>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        condition: null,
       },
     ],
   },
@@ -32,10 +35,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  name: 'Default',
+export const WithoutHead: Story = {
+  name: 'Without head',
   args: {
-    title: undefined,
+    title: '',
   },
   play: async ({ args, canvasElement, step }) => {
     const ARROW_CLOSE = `${css.Arrow} ${css.ArrowClose}`;

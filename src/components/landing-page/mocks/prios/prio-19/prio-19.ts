@@ -1391,12 +1391,14 @@ const prio: Prio = {
         body: '@@@HowToGoNext@@@',
       },
       props: {
-        howToGoNext: {
-          head: "Wie geht's jetzt weiter?",
-          list: [
-            "Wir setzen uns schnellstmöglich mit Ihnen in Verbindung, um <b class='question__bold'>kostenlos und unverbindlich</b> Ihren Fall zu besprechen und alle Ihre Fragen zu beantworten.",
-            "Sie überlegen Sich, ob Sie - gegebenenfalls mit unserer Unterstützung - <b class='question__bold'>Einspruch einlegen</b> oder nicht.",
-          ],
+        howTo: {
+          orderedList: {
+            title: "Wie geht's jetzt weiter?",
+            list: [
+              "Wir setzen uns schnellstmöglich mit Ihnen in Verbindung, um <b class='question__bold'>kostenlos und unverbindlich</b> Ihren Fall zu besprechen und alle Ihre Fragen zu beantworten.",
+              "Sie überlegen Sich, ob Sie - gegebenenfalls mit unserer Unterstützung - <b class='question__bold'>Einspruch einlegen</b> oder nicht.",
+            ],
+          },
         },
       },
       condition: {
@@ -1481,12 +1483,14 @@ const prio: Prio = {
         body: '@@@HowToGoNext@@@',
       },
       props: {
-        howToGoNext: {
-          head: "Wie geht's jetzt weiter?",
-          list: [
-            'Wir empfehlen Ihnen keinen Einspruch einzulegen.',
-            'Sollten Sie sich dennoch unsicher sein oder meinen Sie, falsche Angaben gemacht zu haben, füllen Sie das Formular bitte erneut aus oder kontaktieren uns unter 030 / 2555 858 00.',
-          ],
+        howTo: {
+          orderedList: {
+            title: "Wie geht's jetzt weiter?",
+            list: [
+              'Wir empfehlen Ihnen keinen Einspruch einzulegen.',
+              'Sollten Sie sich dennoch unsicher sein oder meinen Sie, falsche Angaben gemacht zu haben, füllen Sie das Formular bitte erneut aus oder kontaktieren uns unter 030 / 2555 858 00.',
+            ],
+          },
         },
       },
       condition: {
@@ -1586,7 +1590,7 @@ const prio: Prio = {
       },
       props: {
         orderedList: {
-          head: "Wie geht's jetzt weiter?",
+          title: "Wie geht's jetzt weiter?",
           list: [
             "Wir setzen uns schnellstmöglich mit Ihnen in Verbindung, um <b class='question__bold'>kostenlos und unverbindlich</b> Ihren Fall zu besprechen und alle Ihre Fragen zu beantworten.",
             "Sie überlegen Sich, ob Sie - gegebenenfalls mit unserer Unterstützung - <b class='question__bold'>Einspruch einlegen</b> oder nicht.",

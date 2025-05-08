@@ -1,8 +1,4 @@
-export interface AdvantagesProps {
-  title?: string;
-  list?: string[];
-  button?: string;
-  withImage?: boolean;
-  withoutButton?: boolean;
-  onButtonClick?: () => void;
-}
+import type { InferInput } from 'valibot';
+import { AdvantagesPropsSchema } from './advantages.schemas';
+
+export type AdvantagesProps = InferInput<typeof AdvantagesPropsSchema>;

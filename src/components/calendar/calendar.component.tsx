@@ -1,12 +1,13 @@
 import type { CalendarProps } from './calendar.type';
 import type { FC } from 'react';
 import { useRef, useState, useCallback } from 'react';
+import clsx from 'clsx';
 import CalendarButton from './components/calendar-button/calendar-button.component';
 import InputMasked from '../input-masked/input-masked.component';
 import CalendarModal from './components/calendar-modal/calendar-modal.component';
 import CalendarProvider from '../calendar/calendar.provider';
 import { MONTH, WEEK_DAY } from '../../utils/enums';
-import { cn, convertMaskFormatToDate, createDate, isDateInPeriod } from '../../utils/functions';
+import { convertMaskFormatToDate, createDate, isDateInPeriod } from '../../utils/functions';
 import css from './calendar.module.css';
 
 const Calendar: FC<CalendarProps> = (props) => {
@@ -77,7 +78,7 @@ const Calendar: FC<CalendarProps> = (props) => {
       <div ref={calendarRef} className={css.Calendar}>
         <div className={css.CalendarInput}>
           <div
-            className={cn(css.CalendarInputBorder, {
+            className={clsx(css.CalendarInputBorder, {
               [css.CalendarInputBorderFocused]: focused,
               [css.CalendarInputBorderDropdown]: mode === 'dropdown',
               [css.CalendarInputBorderText]: mode === 'text',

@@ -1001,7 +1001,7 @@ const prio: Prio = {
       },
       props: {
         advantageList: {
-          head: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+          title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
         },
       },
       condition: {
@@ -1181,34 +1181,40 @@ const prio: Prio = {
       },
       props: {
         accordion: {
+          title: '',
           blocks: [
             {
               title: 'Kann ein Einspruch meine Lage verschlechtern?',
               content:
                 "<p class='question__paragraph'>Nein, die Strafe kann sich im laufenden Verfahren durch einen Einspruch nicht verschlechtern, sondern immer nur verbessern oder gänzlich entfallen.</p>",
+              condition: null,
             },
             {
               title: 'Wie kann ich ein dohendes Fahrverbot abwenden?',
               content:
                 "<p class='question__paragraph'>Unser primäres Ziel ist es, die Einstellung Ihres gesamten Bußgeldverfahrens zu erwirken, indem wir der Behörde Fehler in der Messung und/oder Bearbeitung Ihres Falles nachweisen.</p><p class='question__paragraph'>Darüber hinaus haben wir unabhängig davon immer die Möglichkeit, einen Fahrverbotsvermeidungsantrag zu stellen. In diesem Fall entscheidet die Behörde bzw. das Gericht darüber, ob das Fahrverbot gegen eine erhöhte Bußgeldzahlung entfällt. Damit dies gelingt, helfen uns unsere jahrelange Erfahrung sowie gute Kontakte bei den Behörden und Gerichten.</p>",
               condition: {
+                forceResult: 'none',
                 mode: 'some',
-                accusation: [
-                  {
-                    value: 'Bingo',
-                    extra: {
-                      mode: 'every',
-                      condition: [
-                        {
-                          q17347: '>40>>>OR>>>31-40',
-                        },
-                        {
-                          q17375: 'Innerorts',
-                        },
-                      ],
+                screen: null,
+                form: {
+                  accusation: [
+                    {
+                      value: 'Bingo',
+                      extra: {
+                        mode: 'every',
+                        condition: [
+                          {
+                            q17347: '>40>>>OR>>>31-40',
+                          },
+                          {
+                            q17375: 'Innerorts',
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
             },
             {
@@ -1216,7 +1222,13 @@ const prio: Prio = {
               content:
                 "Bitte zögern Sie nicht uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.",
               condition: {
-                screenMoreThan: 768,
+                forceResult: 'none',
+                mode: 'some',
+                screen: {
+                  moreThan: 768,
+                  lessThan: null,
+                },
+                form: null,
               },
             },
           ],
@@ -1233,7 +1245,7 @@ const prio: Prio = {
       },
       props: {
         orderedList: {
-          head: 'Jetzt Vollmacht erteilen',
+          title: 'Jetzt Vollmacht erteilen',
           list: [
             'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
             'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',

@@ -25,10 +25,10 @@ export const Default: Story = {
   play: async ({ args, canvasElement }) => {
     const head = within(canvasElement).getByTestId('ordered-list-title');
     const items = within(canvasElement).getAllByTestId('ordered-list-item');
-    await expect(head).toHaveTextContent(args.title);
+    await expect(head).toHaveTextContent(args.title || '');
     for (const item of items) {
       const i = items.indexOf(item);
-      await expect(item).toHaveTextContent(args.list[i]);
+      await expect(item).toHaveTextContent((args.list || [])[i]);
     }
   },
 };

@@ -1,7 +1,8 @@
 import { FC, MouseEvent } from 'react';
 import type { DropdownChoice, DropdownProps } from './dropdown.types';
 import { useState, useRef, useMemo, useEffect } from 'react';
-import { cn, getElementSize } from '../../utils/functions';
+import clsx from 'clsx';
+import { getElementSize } from '../../utils/functions';
 import IconChevron from '../../icons/chevron';
 import IconMagnifyingGlass from '../../icons/magnifying-glass';
 import InputControl from '../input-control/input-control.component';
@@ -72,7 +73,7 @@ const Dropdown: FC<DropdownProps> = ({
   }, [borderRef]);
 
   return (
-    <div className={cn(css.Dropdown, className)}>
+    <div className={clsx(css.Dropdown, className)}>
       <div
         data-testid="dropdown-border"
         ref={borderRef}
@@ -131,7 +132,7 @@ const Dropdown: FC<DropdownProps> = ({
                 </li>
               ))
             ) : (
-              <li className={cn(css.DropdownChoice, css.DropdownChoiceNoResult)}>{noResult}</li>
+              <li className={clsx(css.DropdownChoice, css.DropdownChoiceNoResult)}>{noResult}</li>
             )}
           </ul>
           {multiple && (

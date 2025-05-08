@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import type { InputControlProps } from './input-control.type';
-import { cn } from '../../utils/functions';
+import clsx from 'clsx';
 import css from './input-control.module.css';
 
 const InputControl: FC<InputControlProps> = ({
@@ -16,7 +16,7 @@ const InputControl: FC<InputControlProps> = ({
   <div
     data-control-size={size}
     data-control-shape={shape}
-    className={cn(css.InputControl, className, {
+    className={clsx(css.InputControl, className, {
       [css.InputControlChecked]: checked,
       [css.InputControlHovered]: hovered,
       [css.InputControlError]: error,

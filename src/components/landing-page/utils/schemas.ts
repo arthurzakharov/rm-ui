@@ -6,12 +6,22 @@ import {
   array,
   record,
   literal,
-  unknown,
   fallback,
   pipe,
   hexColor,
   nullable,
+  optional,
 } from 'valibot';
+import { AccordionPropsSchema } from '../components/accordion';
+import { ContactPropsSchema } from '../components/contact';
+import { CtaButtonPropsSchemas } from '../components/cta-button';
+import { HowToPropsSchemas } from '../components/how-to';
+import { LogoBoardPropsSchema } from '../components/logo-board';
+import { PlayerPropsSchema } from '../components/player';
+import { ReviewPropsSchema } from '../components/review';
+import { OrderedListPropsSchema } from '../components/ordered-list';
+import { LogosPropsSchema } from '../../logos';
+import { AdvantagesPropsSchema } from '../components/advantages';
 
 // Union types
 export const ModeTypeSchema = union([literal('some'), literal('every')]);
@@ -119,13 +129,27 @@ export const SuccessBoxSchema = fallback(
     },
   },
 );
+export const PropsSchema = object({
+  accordion: optional(AccordionPropsSchema),
+  advantageList: optional(AdvantagesPropsSchema),
+  advantageListNoButton: optional(AdvantagesPropsSchema),
+  contact: optional(ContactPropsSchema),
+  button: optional(CtaButtonPropsSchemas),
+  howTo: optional(HowToPropsSchemas),
+  logoBoard: optional(LogoBoardPropsSchema),
+  player: optional(PlayerPropsSchema),
+  review: optional(ReviewPropsSchema),
+  orderedList: optional(OrderedListPropsSchema),
+  logos: optional(LogosPropsSchema),
+});
+export const ContentSchema = object({
+  head: string(),
+  body: string(),
+});
 // TODO: convert to Object, so Can use in type for blueprint
 export const GroupSchema = object({
-  content: object({
-    head: string(),
-    body: string(),
-  }),
-  props: nullable(record(string(), unknown())),
+  content: ContentSchema,
+  props: nullable(PropsSchema),
   condition: nullable(ConditionSchema),
 });
 export const PrioSchema = fallback(

@@ -1,9 +1,4 @@
-type AccordionBlock = {
-  title: string;
-  content: string;
-};
+import type { InferInput } from 'valibot';
+import { AccordionPropsSchema } from './accordion.schemas';
 
-export interface AccordionProps {
-  title?: string;
-  blocks: AccordionBlock[];
-}
+export type AccordionProps = InferInput<typeof AccordionPropsSchema>;

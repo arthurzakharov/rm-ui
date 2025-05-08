@@ -1,7 +1,4 @@
-import type { OrderedListProps } from '../ordered-list';
-import type { LogosProps } from '../../../logos';
+import type { InferInput } from 'valibot';
+import { HowToPropsSchemas } from './how-to.schemas';
 
-export interface HowToProps {
-  orderedList: OrderedListProps;
-  logos: LogosProps;
-}
+export type HowToProps = InferInput<typeof HowToPropsSchemas>;

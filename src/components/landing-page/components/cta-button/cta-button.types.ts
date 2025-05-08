@@ -1,8 +1,4 @@
-export interface CtaButtonProps {
-  text?: string;
-  className?: string;
-  optimizely?: string;
-  disabled?: boolean;
-  fullWidth?: boolean;
-  onClick?: () => void;
-}
+import type { InferInput } from 'valibot';
+import { CtaButtonPropsSchemas } from './cta-button.schemas';
+
+export type CtaButtonProps = InferInput<typeof CtaButtonPropsSchemas>;

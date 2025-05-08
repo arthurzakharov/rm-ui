@@ -676,7 +676,7 @@ const prio: Prio = {
       props: {
         button: {
           text: 'Vollmacht ansehen',
-          action: 'clickLongReadCta',
+          onClick: 'clickLongReadCta',
         },
       },
       condition: null,
@@ -688,41 +688,49 @@ const prio: Prio = {
       },
       props: {
         accordion: {
+          title: '',
           blocks: [
             {
               title: 'Ich bin nun mal zu schnell gefahren. Kann man da wirklich etwas machen?',
               content:
                 'Ja. Ein Großteil unserer Mandanten ist tatsächlich zu schnell gefahren. Dies ist aber nicht ausschlaggebend für ein aus ihrer Sicht erfolgreiches Verfahren. Wichtig ist, dass der Nachweis ihrer Geschwindigkeitsüberschreitung zweifelsfrei erbracht werden kann. Wir sind spezialisiert darauf genau diesen Nachweis zu verhindern.',
+              condition: null,
             },
             {
               title: 'Lohnt ein Einspruch, auch wenn ich noch keinen oder nur einen Punkt habe?',
               content:
                 'Bereits ab dem ersten Verstoß sind Sie vorgemerkt zur Überprüfung der Fahreignung. Und jeder Punkt bleibt für 2,5 Jahre im Fahreignungsregister bestehen und zieht weitere Konsequenzen mit sich als das Bußgeld, das Ihnen die Behörde jetzt berechnet. Künftige Bußgelder können sozusagen willkürlich vom Sachbearbeiter erhöht werden, sobald sie der Behörde einmal negativ aufgefallen sind. Außerdem sehen Sie ja, wie schnell man plötzlich in eine solche Situation geraten kann. Und das Bußgeld wird Ihnen dann aufgrund des bereits eingetragenen Punktes wahrscheinlich auch noch erhöht. Eine Menge der Versicherungen verlangen schon beim 1. Punkt einen Preisaufschlag von bis zu 30% auf die Prämie der KFZ-Versicherung. Mitunter verweigern sie mit dem 1. Punkt komplett den Neuabschluss.',
+              condition: null,
             },
             {
               title: 'Mir droht kein Fahrverbot. Sollte ich trotzdem gegen einen Punkt vorgehen?',
               content:
                 'Diese Entscheidung können wir Ihnen nicht abnehmen. Generell gilt: Je länger sie punktefrei fahren, desto besser. Je mehr Punkte sie sammeln, desto schneller verlieren Sie ihren Führerschein. Unsere Erfahrung zeigt, dass sich ein Einspruch beim ersten Punkt besonders häufig lohnt, weil man als “Erst-Täter” häufig bessere Chancen hat als ein Widerholungstäter. Das bedeutet für Sie: Wenn sie warten bis sie erneut geblitzt werden, können die Chancen schlechter stehen als beim ersten Punkt.',
+              condition: null,
             },
             {
               title: 'Ich bin auf dem Foto zu erkennen. Bringt denn ein Einspruch überhaupt noch etwas?',
               content:
                 'Das Foto ist aus juristischer Sicht erstmal irrelevant. Das sagt im Prinzip nur aus, dass Sie im Auto gesessen haben. Und das wollen wir ja auch gar nicht anzweifeln. Das was wir anzweifeln, ist die Messung selbst, dass Sie so schnell gefahren sind, wie von der Behörde behauptet. Außerdem müssen Sie immer bedenken, dass der Sachbearbeiter der Behörde, der Ihren Fall bearbeitet, Sie nicht persönlich kennt und somit nicht zwangsläufig nachvollziehen kann, ob Sie das auf dem Foto tatsächlich sind. Nur für den Fall, dass wir das Bildmaterial in Frage stellen.',
+              condition: null,
             },
             {
               title: 'Mir liegt ein Bußgeldbescheid vor. Wie verhalte ich mich richtig?',
               content:
                 "Wenn Ihnen bereits ein Bußgeldbescheid vorliegt ist Eile geboten. Ab dem Tag der Zustellung läuft die 14-Tägige Einspruchsfrist. Um das Verfahren nicht rechtskräftig werden zu lassen, sollte daher schnellstmöglich Einspruch eingelegt werden. Bitte zögern Sie nicht uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.",
+              condition: null,
             },
             {
               title: 'Ich bin aus beruflichen oder sonstigen Gründen auf meinen Führerschein angewiesen.',
               content:
                 'Wenn Sie aus beruflichen oder sonstigen Gründen auf Ihren Führerschein angewiesen sind bemühen wir uns darum ein sogenannte “Härtefallregelung” für sie geltend zu machen. D.h. wir versuchen ein Fahrverbot in jedem Fall abzuwenden, wenn dies durch Ihre besondere Situation begründet werden kann.',
+              condition: null,
             },
             {
               title: 'Sonstige Rückfragen / mir wurden nicht alle Fragen beantwortet',
               content:
                 "Bitte zögern Sie nicht uns bei weiteren Fragen zu kontaktieren. Am besten erreichen Sie uns unter: 030-2089812 12 oder per Mail an <a class='question__link' href='mailto:erstberatung@sos-verkehrsrecht.de' target='_blank'>erstberatung@sos-verkehrsrecht.de</a>.",
+              condition: null,
             },
           ],
         },
@@ -756,7 +764,7 @@ const prio: Prio = {
       },
       props: {
         orderedList: {
-          head: 'Jetzt Vollmacht erteilen',
+          title: 'Jetzt Vollmacht erteilen',
           list: [
             'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
             'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
@@ -781,7 +789,7 @@ const prio: Prio = {
       props: {
         button: {
           text: 'Vollmacht ansehen',
-          action: 'clickLongReadCta',
+          onClick: 'clickLongReadCta',
         },
       },
       condition: null,
