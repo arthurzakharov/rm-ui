@@ -1,16 +1,16 @@
 import { Fragment, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
-import CalendarMonth from '../calendar-month/calendar-month.component';
-import CalendarDay from '../calendar-day/calendar-day.component';
-import CalendarSelect from '../calendar-select/calendar-select.component';
+import Month from '../month';
+import Day from '../day';
+import Select from '../select';
 import { useCalendarContext } from '../../calendar.context';
 import useViewportSize from '../../../../hooks/useViewportSize';
 import useClickOutside from '../../../../hooks/useClickOutside';
 import { generateStyleTag } from '../../../../utils/functions';
-import css from './calendar-modal.module.css';
+import css from './modal.module.css';
 
-const CalendarModal = () => {
+export default function Modal() {
   const {
     open,
     precision,
@@ -40,28 +40,28 @@ const CalendarModal = () => {
     return (
       <div
         ref={modalRef}
-        className={clsx(css.CalendarModal, {
-          [css.CalendarModalDesktop]: isDesktop,
-          [css.CalendarModalMobile]: !isDesktop,
+        className={clsx(css.Modal, {
+          [css.ModalDesktop]: isDesktop,
+          [css.ModalMobile]: !isDesktop,
         })}
       >
         {precision === 'day' ? (
           <Fragment>
-            <div className={css.CalendarModalSelects}>
-              <CalendarSelect value={monthIndex} options={monthNames} onChange={onMonthIndexChange} />
-              <CalendarSelect value={yearIndex} options={yearList} onChange={onYearIndexChange} />
+            <div className={css.ModalSelects}>
+              <Select value={monthIndex} options={monthNames} onChange={onMonthIndexChange} />
+              <Select value={yearIndex} options={yearList} onChange={onYearIndexChange} />
             </div>
-            <div className={css.CalendarModalDays}>
-              <CalendarDay />
+            <div className={css.ModalDays}>
+              <Day />
             </div>
           </Fragment>
         ) : precision === 'month' ? (
-          <div className={css.CalendarModalMonths}>
-            <CalendarMonth />
+          <div className={css.ModalMonths}>
+            <Month />
           </div>
         ) : null}
-        <div className={css.CalendarModalFooter}>
-          <button className={css.CalendarModalButton} onClick={onCloseButton}>
+        <div className={css.ModalFooter}>
+          <button className={css.ModalButton} onClick={onCloseButton}>
             {closeButton}
           </button>
         </div>
@@ -85,19 +85,19 @@ const CalendarModal = () => {
     return isDesktop ? (
       <div
         ref={calendarModalRef}
-        className={clsx(css.CalendarModalAttached, {
-          [css.CalendarModalAttachedStatic]: modalPosition === 'static',
-          [css.CalendarModalAttachedAbsolute]: modalPosition === 'absolute',
+        className={clsx(css.ModalAttached, {
+          [css.ModalAttachedStatic]: modalPosition === 'static',
+          [css.ModalAttachedAbsolute]: modalPosition === 'absolute',
         })}
       >
         {modalContent}
       </div>
     ) : (
       createPortal(
-        <div ref={calendarModalRef} className={css.CalendarModalCentered}>
+        <div ref={calendarModalRef} className={css.ModalCentered}>
           {calendarRef.current ? (
             <style lang="css">
-              {generateStyleTag(window.getComputedStyle(calendarRef.current), css.CalendarModalCentered)}
+              {generateStyleTag(window.getComputedStyle(calendarRef.current), css.ModalCentered)}
             </style>
           ) : null}
           {modalContent}
@@ -106,8 +106,6 @@ const CalendarModal = () => {
       )
     );
   }, [open, isDesktop, modalPosition, modalContent, rootElementId, calendarRef, calendarModalRef]);
-};
+}
 
-CalendarModal.displayName = 'CalendarModal';
-
-export default CalendarModal;
+Modal.displayName = 'CalendarModal';

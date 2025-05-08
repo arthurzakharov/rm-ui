@@ -1,4 +1,4 @@
-.CalendarSelect {
+.Select {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -6,7 +6,7 @@
   gap: var(--calendar-modal-horizontal-padding);
 }
 
-.CalendarSelectArrow {
+.SelectArrow {
   border: none;
   background-color: transparent;
   padding: 6px;
@@ -18,20 +18,20 @@
   transition: outline-color 125ms ease-in-out;
 }
 
-.CalendarSelectArrow:hover {
+.SelectArrow:hover {
   cursor: pointer;
 }
 
-.CalendarSelectArrow:focus,
-.CalendarSelectArrow:active {
+.SelectArrow:focus,
+.SelectArrow:active {
   outline-color: var(--calendar-accent);
 }
 
-.CalendarSelectArrow svg {
+.SelectArrow svg {
   stroke: var(--calendar-primary);
 }
 
-.CalendarSelectElement {
+.SelectElement {
   border: none;
   box-sizing: border-box;
   min-width: 56px;
@@ -46,19 +46,19 @@
   transition: outline-color 125ms ease-in-out;
 }
 
-.CalendarSelectElement:hover {
+.SelectElement:hover {
   cursor: pointer;
 }
 
-.CalendarSelectElement:focus,
-.CalendarSelectElement:active {
+.SelectElement:focus,
+.SelectElement:active {
   outline-color: var(--calendar-accent);
 }
 
-html[dir="rtl"] .CalendarSelect {
+html[dir="rtl"] .Select {
   flex-direction: row-reverse;
 }
 
-html[dir="rtl"] .CalendarSelectElement {
+html[dir="rtl"] .SelectElement {
   padding: 10px 8px 10px 4px;
 }

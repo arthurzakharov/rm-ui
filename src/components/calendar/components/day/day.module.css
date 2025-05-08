@@ -1,4 +1,4 @@
-.CalendarWeek {
+.Week {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.CalendarDay {
+.Day {
   margin: var(--calendar-modal-button-gap);
   display: flex;
   flex-direction: row;
@@ -29,37 +29,37 @@
   border: var(--calendar-border-width) solid transparent;
 }
 
-.CalendarDay:hover {
+.Day:hover {
   cursor: pointer;
   border-color: var(--calendar-accent);
 }
 
-.CalendarDay:focus,
-.CalendarDay:active {
+.Day:focus,
+.Day:active {
   outline-color: var(--calendar-accent);
 }
 
-.CalendarDayOutOfPeriod:hover {
+.DayOutOfPeriod:hover {
   cursor: not-allowed;
 }
 
-.CalendarDayNotFromThisMonth {
+.DayNotFromThisMonth {
   opacity: 0.38;
   color: var(--calendar-input-placeholder);
 }
 
-.CalendarDayToday {
+.DayToday {
   border-color: var(--calendar-accent);
 }
 
-.CalendarDayOutOfPeriod {
+.DayOutOfPeriod {
   position: relative;
   opacity: 0.2;
   background-color: transparent;
   border-color: var(--calendar-error);
 }
 
-.CalendarDayOutOfPeriod:before {
+.DayOutOfPeriod:before {
   display: block;
   content: '';
   position: absolute;
@@ -71,16 +71,16 @@
   background-color: var(--calendar-error);
 }
 
-.CalendarDayOutOfPeriod:hover {
+.DayOutOfPeriod:hover {
   border-color: var(--calendar-error);
 }
 
-.CalendarDaySelected {
+.DaySelected {
   background-color: var(--calendar-accent);
   color: var(--calendar-modal-button-selected-text);
 }
 
-.CalendarDayNames {
+.DayNames {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -88,7 +88,7 @@
   justify-content: center;
 }
 
-.CalendarDayName {
+.DayName {
   margin: 2px;
   display: flex;
   flex-direction: row;

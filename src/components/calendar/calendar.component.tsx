@@ -1,9 +1,9 @@
 import type { CalendarProps } from './calendar.type';
 import { useRef, useState, useCallback } from 'react';
 import clsx from 'clsx';
-import CalendarButton from './components/calendar-button/calendar-button.component';
-import InputMasked from '../input-masked/input-masked.component';
-import CalendarModal from './components/calendar-modal/calendar-modal.component';
+import Button from './components/button';
+import InputMasked from '../input-masked';
+import Modal from './components/modal';
 import CalendarProvider from '../calendar/calendar.provider';
 import { MONTH, WEEK_DAY } from '../../utils/enums';
 import { convertMaskFormatToDate, createDate, isDateInPeriod } from '../../utils/functions';
@@ -94,10 +94,10 @@ export default function Calendar(props: CalendarProps) {
                 onFocus={onInputFocus}
                 onBlur={onInputBlur}
               />
-              {mode === 'dropdown' && <CalendarButton />}
+              {mode === 'dropdown' && <Button />}
             </div>
           </div>
-          {mode === 'dropdown' && <CalendarModal />}
+          {mode === 'dropdown' && <Modal />}
         </div>
       </div>
     </CalendarProvider>

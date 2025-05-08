@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
-import CalendarDay from './calendar-day.component';
-import css from './calendar-day.module.css';
+import Day from './day.component';
 import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 import { CalendarContext } from '../../calendar.context';
 import { createDate, generateCalendar } from '../../../../utils/functions';
 import { MONTH, WEEK_DAY } from '../../../../utils/enums';
+import css from './day.module.css';
 
 const TODAY = new Date();
 
 const meta = {
-  title: 'Components/Calendar/Components/CalendarDay',
-  component: CalendarDay,
+  title: 'Components/Calendar/Components/Day',
+  component: Day,
   decorators: [WithCalendarCssVars, withReactContext],
   parameters: {
     layout: 'centered',
@@ -30,7 +30,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof CalendarDay>;
+} satisfies Meta<typeof Day>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -38,10 +38,10 @@ type Story = StoryObj<typeof meta>;
 export const FullyInPeriod: Story = {
   name: 'Fully in period',
   play: async ({ canvasElement, parameters }) => {
-    const days = within(canvasElement).getAllByTestId('calendar-day');
-    await expect(days[0]).toHaveClass(css.CalendarDayNotFromThisMonth);
-    await expect(days[3]).toHaveClass(css.CalendarDayNotFromThisMonth);
-    await expect(days[4]).not.toHaveClass(css.CalendarDayNotFromThisMonth);
+    const days = within(canvasElement).getAllByTestId('day');
+    await expect(days[0]).toHaveClass(css.DayNotFromThisMonth);
+    await expect(days[3]).toHaveClass(css.DayNotFromThisMonth);
+    await expect(days[4]).not.toHaveClass(css.DayNotFromThisMonth);
     await userEvent.click(days[22]);
     await expect(parameters.reactContext.contextValue.onCalendarClick).toHaveBeenNthCalledWith(
       1,
@@ -64,10 +64,10 @@ export const NotFullyInPeriod: Story = {
     },
   },
   play: async ({ canvasElement }) => {
-    const days = within(canvasElement).getAllByTestId('calendar-day');
-    await expect(days[23]).not.toHaveClass(css.CalendarDayOutOfPeriod);
-    await expect(days[24]).toHaveClass(css.CalendarDayOutOfPeriod);
-    await expect(days[34]).toHaveClass(css.CalendarDayOutOfPeriod);
+    const days = within(canvasElement).getAllByTestId('day');
+    await expect(days[23]).not.toHaveClass(css.DayOutOfPeriod);
+    await expect(days[24]).toHaveClass(css.DayOutOfPeriod);
+    await expect(days[34]).toHaveClass(css.DayOutOfPeriod);
     await expect(days[23]).not.toBeDisabled();
     await expect(days[24]).toBeDisabled();
     await expect(days[34]).toBeDisabled();
@@ -84,8 +84,8 @@ export const SelectedDate: Story = {
     },
   },
   play: async ({ canvasElement }) => {
-    const days = within(canvasElement).getAllByTestId('calendar-day');
-    await expect(days[22]).toHaveClass(css.CalendarDaySelected);
+    const days = within(canvasElement).getAllByTestId('day');
+    await expect(days[22]).toHaveClass(css.DaySelected);
     await expect(days[22]).toHaveTextContent('19');
   },
 };
@@ -107,8 +107,8 @@ export const TodayDate: Story = {
     },
   },
   play: async ({ canvasElement }) => {
-    const days = within(canvasElement).getAllByTestId('calendar-day');
-    const today = days.find((day) => day.className.includes(css.CalendarDayToday));
+    const days = within(canvasElement).getAllByTestId('day');
+    const today = days.find((day) => day.className.includes(css.DayToday));
     await expect(today).not.toBeUndefined();
     await expect(today).toHaveTextContent(new Date().getDate().toString());
   },

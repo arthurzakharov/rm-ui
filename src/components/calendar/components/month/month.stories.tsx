@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
-import CalendarMonth from './calendar-month.component';
+import Month from './month.component';
 import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import { CalendarContext } from '../../calendar.context';
 import { MONTH } from '../../../../utils/enums';
-import css from './calendar-month.module.css';
+import css from './month.module.css';
 import { createDate } from '../../../../utils/functions';
 
 const meta = {
-  title: 'Components/Calendar/Components/CalendarMonth',
-  component: CalendarMonth,
+  title: 'Components/Calendar/Components/Month',
+  component: Month,
   decorators: [MaxWidthDecorator(240), WithCalendarCssVars, withReactContext],
   parameters: {
     layout: 'centered',
@@ -30,7 +30,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof CalendarMonth>;
+} satisfies Meta<typeof Month>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -49,9 +49,9 @@ export const SelectedDate: Story = {
     },
   },
   play: async ({ canvasElement }) => {
-    const calendarMonth = within(canvasElement).getByTestId('calendar-month');
-    await expect(calendarMonth).toHaveClass(css.CalendarMonth);
-    await expect(calendarMonth).not.toHaveClass(css.CalendarMonthYearSmallList);
+    const calendarMonth = within(canvasElement).getByTestId('month');
+    await expect(calendarMonth).toHaveClass(css.Month);
+    await expect(calendarMonth).not.toHaveClass(css.MonthYearSmallList);
   },
 };
 
@@ -88,21 +88,21 @@ export const ShortYearList: Story = {
     },
   },
   play: async ({ canvasElement }) => {
-    const calendarMonth = within(canvasElement).getByTestId('calendar-month');
-    await expect(calendarMonth).toHaveClass(css.CalendarMonth);
-    await expect(calendarMonth).toHaveClass(css.CalendarMonthYearSmallList);
+    const calendarMonth = within(canvasElement).getByTestId('month');
+    await expect(calendarMonth).toHaveClass(css.Month);
+    await expect(calendarMonth).toHaveClass(css.MonthYearSmallList);
   },
 };
 
 export const PlaySelect: Story = {
   name: 'Play select flow',
   play: async ({ canvasElement, parameters }) => {
-    const calendarMonth = within(canvasElement).getByTestId('calendar-month');
-    const monthButtons = within(canvasElement).getAllByTestId('calendar-month-button');
-    await expect(calendarMonth).toHaveClass(css.CalendarMonth);
-    await expect(calendarMonth).not.toHaveClass(css.CalendarMonthYearSmallList);
+    const calendarMonth = within(canvasElement).getByTestId('month');
+    const monthButtons = within(canvasElement).getAllByTestId('month-button');
+    await expect(calendarMonth).toHaveClass(css.Month);
+    await expect(calendarMonth).not.toHaveClass(css.MonthYearSmallList);
     await userEvent.click(monthButtons[MONTH.MARCH]);
-    const yearButtons = within(canvasElement).getAllByTestId('calendar-month-button');
+    const yearButtons = within(canvasElement).getAllByTestId('month-button');
     await userEvent.click(yearButtons[51]);
     await expect(parameters.reactContext.contextValue.onCalendarClick).toHaveBeenNthCalledWith(
       1,

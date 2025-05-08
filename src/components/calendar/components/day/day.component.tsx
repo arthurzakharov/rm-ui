@@ -2,33 +2,33 @@ import { Fragment } from 'react';
 import clsx from 'clsx';
 import { useCalendarContext } from '../../calendar.context';
 import { createDate, isCalendarDayEqualsToDate } from '../../../../utils/functions';
-import css from './calendar-day.module.css';
+import css from './day.module.css';
 
-const CalendarDay = () => {
+export default function Day() {
   const { date, dayNames, calendarData, onCalendarClick } = useCalendarContext();
 
   return (
     <Fragment>
-      <div className={css.CalendarDayNames}>
+      <div className={css.DayNames}>
         {dayNames.map((dayName, i) => (
-          <div key={i} className={css.CalendarDayName}>
+          <div key={i} className={css.DayName}>
             {dayName}
           </div>
         ))}
       </div>
       {calendarData.map((week, weekIndex) => (
-        <div key={weekIndex} className={css.CalendarWeek}>
+        <div key={weekIndex} className={css.Week}>
           {week.map((calendarDay, dayIndex) => (
             <button
-              data-testid="calendar-day"
+              data-testid="day"
               key={dayIndex}
               type="button"
               disabled={calendarDay.outOfPeriod}
-              className={clsx(css.CalendarDay, {
-                [css.CalendarDayOutOfPeriod]: calendarDay.outOfPeriod,
-                [css.CalendarDayNotFromThisMonth]: calendarDay.notThisMonth,
-                [css.CalendarDayToday]: isCalendarDayEqualsToDate(calendarDay, new Date()),
-                [css.CalendarDaySelected]: isCalendarDayEqualsToDate(calendarDay, date),
+              className={clsx(css.Day, {
+                [css.DayOutOfPeriod]: calendarDay.outOfPeriod,
+                [css.DayNotFromThisMonth]: calendarDay.notThisMonth,
+                [css.DayToday]: isCalendarDayEqualsToDate(calendarDay, new Date()),
+                [css.DaySelected]: isCalendarDayEqualsToDate(calendarDay, date),
               })}
               onClick={() => onCalendarClick(createDate(calendarDay.day, calendarDay.month, calendarDay.year))}
             >
@@ -39,8 +39,6 @@ const CalendarDay = () => {
       ))}
     </Fragment>
   );
-};
+}
 
-CalendarDay.displayName = 'CalendarDay';
-
-export default CalendarDay;
+Day.displayName = 'CalendarDay';

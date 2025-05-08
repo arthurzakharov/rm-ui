@@ -1,4 +1,4 @@
-.CalendarButton {
+.Button {
   box-sizing: border-box;
   border: none;
   border-radius: 50%;
@@ -14,19 +14,19 @@
   justify-content: center;
 }
 
-.CalendarButton:focus,
-.CalendarButton:active {
+.Button:focus,
+.Button:active {
   outline-color: var(--calendar-accent);
 }
 
-.CalendarButton:disabled:hover {
+.Button:disabled:hover {
   cursor: not-allowed;
 }
 
-.CalendarButton:hover {
+.Button:hover {
   cursor: pointer;
 }
 
-.CalendarButton svg {
+.Button svg {
   stroke: var(--calendar-primary);
 }

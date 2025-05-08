@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, within, expect, userEvent } from '@storybook/test';
 import { withReactContext } from 'storybook-react-context';
-import CalendarButton from './calendar-button.component';
+import Button from './button.component';
 import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 import { CalendarContext } from '../../calendar.context';
 
 const meta = {
-  title: 'Components/Calendar/Components/CalendarButton',
-  component: CalendarButton,
+  title: 'Components/Calendar/Components/Button',
+  component: Button,
   decorators: [WithCalendarCssVars, withReactContext],
   parameters: {
     layout: 'centered',
@@ -19,7 +19,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof CalendarButton>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -34,7 +34,7 @@ export const ClosedState: Story = {
     },
   },
   play: async ({ canvasElement, parameters }) => {
-    const button = within(canvasElement).getByTestId('calendar-button');
+    const button = within(canvasElement).getByTestId('button');
     await userEvent.click(button);
     await expect(parameters.reactContext.contextValue.onCalendarButton).toHaveBeenCalledOnce();
     await userEvent.click(canvasElement);
@@ -51,7 +51,7 @@ export const OpenedState: Story = {
     },
   },
   play: async ({ canvasElement, parameters }) => {
-    const button = within(canvasElement).getByTestId('calendar-button');
+    const button = within(canvasElement).getByTestId('button');
     await userEvent.click(button);
     await expect(parameters.reactContext.contextValue.onCalendarButton).not.toBeCalled();
   },

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn, within, expect, userEvent } from '@storybook/test';
-import CalendarSelect from './calendar-select.component';
+import Select from './select.component';
 import WithCalendarCssVars from '../../../../../.storybook/decorators/with-calendar-css-vars';
 
 const meta = {
-  title: 'Components/Calendar/Components/CalendarSelect',
-  component: CalendarSelect,
+  title: 'Components/Calendar/Components/Select',
+  component: Select,
   decorators: [WithCalendarCssVars],
   args: {
     options: ['2000', '2001', '2002', 2003, 2004, 2005],
@@ -20,7 +20,7 @@ const meta = {
     const [value, setValue] = useState<number>(args.value);
 
     return (
-      <CalendarSelect
+      <Select
         {...args}
         value={value}
         onChange={(value) => {
@@ -30,21 +30,21 @@ const meta = {
       />
     );
   },
-} satisfies Meta<typeof CalendarSelect>;
+} satisfies Meta<typeof Select>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'CalendarSelect',
+  name: 'Select',
   args: {
     value: 0,
   },
   play: async ({ canvasElement, args }) => {
-    const lessBtn = within(canvasElement).getByTestId('calendar-select-less');
-    const moreBtn = within(canvasElement).getByTestId('calendar-select-more');
-    const options = within(canvasElement).queryAllByTestId('calendar-select-option');
-    const select = within(canvasElement).getByTestId('calendar-select');
+    const lessBtn = within(canvasElement).getByTestId('select-less');
+    const moreBtn = within(canvasElement).getByTestId('select-more');
+    const options = within(canvasElement).queryAllByTestId('select-option');
+    const select = within(canvasElement).getByTestId('select');
     await expect(options.length).toEqual(args.options.length);
     await expect(select).toHaveValue('0');
     await userEvent.click(lessBtn);
@@ -65,8 +65,8 @@ export const ValueOutOfOptionsLess: Story = {
     value: -1,
   },
   play: async ({ canvasElement, args }) => {
-    const lessBtn = within(canvasElement).getByTestId('calendar-select-less');
-    const select = within(canvasElement).getByTestId('calendar-select');
+    const lessBtn = within(canvasElement).getByTestId('select-less');
+    const select = within(canvasElement).getByTestId('select');
     await expect(select).toHaveValue('0');
     await userEvent.click(lessBtn);
     await expect(args.onChange).toHaveBeenNthCalledWith(1, 5);
@@ -80,8 +80,8 @@ export const ValueOutOfOptionsMore: Story = {
     value: 10,
   },
   play: async ({ canvasElement, args }) => {
-    const moreBtn = within(canvasElement).getByTestId('calendar-select-more');
-    const select = within(canvasElement).getByTestId('calendar-select');
+    const moreBtn = within(canvasElement).getByTestId('select-more');
+    const select = within(canvasElement).getByTestId('select');
     await expect(select).toHaveValue('0');
     await userEvent.click(moreBtn);
     await expect(args.onChange).toHaveBeenNthCalledWith(1, 1);

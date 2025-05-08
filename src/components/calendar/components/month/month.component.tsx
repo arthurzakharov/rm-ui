@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useCalendarContext } from '../../calendar.context';
 import { createDate, getYearButtonRef, scroll } from '../../../../utils/functions';
-import css from './calendar-month.module.css';
+import css from './month.module.css';
 
-const CalendarMonth = () => {
+export default function Month() {
   const { monthNames, startPosition, yearList, date, onCalendarClick } = useCalendarContext();
   const [isMonthStep, setIsMonthStep] = useState<boolean>(true);
   const [month, setMonth] = useState<string>('');
@@ -17,12 +17,12 @@ const CalendarMonth = () => {
   const renderButtons = (items: string[], isMonth: boolean): ReactNode[] =>
     items.map((name) => (
       <button
-        data-testid="calendar-month-button"
+        data-testid="month-button"
         key={name}
         type="button"
         ref={getYearButtonRef(isMonth, [name, year, String(startPosition.getFullYear())], [yearRef, yearStartRef])}
-        className={clsx(css.CalendarMonthButton, {
-          [css.CalendarMonthButtonSelected]: name === (isMonth ? month : year),
+        className={clsx(css.MonthButton, {
+          [css.MonthButtonSelected]: name === (isMonth ? month : year),
         })}
         onClick={() => {
           if (isMonth) {
@@ -57,17 +57,15 @@ const CalendarMonth = () => {
 
   return (
     <div
-      data-testid="calendar-month"
+      data-testid="month"
       ref={wrapperRef}
-      className={clsx(css.CalendarMonth, {
-        [css.CalendarMonthYearSmallList]: yearList.length <= 12,
+      className={clsx(css.Month, {
+        [css.MonthYearSmallList]: yearList.length <= 12,
       })}
     >
       {renderButtons(isMonthStep ? monthNames : yearList.map(String), isMonthStep)}
     </div>
   );
-};
+}
 
-CalendarMonth.displayName = 'CalendarMonth';
-
-export default CalendarMonth;
+Month.displayName = 'CalendarMonth';

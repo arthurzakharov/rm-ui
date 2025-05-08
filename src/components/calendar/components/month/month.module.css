@@ -1,4 +1,4 @@
-.CalendarMonth {
+.Month {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -8,7 +8,7 @@
   overflow-y: auto;
 }
 
-.CalendarMonthButton {
+.MonthButton {
   flex-basis: calc(33.33% - var(--calendar-modal-button-gap) * 2);
   margin: var(--calendar-modal-button-gap);
   padding: 0;
@@ -22,16 +22,16 @@
   transition: border-color 125ms ease-in-out;
 }
 
-.CalendarMonthButton:hover {
+.MonthButton:hover {
   cursor: pointer;
   border-color: var(--calendar-accent);
 }
 
-.CalendarMonthButtonSelected {
+.MonthButtonSelected {
   background-color: var(--calendar-accent);
   color: var(--calendar-modal-button-selected-text);
 }
 
-.CalendarMonthYearSmallList {
+.MonthYearSmallList {
   height: auto;
 }
