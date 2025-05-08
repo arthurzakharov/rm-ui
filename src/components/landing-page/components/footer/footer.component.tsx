@@ -6,6 +6,8 @@ import css from './footer.module.css';
 export default function Footer(props: FooterProps) {
   const { groups = [] } = props;
 
+  if (!groups.length) return null;
+
   return (
     <footer className={css.Footer}>
       {groups.map((group) => (

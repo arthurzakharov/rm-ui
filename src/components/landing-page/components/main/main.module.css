@@ -119,7 +119,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .Main {
+  .Main:not(:only-child) {
     width: calc(100% - 275px - 15px);
   }
 
@@ -136,7 +136,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .Main {
+  .Main:not(:only-child) {
     width: calc(100% - 325px - 15px);
   }
 
@@ -155,7 +155,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .Main {
+  .Main:not(:only-child) {
     width: calc(100% - 375px - 40px);
   }
 }

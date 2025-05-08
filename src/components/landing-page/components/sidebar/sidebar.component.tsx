@@ -6,6 +6,8 @@ import css from './sidebar.module.css';
 export default function Sidebar(props: SidebarProps) {
   const { groups = [] } = props;
 
+  if (!groups.length) return null;
+
   const main = groups.filter(({ type }) => type !== BLOCK.CONTACT_US);
   const contact = groups.filter(({ type }) => type === BLOCK.CONTACT_US);
 

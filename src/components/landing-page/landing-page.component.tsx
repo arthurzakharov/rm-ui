@@ -15,13 +15,6 @@ export default function LandingPage(props: LandingPageProps) {
     page: { successBox, question, sidebar, footer },
   } = new Parser(prio, data, answers, width);
 
-  console.log(prio, data, answers, width);
-
-  console.log('successBox', successBox);
-  console.log('question', question);
-  console.log('sidebar', sidebar);
-  console.log('footer', footer);
-
   return (
     <div className={css.Landing}>
       {loaded ? (

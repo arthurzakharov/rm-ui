@@ -9,7 +9,7 @@ import MaxWidthDecorator from '../../../.storybook/decorators/max-width';
 const meta = {
   title: 'Components/LandingPage',
   component: LandingPage,
-  decorators: [MaxWidthDecorator(1100)],
+  decorators: [MaxWidthDecorator(1110)],
   args: {
     loaded: true,
     prio: Prio3,
