@@ -13,3 +13,5 @@ export default function HowTo(props: HowToProps) {
     </div>
   );
 }
+
+HowTo.displayName = 'LandingPageHowTo';

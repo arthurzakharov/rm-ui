@@ -42,4 +42,4 @@ export default function LogoBoard(props: LogoBoardProps) {
   );
 }
 
-LogoBoard.displayName = 'LogoBoard';
+LogoBoard.displayName = 'LandingPageLogoBoard';

@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 import type { DropdownChoice, DropdownProps } from './dropdown.types';
 import { useState, useRef, useMemo, useEffect } from 'react';
 import clsx from 'clsx';
@@ -12,20 +12,21 @@ import css from './dropdown.module.css';
 
 // TODO: Need to add two modes for dropdown: absolute and static same as for calendar
 
-const Dropdown: FC<DropdownProps> = ({
-  choices,
-  choice = null,
-  placeholder = 'Wählen Sie Ihre private Krankenversicherung...',
-  noResult = 'Keine Versicherung gefunden.',
-  isSearchHidden = false,
-  isSuccessHighlighted = false,
-  multiple = false,
-  closeButton = 'Schließen',
-  className = '',
-  onChange,
-  onOpen = () => {},
-  onClose = () => {},
-}) => {
+export default function Dropdown(props: DropdownProps) {
+  const {
+    choices,
+    choice = null,
+    placeholder = 'Wählen Sie Ihre private Krankenversicherung...',
+    noResult = 'Keine Versicherung gefunden.',
+    isSearchHidden = false,
+    isSuccessHighlighted = false,
+    multiple = false,
+    closeButton = 'Schließen',
+    className = '',
+    onChange,
+    onOpen = () => {},
+    onClose = () => {},
+  } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
   const [selectedChoices, setSelectedChoices] = useState<DropdownChoice[]>([]);
@@ -150,6 +151,6 @@ const Dropdown: FC<DropdownProps> = ({
       )}
     </div>
   );
-};
+}
 
-export default Dropdown;
+Dropdown.displayName = 'Dropdown';

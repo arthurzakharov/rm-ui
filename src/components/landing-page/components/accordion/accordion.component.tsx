@@ -45,4 +45,4 @@ export default function Accordion(props: AccordionProps) {
   );
 }
 
-Accordion.displayName = 'Accordion';
+Accordion.displayName = 'LandingPageAccordion';

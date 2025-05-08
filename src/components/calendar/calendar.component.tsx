@@ -1,5 +1,4 @@
 import type { CalendarProps } from './calendar.type';
-import type { FC } from 'react';
 import { useRef, useState, useCallback } from 'react';
 import clsx from 'clsx';
 import CalendarButton from './components/calendar-button/calendar-button.component';
@@ -10,7 +9,7 @@ import { MONTH, WEEK_DAY } from '../../utils/enums';
 import { convertMaskFormatToDate, createDate, isDateInPeriod } from '../../utils/functions';
 import css from './calendar.module.css';
 
-const Calendar: FC<CalendarProps> = (props) => {
+export default function Calendar(props: CalendarProps) {
   const {
     name,
     dayNames = ['M', 'D', 'M', 'D', 'F', 'S', 'S'],
@@ -103,8 +102,6 @@ const Calendar: FC<CalendarProps> = (props) => {
       </div>
     </CalendarProvider>
   );
-};
+}
 
 Calendar.displayName = 'Calendar';
-
-export default Calendar;

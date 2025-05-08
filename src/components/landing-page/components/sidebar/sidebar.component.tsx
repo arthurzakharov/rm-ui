@@ -22,3 +22,5 @@ export default function Sidebar(props: SidebarProps) {
     </aside>
   );
 }
+
+Sidebar.displayName = 'LandingPageSidebar';

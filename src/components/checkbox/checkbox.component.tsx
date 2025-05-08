@@ -1,22 +1,23 @@
-import type { FC, MouseEvent, ChangeEvent } from 'react';
+import type { MouseEvent, ChangeEvent } from 'react';
 import type { CheckboxProps } from './checkbox.type';
 import { useState } from 'react';
 import clsx from 'clsx';
-import css from './checkbox.module.css';
 import InputControl from '../input-control/input-control.component';
+import css from './checkbox.module.css';
 
-const Checkbox: FC<CheckboxProps> = ({
-  value,
-  label,
-  name,
-  onChange,
-  className = '',
-  invalid = false,
-  disabled = false,
-  info = '',
-  onFocus = () => {},
-  onBlur = () => {},
-}) => {
+export default function Checkbox(props: CheckboxProps) {
+  const {
+    value,
+    label,
+    name,
+    onChange,
+    className = '',
+    invalid = false,
+    disabled = false,
+    info = '',
+    onFocus = () => {},
+    onBlur = () => {},
+  } = props;
   const [focused, setFocused] = useState<boolean>(false);
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -82,8 +83,6 @@ const Checkbox: FC<CheckboxProps> = ({
       )}
     </label>
   );
-};
+}
 
 Checkbox.displayName = 'Checkbox';
-
-export default Checkbox;

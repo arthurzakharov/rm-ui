@@ -36,4 +36,4 @@ export default function CtaButton(props: CtaButtonProps) {
   );
 }
 
-CtaButton.displayName = 'CtaButton';
+CtaButton.displayName = 'LandingPageCtaButton';

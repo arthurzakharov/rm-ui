@@ -19,3 +19,5 @@ export default function Footer(props: FooterProps) {
     </footer>
   );
 }
+
+Footer.displayName = 'LandingPageFooter';

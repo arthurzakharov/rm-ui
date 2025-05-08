@@ -1,9 +1,9 @@
 // COMPONENTS
-export { default as Calendar } from './components/calendar/calendar.component';
-export { default as Checkbox } from './components/checkbox/checkbox.component';
-export { default as Dropdown } from './components/dropdown/dropdown.component';
-export { default as InputControl } from './components/input-control/input-control.component';
-export { default as InputMasked } from './components/input-masked/input-masked.component';
+export { default as Calendar } from './components/calendar';
+export { default as Checkbox } from './components/checkbox';
+export { default as Dropdown } from './components/dropdown';
+export { default as InputControl } from './components/input-control';
+export { default as InputMasked } from './components/input-masked';
 export { default as LandingPage } from './components/landing-page';
 export { default as Logos } from './components/logos';
 export { default as NavigationButtons } from './components/navigation-buttons';

@@ -1,6 +1,6 @@
 import type { Answers } from '../landing-page.types';
 
-export const ANSWERS_1: Answers = {
+export const BUSSGELDCHECK: Answers = {
   accusation: {
     label: 'Geschwindig&shy;keitsverstoß',
     value: 'Geschwindigkeitsverstoß',

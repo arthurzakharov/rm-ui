@@ -47,4 +47,4 @@ export default function Contact(props: ContactProps) {
   );
 }
 
-Contact.displayName = 'Contact';
+Contact.displayName = 'LandingPageContact';

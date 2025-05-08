@@ -24,3 +24,5 @@ export default function Loader(props: LoaderProps) {
     </div>
   );
 }
+
+Loader.displayName = 'LandingPageLoader';

@@ -81,4 +81,4 @@ export default function SuccessBox(props: SuccessBoxProps) {
   );
 }
 
-SuccessBox.displayName = 'SuccessBox';
+SuccessBox.displayName = 'LandingPageSuccessBox';

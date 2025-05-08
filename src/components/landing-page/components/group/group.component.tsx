@@ -22,3 +22,5 @@ export default function Group(props: GroupProps) {
     </div>
   );
 }
+
+Group.displayName = 'LandingPageGroup';

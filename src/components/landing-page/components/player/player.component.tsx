@@ -104,4 +104,4 @@ export default function Player(props: PlayerProps) {
   );
 }
 
-Player.displayName = 'Player';
+Player.displayName = 'LandingPagePlayer';

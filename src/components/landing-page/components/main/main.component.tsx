@@ -34,3 +34,5 @@ export default function Main(props: MainProps) {
     </main>
   );
 }
+
+Main.displayName = 'LandingPageMain';

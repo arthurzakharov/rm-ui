@@ -43,4 +43,4 @@ export default function Advantages(props: AdvantagesProps) {
   );
 }
 
-Advantages.displayName = 'Advantages';
+Advantages.displayName = 'LandingPageAdvantages';

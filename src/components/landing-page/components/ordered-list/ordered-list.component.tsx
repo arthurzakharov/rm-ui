@@ -22,4 +22,4 @@ export default function OrderedList(props: OrderedListProps) {
   );
 }
 
-OrderedList.displayName = 'OrderedList';
+OrderedList.displayName = 'LandingPageOrderedList';

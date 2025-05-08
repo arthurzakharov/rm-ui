@@ -32,4 +32,4 @@ export default function Review(props: ReviewProps) {
   );
 }
 
-Review.displayName = 'Review';
+Review.displayName = 'LandingPageReview';

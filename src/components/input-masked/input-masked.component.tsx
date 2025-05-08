@@ -40,16 +40,17 @@ const setCursorPosition = (ref: RefObject<HTMLInputElement>, position: number): 
   setTimeout(() => ref.current?.setSelectionRange(position, position), 10);
 };
 
-const InputMasked = ({
-  name,
-  value,
-  mask,
-  inputClassName = '',
-  placeholderClassName = '',
-  onChange,
-  onFocus = () => {},
-  onBlur = () => {},
-}: InputMaskedProps) => {
+export default function InputMasked(props: InputMaskedProps) {
+  const {
+    name,
+    value,
+    mask,
+    inputClassName = '',
+    placeholderClassName = '',
+    onChange,
+    onFocus = () => {},
+    onBlur = () => {},
+  } = props;
   const [inputValue, setInputValue] = useState<string>(value || mask);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -178,8 +179,6 @@ const InputMasked = ({
       onBlur={handleInputBlur}
     />
   );
-};
+}
 
 InputMasked.displayName = 'InputMasked';
-
-export default InputMasked;

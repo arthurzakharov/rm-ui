@@ -42,3 +42,5 @@ export default function Block(props: BlockProps) {
       return <div className={css.Question} dangerouslySetInnerHTML={{ __html: block.content }} />;
   }
 }
+
+Block.displayName = 'LandingPageBlock';
