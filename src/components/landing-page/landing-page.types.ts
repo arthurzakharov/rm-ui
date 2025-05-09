@@ -8,6 +8,7 @@ import type { LogosProps } from '../logos';
 import type { PlayerProps } from './components/player';
 import type { OrderedListProps } from './components/ordered-list';
 import type { ReviewProps } from './components/review';
+import { RefObject } from 'react';
 
 export type Fallback = {
   accordion: AccordionProps;
@@ -36,4 +37,6 @@ export interface LandingPageProps {
   prio: unknown;
   data: FormAnswers;
   answers: Answers;
+  appHeaderRef: RefObject<HTMLDivElement> | null;
+  enableStickyMobileHead: boolean;
 }

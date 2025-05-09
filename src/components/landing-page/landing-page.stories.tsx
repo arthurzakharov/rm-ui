@@ -11,24 +11,27 @@ const meta = {
   component: LandingPage,
   decorators: [MaxWidthDecorator(1110)],
   args: {
+    appHeaderRef: null,
+    enableStickyMobileHead: true,
     loaded: true,
-    prio: Prio3,
-    answers: BUSSGELDCHECK,
-    data: DATA_1,
   },
 } satisfies Meta<typeof LandingPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const LandingPagePrio3: Story = {
   name: 'LandingPage',
+  args: {
+    prio: Prio3,
+    answers: BUSSGELDCHECK,
+    data: DATA_1,
+  },
 };
 
 export const LandingPagePrio16: Story = {
   name: 'LandingPage / Prio 16',
   args: {
-    loaded: true,
     prio: Prio16,
     answers: BUSSGELDCHECK,
     data: DATA_2,

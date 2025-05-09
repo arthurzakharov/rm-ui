@@ -1,17 +1,25 @@
 import type { SuccessBoxProps } from './success-box.type';
 import { Check, X } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import IconCheckCircle from '../../../../icons/check-circle';
 import IconQuestion from '../../../../icons/question';
 import IconExclamation from '../../../../icons/exclamation';
 import IconExclamationTriangle from '../../../../icons/exclamation-triangle';
+import { useStore } from '../../store/zustand';
 import css from './success-box.module.css';
 
 export default function SuccessBox(props: SuccessBoxProps) {
   const { color = '', head = { primary: '', secondary: '' }, body = [] } = props;
+  const ref = useRef<HTMLDivElement>(null);
+  const setSuccessBoxElement = useStore((s) => s.setSuccessBoxElement);
+
+  useEffect(() => {
+    if (ref.current) setSuccessBoxElement(ref.current);
+  }, [ref, setSuccessBoxElement]);
 
   return (
-    <div className={css.SuccessBox}>
+    <div ref={ref} className={css.SuccessBox}>
       <style type="text/css">
         {`
           .${css.SuccessBox} {

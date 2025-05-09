@@ -1,6 +1,6 @@
 {
   "name": "@arthurzakharov/rm-ui",
-  "version": "1.0.125",
+  "version": "1.0.128",
   "description": "UI library for rm projects",
   "license": "MIT",
   "private": false,
@@ -42,17 +42,21 @@
   },
   "peerDependencies": {
     "clsx": "^2.1.1",
+    "immer": "^10.1.1",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "valibot": "^1.0.0"
+    "valibot": "^1.0.0",
+    "zustand": "^5.0.4"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "immer": "^10.1.1",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "valibot": "^1.0.0"
+    "valibot": "^1.0.0",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
@@ -88,7 +92,7 @@
     "storybook-react-context": "^0.7.0",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.3",
+    "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.3",
     "vite-plugin-lib-inject-css": "^2.2.1",
     "vitest": "^3.0.9"
