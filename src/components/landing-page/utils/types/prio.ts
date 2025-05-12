@@ -4,6 +4,7 @@ import {
   SuccessBoxTitleSchema,
   SuccessBoxHtmlSchema,
   SuccessBoxListSchema,
+  PropsSchema,
   VariationSchema,
   PrioSchema,
 } from '../schemas/prio';
@@ -13,5 +14,6 @@ export type SuccessBoxTitle = InferInput<typeof SuccessBoxTitleSchema>;
 export type SuccessBoxHtml = InferInput<typeof SuccessBoxHtmlSchema>;
 export type SuccessBoxList = InferInput<typeof SuccessBoxListSchema>;
 export type SuccessBoxItem = SuccessBoxHead | SuccessBoxTitle | SuccessBoxHtml | SuccessBoxList;
+export type Props = InferInput<typeof PropsSchema>;
 export type Variation = InferInput<typeof VariationSchema>;
 export type Prio = InferInput<typeof PrioSchema>;

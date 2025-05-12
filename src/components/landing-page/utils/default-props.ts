@@ -1,11 +1,11 @@
-import type { Fallback } from '../landing-page.types';
+import type { Props } from './types/prio';
 
-const fallback: Fallback = {
+const defaultProps: Props = {
   accordion: {
     title: '',
     blocks: [],
   },
-  advantages: {
+  advantageList: {
     title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
     list: [
       'Größte Verkehrsrechtskanzlei in Deutschland',
@@ -14,6 +14,25 @@ const fallback: Fallback = {
       'Sofortige Hilfe',
       'Deutschlandweit tätig',
     ],
+  },
+  advantageListNoButton: {
+    title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
+    list: [
+      'Größte Verkehrsrechtskanzlei in Deutschland',
+      'Erfahrung aus über 150.000 Mandate',
+      'Einfach und unkompliziert',
+      'Sofortige Hilfe',
+      'Deutschlandweit tätig',
+    ],
+  },
+  contact: {
+    title: 'Sie haben noch Fragen?',
+    main: 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
+    button: 'Kontaktieren Sie uns',
+    success: 'Vielen Dank, wir haben Ihre Anfrage erhalten.',
+  },
+  button: {
+    text: 'Vollmacht ansehen',
   },
   howTo: {
     logos: {
@@ -26,15 +45,6 @@ const fallback: Fallback = {
         'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
       ],
     },
-  },
-  contact: {
-    title: 'Sie haben noch Fragen?',
-    main: 'Vereinbaren Sie jetzt kostenlos und unverbindliches Erstgepräch',
-    button: 'Kontaktieren Sie uns',
-    success: 'Vielen Dank, wir haben Ihre Anfrage erhalten.',
-  },
-  ctaButtons: {
-    text: 'Vollmacht ansehen',
   },
   logoBoard: {
     logos: [
@@ -75,19 +85,9 @@ const fallback: Fallback = {
       { name: '35-deurag.png' },
     ],
   },
-  logos: {
-    show: ['tuv', 'tls'],
-  },
   player: {
     videoId: 'OADMMXvWRQU',
     description: 'intro',
-  },
-  orderedList: {
-    title: 'Jetzt Vollmacht erteilen',
-    list: [
-      'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
-      'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
-    ],
   },
   review: {
     title: '<b>Erfahrungen:</b> Das sagen unsere Mandanten',
@@ -121,6 +121,16 @@ const fallback: Fallback = {
       },
     ],
   },
+  orderedList: {
+    title: 'Jetzt Vollmacht erteilen',
+    list: [
+      'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
+      'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
+    ],
+  },
+  logos: {
+    show: ['tuv', 'tls'],
+  },
 };
 
-export default fallback;
+export default defaultProps;

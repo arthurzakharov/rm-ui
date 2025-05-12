@@ -19,7 +19,7 @@ export default function SuccessBox(props: SuccessBoxProps) {
   }, [ref, setSuccessBoxElement]);
 
   return (
-    <div ref={ref} className={css.SuccessBox}>
+    <div className={css.SuccessBox}>
       <style type="text/css">
         {`
           .${css.SuccessBox} {
@@ -27,7 +27,7 @@ export default function SuccessBox(props: SuccessBoxProps) {
           }
         `}
       </style>
-      <div className={css.Head}>
+      <div ref={ref} className={css.Head}>
         <IconCheckCircle className={css.HeadIcon} />
         <h5 className={css.HeadText}>
           {head.primary && <span className={css.HeadTextPrimary}>{head.primary}</span>}

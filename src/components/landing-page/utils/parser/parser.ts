@@ -1,24 +1,16 @@
-import type { Prio, Variation, SuccessBoxItem } from '../types/prio';
+import type { Prio, Variation, SuccessBoxItem, Props } from '../types/prio';
 import type { Answers, FormAnswers } from '../../landing-page.types';
-import type { AccordionProps } from '../../components/accordion';
-import type { AdvantagesProps } from '../../components/advantages';
-import type { HowToProps } from '../../components/how-to';
-import type { ContactProps } from '../../components/contact';
-import type { OrderedListProps } from '../../components/ordered-list';
-import type { CtaButtonProps } from '../../components/cta-button';
-import type { LogosProps } from '../../../logos';
-import type { PlayerProps } from '../../components/player';
-import type { LogoBoardProps } from '../../components/logo-board';
-import type { ReviewProps } from '../../components/review';
 import type { SuccessBoxProps } from '../../components/success-box';
 import type { Group } from '../../components/group';
 import { getFallback, safeParse } from 'valibot';
+import { deepmerge } from 'deepmerge-ts';
+import { BLOCK, type Block } from '../../components/block';
 import { GroupSchema, PrioSchema, SuccessBoxSchema, VariationSchema } from '../schemas/prio';
 import Replacer from '../replacer';
 import Resolver from '../resolver';
-import { BLOCK, type Block } from '../../components/block';
+import defaultBlockProps from '../default-props';
 import SYMBOL from '../symbol';
-import fallback from '../fallback';
+import { AccordionProps } from '../../components/accordion';
 
 export default class Parser {
   private readonly prio: Prio;
@@ -32,7 +24,14 @@ export default class Parser {
     footer: Array<Group>;
   };
 
-  constructor(prio: unknown, data: FormAnswers, answers: Answers, width: number) {
+  constructor(
+    prio: unknown,
+    data: FormAnswers,
+    answers: Answers,
+    width: number,
+    calculateBlockProps: Partial<Props>,
+    overrideBlockProps: Partial<Props>,
+  ) {
     const { success, output } = safeParse(PrioSchema, prio);
     const safePrio = success ? output : getFallback(PrioSchema);
     this.prio = safePrio;
@@ -41,9 +40,9 @@ export default class Parser {
     this.variation = this.getVariation(safePrio);
     this.page = this.deepMapStrings({
       successBox: this.getSuccessBoxProps(),
-      question: this.getLandingPageGroups(safePrio.question),
-      sidebar: this.getLandingPageGroups(safePrio.sidebar),
-      footer: this.getLandingPageGroups(safePrio.footer),
+      question: this.getLandingPageGroups(safePrio.question, calculateBlockProps, overrideBlockProps),
+      sidebar: this.getLandingPageGroups(safePrio.sidebar, calculateBlockProps, overrideBlockProps),
+      footer: this.getLandingPageGroups(safePrio.footer, calculateBlockProps, overrideBlockProps),
     });
   }
 
@@ -51,8 +50,27 @@ export default class Parser {
     return Object.values(BLOCK).includes(value as BLOCK);
   }
 
-  private getKey<T>(obj: Record<string, unknown> | null, path: string, fb: T): T {
-    return !!obj && !!obj[path] ? { ...fb, ...obj[path] } : fb;
+  private getKey(
+    prioProps: Props | null,
+    path: keyof Props,
+    calculateBlockProps: Partial<Props>,
+    overrideBlockProps: Partial<Props>,
+  ) {
+    const result = deepmerge(
+      ...[
+        defaultBlockProps[path] || null,
+        !!prioProps && prioProps[path] ? prioProps[path] : null,
+        calculateBlockProps[path] || null,
+        overrideBlockProps[path] || null,
+      ].filter(Boolean),
+    );
+    if (path === 'accordion') {
+      (result as AccordionProps).blocks = (result as AccordionProps).blocks.filter((block) => {
+        if (!block.condition) return true;
+        return this.resolver.check(block.condition);
+      });
+    }
+    return result;
   }
 
   /**
@@ -165,7 +183,11 @@ export default class Parser {
   /**
    * Get ready to use blueprint for Sidebar, Footer or Question with all elements are checked for condition.
    */
-  private getLandingPageGroups(data: unknown): Array<Group> {
+  private getLandingPageGroups(
+    data: unknown,
+    calculateBlockProps: Partial<Props>,
+    overrideBlockProps: Partial<Props>,
+  ): Array<Group> {
     const groups = Array.isArray(data)
       ? data
           .map((d) => {
@@ -195,27 +217,27 @@ export default class Parser {
                   props: ((type) => {
                     switch (type) {
                       case BLOCK.ACCORDION:
-                        return this.getKey<AccordionProps>(props, 'accordion', fallback.accordion);
+                        return this.getKey(props, 'accordion', calculateBlockProps, overrideBlockProps);
                       case BLOCK.ADVANTAGE_LIST:
-                        return this.getKey<AdvantagesProps>(props, 'advantageList', fallback.advantages);
+                        return this.getKey(props, 'advantageList', calculateBlockProps, overrideBlockProps);
                       case BLOCK.ADVANTAGE_LIST_NO_BUTTON:
-                        return this.getKey<AdvantagesProps>(props, 'advantageListNoButton', fallback.advantages);
+                        return this.getKey(props, 'advantageListNoButton', calculateBlockProps, overrideBlockProps);
                       case BLOCK.CONTACT_US:
-                        return this.getKey<ContactProps>(props, 'contact', fallback.contact);
+                        return this.getKey(props, 'contact', calculateBlockProps, overrideBlockProps);
                       case BLOCK.BUTTON:
-                        return this.getKey<CtaButtonProps>(props, 'button', fallback.ctaButtons);
+                        return this.getKey(props, 'button', calculateBlockProps, overrideBlockProps);
                       case BLOCK.HOW_TO_GO_NEXT:
-                        return this.getKey<HowToProps>(props, 'howTo', fallback.howTo);
+                        return this.getKey(props, 'howTo', calculateBlockProps, overrideBlockProps);
                       case BLOCK.LOGO_CLOUD:
-                        return this.getKey<LogoBoardProps>(props, 'logoBoard', fallback.logoBoard);
+                        return this.getKey(props, 'logoBoard', calculateBlockProps, overrideBlockProps);
                       case BLOCK.PLAYER:
-                        return this.getKey<PlayerProps>(props, 'player', fallback.player);
+                        return this.getKey(props, 'player', calculateBlockProps, overrideBlockProps);
                       case BLOCK.REVIEW:
-                        return this.getKey<ReviewProps>(props, 'review', fallback.review);
+                        return this.getKey(props, 'review', calculateBlockProps, overrideBlockProps);
                       case BLOCK.ORDERED_LIST:
-                        return this.getKey<OrderedListProps>(props, 'orderedList', fallback.orderedList);
+                        return this.getKey(props, 'orderedList', calculateBlockProps, overrideBlockProps);
                       case BLOCK.LOGOS:
-                        return this.getKey<LogosProps>(props, 'logos', fallback.logos);
+                        return this.getKey(props, 'logos', calculateBlockProps, overrideBlockProps);
                       case BLOCK.QUESTION:
                         return null;
                     }

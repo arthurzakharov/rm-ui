@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import { useStore } from '../store/zustand';
 
-export default function useStickySuccessBox(apply: boolean) {
-  const appHeaderElement = useStore((s) => s.appHeaderElement);
+export default function useStickySuccessBox(appHeaderRef: RefObject<HTMLDivElement> | null, apply: boolean) {
+  const [appHeaderElement, setAppHeaderElement] = useState<HTMLDivElement | null>(null);
   const mainElement = useStore((s) => s.mainElement);
   const successBoxElement = useStore((s) => s.successBoxElement);
 
@@ -21,4 +21,8 @@ export default function useStickySuccessBox(apply: boolean) {
       successBoxElement.removeAttribute('style');
     }
   }, [apply, appHeaderElement, mainElement, successBoxElement]);
+
+  useEffect(() => {
+    if (appHeaderRef && appHeaderRef.current) setAppHeaderElement(appHeaderRef.current);
+  }, [appHeaderRef]);
 }

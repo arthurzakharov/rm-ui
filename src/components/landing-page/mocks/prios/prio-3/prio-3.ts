@@ -789,6 +789,7 @@ const prio: Prio = {
       },
       props: {
         button: {
+          fullWidth: true,
           text: 'Vollmacht ansehen',
           onClick: 'clickLongReadCta',
         },
