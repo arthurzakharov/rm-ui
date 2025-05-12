@@ -6,7 +6,7 @@ export default function useGetDataFromConfig(props: LandingPageProps, width: num
   const { answers, config, loaded, submitted, tuvSrc, tlsSrc, overrides } = props;
   const [ctaButton, setCtaButton] = useState<string>('');
 
-  const show = config?.certificateLogos || [];
+  const show = config?.certificateLogos || ['tuv', 'tls'];
   const enableStickyMobileHead = config?.header?.enableStickyMobileHead || false;
   const logos = {
     show,

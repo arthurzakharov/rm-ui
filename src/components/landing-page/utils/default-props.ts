@@ -35,9 +35,6 @@ const defaultProps: Props = {
     text: 'Vollmacht ansehen',
   },
   howTo: {
-    logos: {
-      show: ['tuv', 'tls'],
-    },
     orderedList: {
       title: 'Jetzt Vollmacht erteilen',
       list: [
@@ -127,9 +124,6 @@ const defaultProps: Props = {
       'Sie erteilen uns die Vollmacht. Dies geht ganz einfach Online und dauert nur 2 Minuten.',
       'Wir fordern Ihre Akte an und unsere Rechtsanwälte beginnen mit der Arbeit an ihrem Fall. Sollten wir Rückfragen haben oder Ihre Zuarbeit benötigen, melden wir uns umgehend bei Ihnen.',
     ],
-  },
-  logos: {
-    show: ['tuv', 'tls'],
   },
 };
 
