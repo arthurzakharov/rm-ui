@@ -11,11 +11,11 @@ const meta = {
   component: LandingPage,
   decorators: [MaxWidthDecorator(1110)],
   args: {
+    config: {},
     loaded: true,
     appHeaderRef: null,
-    enableStickyMobileHead: true,
     isContactFormSubmitted: false,
-    showPriceModalInsuranceCondition: { Ja: 'paid' },
+    logos: {},
     overrideBlockProps: {},
   },
 } satisfies Meta<typeof LandingPage>;
@@ -27,8 +27,8 @@ export const LandingPagePrio3: Story = {
   name: 'LandingPage / Prio 3',
   args: {
     prio: Prio3,
-    answers: BUSSGELDCHECK,
     data: DATA_1,
+    answers: BUSSGELDCHECK,
   },
 };
 
@@ -36,7 +36,7 @@ export const LandingPagePrio16: Story = {
   name: 'LandingPage / Prio 16',
   args: {
     prio: Prio16,
-    answers: BUSSGELDCHECK,
     data: DATA_2,
+    answers: BUSSGELDCHECK,
   },
 };

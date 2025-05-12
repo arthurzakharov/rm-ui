@@ -4,28 +4,21 @@ import Sidebar from './components/sidebar';
 import Footer from './components/footer';
 import Main from './components/main';
 import useViewportSize from '../../hooks/useViewportSize';
-import useStickySuccessBox from './hooks/useStickySuccessBox';
 import useCtaButtonText from './hooks/useCtaButtonText';
+import useGetDataFromConfig from './hooks/useGetDataFromConfig';
+import useStickySuccessBox from './hooks/useStickySuccessBox';
 import Parser from './utils/parser';
+import { Props } from './utils/types/prio';
 import css from './landing-page.module.css';
 
 export default function LandingPage(props: LandingPageProps) {
-  const {
-    loaded,
-    prio,
-    data,
-    answers,
-    appHeaderRef,
-    enableStickyMobileHead,
-    isContactFormSubmitted,
-    showPriceModalInsuranceCondition,
-    overrideBlockProps,
-    widthMeasureDebounce,
-  } = props;
-  const { width } = useViewportSize(widthMeasureDebounce);
+  const { config, loaded, prio, data, answers, appHeaderRef, isContactFormSubmitted, logos, overrideBlockProps } =
+    props;
+  const { width } = useViewportSize(100);
+  const { showPriceModalInsuranceCondition, logoShow, enableStickyMobileHead } = useGetDataFromConfig(config);
   const ctaButton = useCtaButtonText(answers, showPriceModalInsuranceCondition);
 
-  const calculateBlockProps = {
+  const calculateBlockProps: Props = {
     advantageList: {
       button: ctaButton,
     },
@@ -37,6 +30,18 @@ export default function LandingPage(props: LandingPageProps) {
     },
     contact: {
       submitted: isContactFormSubmitted,
+    },
+    howTo: {
+      logos: {
+        show: logoShow,
+        tuvSrc: logos.tuvSrc,
+        tlsSrc: logos.tlsSrc,
+      },
+    },
+    logos: {
+      show: logoShow,
+      tuvSrc: logos.tuvSrc,
+      tlsSrc: logos.tlsSrc,
     },
   };
 
