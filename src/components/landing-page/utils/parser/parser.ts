@@ -24,14 +24,7 @@ export default class Parser {
     footer: Array<Group>;
   };
 
-  constructor(
-    prio: unknown,
-    data: FormAnswers,
-    answers: Answers,
-    width: number,
-    calculateBlockProps: Partial<Props>,
-    overrideBlockProps: Partial<Props>,
-  ) {
+  constructor(prio: unknown, data: FormAnswers, answers: Answers, width: number, blocksProp: Partial<Props>) {
     const { success, output } = safeParse(PrioSchema, prio);
     const safePrio = success ? output : getFallback(PrioSchema);
     this.prio = safePrio;
@@ -40,9 +33,9 @@ export default class Parser {
     this.variation = this.getVariation(safePrio);
     this.page = this.deepMapStrings({
       successBox: this.getSuccessBoxProps(),
-      question: this.getLandingPageGroups(safePrio.question, calculateBlockProps, overrideBlockProps),
-      sidebar: this.getLandingPageGroups(safePrio.sidebar, calculateBlockProps, overrideBlockProps),
-      footer: this.getLandingPageGroups(safePrio.footer, calculateBlockProps, overrideBlockProps),
+      question: this.getLandingPageGroups(safePrio.question, blocksProp),
+      sidebar: this.getLandingPageGroups(safePrio.sidebar, blocksProp),
+      footer: this.getLandingPageGroups(safePrio.footer, blocksProp),
     });
   }
 
@@ -50,18 +43,12 @@ export default class Parser {
     return Object.values(BLOCK).includes(value as BLOCK);
   }
 
-  private getKey(
-    prioProps: Props | null,
-    path: keyof Props,
-    calculateBlockProps: Partial<Props>,
-    overrideBlockProps: Partial<Props>,
-  ) {
+  private getKey(prioProps: Props | null, path: keyof Props, blocksProp: Partial<Props>) {
     const result = deepmerge(
       ...[
         defaultBlockProps[path] || null,
         !!prioProps && prioProps[path] ? prioProps[path] : null,
-        calculateBlockProps[path] || null,
-        overrideBlockProps[path] || null,
+        blocksProp[path] || null,
       ].filter(Boolean),
     );
     if (path === 'accordion') {
@@ -183,11 +170,7 @@ export default class Parser {
   /**
    * Get ready to use blueprint for Sidebar, Footer or Question with all elements are checked for condition.
    */
-  private getLandingPageGroups(
-    data: unknown,
-    calculateBlockProps: Partial<Props>,
-    overrideBlockProps: Partial<Props>,
-  ): Array<Group> {
+  private getLandingPageGroups(data: unknown, blocksProp: Partial<Props>): Array<Group> {
     const groups = Array.isArray(data)
       ? data
           .map((d) => {
@@ -217,27 +200,27 @@ export default class Parser {
                   props: ((type) => {
                     switch (type) {
                       case BLOCK.ACCORDION:
-                        return this.getKey(props, 'accordion', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'accordion', blocksProp);
                       case BLOCK.ADVANTAGE_LIST:
-                        return this.getKey(props, 'advantageList', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'advantageList', blocksProp);
                       case BLOCK.ADVANTAGE_LIST_NO_BUTTON:
-                        return this.getKey(props, 'advantageListNoButton', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'advantageListNoButton', blocksProp);
                       case BLOCK.CONTACT_US:
-                        return this.getKey(props, 'contact', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'contact', blocksProp);
                       case BLOCK.BUTTON:
-                        return this.getKey(props, 'button', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'button', blocksProp);
                       case BLOCK.HOW_TO_GO_NEXT:
-                        return this.getKey(props, 'howTo', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'howTo', blocksProp);
                       case BLOCK.LOGO_CLOUD:
-                        return this.getKey(props, 'logoBoard', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'logoBoard', blocksProp);
                       case BLOCK.PLAYER:
-                        return this.getKey(props, 'player', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'player', blocksProp);
                       case BLOCK.REVIEW:
-                        return this.getKey(props, 'review', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'review', blocksProp);
                       case BLOCK.ORDERED_LIST:
-                        return this.getKey(props, 'orderedList', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'orderedList', blocksProp);
                       case BLOCK.LOGOS:
-                        return this.getKey(props, 'logos', calculateBlockProps, overrideBlockProps);
+                        return this.getKey(props, 'logos', blocksProp);
                       case BLOCK.QUESTION:
                         return null;
                     }

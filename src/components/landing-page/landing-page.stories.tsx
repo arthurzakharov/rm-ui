@@ -14,9 +14,10 @@ const meta = {
     config: {},
     loaded: true,
     appHeaderRef: null,
-    isContactFormSubmitted: false,
-    logos: {},
-    overrideBlockProps: {},
+    submitted: false,
+    tlsSrc: '',
+    tuvSrc: '',
+    overrides: {},
   },
 } satisfies Meta<typeof LandingPage>;
 
