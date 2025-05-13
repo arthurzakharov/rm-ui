@@ -23,39 +23,19 @@
   inherits: true;
   initial-value: #ff8d02;
 }
-@property --checkbox-square-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 16px;
-}
-@property --checkbox-font-family {
-  syntax: '*';
-  inherits: true;
-  initial-value: 'Open Sans';
-}
-@property --checkbox-font-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 16px;
-}
-@property --checkbox-font-weight {
-  syntax: '<integer>';
-  inherits: true;
-  initial-value: 200;
-}
 
 .Checkbox {
-  --input-control-size: var(--checkbox-square-size);
+  --input-control-size: 16px;
   --input-control-border: var(--checkbox-border);
   --input-control-primary: var(--checkbox-primary);
   --input-control-error: var(--checkbox-error);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--checkbox-square-size) / 4);
-  font-family: var(--checkbox-font-family), sans-serif;
-  font-size: var(--checkbox-font-size);
-  font-weight: calc(var(--checkbox-font-weight));
+  gap: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .CheckboxContent {
@@ -64,7 +44,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: var(--checkbox-square-size);
+  gap: 16px;
   line-height: 1.2;
   color: var(--checkbox-label);
 }
@@ -78,7 +58,7 @@
 }
 
 .CheckboxLabel {
-  flex-basis: calc(100% - calc(var(--checkbox-square-size) * 2));
+  flex-basis: calc(100% - 32px);
   order: 2;
   transition: color 150ms ease-in-out;
 }
@@ -101,7 +81,7 @@
 }
 
 .CheckboxInfo {
-  margin-left: calc(var(--checkbox-square-size) * 2);
+  margin-left: 32px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 1.4;

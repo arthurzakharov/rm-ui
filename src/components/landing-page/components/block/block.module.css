@@ -1,24 +1,24 @@
-.Question {
+.Block {
   --body-space: 16px;
 }
 
-.Question p {
+.Block p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.Question p:not(:last-of-type) {
+.Block p:not(:last-of-type) {
   margin-bottom: var(--body-space);
 }
 
-.Question a {
-  font-weight: 400;
+.Block a {
+  font-weight: 300;
   color: var(--landing-page-questions-link-color);
   text-decoration: none;
 }
 
-.Question ul,
-.Question ol {
+.Block ul,
+.Block ol {
   margin-top: var(--body-space);
   margin-bottom: var(--body-space);
   padding-left: var(--body-space);
@@ -30,18 +30,18 @@
   gap: var(--body-space);
 }
 
-.Question ul:last-of-type,
-.Question ol:last-of-type {
+.Block ul:last-of-type,
+.Block ol:last-of-type {
   margin-bottom: 0;
 }
 
-.Question b,
-.Question strong {
+.Block b,
+.Block strong {
   font-weight: 400;
 }
 
 @media screen and (min-width: 1024px) {
-  .Question p:not(:last-of-type) {
+  .Block p:not(:last-of-type) {
     margin-bottom: calc(var(--body-space) * 1.5);
   }
 }

@@ -1,6 +1,6 @@
 .Modal {
   position: relative;
-  border-radius: var(--calendar-border-radius);
+  border-radius: 3px;
   background-color: var(--calendar-background);
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
 .Modal:before,
 .Modal:after {
-  border-radius: var(--calendar-border-radius);
+  border-radius: 3px;
   content: '';
   display: block;
   position: absolute;
@@ -46,12 +46,12 @@
   position: absolute;
   z-index: 1;
   left: 0;
-  top: calc(100% + var(--calendar-modal-vertical-padding));
+  top: calc(100% + 8px);
 }
 
 .ModalAttachedStatic {
   position: static;
-  margin-top: var(--calendar-modal-vertical-padding);
+  margin-top: 8px;
 }
 
 .ModalCentered {
@@ -71,18 +71,18 @@
 /* TODO: think how to set modal max-width in other way. Remove max-width to see problem */
 .ModalMonths {
   max-width: 255px;
-  padding-top: calc(var(--calendar-modal-vertical-padding) * 2);
-  padding-left: var(--calendar-modal-horizontal-padding);
-  padding-right: var(--calendar-modal-horizontal-padding);
+  padding-top: 16px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .ModalDays {
-  padding-left: var(--calendar-modal-horizontal-padding);
-  padding-right: var(--calendar-modal-horizontal-padding);
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .ModalSelects {
-  padding: var(--calendar-modal-vertical-padding) var(--calendar-modal-horizontal-padding);
+  padding: 8px 4px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -91,7 +91,7 @@
 }
 
 .ModalFooter {
-  padding: var(--calendar-modal-vertical-padding) var(--calendar-modal-horizontal-padding);
+  padding: 8px 4px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -101,14 +101,14 @@
 }
 
 .ModalButton {
-  border-radius: var(--calendar-border-radius);
+  border-radius: 3px;
   border: none;
   background-color: transparent;
   padding: 8px 12px;
   font-family: inherit;
   font-weight: 500;
-  font-size: var(--calendar-modal-font-size);
-  line-height: var(--calendar-modal-line-height);
+  font-size: 14px;
+  line-height: 22px;
   color: var(--calendar-accent);
   transition: outline-color 125ms ease-in-out;
 }

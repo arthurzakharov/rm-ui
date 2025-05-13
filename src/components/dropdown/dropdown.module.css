@@ -63,21 +63,6 @@
   inherits: true;
   initial-value: #333333;
 }
-@property --dropdown-font-family {
-  syntax: '*';
-  inherits: true;
-  initial-value: 'Open Sans';
-}
-@property --dropdown-font-weight {
-  syntax: '<integer>';
-  inherits: true;
-  initial-value: 300;
-}
-@property --dropdown-font-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 14px;
-}
 
 .Dropdown {
   --transition-time: 250ms;
@@ -86,9 +71,9 @@
   --border-radius: 3px;
   --input-control-primary: var(--dropdown-focus);
   position: relative;
-  font-family: var(--dropdown-font-family), sans-serif;
-  font-weight: var(--dropdown-font-weight);
-  font-size: var(--dropdown-font-size);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
   color: var(--dropdown-primary);
 }
 
@@ -129,7 +114,7 @@
 }
 
 .DropdownChevron {
-  width: calc(var(--dropdown-font-size) + 2px);
+  width: 16px;
 }
 
 .DropdownChevron[data-dropdown-open='false'] {
@@ -220,7 +205,7 @@
   right: 31px;
   top: 50%;
   transform: translateY(-50%);
-  width: var(--dropdown-font-size);
+  width: 14px;
   color: var(--dropdown-primary);
 }
 

@@ -1,31 +1,19 @@
 @property --landing-page-player-bg {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #333333;
 }
 
 @property --landing-page-player-button-active {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #ff0000;
 }
 
 @property --landing-page-player-button-inactive {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #212121;
-}
-
-@property --landing-page-player-button-width {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 68px;
-}
-
-@property --landing-page-player-button-height {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 48px;
 }
 
 .Player {
@@ -78,8 +66,8 @@
   z-index: 1;
   display: none;
   padding: 0;
-  width: var(--landing-page-player-button-width);
-  height: var(--landing-page-player-button-height);
+  width: 68px;
+  height: 48px;
   border: none;
   background-color: transparent;
   transform: translate(-50%, -50%);

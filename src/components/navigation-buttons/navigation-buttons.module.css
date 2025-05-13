@@ -34,70 +34,28 @@
   initial-value: #ffffff;
 }
 
-@property --navigation-button-font-family {
-  syntax: '*';
-  inherits: true;
-  initial-value: 'Titillium Web';
-}
-
-@property --navigation-button-font-weight {
-  syntax: '<integer>';
-  inherits: true;
-  initial-value: 400;
-}
-
-@property --navigation-button-font-size {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 20px;
-}
-
-@property --navigation-button-line-height {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 30px;
-}
-
-@property --navigation-button-border-radius {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 5px;
-}
-
-@property --navigation-button-border-width {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 1px;
-}
-
-@property --navigation-button-step {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 8px;
-}
-
 .NavigationButtons {
   --transition-time: 250ms;
   --icon-size: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(var(--navigation-button-step) * 2);
+  gap: 16px;
 }
 
 .NavigationButton {
-  border: var(--navigation-button-border-width) solid transparent;
-  border-radius: var(--navigation-button-border-radius);
-  padding: var(--navigation-button-step) calc(var(--navigation-button-step) * 3);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 8px 24px;
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  font-family: var(--navigation-button-font-family), sans-serif;
-  font-weight: var(--navigation-button-font-weight);
-  font-size: var(--navigation-button-font-size);
-  line-height: var(--navigation-button-line-height);
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
   letter-spacing: 0.02em;
   transition:
     color var(--transition-time) ease-in-out,

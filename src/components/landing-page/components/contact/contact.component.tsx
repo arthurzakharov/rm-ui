@@ -18,21 +18,18 @@ export default function Contact(props: ContactProps) {
   return (
     <div data-testid="contact" className={css.Contact}>
       {submitted ? (
-        <div data-testid="contact-success" className={css.LandingPageContactSuccess}>
-          <CheckCircle className={css.LandingPageContactSuccessIcon} />
-          <p className={css.LandingPageContactSuccessText}>{success}</p>
+        <div data-testid="contact-success" className={css.Success}>
+          <CheckCircle className={css.SuccessIcon} />
+          <p className={css.SuccessText}>{success}</p>
         </div>
       ) : (
-        <div
-          data-testid="contact-wait"
-          className={clsx(css.LandingPageContactWait, { [css.LandingPageContactWaitSidebar]: sidebar })}
-        >
-          <h6 className={css.LandingPageContactHead}>{title}</h6>
-          <p className={css.LandingPageContactMain}>{main}</p>
+        <div data-testid="contact-wait" className={clsx(css.Wait, { [css.WaitSidebar]: sidebar })}>
+          <h6 className={css.Head}>{title}</h6>
+          <p className={css.Main}>{main}</p>
           <button
             data-testid="contact-button"
             type="button"
-            className={css.LandingPageContactButton}
+            className={css.Button}
             onClick={(e: MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
               e.currentTarget.blur();

@@ -5,17 +5,13 @@
 
 .FooterMain {}
 
-.FooterContact {
-  padding-top: 30px;
-}
-
 .FooterItem:only-of-type .FooterContact {
   padding-top: 0;
 }
 
 @media screen and (min-width: 768px) {
   .FooterContact {
-    padding-top: 60px;
+    padding-top: 20px;
   }
 
   .FooterItem:only-of-type .FooterContact {

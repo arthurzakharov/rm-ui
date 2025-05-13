@@ -10,24 +10,6 @@
   initial-value: #004473;
 }
 
-@property --landing-page-accordion-head-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 18px;
-}
-
-@property --landing-page-accordion-title-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 16px;
-}
-
-@property --landing-page-accordion-text-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 14px;
-}
-
 .Accordion {
   display: flex;
   flex-direction: column;
@@ -40,7 +22,7 @@
   margin: 0 0 26px 0;
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
-  font-size: var(--landing-page-accordion-head-font-size);
+  font-size: 18px;
   line-height: 1.4;
   color: var(--landing-page-accordion-primary-color);
 }
@@ -66,7 +48,7 @@
   margin: 0 0 0 8px;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
-  font-size: var(--landing-page-accordion-title-font-size);
+  font-size: 16px;
   line-height: 1.4;
   color: var(--landing-page-accordion-primary-color);
 }
@@ -109,14 +91,14 @@
   background-color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: var(--landing-page-accordion-text-font-size);
+  font-size: 14px;
   line-height: 1.6;
   color: var(--landing-page-accordion-text-color);
 }
 
 @media screen and (min-width: 1024px) {
   .Content {
-    font-size: calc(var(--landing-page-accordion-text-font-size) + 2px);
+    font-size: 16px;
   }
 }
 

@@ -57,7 +57,7 @@ export default function SuccessBox(props: SuccessBoxProps) {
                         })}
                       >
                         <div className={css.ListItemSection}>
-                          {item.type === 'check' && <Check className={css.ListItemIcon} />}
+                          {item.type === 'check' && <Check strokeWidth={4} className={css.ListItemIcon} />}
                           {item.type === 'question' && <IconQuestion className={css.ListItemIcon} />}
                           {item.type === 'exclamation' && <IconExclamation className={css.ListItemIcon} />}
                           {item.type === 'cross' && <X className={css.ListItemIcon} />}

@@ -39,7 +39,7 @@ export default function Block(props: BlockProps) {
     case BLOCK.LOGOS:
       return <Logos {...block.props} />;
     case BLOCK.QUESTION:
-      return <div className={css.Question} dangerouslySetInnerHTML={{ __html: block.content }} />;
+      return <div className={css.Block} dangerouslySetInnerHTML={{ __html: block.content }} />;
   }
 }
 

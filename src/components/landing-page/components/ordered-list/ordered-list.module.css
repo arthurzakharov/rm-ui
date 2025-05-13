@@ -1,55 +1,31 @@
 @property --ordered-list-head-color {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #004473;
 }
 
-@property --ordered-list-head-font-family {
-  syntax: "<string>";
-  inherits: true;
-  initial-value: "Open Sans";
-}
-
-@property --ordered-list-head-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 18px;
-}
-
 @property --ordered-list-text-color {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #333333;
 }
 
-@property --ordered-list-text-font-family {
-  syntax: "<string>";
-  inherits: true;
-  initial-value: "Open Sans";
-}
-
-@property --ordered-list-text-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 14px;
-}
-
 @property --ordered-list-bullet-bg {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #ff8e01;
 }
 
 @property --ordered-list-bullet-color {
-  syntax: "<color>";
+  syntax: '<color>';
   inherits: true;
   initial-value: #ffffff;
 }
 
 .OrderedList {
-  font-family: var(--ordered-list-text-font-family), sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: var(--ordered-list-text-font-size);
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ordered-list-text-color);
 }
@@ -57,9 +33,9 @@
 .Title {
   margin-top: 0;
   margin-bottom: 20px;
-  font-family: var(--ordered-list-head-font-family), sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: var(--ordered-list-head-font-size);
+  font-size: 18px;
   line-height: 1.4;
   color: var(--ordered-list-head-color);
   text-align: center;
@@ -96,21 +72,21 @@
   align-items: center;
   justify-content: center;
   background-color: var(--ordered-list-bullet-bg);
-  font-family: var(--ordered-list-text-font-family), sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: var(--ordered-list-text-font-size);
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ordered-list-bullet-color);
 }
 
 @media screen and (min-width: 1024px) {
-  .Title {
-    font-size: calc(var(--ordered-list-head-font-size) + 4px);
-    margin-bottom: 25px;
+  .OrderedList {
+    font-size: 16px;
+    line-height: 1.5;
   }
 
-  .ListItem {
-    font-size: calc(var(--ordered-list-text-font-size) + 2px);
-    line-height: 1.5;
+  .Title {
+    font-size: 22px;
+    margin-bottom: 25px;
   }
 }

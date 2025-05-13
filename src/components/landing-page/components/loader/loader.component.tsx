@@ -9,17 +9,13 @@ export default function Loader(props: LoaderProps) {
   } = props;
 
   return (
-    <div className={clsx(css.PageLoader, className)}>
-      <div className={css.PageLoaderContent}>
-        <div className={css.PageLoaderImage}>
-          <div className={css.PageLoaderLine} />
-          <div className={css.PageLoaderImagePoint} />
+    <div className={clsx(css.Loader, className)}>
+      <div className={css.Content}>
+        <div className={css.Image}>
+          <div className={css.Line} />
+          <div className={css.Point} />
         </div>
-        <div
-          data-testid="page-loader"
-          className={css.LandingPageLoaderText}
-          dangerouslySetInnerHTML={{ __html: text }}
-        />
+        <div data-testid="loader" className={css.Text} dangerouslySetInnerHTML={{ __html: text }} />
       </div>
     </div>
   );

@@ -7,26 +7,26 @@
 }
 
 .Day {
-  margin: var(--calendar-modal-button-gap);
+  margin: 2px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   padding: 0;
-  width: var(--calendar-modal-button-size);
-  height: var(--calendar-modal-button-size);
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: transparent;
   font-family: inherit;
   font-weight: 400;
-  font-size: var(--calendar-modal-font-size);
-  line-height: var(--calendar-modal-line-height);
+  font-size: 14px;
+  line-height: 22px;
   color: var(--calendar-primary);
   transition:
     border-color 125ms ease-in-out,
     background-color 125ms ease-in-out;
-  border: var(--calendar-border-width) solid transparent;
+  border: 2px solid transparent;
 }
 
 .Day:hover {
@@ -95,12 +95,12 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  width: var(--calendar-modal-button-size);
-  height: var(--calendar-modal-button-size);
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   font-family: inherit;
   font-weight: 400;
-  font-size: var(--calendar-modal-font-size);
-  line-height: var(--calendar-modal-line-height);
+  font-size: 14px;
+  line-height: 22px;
   color: var(--calendar-primary);
 }

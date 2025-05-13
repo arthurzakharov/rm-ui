@@ -2,7 +2,7 @@ import type { MainProps } from './main.type';
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import SuccessBox from '../success-box';
-import LandingPageGroup from '../group';
+import Group from '../group';
 import { useStore } from '../../store/zustand';
 import css from './main.module.css';
 
@@ -26,7 +26,7 @@ export default function Main(props: MainProps) {
       <SuccessBox {...successBox} />
       <div className={css.Groups}>
         {groups.map((group, i) => (
-          <LandingPageGroup
+          <Group
             key={group.id}
             group={group}
             groupClassName={clsx(css.Group, {

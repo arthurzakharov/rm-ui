@@ -4,20 +4,20 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  height: calc((var(--calendar-modal-button-size) + var(--calendar-modal-button-gap) * 2) * 4);
+  height: 160px;
   overflow-y: auto;
 }
 
 .MonthButton {
-  flex-basis: calc(33.33% - var(--calendar-modal-button-gap) * 2);
-  margin: var(--calendar-modal-button-gap);
+  flex-basis: calc(33.33% - 2px * 2);
+  margin: 2px;
   padding: 0;
-  height: var(--calendar-modal-button-size);
+  height: 36px;
   background-color: transparent;
-  border-radius: var(--calendar-border-radius);
-  border: var(--calendar-border-width) solid transparent;
-  font-size: var(--calendar-modal-font-size);
-  line-height: var(--calendar-modal-line-height);
+  border-radius: 3px;
+  border: 2px solid transparent;
+  font-size: 14px;
+  line-height: 22px;
   color: var(--calendar-primary);
   transition: border-color 125ms ease-in-out;
 }

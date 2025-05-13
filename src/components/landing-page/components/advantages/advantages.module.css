@@ -16,18 +16,6 @@
   initial-value: #30cc72;
 }
 
-@property --landing-page-advantage-head-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 18px;
-}
-
-@property --landing-page-advantage-list-font-size {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 14px;
-}
-
 .Advantages {
   box-sizing: border-box;
   width: 100%;
@@ -61,7 +49,7 @@
   padding-bottom: 20px;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
-  font-size:  var(--landing-page-advantage-list-font-size);
+  font-size:  14px;
   line-height: 1.4;
   color: var(--landing-page-advantage-primary);
   text-align: center;
@@ -75,7 +63,7 @@
   padding-left: 0;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
-  font-size: var(--landing-page-advantage-list-font-size);
+  font-size: 14px;
   line-height: 1.4;
   color: var(--landing-page-advantage-color);
 }
@@ -162,7 +150,7 @@
 
   .List {
     width: 55%;
-    font-size: calc(var(--landing-page-advantage-list-font-size) + 2px);
+    font-size: 16px;
   }
 
   .Image {
@@ -170,7 +158,7 @@
   }
 
   .Title {
-    font-size: calc(var(--landing-page-advantage-head-font-size) + 4px);
+    font-size: 22px;
   }
 
   .Button {
