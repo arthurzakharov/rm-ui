@@ -3,14 +3,13 @@ import type { Answers, FormAnswers } from '../../landing-page.types';
 import type { SuccessBoxProps } from '../../components/success-box';
 import type { Group } from '../../components/group';
 import { getFallback, safeParse } from 'valibot';
-import { deepmerge } from 'deepmerge-ts';
 import { BLOCK, type Block } from '../../components/block';
 import { GroupSchema, PrioSchema, SuccessBoxSchema, VariationSchema } from '../schemas/prio';
 import Replacer from '../replacer';
 import Resolver from '../resolver';
-import defaultBlockProps from '../default-props';
 import SYMBOL from '../symbol';
 import { AccordionProps } from '../../components/accordion';
+import { merge } from '../../../../utils/functions';
 
 export default class Parser {
   private readonly prio: Prio;
@@ -44,13 +43,9 @@ export default class Parser {
   }
 
   private getKey(prioProps: Props | null, path: keyof Props, blocksProp: Partial<Props>) {
-    const result = deepmerge(
-      ...[
-        defaultBlockProps[path] || null,
-        !!prioProps && prioProps[path] ? prioProps[path] : null,
-        blocksProp[path] || null,
-      ].filter(Boolean),
-    );
+    const keyPropsFromPrio = !!prioProps && prioProps[path] ? prioProps[path] : null;
+    const keyPropsFromOutside = blocksProp[path] || null;
+    const result = merge(...[keyPropsFromPrio, keyPropsFromOutside].filter((props) => props !== null));
     if (path === 'accordion') {
       (result as AccordionProps).blocks = (result as AccordionProps).blocks.filter((block) => {
         if (!block.condition) return true;

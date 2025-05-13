@@ -281,3 +281,30 @@ export const getElementSize = (element: HTMLElement, withoutMargins = false): [n
     : 0;
   return [element.clientHeight + marginY, element.clientWidth + marginX];
 };
+
+export const merge = <T extends Record<string, unknown>>(...objects: T[]): T => {
+  const result: Record<string, unknown> = {};
+  for (const obj of objects) {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        const prevValue = result[key];
+        const newValue = obj[key];
+        if (
+          typeof prevValue === 'object' &&
+          prevValue !== null &&
+          !Array.isArray(prevValue) &&
+          typeof newValue === 'object' &&
+          newValue !== null &&
+          !Array.isArray(newValue)
+        ) {
+          // @ts-ignore
+          result[key] = merge(prevValue, newValue);
+        } else {
+          result[key] = newValue;
+        }
+      }
+    }
+  }
+
+  return result as T;
+};

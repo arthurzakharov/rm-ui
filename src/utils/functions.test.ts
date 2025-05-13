@@ -11,6 +11,7 @@ import {
   isCalendarDayEqualsToDate,
   getYearButtonRef,
   createDate,
+  merge,
 } from './functions';
 import { MONTH } from './enums';
 
@@ -520,3 +521,80 @@ describe('📍 - createDate', () => {
 //     expect(getDaysInPreviousMonth(MONTH.DECEMBER, 2100)).toEqual(30);
 //   });
 // });
+
+describe('📍 - merge', () => {
+  test('Merge to simple objects', () => {
+    type O = {
+      a: number;
+      b: {
+        c: number;
+        c1: {
+          a: number;
+          b?: number;
+        };
+        e?: number;
+      };
+      c: string | number;
+    };
+    const a: O = {
+      a: 1,
+      b: {
+        c: 2,
+        c1: {
+          a: 1,
+        },
+      },
+      c: 1,
+    };
+    const b: O = {
+      a: 11,
+      b: {
+        c: 21,
+        c1: {
+          a: 1,
+          b: 22,
+        },
+        e: 3,
+      },
+      c: '2',
+    };
+    expect(merge<O>(a, b)).toEqual({
+      a: 11,
+      b: {
+        c: 21,
+        c1: {
+          a: 1,
+          b: 22,
+        },
+        e: 3,
+      },
+      c: '2',
+    });
+  });
+  test('Merge keys with arrays', () => {
+    type O = {
+      a: number[];
+      b: {
+        a: number[];
+      };
+    };
+    const a: O = {
+      a: [1, 2],
+      b: {
+        a: [1, 2],
+      },
+    };
+    const b: O = {
+      a: [1, 2],
+      b: {
+        a: [3, 4],
+      },
+    };
+    expect(merge(a, b)).toEqual({
+      a: [1, 2],
+      b: {
+        a: [3, 4],
+      },
+    });
+  });
+});

@@ -1,6 +1,7 @@
 import type { LandingPageProps } from '../landing-page.types';
 import { useEffect, useState } from 'react';
-import { deepmerge } from 'deepmerge-ts';
+import defaultProps from '../utils/default-props';
+import { merge } from '../../../utils/functions';
 
 export default function useGetDataFromConfig(props: LandingPageProps, width: number) {
   const { answers, config, loaded, submitted, tuvSrc, tlsSrc, overrides } = props;
@@ -12,6 +13,14 @@ export default function useGetDataFromConfig(props: LandingPageProps, width: num
     show,
     tuvSrc,
     tlsSrc,
+  };
+  const calculatedProps = {
+    advantageList: { button: ctaButton },
+    advantageListNoButton: { button: ctaButton },
+    button: { text: ctaButton },
+    contact: { submitted },
+    howTo: { logos },
+    logos,
   };
 
   useEffect(() => {
@@ -25,16 +34,6 @@ export default function useGetDataFromConfig(props: LandingPageProps, width: num
 
   return {
     isSidebarSticky: loaded && enableStickyMobileHead && width < 768,
-    blocksProp: deepmerge(
-      {
-        advantageList: { button: ctaButton },
-        advantageListNoButton: { button: ctaButton },
-        button: { text: ctaButton },
-        contact: { submitted },
-        howTo: { logos },
-        logos,
-      },
-      overrides,
-    ),
+    blocksProp: merge(defaultProps, calculatedProps, overrides),
   };
 }
