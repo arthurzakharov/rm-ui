@@ -1,6 +1,6 @@
 import type { SidebarProps } from './sidebar.type';
 import { BLOCK } from '../block';
-import LandingPageGroup from '../group';
+import Group from '../group';
 import css from './sidebar.module.css';
 
 export default function Sidebar(props: SidebarProps) {
@@ -15,11 +15,11 @@ export default function Sidebar(props: SidebarProps) {
     <aside className={css.Sidebar}>
       <div className={css.SidebarMain}>
         {main.map((group) => (
-          <LandingPageGroup key={group.id} group={group} groupClassName={css.SidebarMainItem} />
+          <Group key={group.id} group={group} groupClassName={css.SidebarMainItem} />
         ))}
       </div>
       {contact.map((group) => (
-        <LandingPageGroup key={group.id} group={group} />
+        <Group key={group.id} group={group} />
       ))}
     </aside>
   );

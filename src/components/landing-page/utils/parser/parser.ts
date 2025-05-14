@@ -177,7 +177,14 @@ export default class Parser {
     return groups
       .filter(({ content, condition }) => !!content && (!condition || this.resolver.check(condition)))
       .map(({ content, props }) => ({ content, props }))
-      .map(({ content, props }): Group => {
+      .map(({ content, props }, i, groups): Group => {
+        const groupHasLine = (body: string): boolean =>
+          [BLOCK.HOW_TO_GO_NEXT, BLOCK.ADVANTAGE_LIST, BLOCK.REVIEW].includes(body as BLOCK);
+        const prevGroup = groups[i - 1] || null;
+        const previous = {
+          top: prevGroup ? groupHasLine(prevGroup.content.body) : false,
+          bottom: prevGroup ? groupHasLine(prevGroup.content.body) : false,
+        };
         return {
           id: Math.ceil(Math.random() * 1000000),
           type: this.isValidBlock(content.body) ? content.body : BLOCK.QUESTION,
@@ -224,8 +231,8 @@ export default class Parser {
               ];
             }, [])
             .filter(({ type, content }) => !(type === BLOCK.QUESTION && !content)),
-          hideTop: false,
-          hideBottom: false,
+          showTopLine: groupHasLine(content.body) && !previous.bottom,
+          showBottomLine: groupHasLine(content.body),
         };
       });
   }

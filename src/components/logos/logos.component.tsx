@@ -5,7 +5,7 @@ import tuvFallbackSrc from './assets/tuv.jpeg';
 import css from './logos.module.css';
 
 export default function Logos(props: LogosProps) {
-  const { show = ['tuv', 'tls'], tlsSrc = tlsFallbackSrc, tuvSrc = tuvFallbackSrc, className = '' } = props;
+  const { show = ['tls', 'tuv'], tlsSrc = tlsFallbackSrc, tuvSrc = tuvFallbackSrc, className = '' } = props;
 
   return (
     <div className={clsx(css.Logos, className)}>

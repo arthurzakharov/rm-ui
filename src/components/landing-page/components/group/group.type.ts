@@ -6,8 +6,8 @@ export type Group = {
   type: BLOCK;
   title: string;
   blocks: Block[];
-  hideTop: false;
-  hideBottom: false;
+  showTopLine: boolean;
+  showBottomLine: boolean;
 };
 
 export interface GroupProps {

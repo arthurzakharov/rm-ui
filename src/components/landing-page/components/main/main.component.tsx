@@ -11,12 +11,6 @@ export default function Main(props: MainProps) {
   const ref = useRef<HTMLDivElement>(null);
   const setMainElement = useStore((s) => s.setMainElement);
 
-  const hasTopLine = (i: number) => !groups[i].hideTop && i >= 1;
-
-  const hasBottomLine = (i: number) => i >= 1 && i < groups.length - 1 && !groups[i].hideBottom;
-
-  const prevHasNoBottomLine = (i: number) => i - 1 >= 0 && !hasBottomLine(i - 1);
-
   useEffect(() => {
     if (ref.current) setMainElement(ref.current);
   }, [ref, setMainElement]);
@@ -25,13 +19,13 @@ export default function Main(props: MainProps) {
     <main ref={ref} className={css.Main}>
       <SuccessBox {...successBox} />
       <div className={css.Groups}>
-        {groups.map((group, i) => (
+        {groups.map((group) => (
           <Group
             key={group.id}
             group={group}
             groupClassName={clsx(css.Group, {
-              [css.GroupTopLine]: hasTopLine(i) && prevHasNoBottomLine(i),
-              [css.GroupBottomLine]: hasBottomLine(i),
+              [css.GroupTopLine]: group.showTopLine,
+              [css.GroupBottomLine]: group.showBottomLine,
             })}
             titleClassName={css.Title}
             blocksClassName={css.Blocks}

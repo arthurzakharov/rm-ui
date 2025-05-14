@@ -97,6 +97,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .Accordion {
+    margin-top: 16px;
+  }
+
   .Content {
     font-size: 16px;
   }

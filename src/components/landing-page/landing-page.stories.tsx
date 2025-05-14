@@ -4,6 +4,7 @@ import { BUSSGELDCHECK } from './mocks/answers';
 import { DATA_1, DATA_2 } from './mocks/form-answers';
 import Prio3 from './mocks/prios/prio-3/prio-3.json';
 import Prio16 from './mocks/prios/prio-16/prio-16.json';
+import Prio9 from './mocks/prios/prio-9/prio-9.json';
 import MaxWidthDecorator from '../../../.storybook/decorators/max-width';
 
 const meta = {
@@ -15,8 +16,8 @@ const meta = {
     loaded: true,
     appHeaderRef: null,
     submitted: false,
-    tlsSrc: '',
-    tuvSrc: '',
+    tlsSrc: '/tls.png',
+    tuvSrc: '/tuv.jpeg',
     overrides: {},
   },
 } satisfies Meta<typeof LandingPage>;
@@ -28,6 +29,15 @@ export const LandingPagePrio3: Story = {
   name: 'LandingPage / Prio 3',
   args: {
     prio: Prio3,
+    data: DATA_1,
+    answers: BUSSGELDCHECK,
+  },
+};
+
+export const LandingPagePrio9: Story = {
+  name: 'LandingPage / Prio 9',
+  args: {
+    prio: Prio9,
     data: DATA_1,
     answers: BUSSGELDCHECK,
   },
