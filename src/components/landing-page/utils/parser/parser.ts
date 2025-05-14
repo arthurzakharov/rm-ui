@@ -1,5 +1,5 @@
 import type { Prio, Variation, SuccessBoxItem, Props } from '../types/prio';
-import type { Answers, FormAnswers } from '../../landing-page.types';
+import type { Answers } from '../../landing-page.types';
 import type { SuccessBoxProps } from '../../components/success-box';
 import type { Group } from '../../components/group';
 import { getFallback, safeParse } from 'valibot';
@@ -23,12 +23,12 @@ export default class Parser {
     footer: Array<Group>;
   };
 
-  constructor(prio: unknown, data: FormAnswers, answers: Answers, width: number, blocksProp: Partial<Props>) {
+  constructor(prio: unknown, answers: Answers, width: number, blocksProp: Partial<Props>) {
     const { success, output } = safeParse(PrioSchema, prio);
     const safePrio = success ? output : getFallback(PrioSchema);
     this.prio = safePrio;
     this.replacer = new Replacer(answers);
-    this.resolver = new Resolver(data, width);
+    this.resolver = new Resolver(answers, width);
     this.variation = this.getVariation(safePrio);
     this.page = this.deepMapStrings({
       successBox: this.getSuccessBoxProps(),
@@ -178,7 +178,6 @@ export default class Parser {
       .filter(({ content, condition }) => !!content && (!condition || this.resolver.check(condition)))
       .map(({ content, props }) => ({ content, props }))
       .map(({ content, props }, i, groups): Group => {
-        console.log(groups);
         const groupHasLine = (body: string): boolean =>
           groups.length >= 2 && [BLOCK.HOW_TO_GO_NEXT, BLOCK.ADVANTAGE_LIST, BLOCK.REVIEW].includes(body as BLOCK);
         const prevGroup = groups[i - 1] || null;

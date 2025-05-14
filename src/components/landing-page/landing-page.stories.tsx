@@ -28,8 +28,7 @@ export const LandingPagePrio3: Story = {
   name: 'LandingPage / Prio 3',
   args: {
     prio: Prio3,
-    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
-    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
+    answers: BUSSGELDCHECK.VERSION_1,
   },
 };
 
@@ -37,8 +36,7 @@ export const LandingPagePrio9: Story = {
   name: 'LandingPage / Prio 9',
   args: {
     prio: Prio9,
-    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
-    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
+    answers: BUSSGELDCHECK.VERSION_1,
   },
 };
 
@@ -46,7 +44,6 @@ export const LandingPagePrio16: Story = {
   name: 'LandingPage / Prio 16',
   args: {
     prio: Prio16,
-    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
-    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
+    answers: BUSSGELDCHECK.VERSION_1,
   },
 };

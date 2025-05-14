@@ -3,13 +3,34 @@ import { describe, expect, test } from 'vitest';
 import Resolver from './resolver';
 
 const FORM_ANSWERS = {
-  one: 'a',
-  two: 'b',
-  three: 'c',
-  four: '5',
-  five: '-5',
-  six: '0.5',
-  seven: '-0.5',
+  one: {
+    label: 'a',
+    value: 'a',
+  },
+  two: {
+    label: 'b',
+    value: 'b',
+  },
+  three: {
+    label: 'c',
+    value: 'c',
+  },
+  four: {
+    label: '5',
+    value: '5',
+  },
+  five: {
+    label: '-5',
+    value: '-5',
+  },
+  six: {
+    label: '0.5',
+    value: '0.5',
+  },
+  seven: {
+    label: '-0.5',
+    value: '-0.5',
+  },
 };
 
 const zero = new Resolver(FORM_ANSWERS, 0);

@@ -10,12 +10,12 @@ import Parser from './utils/parser';
 import css from './landing-page.module.css';
 
 export default function LandingPage(props: LandingPageProps) {
-  const { loaded, prio, data, answers, appHeaderRef } = props;
+  const { loaded, prio, answers, appHeaderRef } = props;
   const { width } = useViewportSize(100);
   const { blocksProp, isSidebarSticky } = useGetDataFromConfig(props, width);
   useStickySuccessBox(appHeaderRef, isSidebarSticky);
 
-  const { page } = new Parser(prio, data, answers, width, blocksProp);
+  const { page } = new Parser(prio, answers, width, blocksProp);
 
   return (
     <div className={css.Landing}>

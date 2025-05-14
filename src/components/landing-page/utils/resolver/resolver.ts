@@ -1,22 +1,22 @@
 import type { ExtraCondition, Condition, Screen, Form, FormKeyCondition } from '../types/condition';
-import type { FormAnswers } from '../../landing-page.types';
+import type { Answers } from '../../landing-page.types';
 import { ConditionSchema, ScreenSchema } from '../schemas/condition';
 import SYMBOL from '../symbol';
 import { getDefaults, getFallback, safeParse } from 'valibot';
 
 export default class Resolver {
-  private readonly formAnswers: FormAnswers;
+  private readonly answers: Answers;
   private readonly width: number;
 
-  constructor(data: FormAnswers, width: number) {
-    this.formAnswers = data;
+  constructor(data: Answers, width: number) {
+    this.answers = data;
     this.width = width;
   }
 
   // Get form answers key in a secure way
 
   private getFormAnswer(key: string): string {
-    return this.formAnswers[key] || '';
+    return this.answers[key] ? this.answers[key].value : '';
   }
 
   // Methods to parse string with value for special symbols

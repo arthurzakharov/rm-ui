@@ -9,13 +9,10 @@ export type Answer = {
 
 export type Answers = Record<string, Answer>;
 
-export type FormAnswers = Record<string, string>;
-
 export interface LandingPageProps {
   config: LeadfunnelConfig;
   loaded: boolean;
   prio: unknown;
-  data: FormAnswers;
   answers: Answers;
   appHeaderRef: RefObject<HTMLDivElement> | null;
   submitted: boolean;
