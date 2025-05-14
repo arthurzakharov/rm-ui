@@ -178,8 +178,9 @@ export default class Parser {
       .filter(({ content, condition }) => !!content && (!condition || this.resolver.check(condition)))
       .map(({ content, props }) => ({ content, props }))
       .map(({ content, props }, i, groups): Group => {
+        console.log(groups);
         const groupHasLine = (body: string): boolean =>
-          [BLOCK.HOW_TO_GO_NEXT, BLOCK.ADVANTAGE_LIST, BLOCK.REVIEW].includes(body as BLOCK);
+          groups.length >= 2 && [BLOCK.HOW_TO_GO_NEXT, BLOCK.ADVANTAGE_LIST, BLOCK.REVIEW].includes(body as BLOCK);
         const prevGroup = groups[i - 1] || null;
         const previous = {
           top: prevGroup ? groupHasLine(prevGroup.content.body) : false,

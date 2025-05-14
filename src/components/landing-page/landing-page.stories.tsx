@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LandingPage from './landing-page.component';
-import { BUSSGELDCHECK } from './mocks/answers';
-import { DATA_1, DATA_2 } from './mocks/form-answers';
-import Prio3 from './mocks/prios/prio-3/prio-3.json';
-import Prio16 from './mocks/prios/prio-16/prio-16.json';
-import Prio9 from './mocks/prios/prio-9/prio-9.json';
+import BUSSGELDCHECK from './mocks/answers/bussgeldcheck';
+import Prio3 from './mocks/prios/prio-3/prio-3';
+import Prio16 from './mocks/prios/prio-16/prio-16';
+import Prio9 from './mocks/prios/prio-9/prio-9';
 import MaxWidthDecorator from '../../../.storybook/decorators/max-width';
 
 const meta = {
@@ -29,8 +28,8 @@ export const LandingPagePrio3: Story = {
   name: 'LandingPage / Prio 3',
   args: {
     prio: Prio3,
-    data: DATA_1,
-    answers: BUSSGELDCHECK,
+    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
+    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
   },
 };
 
@@ -38,8 +37,8 @@ export const LandingPagePrio9: Story = {
   name: 'LandingPage / Prio 9',
   args: {
     prio: Prio9,
-    data: DATA_1,
-    answers: BUSSGELDCHECK,
+    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
+    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
   },
 };
 
@@ -47,7 +46,7 @@ export const LandingPagePrio16: Story = {
   name: 'LandingPage / Prio 16',
   args: {
     prio: Prio16,
-    data: DATA_2,
-    answers: BUSSGELDCHECK,
+    data: BUSSGELDCHECK.VERSION_1.FORM_ANSWERS,
+    answers: BUSSGELDCHECK.VERSION_1.FORM_MAPS,
   },
 };
