@@ -4,7 +4,7 @@ import CtaButton from './cta-button.component';
 import css from './cta-button.module.css';
 
 const meta = {
-  title: 'Components/CtaButton',
+  title: 'Components/LandingPage/CtaButton',
   component: CtaButton,
   args: {
     text: 'See Option',

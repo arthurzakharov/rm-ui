@@ -3,7 +3,7 @@ import SuccessBox from './success-box.component';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta = {
-  title: 'Components/SuccessBox',
+  title: 'Components/LandingPage/SuccessBox',
   component: SuccessBox,
   decorators: [MaxWidthDecorator(555)],
   args: {

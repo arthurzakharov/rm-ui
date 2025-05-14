@@ -4,7 +4,7 @@ import Contact from './contact.component';
 import css from './contact.module.css';
 
 const meta = {
-  title: 'Components/Contact',
+  title: 'Components/LandingPage/Contact',
   component: Contact,
   args: {
     submitted: false,

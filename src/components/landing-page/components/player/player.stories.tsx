@@ -5,7 +5,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import css from './player.module.css';
 
 const meta = {
-  title: 'Components/Player',
+  title: 'Components/LandingPage/Player',
   decorators: [MaxWidthDecorator(555)],
   component: Player,
   args: {

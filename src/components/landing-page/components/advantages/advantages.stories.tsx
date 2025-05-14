@@ -5,7 +5,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import css from './advantages.module.css';
 
 const meta = {
-  title: 'Components/Advantages',
+  title: 'Components/LandingPage/Advantages',
   decorators: [MaxWidthDecorator(1030)],
   component: Advantages,
   args: {

@@ -3,7 +3,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import HowTo from './how-to.component';
 
 const meta = {
-  title: 'Components/HowTo',
+  title: 'Components/LandingPage/HowTo',
   decorators: [MaxWidthDecorator(555)],
   component: HowTo,
   args: {

@@ -1,6 +1,10 @@
 import type { Props } from './types/prio';
 
 const defaultProps: Partial<Props> = {
+  accordion: {
+    title: '',
+    blocks: [],
+  },
   advantageList: {
     title: 'Vorteile beim Einspruch mit SOS Verkehrsrecht',
     list: [

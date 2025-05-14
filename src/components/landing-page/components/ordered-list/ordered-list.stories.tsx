@@ -5,7 +5,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta: Meta<typeof OrderedList> = {
   component: OrderedList,
-  title: 'Components/OrderedList',
+  title: 'Components/LandingPage/OrderedList',
   decorators: [MaxWidthDecorator(315)],
   args: {
     title: 'Jetzt Vollmacht erteilen',

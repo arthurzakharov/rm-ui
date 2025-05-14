@@ -4,7 +4,7 @@ import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 import Review from './review.component';
 
 const meta = {
-  title: 'Components/Review',
+  title: 'Components/LandingPage/Review',
   decorators: [MaxWidthDecorator(555)],
   component: Review,
   args: {

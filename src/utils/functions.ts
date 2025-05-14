@@ -299,6 +299,8 @@ export const merge = <T extends Record<string, unknown>>(...objects: T[]): T => 
         ) {
           // @ts-ignore
           result[key] = merge(prevValue, newValue);
+        } else if (prevValue !== null && newValue !== null && Array.isArray(prevValue) && Array.isArray(newValue)) {
+          result[key] = newValue.length ? newValue : prevValue;
         } else {
           result[key] = newValue;
         }

@@ -4,7 +4,7 @@ import LogoBoard from './logo-board.component';
 import MaxWidthDecorator from '../../../../../.storybook/decorators/max-width';
 
 const meta = {
-  title: 'Components/LogoBoard',
+  title: 'Components/LandingPage/LogoBoard',
   decorators: [MaxWidthDecorator(555)],
   component: LogoBoard,
   args: {

@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import Loader from './loader.component';
 
 const meta = {
-  title: 'Components/Loader',
+  title: 'Components/LandingPage/Loader',
   component: Loader,
 } satisfies Meta<typeof Loader>;
 

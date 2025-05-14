@@ -5,7 +5,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import css from './accordion.module.css';
 
 const meta = {
-  title: 'Components/Accordion',
+  title: 'Components/LandingPage/Accordion',
   decorators: [MaxWidthDecorator(555)],
   component: Accordion,
   args: {
