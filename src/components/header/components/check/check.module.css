@@ -1,0 +1,10 @@
+.Check {
+  position: relative;
+  stroke: var(--header-text-primary);
+  margin-left: 5px;
+  margin-right: 5px;
+  top: 1px;
+  width: 10px;
+  height: 10px;
+  stroke-width: 3;
+}

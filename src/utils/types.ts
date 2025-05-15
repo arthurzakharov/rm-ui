@@ -1,17 +1,14 @@
+import type { CSSProperties } from 'react';
 import type { LogoName } from '../components/logos';
-import { Condition } from '../components/landing-page/utils/types/condition.ts';
+import type { Condition } from '../components/landing-page/utils/types/condition';
 
 type LeadIdPrefix = 'SOS' | 'SBE' | 'ARE' | 'H4W' | 'PEX' | 'SWE';
 type SwitchSlidesMode = 'on-card' | 'on-next' | 'mixed';
 type IconPosition = 'none' | 'before' | 'after';
-type HeaderAlertCss = {
-  background: string;
-  color: string;
-};
-type Header = {
+export type Header = {
   showAlert: boolean;
   alertMessage: string;
-  alertCss: Partial<HeaderAlertCss>;
+  alertCss: CSSProperties;
   info: string;
   phone: string;
   openingTimes: string;

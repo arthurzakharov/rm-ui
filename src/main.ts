@@ -2,6 +2,7 @@
 export { default as Calendar } from './components/calendar';
 export { default as Checkbox } from './components/checkbox';
 export { default as Dropdown } from './components/dropdown';
+export { default as Header } from './components/header';
 export { default as InputControl } from './components/input-control';
 export { default as InputMasked } from './components/input-masked';
 export { default as LandingPage } from './components/landing-page';

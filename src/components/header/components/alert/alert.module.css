@@ -1,0 +1,25 @@
+.Alert {
+  position: relative;
+  z-index: 50;
+  left: 0;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--header-text-primary);
+}
+
+.Alert&::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  height: 100%;
+  width: 200vw;
+  left: -100vw;
+  right: 100vw;
+  background-color: var(--header-alert-background);
+}

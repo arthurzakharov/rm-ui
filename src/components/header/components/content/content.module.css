@@ -1,0 +1,31 @@
+.Content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--header-vertical-padding) var(--header-horizontal-padding);
+}
+
+.Content[data-sticky-header="true"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .Content[data-sticky-header="true"] {
+    position: initial;
+    top: initial;
+    left: initial;
+    right: -5px;
+    width: initial;
+    z-index: initial;
+    box-sizing: initial;
+    background-color: initial;
+  }
+}

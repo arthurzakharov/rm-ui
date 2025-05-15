@@ -1,0 +1,18 @@
+.Hints {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .Hints {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--header-text-primary);
+    text-align: right;
+  }
+}
