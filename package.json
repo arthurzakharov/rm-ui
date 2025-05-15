@@ -1,6 +1,6 @@
 {
   "name": "@arthurzakharov/rm-ui",
-  "version": "1.0.166",
+  "version": "1.0.169",
   "description": "UI library for rm projects",
   "license": "MIT",
   "private": false,
@@ -43,22 +43,18 @@
   "peerDependencies": {
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
-    "i18next": "^25.1.3",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-i18next": "^15.5.1",
     "valibot": "^1.0.0",
     "zustand": "^5.0.4"
   },
   "dependencies": {
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
-    "i18next": "^25.1.3",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-i18next": "^15.5.1",
     "valibot": "^1.0.0",
     "zustand": "^5.0.4"
   },

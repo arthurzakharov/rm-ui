@@ -1,12 +1,16 @@
 import type { PropsWithChildren } from 'react';
-import { useRef } from 'react';
+import { useHeaderContext } from '../../header.context';
 import css from './content.module.css';
 
 export default function Content(props: PropsWithChildren) {
-  const ref = useRef(null);
+  const {
+    headerRef,
+    isLongReadShown,
+    config: { enableStickyMobileHead },
+  } = useHeaderContext();
 
   return (
-    <div ref={ref} className={css.Content}>
+    <div ref={headerRef} data-sticky-header={enableStickyMobileHead && isLongReadShown} className={css.Content}>
       {props.children}
     </div>
   );

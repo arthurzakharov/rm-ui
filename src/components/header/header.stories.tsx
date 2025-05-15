@@ -24,6 +24,7 @@ const meta: Meta<typeof Header> = {
     selectedKeyword: '',
     logoSrc: 'logo.svg',
     logoMobileSrc: 'logo-mobile.svg',
+    headerRef: null,
     onClick: fn,
   },
 };

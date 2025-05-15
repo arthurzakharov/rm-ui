@@ -2,6 +2,7 @@ import type { HeaderProps } from './header.types';
 import { createContext, useContext } from 'react';
 
 export const HeaderContext = createContext<HeaderProps>({
+  children: null,
   config: {
     showAlert: false,
     alertMessage: '',
@@ -18,6 +19,7 @@ export const HeaderContext = createContext<HeaderProps>({
   selectedKeyword: 'no-keyword',
   logoSrc: '',
   logoMobileSrc: '',
+  headerRef: null,
   onClick: () => {},
 });
 
