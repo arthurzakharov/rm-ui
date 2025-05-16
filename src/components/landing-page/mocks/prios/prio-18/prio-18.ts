@@ -4,7 +4,7 @@ const prio: Prio = {
   variation: [
     {
       color: '#ffaa02',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 1,
       title: 1,
       html: 1,
@@ -128,7 +128,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -170,7 +170,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -216,7 +216,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -260,7 +260,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -308,7 +308,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -356,7 +356,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 2,
       title: 2,
       list: 2,
@@ -408,7 +408,7 @@ const prio: Prio = {
     },
     {
       color: '#ec2556',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 3,
       title: 3,
       html: 3,
@@ -448,7 +448,7 @@ const prio: Prio = {
     },
     {
       color: '#00b649',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 4,
       title: 4,
       list: -1,
@@ -470,7 +470,7 @@ const prio: Prio = {
     },
     {
       color: '#ec2556',
-      order: ['title', 'list', 'html'],
+      order: ['title', 'html', 'list'],
       head: 3,
       title: 3,
       list: -1,
