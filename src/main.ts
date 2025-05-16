@@ -9,6 +9,7 @@ export { default as LandingPage } from './components/landing-page';
 export { default as LoadingCircle } from './components/loading-circle';
 export { default as Logos } from './components/logos';
 export { default as NavigationButtons } from './components/navigation-buttons';
+export { default as NumberedList } from './components/numbered-list';
 export { default as StarRating } from './components/star-rating';
 export { default as LandingPageLoader } from './components/landing-page/components/loader';
 // ICONS

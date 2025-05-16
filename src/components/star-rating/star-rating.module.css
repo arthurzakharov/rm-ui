@@ -1,7 +1,7 @@
 @property --star-rating-color {
   syntax: "<color>";
   inherits: true;
-  initial-value: '#ffd336';
+  initial-value: #ffd336;
 }
 
 .StarRating {
@@ -33,6 +33,6 @@
 }
 
 .StarCustomColor {
-  stroke: var(--star-rating-color, #ffd336);
-  fill: var(--star-rating-color, #ffd336);
+  stroke: var(--star-rating-color);
+  fill: var(--star-rating-color);
 }
