@@ -1,0 +1,164 @@
+@property --loading-circle-success {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: '#2ecc71';
+}
+
+@property --loading-circle-fail {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: '#e74c3c';
+}
+
+.LoadingCircle {
+  margin: 48px 32px 29px 32px;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-left-color: var(--loading-circle-success, #2ecc71);
+  animation: loading-circle-spin 1.2s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.LoadingCircle.Failed {
+  border-left-color: var(--loading-circle-fail, #e74c3c);
+}
+
+.LoadingCircle.Completed {
+  -webkit-animation: none;
+  animation: none;
+  border-color: var(--loading-circle-success, #2ecc71);
+  transition: border 500ms ease-out;
+}
+
+.LoadingCircle.Completed.Failed {
+  border-color: var(--loading-circle-fail, #e74c3c);
+}
+
+.Checkmark {
+  display: none;
+}
+
+.Checkmark.Show {
+  display: block !important;
+}
+
+.Checkmark.Circle:after {
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: loading-circle-checkmark;
+  transform: scaleX(-1) rotate(135deg);
+}
+
+.Checkmark:after {
+  opacity: 1;
+  height: 40px;
+  width: 20px;
+  transform-origin: left top;
+  border-right: 5px solid var(--loading-circle-success, #2ecc71);
+  border-top: 5px solid var(--loading-circle-success, #2ecc71);
+  content: "";
+  left: 16px;
+  top: 40px;
+  position: absolute;
+}
+
+.Cross {
+  display: none;
+}
+
+.Cross.Circle:after,
+.Cross.Circle:before {
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: loading-circle-checkmark;
+}
+
+.Cross.Show {
+  display: block !important;
+}
+
+.Cross:after {
+  opacity: 1;
+  height: 40px;
+  width: 20px;
+  transform-origin: left top;
+  border-right: 5px solid var(--loading-circle-fail, #e74c3c);
+  content: "";
+  left: 16px;
+  top: 40px;
+  position: absolute;
+  transform: rotate(-45deg) translateX(-30%) translateY(-10%);
+}
+
+.Cross:before {
+  opacity: 1;
+  height: 40px;
+  width: 20px;
+  transform-origin: left top;
+  border-right: 5px solid var(--loading-circle-fail, #e74c3c);
+  content: "";
+  left: 16px;
+  top: 40px;
+  position: absolute;
+  transform: rotate(45deg) translateX(-25%) translateY(-85%);
+}
+
+@media screen and (max-width: 320px) {
+  .LoadingCircle {
+    margin: 35px 32px 29px 32px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 376px) {
+  .LoadingCircle {
+    margin: 35px 32px 29px 32px;
+  }
+}
+
+@media screen and (min-width: 377px) and (max-width: 448px) {
+  .LoadingCircle {
+    margin: 35px 32px 29px 32px;
+  }
+}
+
+@media screen and (min-width: 449px) and (max-width: 768px) {
+  .LoadingCircle {
+    margin: 35px 32px 29px 32px;
+  }
+}
+
+@keyframes loading-circle-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-circle-checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 20px;
+    opacity: 1;
+  }
+  40% {
+    height: 40px;
+    width: 20px;
+    opacity: 1;
+  }
+  100% {
+    height: 40px;
+    width: 20px;
+    opacity: 1;
+  }
+}

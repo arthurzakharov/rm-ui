@@ -6,6 +6,7 @@ export { default as Header } from './components/header';
 export { default as InputControl } from './components/input-control';
 export { default as InputMasked } from './components/input-masked';
 export { default as LandingPage } from './components/landing-page';
+export { default as LoadingCircle } from './components/loading-circle';
 export { default as Logos } from './components/logos';
 export { default as NavigationButtons } from './components/navigation-buttons';
 export { default as StarRating } from './components/star-rating';
