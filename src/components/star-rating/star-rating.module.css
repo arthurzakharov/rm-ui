@@ -1,0 +1,38 @@
+@property --star-rating-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: '#ffd336';
+}
+
+.StarRating {
+  display: inline-block;
+}
+
+.StarRating:before, .StarRating:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.StarRating:after {
+  clear: both;
+}
+
+.Star {
+  float: left;
+  padding: 0 1px;
+}
+
+.Star:first-of-type {
+  padding-left: 0;
+}
+
+.Star:last-of-type {
+  padding-right: 0;
+}
+
+.StarCustomColor {
+  stroke: var(--star-rating-color, #ffd336);
+  fill: var(--star-rating-color, #ffd336);
+}

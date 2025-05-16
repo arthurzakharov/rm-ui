@@ -8,6 +8,7 @@ export { default as InputMasked } from './components/input-masked';
 export { default as LandingPage } from './components/landing-page';
 export { default as Logos } from './components/logos';
 export { default as NavigationButtons } from './components/navigation-buttons';
+export { default as StarRating } from './components/star-rating';
 export { default as LandingPageLoader } from './components/landing-page/components/loader';
 // ICONS
 export { default as IconCheck } from './icons/check';
