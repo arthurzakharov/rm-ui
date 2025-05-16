@@ -1,0 +1,17 @@
+@property --loading-sticks-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff8d02;
+}
+
+.LoadingSticks {
+  width: 40px;
+  height: 50px;
+}
+
+.Rect {
+  width: 4px;
+  height: 10px;
+  opacity: 0.2;
+  fill: var(--loading-sticks-color);
+}
