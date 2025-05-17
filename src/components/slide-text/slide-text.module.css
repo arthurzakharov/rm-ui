@@ -1,0 +1,75 @@
+.SlideText {
+  margin: 0 auto;
+}
+
+.Medium {
+  max-width: 500px;
+}
+
+.Large {
+  max-width: 550px;
+}
+
+.Container {
+  position: relative;
+}
+
+.Input {
+  outline: 0;
+  border: 2px solid rgba(162, 186, 201, 0.3);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 9px 10px;
+  font-size: 16px;
+  background: #fcfcfc;
+  color: #004473;
+  position: relative;
+  -webkit-appearance: none;
+}
+
+.Input::placeholder {
+  color: #9cafbd;
+}
+
+.Input:focus {
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0), inset 0px 0px 3px 1px rgba(0, 0, 0, 0.12);
+  border-color: #ff8d02;
+}
+
+.Error {
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #e74c3c;
+  text-align: center;
+}
+
+@media screen and (max-width: 320px) {
+  .Input {
+    padding: 7px 10px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 376px) {
+  .Input {
+    padding: 7px 10px;
+  }
+}
+
+@media screen and (min-width: 377px) and (max-width: 448px) {
+  .Input {
+    padding: 7px 10px;
+  }
+}
+
+@media screen and (min-width: 449px) and (max-width: 768px) {
+  .Input {
+    padding: 7px 10px;
+  }
+}

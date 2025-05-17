@@ -11,6 +11,7 @@ export { default as LoadingSticks } from './components/loading-sticks';
 export { default as Logos } from './components/logos';
 export { default as NavigationButtons } from './components/navigation-buttons';
 export { default as NumberedList } from './components/numbered-list';
+export { default as SlideText } from './components/slide-text';
 export { default as StarRating } from './components/star-rating';
 export { default as LandingPageLoader } from './components/landing-page/components/loader';
 // ICONS
