@@ -1,0 +1,73 @@
+:root {
+  --text-primary: #333333;
+  --banner-background: #eceaea;
+  --banner-label-background: #02ba65;
+  --banner-text: #ffffff;
+  --question-head: #004473;
+  --accordion-title: #004473;
+  --accordion-text: #4b4b4b;
+  --landing-page-contact-color: #004473;
+  --landing-page-contact-button-color: #02ba65;
+  --landing-page-contact-success-color: #00b649;
+  --checkbox-primary: #02ba65;
+  --checkbox-label: #333333;
+  --checkbox-font-weight: 300;
+  --datefield-color: #333333;
+  --datefield-placeholder: #8da9ab;
+  --how-to-go-next-border: #f6f8f9;
+  --landing-page-advantage-color: #333333;
+  --landing-page-advantage-line-color: #f6f8f9;
+  --landing-page-advantage-primary: #004473;
+  --landing-page-advantage-check-color: #30cc72;
+  --ordered-list-head-color: #004473;
+  --ordered-list-text-color: #333333;
+  --ordered-list-bullet-bg: #02ba65;
+  --ordered-list-bullet-color: #ffffff;
+  --accent-primary: #07ba65;
+  --text-accent-primary: #333333;
+  --text-accent-primary-light: #333333;
+  --card-border: #a2bac94d;
+  --card-background: linear-gradient(to bottom, #fcfcfc 25%, #fcfcfc);
+  --header-logo-height: 40px;
+  --header-alert-background: #eff3f5;
+  --header-vertical-padding: 16px;
+  --header-horizontal-padding: 15px;
+  --header-text-primary: var(--text-accent-primary);
+  --header-accent-primary: var(--accent-primary);
+  --user-form-background: #f6f6f6;
+  --user-form-border: #e3e3e3;
+  --certifications-secure-logo: #b1b4c7;
+  --input-field: #333333;
+  --input-field-placeholder: #8da9ab;
+  --radio-circle: #e3e3e3;
+  --prev-btn-bg-color: #ffffff;
+  --prev-btn-border-color: #efefef;
+  --prev-btn-color: #efefef;
+  --prev-btn-border-hover-color: #c7c7c7;
+  --prev-btn-hover-color: #c7c7c7;
+  --next-btn-bg-color: #02ba65;
+  --next-btn-color: #ffffff;
+  --next-btn-bg-hover-color: #02ba65e3;
+  --success-box-primary: #00b649;
+  --success-box-icon-check: #00b649;
+  --success-box-icon-question: #3d5afe;
+  --success-box-icon-exclamation: #e53935;
+  --success-box-icon-cross: #e53935;
+  --success-box-a: #23bf96;
+  --review-primary-color: #004473;
+  --review-secondary-color: #ff8d01;
+  --review-border: #f6f8f9;
+  --review-text: #333333;
+  --landing-page-btn-bg: #05ba65;
+  --landing-page-btn-color: #ffffff;
+  --landing-page-loader-color: #05ba65;
+  --loading-circle-success: #2ecc71;
+  --loading-circle-fail: #e74c3c;
+  --loading-sticks-color: #ff8d02;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --header-logo-height: 48px;
+  }
+}

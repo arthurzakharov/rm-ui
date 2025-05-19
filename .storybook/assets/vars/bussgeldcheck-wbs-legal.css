@@ -1,0 +1,75 @@
+:root {
+  --text-primary: #333333;
+  --banner-background: #3b424e;
+  --banner-label-background: #ff3c1f;
+  --banner-text: #ffffff;
+  --question-head: #3b424e;
+  --accordion-title: #3b424e;
+  --accordion-text: #3b424e;
+  --landing-page-contact-color: #3b424e;
+  --landing-page-contact-button-color: #ff3c1f;
+  --landing-page-contact-success-color: #00b649;
+  --checkbox-primary: #ff3c1f;
+  --checkbox-label: #202020b3;
+  --checkbox-font-weight: 300;
+  --datefield-color: #231e68;
+  --datefield-placeholder: #8f8dab;
+  --how-to-go-next-border: #f6f8f9;
+  --landing-page-advantage-color: #333333;
+  --landing-page-advantage-line-color: #f6f8f9;
+  --landing-page-advantage-primary: #3b424e;
+  --landing-page-advantage-check-color: #30cc72;
+  --ordered-list-head-color: #3b424e;
+  --ordered-list-text-color: #333333;
+  --ordered-list-bullet-bg: #ff3c1f;
+  --ordered-list-bullet-color: #ffffff;
+  --accent-primary: #ff3c1f;
+  --accent-primary-light: #ff3c1f28;
+  --text-accent-primary: #3b424e;
+  --text-accent-primary-light: #202020b3;
+  --card-border: #a2bac94d;
+  --card-background: linear-gradient(to bottom, #fcfcfc 25%, #fcfcfc);
+  --header-logo-height: 34px;
+  --header-alert-background: #eff3f5;
+  --header-vertical-padding: 10px;
+  --header-horizontal-padding: 15px;
+  --header-text-primary: var(--text-accent-primary);
+  --header-accent-primary: var(--accent-primary);
+  --user-form-background: #f6f6f6;
+  --user-form-border: #e3e3e3;
+  --certifications-secure-logo: #b1b4c7;
+  --input-field: #3b424e;
+  --input-field-placeholder: #78787880;
+  --radio-circle: #e3e3e3;
+  --prev-btn-bg-color: #ffffff;
+  --prev-btn-border-color: #efefef;
+  --prev-btn-color: #efefef;
+  --prev-btn-border-hover-color: #c7c7c7;
+  --prev-btn-hover-color: #c7c7c7;
+  --next-btn-bg-color: #ff3c1f;
+  --next-btn-color: #ffffff;
+  --next-btn-bg-hover-color: #ff5239;
+  --success-box-primary: #00b649;
+  --success-box-icon-check: #00b649;
+  --success-box-icon-question: #3d5afe;
+  --success-box-icon-exclamation: #e53935;
+  --success-box-icon-cross: #e53935;
+  --success-box-a: #23bf96;
+  --review-primary-color: #004473;
+  --review-secondary-color: #ff8d01;
+  --review-border: #f6f8f9;
+  --review-text: #333333;
+  --landing-page-btn-bg: #ff3c1f;
+  --landing-page-btn-color: #ffffff;
+  --landing-page-loader-color: #ff3c1f;
+  --loading-circle-success: #2ecc71;
+  --loading-circle-fail: #e74c3c;
+  --loading-sticks-color: #ff8d02;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --header-logo-height: 42px;
+    --header-vertical-padding: 15px;
+  }
+}
